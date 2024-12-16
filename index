@@ -63,10 +63,10 @@
 
     <script>
       // URLs de los archivos JSON
-      const urls = [
-        "https://bibliaeditable.blogspot.com/2024/12/pruebas.html",
-        "https://bibliaeditable.blogspot.com/2024/12/libro-2-tesalonicenses-json.html"
-      ];
+     const urls = [
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/galatas"
+];
+
 
       const searchInput = document.getElementById("searchInput");
       const searchButton = document.getElementById("searchButton");
