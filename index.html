@@ -12,12 +12,10 @@
         color: #333;
         line-height: 1.6;
       }
-
       h1 {
         text-align: center;
         color: #4CAF50;
       }
-
       input, button {
         width: 100%;
         padding: 10px;
@@ -26,47 +24,43 @@
         border-radius: 4px;
         font-size: 16px;
       }
-
       button {
         background-color: #4CAF50;
         color: white;
         border: none;
         cursor: pointer;
-        font-size: 16px;
       }
-
       button:hover {
         background-color: #45a049;
       }
-
       ul {
         list-style-type: none;
         padding: 0;
       }
-
       li {
         padding: 15px;
         border: 1px solid #ccc;
         margin-bottom: 10px;
         border-radius: 4px;
         background-color: #fff;
-        font-size: 16px;
-        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
   <body>
     <h1>Buscador de Versículos Bíblicos</h1>
-    <input type="text" id="searchInput" placeholder="Escribe Libro Capítulo:Versículo (ej. 2 Tesalonicenses 1:1 o 1 Tesalonicenses 1)" />
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)"
+    />
     <button id="searchButton">Buscar</button>
     <ul id="results"></ul>
 
     <script>
       // URLs de los archivos JSON
-     const urls = [
-  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/galatas.json"
-];
-
+      const urls = [
+        "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json"
+      ];
 
       const searchInput = document.getElementById("searchInput");
       const searchButton = document.getElementById("searchButton");
@@ -78,28 +72,24 @@
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .toLowerCase()
-          .replace(/\s+/g, " "); // Elimina espacios extra
+          .replace(/\s+/g, " ");
       }
 
-      // Función para cargar datos desde una URL
+      // Función para cargar datos JSON directamente
       async function fetchJsonData(url) {
         try {
           const response = await fetch(url);
           if (!response.ok) {
-            throw new Error(`No se pudo cargar la página: ${url}`);
+            throw new Error(`Error al cargar el JSON: ${url}`);
           }
-          const html = await response.text();
-          const parser = new DOMParser();
-          const doc = parser.parseFromString(html, "text/html");
-          const jsonText = doc.querySelector("#json-data").textContent;
-          return JSON.parse(jsonText);
+          return await response.json();
         } catch (error) {
-          console.error(`Error al cargar el JSON desde ${url}:`, error);
+          console.error(`Error:`, error);
           return null;
         }
       }
 
-      // Función para cargar y combinar datos de todas las URLs
+      // Cargar y combinar datos de todas las URLs
       async function fetchAllJsonData() {
         const allData = {};
         for (const url of urls) {
@@ -111,15 +101,14 @@
         return allData;
       }
 
-      // Función para buscar y renderizar versículos
+      // Buscar y mostrar versículos
       async function searchVerses(query) {
         const datos = await fetchAllJsonData();
         if (!datos) return;
 
         resultsContainer.innerHTML = "";
-
         const normalizedQuery = normalizeText(query);
-        const match = normalizedQuery.match(/^(\d*\s*[\wáéíóúñ]+)\s(\d+)(?::(\d+))?$/);
+        const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+))?$/);
 
         if (match) {
           const libro = match[1].trim();
@@ -132,52 +121,45 @@
 
           if (libroEncontrado) {
             const capitulos = datos[libroEncontrado];
-
             if (capitulos[capitulo]) {
-              if (!versiculo) {
+              if (versiculo) {
+                const texto = capitulos[capitulo][versiculo];
+                if (texto) {
+                  resultsContainer.innerHTML = `
+                    <li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>
+                  `;
+                } else {
+                  resultsContainer.innerHTML = "<li>Versículo no encontrado.</li>";
+                }
+              } else {
                 Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
                   const li = document.createElement("li");
                   li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
                   resultsContainer.appendChild(li);
                 });
-              } else if (capitulos[capitulo][versiculo]) {
-                const texto = capitulos[capitulo][versiculo];
-                const li = document.createElement("li");
-                li.innerHTML = `${libroEncontrado} ${capitulo}:${versiculo} - ${texto}`;
-                resultsContainer.appendChild(li);
-              } else {
-                resultsContainer.innerHTML = "<li>No se encontró el versículo especificado.</li>";
               }
             } else {
-              resultsContainer.innerHTML = "<li>No se encontró el capítulo especificado.</li>";
+              resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
             }
           } else {
-            resultsContainer.innerHTML = "<li>No se encontró el libro especificado.</li>";
+            resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
           }
         } else {
           resultsContainer.innerHTML =
-            "<li>Por favor, introduce el formato correcto: Libro Capítulo:Versículo (ej. 2 Tesalonicenses 1:1 o 1 Tesalonicenses 1).</li>";
+            "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
         }
       }
 
-      // Eventos para buscar
+      // Eventos
       searchButton.addEventListener("click", () => {
         const query = searchInput.value.trim();
-        if (query.length > 0) {
-          searchVerses(query);
-        } else {
-          resultsContainer.innerHTML = "<li>Por favor, introduce un término para buscar.</li>";
-        }
+        if (query.length > 0) searchVerses(query);
       });
 
       searchInput.addEventListener("keypress", event => {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
-          if (query.length > 0) {
-            searchVerses(query);
-          } else {
-            resultsContainer.innerHTML = "<li>Por favor, introduce un término para buscar.</li>";
-          }
+          if (query.length > 0) searchVerses(query);
         }
       });
     </script>
