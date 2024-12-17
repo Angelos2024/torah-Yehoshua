@@ -2,12 +2,64 @@
 <html>
   <head>
     <title>Buscador de Versículos Bíblicos</title>
+
     <style>
+      /* Estilo del botón desplegable */
+      .dropbtn {
+        background-color: #f9fcfe;
+        color: #800000;
+        padding: 5px;
+        font-size: 14px; /* Corregido el tamaño de la fuente */
+        border: 1px solid #000000; /* Borde negro */
+        cursor: pointer;
+        border-radius: 4px;
+      }
+
+      .dropbtn:hover, .dropbtn:focus {
+        background-color: #ffffff;
+      }
+
+      /* Contenedor del dropdown */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 10px; /* Para que quede arriba del contenido */
+      }
+
+      /* Contenido del dropdown */
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 190px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #800000; /* Letras guinda */
+        background-color: #ffffff; /* Fondo blanco */
+        padding: 8px 16px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        color: #ffffff; /* Letras blancas */
+        background-color: #333333; /* Fondo gris oscuro */
+      }
+
+      .show {
+        display: block; /* Mostrar dropdown */
+      }
+
+      /* Resto del diseño */
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
       }
+
       body {
         font-family: Arial, sans-serif;
         padding: 20px;
@@ -17,31 +69,46 @@
         color: #333;
         line-height: 1.6;
       }
+
       h1 {
         text-align: center;
         color: #4CAF50;
       }
-      input, button {
-        width: 100%;
+
+      .search-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        flex: 1;
         padding: 10px;
-        margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 4px;
         font-size: 16px;
       }
+
       button {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
         background-color: #4CAF50;
         color: white;
-        border: none;
+        font-size: 14px;
         cursor: pointer;
       }
+
       button:hover {
         background-color: #45a049;
       }
+
       ul {
         list-style-type: none;
         padding: 0;
       }
+
       li {
         padding: 15px;
         border: 1px solid #ccc;
@@ -52,17 +119,35 @@
     </style>
   </head>
   <body>
-    <h1>Buscador de Versículos Bíblicos</h1>
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)"
-    />
-    <button id="searchButton">Buscar</button>
+    <h1>Buscador</h1>
+
+    <div class="search-container">
+      
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)"
+      />
+      
+      <button id="searchButton">Buscar</button>
+     
+    </div>
+    <div class="dropdown">
+      <button onclick="myFunction()" class="dropbtn">Lista de libros disponibles</button>
+      <div id="myDropdown" class="dropdown-content">
+        <a href="#">Según Marcos</a>
+        <a href="#">Carta a los Romanos</a>
+        <a href="#">Carta a los Gálatas</a>
+        <a href="#">1 Tesalonicenses</a>
+        <a href="#">2 Tesalonicenses</a>
+        <a href="#">Carta a los Hebreos</a>
+        <a href="#">Revelación Apocalipsis</a>
+      </div>
+    </div>
+
     <ul id="results"></ul>
 
     <script>
-      // URLs de los archivos JSON
       const urls = [
         "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json"
       ];
@@ -71,22 +156,10 @@
       const searchButton = document.getElementById("searchButton");
       const resultsContainer = document.getElementById("results");
 
-      // Función para normalizar texto
-      function normalizeText(text) {
-        return text
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .replace(/\s+/g, " ");
-      }
-
-      // Función para cargar datos JSON directamente
       async function fetchJsonData(url) {
         try {
           const response = await fetch(url);
-          if (!response.ok) {
-            throw new Error(`Error al cargar el JSON: ${url}`);
-          }
+          if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
           return await response.json();
         } catch (error) {
           console.error(`Error:`, error);
@@ -94,25 +167,25 @@
         }
       }
 
-      // Cargar y combinar datos de todas las URLs
       async function fetchAllJsonData() {
         const allData = {};
         for (const url of urls) {
           const data = await fetchJsonData(url);
-          if (data) {
-            Object.assign(allData, data);
-          }
+          if (data) Object.assign(allData, data);
         }
         return allData;
       }
 
-      // Buscar y mostrar versículos
       async function searchVerses(query) {
         const datos = await fetchAllJsonData();
         if (!datos) return;
 
         resultsContainer.innerHTML = "";
-        const normalizedQuery = normalizeText(query);
+        const normalizedQuery = query
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+
         const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+))?$/);
 
         if (match) {
@@ -121,7 +194,11 @@
           const versiculo = match[3];
 
           const libroEncontrado = Object.keys(datos).find(
-            key => normalizeText(key) === normalizeText(libro)
+            key =>
+              key
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase() === libro
           );
 
           if (libroEncontrado) {
@@ -129,13 +206,9 @@
             if (capitulos[capitulo]) {
               if (versiculo) {
                 const texto = capitulos[capitulo][versiculo];
-                if (texto) {
-                  resultsContainer.innerHTML = `
-                    <li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>
-                  `;
-                } else {
-                  resultsContainer.innerHTML = "<li>Versículo no encontrado.</li>";
-                }
+                resultsContainer.innerHTML = texto
+                  ? `<li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>`
+                  : "<li>Versículo no encontrado.</li>";
               } else {
                 Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
                   const li = document.createElement("li");
@@ -143,30 +216,38 @@
                   resultsContainer.appendChild(li);
                 });
               }
-            } else {
-              resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-            }
-          } else {
-            resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-          }
-        } else {
-          resultsContainer.innerHTML =
-            "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
-        }
+            } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+          } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+        } else resultsContainer.innerHTML = "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
       }
 
-      // Eventos
       searchButton.addEventListener("click", () => {
         const query = searchInput.value.trim();
-        if (query.length > 0) searchVerses(query);
+        if (query) searchVerses(query);
       });
 
       searchInput.addEventListener("keypress", event => {
         if (event.key === "Enter") {
           const query = searchInput.value.trim();
-          if (query.length > 0) searchVerses(query);
+          if (query) searchVerses(query);
         }
       });
+
+      // Mostrar dropdown
+      function myFunction() {
+        document.getElementById("myDropdown").classList.toggle("show");
+      }
+
+      window.onclick = function (event) {
+        if (!event.target.matches(".dropbtn")) {
+          const dropdowns = document.getElementsByClassName("dropdown-content");
+          for (let i = 0; i < dropdowns.length; i++) {
+            if (dropdowns[i].classList.contains("show")) {
+              dropdowns[i].classList.remove("show");
+            }
+          }
+        }
+      };
     </script>
   </body>
 </html>
