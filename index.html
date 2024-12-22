@@ -2,42 +2,8 @@
 <html>
   <head>
     <title>Buscador de Versículos Bíblicos</title>
-
     <style>
-/* Estilo del contenedor de la etiqueta */
-.dropdown-label {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  color: #800000;
-  cursor: pointer;
-  position: relative;
-}
-
-/* Contenido del dropdown (menú) */
-.dropdown-content {
-  display: none; /* Inicialmente oculto */
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 190px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: #800000;
-  background-color: #ffffff;
-  padding: 8px 10px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  color: #ffffff;
-  background-color: #333333;
-}
-
-
+      /* Estilo general */
       * {
         box-sizing: border-box;
         margin: 0;
@@ -64,6 +30,7 @@
         align-items: center;
         gap: 10px;
         margin-bottom: 10px;
+        margin-left: -60px; /* Desplaza hacia la izquierda */
       }
 
       input[type="text"] {
@@ -99,142 +66,263 @@
         margin-bottom: 10px;
         border-radius: 4px;
         background-color: #fff;
+        width: 100%; /* Más ancho, relativo al contenedor padre */
+  margin-left: -60px; /* Desplaza hacia la izquierda */
+      }
+
+      /* Sidebar */
+   #mySidebar {
+    width: 0; /* Ancho inicial */
+    position: fixed;
+    z-index: 1;
+    top: 163px; /* Espacio desde la parte superior */
+    right: 0; /* Posición en la derecha */
+    background-color: #111;
+    overflow-x: hidden;
+    overflow-y: auto; /* Añade scroll vertical si el contenido es mayor que la ventana */
+    transition: width 0.4s;
+    padding-top: 20px; /* Espaciado interno desde el contenido superior */
+    color: white;
+  }
+
+  #mySidebar.open {
+    width: 34%;
+  }
+
+
+      #mySidebar a {
+        padding: 10px 15px;
+        text-decoration: none;
+        font-size: 18px;
+        color: white;
+        display: block;
+        transition: 0.3s;
+      }
+
+      #mySidebar a:hover {
+        background-color: #575757;
+      }
+
+      #main {
+        transition: margin-right 0.3s;
+        padding: 20px;
+      }
+      #main.shifted {
+  margin-right: 15%;
+}
+
+      #openNav {
+        font-size: 20px;
+        cursor: pointer;
+        position: fixed;
+        top: 120px;
+        right: 15px;
+        color: #4CAF50;
+      }
+
+      /* Estilos específicos para el menú desplegable */
+      .dropdown-label {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        color: #800000;
+        cursor: pointer;
+        position: relative;
+        margin-left: -60px; /* Desplaza hacia la izquierda */
+      }
+
+      .dropdown-content {
+        display: none; /* Inicialmente oculto */
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 190px;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown-content a {
+        color: #800000;
+        background-color: #ffffff;
+        padding: 8px 10px;
+        text-decoration: none;
+        display: block;
+      }
+
+      .dropdown-content a:hover {
+        color: #ffffff;
+        background-color: #333333;
       }
     </style>
   </head>
   <body>
-    <h1>Buscador</h1>
 
-    <div class="search-container">
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)"
-      />
-      <button id="searchButton">Buscar</button>
-    </div>
+     <h1>Buscador</h1> 
+    
 
-<div class="dropdown-label" id="dropdownButton">
-      Bible Book List
-     <div class="dropdown-content" id="dropdownMenu">
-      <a href="#">Según Marcos</a>
-        <a href="#">Carta a los Romanos</a>
-        <a href="#">Carta a los Gálatas</a>
-        <a href="#">1 Tesalonicenses</a>
-        <a href="#">2 Tesalonicenses</a>
-        <a href="#">Carta a los Hebreos</a>
-        <a href="#">Revelación Apocalipsis</a>
+    
+   
+
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)"
+        />
+        <button id="searchButton">Buscar</button>
       </div>
+<div class="dropdown-label" id="dropdownButton">
+        Bible Book List
+        <div class="dropdown-content" id="dropdownMenu">
+          <a href="#">Según Marcos</a>
+          <a href="#">Carta a los Romanos</a>
+          <a href="#">Carta a los Gálatas</a>
+          <a href="#">1 Tesalonicenses</a>
+          <a href="#">2 Tesalonicenses</a>
+          <a href="#">Carta a los Hebreos</a>
+          <a href="#">Revelación Apocalipsis</a>
+        </div>
+      </div>
+
+      <div id="main">
+      
+
+      <ul id="results"></ul>
     </div>
 
-    <ul id="results"></ul>
-
-   <script>
-  const urls = [
-  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
-  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json"
-];
+    <span id="openNav" onclick="w3_open()">☰ Menú</span> <!-- el menu desplegable de comentarios-->
 
 
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const resultsContainer = document.getElementById("results");
+    <!-- Sidebar -->
+    <div id="mySidebar">
+      <a href="javascript:void(0)" onclick="w3_close()">Cerrar &times;</a>
+      <a href="#">Inicio</a>
+      <a href="#">Buscar</a>
+      <a href="#">Libros</a>
+    </div>
 
-  const dropdownButton = document.getElementById("dropdownButton");
-  const dropdownMenu = document.getElementById("dropdownMenu");
+    <script>
+      // Funciones del sidebar
 
-  async function fetchJsonData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Error:`, error);
-      return null;
-    }
-  }
+function w3_open() {
+  const sidebar = document.getElementById("mySidebar");
+  const main = document.getElementById("main");
+  const openNav = document.getElementById("openNav");
 
-  async function fetchAllJsonData() {
-    const allData = {};
-    for (const url of urls) {
-      const data = await fetchJsonData(url);
-      if (data) Object.assign(allData, data);
-    }
-    return allData;
-  }
+  sidebar.classList.add("open");
+  main.classList.add("shifted");
+  openNav.style.display = "none";
+}
 
-  async function searchVerses(query) {
-    const datos = await fetchAllJsonData();
-    if (!datos) return;
+function w3_close() {
+  const sidebar = document.getElementById("mySidebar");
+  const main = document.getElementById("main");
+  const openNav = document.getElementById("openNav");
 
-    resultsContainer.innerHTML = "";
-    const normalizedQuery = query
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+  sidebar.classList.remove("open");
+  main.classList.remove("shifted");
+  openNav.style.display = "inline-block";
+}
 
-    const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+))?$/);
+      // JSON y búsqueda
+      const urls = [
+        "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
+        "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json"
+      ];
 
-    if (match) {
-      const libro = match[1].trim();
-      const capitulo = match[2];
-      const versiculo = match[3];
+      const searchInput = document.getElementById("searchInput");
+      const searchButton = document.getElementById("searchButton");
+      const resultsContainer = document.getElementById("results");
+      const dropdownButton = document.getElementById("dropdownButton");
+      const dropdownMenu = document.getElementById("dropdownMenu");
 
-      const libroEncontrado = Object.keys(datos).find(
-        key =>
-          key
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase() === libro
-      );
+      async function fetchJsonData(url) {
+        try {
+          const response = await fetch(url);
+          if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
+          return await response.json();
+        } catch (error) {
+          console.error(`Error:`, error);
+          return null;
+        }
+      }
 
-      if (libroEncontrado) {
-        const capitulos = datos[libroEncontrado];
-        if (capitulos[capitulo]) {
-          if (versiculo) {
-            const texto = capitulos[capitulo][versiculo];
-            resultsContainer.innerHTML = texto
-              ? `<li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>`
-              : "<li>Versículo no encontrado.</li>";
-          } else {
-            Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
-              const li = document.createElement("li");
-              li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
-              resultsContainer.appendChild(li);
-            });
-          }
-        } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-      } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-    } else resultsContainer.innerHTML = "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
-  }
+      async function fetchAllJsonData() {
+        const allData = {};
+        for (const url of urls) {
+          const data = await fetchJsonData(url);
+          if (data) Object.assign(allData, data);
+        }
+        return allData;
+      }
 
-  // Manejador de evento para el botón de búsqueda
-  searchButton.addEventListener("click", () => {
-    const query = searchInput.value.trim();
-    if (query) searchVerses(query);
-  });
+      async function searchVerses(query) {
+        const datos = await fetchAllJsonData();
+        if (!datos) return;
 
-  // Manejador de evento para la tecla Enter en el campo de búsqueda
-  searchInput.addEventListener("keypress", event => {
-    if (event.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query) searchVerses(query);
-    }
-  });
+        resultsContainer.innerHTML = "";
+        const normalizedQuery = query
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
 
-  // Manejador para el clic en el botón de la lista de libros
-  dropdownButton.addEventListener("click", () => {
-    const isMenuVisible = dropdownMenu.style.display === "block";
-    dropdownMenu.style.display = isMenuVisible ? "none" : "block";
-  });
+        const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+))?$/);
 
-  // Cerrar el menú si haces clic fuera de él
-  document.addEventListener("click", event => {
-    if (!dropdownButton.contains(event.target)) {
-      dropdownMenu.style.display = "none";
-    }
-  });
-</script>
+        if (match) {
+          const libro = match[1].trim();
+          const capitulo = match[2];
+          const versiculo = match[3];
 
+          const libroEncontrado = Object.keys(datos).find(
+            key =>
+              key
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase() === libro
+          );
+
+          if (libroEncontrado) {
+            const capitulos = datos[libroEncontrado];
+            if (capitulos[capitulo]) {
+              if (versiculo) {
+                const texto = capitulos[capitulo][versiculo];
+                resultsContainer.innerHTML = texto
+                  ? `<li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>`
+                  : "<li>Versículo no encontrado.</li>";
+              } else {
+                Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
+                  const li = document.createElement("li");
+                  li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
+                  resultsContainer.appendChild(li);
+                });
+              }
+            } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+          } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+        } else resultsContainer.innerHTML = "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
+      }
+
+      searchButton.addEventListener("click", () => {
+        const query = searchInput.value.trim();
+        if (query) searchVerses(query);
+      });
+
+      searchInput.addEventListener("keypress", event => {
+        if (event.key === "Enter") {
+          const query = searchInput.value.trim();
+          if (query) searchVerses(query);
+        }
+      });
+
+      // Funcionalidad del menú desplegable
+      dropdownButton.addEventListener("click", () => {
+        const isMenuVisible = dropdownMenu.style.display === "block";
+        dropdownMenu.style.display = isMenuVisible ? "none" : "block";
+      });
+
+      document.addEventListener("click", event => {
+        if (!dropdownButton.contains(event.target)) {
+          dropdownMenu.style.display = "none";
+        }
+      });
+    </script>
   </body>
 </html>
