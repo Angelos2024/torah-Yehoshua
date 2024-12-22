@@ -23,7 +23,8 @@
       h1 {
         text-align: center;
         color: #4CAF50;
-      }
+      }    /* no lo estoy usando pero es para titulos, color y centrado */
+      
 
       .search-container {
         display: flex;
@@ -66,8 +67,8 @@
         margin-bottom: 10px;
         border-radius: 4px;
         background-color: #fff;
-        width: 100%; /* Más ancho, relativo al contenedor padre */
-  margin-left: -60px; /* Desplaza hacia la izquierda */
+      width: calc(100% + 80px); /* Más ancho para extender hacia la derecha */
+  margin-left: -80px; /* Desplaza hacia la izquierda */
       }
 
       /* Sidebar */
@@ -75,7 +76,7 @@
     width: 0; /* Ancho inicial */
     position: fixed;
     z-index: 1;
-    top: 163px; /* Espacio desde la parte superior */
+    top: 115px; /* Espacio desde la parte superior */
     right: 0; /* Posición en la derecha */
     background-color: #111;
     overflow-x: hidden;
@@ -111,14 +112,7 @@
   margin-right: 15%;
 }
 
-      #openNav {
-        font-size: 20px;
-        cursor: pointer;
-        position: fixed;
-        top: 120px;
-        right: 15px;
-        color: #4CAF50;
-      }
+   
 
       /* Estilos específicos para el menú desplegable */
       .dropdown-label {
@@ -156,12 +150,6 @@
   </head>
   <body>
 
-     <h1>Buscador</h1> 
-    
-
-    
-   
-
       <div class="search-container">
         <input
           type="text"
@@ -189,13 +177,14 @@
       <ul id="results"></ul>
     </div>
 
-    <span id="openNav" onclick="w3_open()">☰ Menú</span> <!-- el menu desplegable de comentarios-->
+    <!-- el menu desplegable de comentarios-->
+<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: fixed; top: 70px; right: 150px; width: 30px;">
 
 
     <!-- Sidebar -->
     <div id="mySidebar">
-      <a href="javascript:void(0)" onclick="w3_close()">Cerrar &times;</a>
-      <a href="#">Inicio</a>
+      <a href="#">aqui van a estar los comentarios</a>
+      <a href="#">comentario</a>
       <a href="#">Buscar</a>
       <a href="#">Libros</a>
     </div>
@@ -203,25 +192,25 @@
     <script>
       // Funciones del sidebar
 
-function w3_open() {
+function toggleSidebar() {
   const sidebar = document.getElementById("mySidebar");
   const main = document.getElementById("main");
-  const openNav = document.getElementById("openNav");
+  const toggleNav = document.getElementById("toggleNav");
 
-  sidebar.classList.add("open");
-  main.classList.add("shifted");
-  openNav.style.display = "none";
+  const isOpen = sidebar.classList.contains("open");
+
+  if (isOpen) {
+    sidebar.classList.remove("open");
+    main.classList.remove("shifted");
+    toggleNav.src = "https://i.imgur.com/oJRwGnT.png"; // Ícono de menú
+  } else {
+    sidebar.classList.add("open");
+    main.classList.add("shifted");
+    toggleNav.src = "https://i.imgur.com/oJRwGnT.png"; // Sustituye por un enlace válido de tu imagen de cierre
+  }
 }
 
-function w3_close() {
-  const sidebar = document.getElementById("mySidebar");
-  const main = document.getElementById("main");
-  const openNav = document.getElementById("openNav");
 
-  sidebar.classList.remove("open");
-  main.classList.remove("shifted");
-  openNav.style.display = "inline-block";
-}
 
       // JSON y búsqueda
       const urls = [
