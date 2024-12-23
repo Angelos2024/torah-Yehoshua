@@ -74,7 +74,7 @@
       /* Sidebar */
    #mySidebar {
     width: 0; /* Ancho inicial */
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 115px; /* Espacio desde la parte superior */
     right: 0; /* Posición en la derecha */
@@ -88,6 +88,7 @@
 
   #mySidebar.open {
     width: 34%;
+    height: 600px;
   }
 
 
@@ -146,6 +147,16 @@
         color: #ffffff;
         background-color: #333333;
       }
+
+      #welcomeMessage {
+  text-align: center;
+  margin: 20px 0;
+  color: #4CAF50;
+  background-color: #f0f0f0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
     </style>
   </head>
   <body>
@@ -173,12 +184,16 @@
 
       <div id="main">
       
+<div id="welcomeMessage">
+  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
+  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+</div>
 
       <ul id="results"></ul>
     </div>
 
     <!-- el menu desplegable de comentarios-->
-<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: fixed; top: 70px; right: 150px; width: 30px;">
+<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: absolute; top: 70px; right: 150px; width: 30px;">
 
 
     <!-- Sidebar -->
@@ -219,7 +234,6 @@ function toggleSidebar() {
   const sidebar = document.getElementById("mySidebar");
   const main = document.getElementById("main");
   const toggleNav = document.getElementById("toggleNav");
-
   const isOpen = sidebar.classList.contains("open");
 
   if (isOpen) {
@@ -335,6 +349,32 @@ function toggleSidebar() {
           dropdownMenu.style.display = "none";
         }
       });
+
+      // Ocultar el mensaje de bienvenida al realizar una búsqueda
+const welcomeMessage = document.getElementById("welcomeMessage");
+
+function hideWelcomeMessage() {
+  welcomeMessage.style.display = "none";
+}
+
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value.trim();
+  if (query) {
+    hideWelcomeMessage();
+    searchVerses(query);
+  }
+});
+
+searchInput.addEventListener("keypress", event => {
+  if (event.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (query) {
+      hideWelcomeMessage();
+      searchVerses(query);
+    }
+  }
+});
+
     </script>
   </body>
 </html>
