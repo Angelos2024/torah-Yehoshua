@@ -183,11 +183,34 @@
 
     <!-- Sidebar -->
     <div id="mySidebar">
-      <a href="#">aqui van a estar los comentarios</a>
-      <a href="#">comentario</a>
-      <a href="#">Buscar</a>
-      <a href="#">Libros</a>
-    </div>
+  <a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a>
+  <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div> <!-- Contenedor para los comentarios -->
+</div>
+
+<script>
+  function cargarComentarios() {
+    const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW
+    const contenedor = document.getElementById("contenidoComentarios");
+
+    // Limpia el contenido antes de cargar nuevo
+    contenedor.innerHTML = "Cargando comentarios...";
+
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Error al cargar el archivo: ${response.status}`);
+        }
+        return response.text();
+      })
+      .then(data => {
+        contenedor.innerHTML = data; // Inserta el contenido del archivo HTML
+      })
+      .catch(error => {
+        contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
+      });
+  }
+</script>
+
 
     <script>
       // Funciones del sidebar
