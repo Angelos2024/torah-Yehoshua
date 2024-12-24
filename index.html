@@ -59,6 +59,7 @@
       ul {
         list-style-type: none;
         padding: 0;
+        margin-top: -23px;
       }
 
       li {
@@ -69,6 +70,7 @@
         background-color: #fff;
       width: calc(100% + 80px); /* Más ancho para extender hacia la derecha */
   margin-left: -80px; /* Desplaza hacia la izquierda */
+ margin-top: 0px;
       }
 
       /* Sidebar */
@@ -89,6 +91,7 @@
   #mySidebar.open {
     width: 34%;
     height: 600px;
+    margin-top: 25px;
   }
 
 
@@ -108,6 +111,7 @@
       #main {
         transition: margin-right 0.3s;
         padding: 20px;
+
       }
       #main.shifted {
   margin-right: 15%;
@@ -185,6 +189,20 @@
   border-radius: 4px;
 }
 
+#imgcopiar {
+  position: relative; /* Cambia según la posición deseada */
+  top: -25px; /* Ajusta la distancia desde el contenedor superior */
+  left: -100px; /* Ajusta la distancia desde el contenedor izquierdo */
+  width: 30px; /* Tamaño de la imagen */
+  cursor: pointer; /* Muestra que es clickeable */
+  margin-top: 10px;
+  transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
+
+#imgcopiar:hover {
+  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
+}
+
     </style>
   </head>
   <body>
@@ -197,6 +215,9 @@
         />
         <button id="searchButton">Buscar</button>
       </div>
+
+
+  <!-- lista de libros disponibles--> 
 <div class="dropdown-label" id="dropdownButton">
         Bible Book List
         <div class="dropdown-content" id="dropdownMenu">
@@ -210,23 +231,37 @@
         </div>
       </div>
 
+
       <div id="main">
-      
+      <!-- iconos debajo del buscador-->
+       <img id="imgcopiar" src="https://i.imgur.com/YaVe5C3.png" 
+     alt="Copiar contenido" 
+     title="Copiar contenido" 
+     onclick="copiarContenido()" 
+     style="cursor: pointer; width: 30px; margin-top: 10px;">
+     
+
+
+<!-- mensaje de bievenida-->
 <div id="welcomeMessage">
   <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
   <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
 </div>
 
-      <ul id="results"></ul>
+
+<!-- el id de resultados generales-->
+      <ul id="results"></ul> 
+      
+
     </div>
 
     <!-- el menu desplegable de comentarios-->
-<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: absolute; top: 70px; right: 150px; width: 30px;">
+<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: absolute; top: 100px; right: 150px; width: 30px;">
 
 
     <!-- Sidebar -->
     <div id="mySidebar">
-   <!-- Contenedor para los comentarios -->
+   
 
   <div id="menuSidebar">
     <button onclick="mostrarSeccion('comentarios')">Comentarios</button>
@@ -234,8 +269,10 @@
     <button onclick="mostrarSeccion('mapas')">Mapas</button>
   </div>
   <div id="contenidoSidebar">
+    <!-- Contenedor para los comentarios -->
     <div id="comentarios" class="seccionSidebar">
-      <p><a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a>
+      <p><a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a> 
+
   <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div></p>
     </div>
     <div id="critico" class="seccionSidebar" style="display: none;">
@@ -250,7 +287,7 @@
 
 <script>
   function cargarComentarios() {
-    const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW
+    const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
     const contenedor = document.getElementById("contenidoComentarios");
 
     // Limpia el contenido antes de cargar nuevo
@@ -429,6 +466,22 @@ function mostrarSeccion(seccion) {
     seccionSeleccionada.style.display = "block"; // Muestra la sección seleccionada
   }
 }
+
+function copiarContenido() {
+  const resultados = document.getElementById("results");
+  const texto = resultados.innerText; // Obtiene el texto de los resultados
+
+  if (texto) {
+    navigator.clipboard.writeText(texto).then(() => {
+      alert("El contenido ha sido copiado al portapapeles.");
+    }).catch(err => {
+      console.error("Error al copiar al portapapeles: ", err);
+    });
+  } else {
+    alert("No hay contenido para copiar.");
+  }
+}
+
 
     </script>
   </body>
