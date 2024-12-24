@@ -156,6 +156,34 @@
   padding: 15px;
   border-radius: 8px;
 }
+#menuSidebar {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+#menuSidebar button {
+  padding: 10px;
+  border: none;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#menuSidebar button:hover {
+  background-color: #575757;
+}
+
+.seccionSidebar {
+  display: none; /* Oculta todas las secciones por defecto */
+  color: white;
+  padding: 10px;
+  background-color: #222;
+  border-radius: 4px;
+}
 
     </style>
   </head>
@@ -198,9 +226,27 @@
 
     <!-- Sidebar -->
     <div id="mySidebar">
-  <a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a>
-  <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div> <!-- Contenedor para los comentarios -->
+   <!-- Contenedor para los comentarios -->
+
+  <div id="menuSidebar">
+    <button onclick="mostrarSeccion('comentarios')">Comentarios</button>
+    <button onclick="mostrarSeccion('critico')">Aparato Crítico NA28</button>
+    <button onclick="mostrarSeccion('mapas')">Mapas</button>
+  </div>
+  <div id="contenidoSidebar">
+    <div id="comentarios" class="seccionSidebar">
+      <p><a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a>
+  <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div></p>
+    </div>
+    <div id="critico" class="seccionSidebar" style="display: none;">
+      <p>Contenido del Aparato Crítico NA28</p>
+    </div>
+    <div id="mapas" class="seccionSidebar" style="display: none;">
+      <p>Contenido de mapas</p>
+    </div>
+  </div>
 </div>
+
 
 <script>
   function cargarComentarios() {
@@ -374,6 +420,15 @@ searchInput.addEventListener("keypress", event => {
     }
   }
 });
+function mostrarSeccion(seccion) {
+  const secciones = document.querySelectorAll(".seccionSidebar");
+  secciones.forEach(sec => (sec.style.display = "none")); // Oculta todas las secciones
+
+  const seccionSeleccionada = document.getElementById(seccion);
+  if (seccionSeleccionada) {
+    seccionSeleccionada.style.display = "block"; // Muestra la sección seleccionada
+  }
+}
 
     </script>
   </body>
