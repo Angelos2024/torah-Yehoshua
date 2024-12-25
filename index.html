@@ -69,8 +69,8 @@
         border-radius: 4px;
         background-color: #fff;
       width: calc(100% + 80px); /* Más ancho para extender hacia la derecha */
-  margin-left: -80px; /* Desplaza hacia la izquierda */
- margin-top: 0px;
+  margin-left: -90px; /* Desplaza hacia la izquierda */
+ margin-top: 20px;
       }
 
       /* Sidebar */
@@ -89,9 +89,10 @@
   }
 
   #mySidebar.open {
-    width: 34%;
+    width: 32%;
     height: 600px;
     margin-top: 25px;
+  top: 115px;
   }
 
 
@@ -114,7 +115,8 @@
 
       }
       #main.shifted {
-  margin-right: 15%;
+    margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
+  transition: margin-right 0.4s ease; /* Animación suave */
 }
 
    
@@ -154,11 +156,12 @@
 
       #welcomeMessage {
   text-align: center;
-  margin: 20px 0;
+  margin: 1px -10px;
   color: #4CAF50;
   background-color: #f0f0f0;
   padding: 15px;
   border-radius: 8px;
+  margin-left: -100px;
 }
 #menuSidebar {
   display: flex;
@@ -173,12 +176,13 @@
   background-color: #333;
   color: white;
   font-size: 16px;
-  cursor: pointer;
+  cursor: pointer;  /* Muestra que es clickeable */
   border-radius: 4px;
 }
 
 #menuSidebar button:hover {
   background-color: #575757;
+  transform: scale(1.05); /* Amplía la imagen ligeramente al pasar el mouse */
 }
 
 .seccionSidebar {
@@ -190,9 +194,9 @@
 }
 
 #imgcopiar {
-  position: relative; /* Cambia según la posición deseada */
-  top: -25px; /* Ajusta la distancia desde el contenedor superior */
-  left: -100px; /* Ajusta la distancia desde el contenedor izquierdo */
+position: absolute;
+  top: -45px; /* Ajusta la distancia desde el contenedor superior */
+  left: -120px; /* Ajusta la distancia desde el contenedor izquierdo */
   width: 30px; /* Tamaño de la imagen */
   cursor: pointer; /* Muestra que es clickeable */
   margin-top: 10px;
@@ -202,6 +206,170 @@
 #imgcopiar:hover {
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
 }
+#imgparalelo:hover {
+  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
+}
+#imgparalelo {
+  position: absolute;
+  top: -45px; /* Ajusta la distancia desde el contenedor superior */
+  left: -190px; /* Ajusta la distancia desde el contenedor izquierdo */
+  width: 30px; /* Tamaño de la imagen */
+  cursor: pointer; /* Muestra que es clickeable */
+  margin-top: 10px;
+  transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
+ 
+    
+#toggleNav:hover {
+transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
+  }
+
+
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin-top: -20px;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 40px; /* Ajusta según cada tooltip */
+  left: -70px;
+  transform: translateX(-50%);
+}
+
+
+/* General tooltip */
+.material-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-50%);
+  left:-100px;
+  top: 0px;
+}
+.material-tooltip img {
+  margin-top: -2px;
+  width: 30px;
+  transition: transform 0.3s ease;
+}
+/* Tooltip específico para copiar */
+.copiar-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-50%);
+  left:-100px;
+  top: 0px;
+}
+
+/* Tooltip específico para paralelo */
+.paralelo-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 70px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  transform: translateX(-50%);
+  left: -180px;
+  top: 0px;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+/* Específico para el tooltip de copiar */
+.copiar-tooltip img {
+  top: -25px;
+  left: -100px;
+  width: 30px;
+  transition: transform 0.3s ease;
+}
+
+.copiar-tooltip img:hover {
+  transform: scale(1.2);
+}
+
+/* Específico para el tooltip de paralelo */
+.paralelo-tooltip img {
+  top: -25px;
+  left: -190px;
+  width: 30px;
+  transition: transform 0.3s ease;
+}
+
+.paralelo-tooltip img:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo del nuevo sidebar (lado izquierdo) */
+/* Sidebar del lado izquierdo (con empuje del contenido central) */
+#paraleloSidebar {
+  width: 0; /* Ancho inicial cerrado */
+  position: fixed;
+  z-index: 2; /* Más alto para que quede encima del contenido */
+  top: 115px; /* Ajusta según tu diseño */
+  left: 0; /* Se desliza desde la izquierda */
+  background-color: #111;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scroll vertical si es necesario */
+  transition: width 0.4s ease; /* Animación suave */
+  padding-top: 20px; /* Espaciado interno */
+  color: white;
+}
+
+#paraleloSidebar.open {
+  width: 24%; /* Ancho del sidebar al abrirse */
+  height: 100%; /* Ajusta según tu diseño */
+  top: 140px;
+}
+
+/* Links dentro del sidebar */
+#paraleloSidebar a {
+  padding: 10px 15px;
+  text-decoration: none;
+  font-size: 18px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+#paraleloSidebar a:hover {
+  background-color: #575757;
+}
+
+/* Ajuste del contenido principal cuando el sidebar está abierto */
+#main.shifted-left {
+  margin-left: 10%; /* Igual al ancho del sidebar izquierdo */
+  transition: margin-left 0.4s ease; /* Animación suave */
+}
+
 
     </style>
   </head>
@@ -234,31 +402,36 @@
 
       <div id="main">
       <!-- iconos debajo del buscador-->
-       <img id="imgcopiar" src="https://i.imgur.com/YaVe5C3.png" 
-     alt="Copiar contenido" 
-     title="Copiar contenido" 
-     onclick="copiarContenido()" 
-     style="cursor: pointer; width: 30px; margin-top: 10px;">
-     
 
-
-<!-- mensaje de bievenida-->
-<div id="welcomeMessage">
-  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
-  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+<div class="tooltip copiar-tooltip">
+  <img id="imgcopiar" src="https://i.imgur.com/YaVe5C3.png" 
+       alt="Copiar contenido" 
+       onclick="copiarContenido()" />
+  <span class="tooltiptext">Copiar</span>
 </div>
 
+<!-- Tooltip para "paralelo" -->
 
-<!-- el id de resultados generales-->
-      <ul id="results"></ul> 
-      
+<div class="tooltip paralelo-tooltip">
+  <img id="imgparalelo" src="https://i.imgur.com/xB2Fvor.png" 
+       alt="Contenido paralelo" 
+       onclick="toggleParaleloSidebar()" />
+  <span class="tooltiptext">Paralelo</span>
+</div>
 
-    </div>
+<!-- Sidebar paralelo (para contenido paralelo) -->
+<div id="paraleloSidebar">
+  <a href="javascript:void(0)" onclick="closeParaleloSidebar()">&times; Cerrar</a>
+  <div id="contenidoParalelo" style="padding: 10px;">
+    <p>Versión de Biblia paralela se mostrará aquí.</p>
+  </div>
+</div>
 
-    <!-- el menu desplegable de comentarios-->
-<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()" style="cursor: pointer; position: absolute; top: 100px; right: 150px; width: 30px;">
-
-
+<!-- el menu desplegable de comentarios-->
+    <div class="tooltip material-tooltip">
+<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()">
+<span class="tooltiptext">aparato crítico</span>
+</div>
     <!-- Sidebar -->
     <div id="mySidebar">
    
@@ -284,6 +457,20 @@
   </div>
 </div>
 
+
+<!-- mensaje de bievenida-->
+<div id="welcomeMessage">
+  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
+  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+</div>
+
+
+<!-- el id de resultados generales-->
+      <ul id="results"></ul>   
+
+    </div>
+
+  
 
 <script>
   function cargarComentarios() {
@@ -473,13 +660,60 @@ function copiarContenido() {
 
   if (texto) {
     navigator.clipboard.writeText(texto).then(() => {
-      alert("El contenido ha sido copiado al portapapeles.");
+      alert("El contenido ha sido copiado.");
     }).catch(err => {
-      console.error("Error al copiar al portapapeles: ", err);
+      console.error("Error al copiar.", err);
     });
   } else {
     alert("No hay contenido para copiar.");
   }
+}
+
+// Función para alternar el nuevo sidebar
+function toggleParaleloSidebar() {
+  const paraleloSidebar = document.getElementById("paraleloSidebar");
+  const main = document.getElementById("main");
+  const isOpen = paraleloSidebar.classList.contains("open");
+
+  if (isOpen) {
+    // Cierra el sidebar
+    paraleloSidebar.classList.remove("open");
+    main.classList.remove("shifted-left");
+  } else {
+    // Abre el sidebar
+    paraleloSidebar.classList.add("open");
+    main.classList.add("shifted-left");
+    cargarContenidoParalelo(); // Cargar contenido dinámico
+  }
+}
+
+function closeParaleloSidebar() {
+  const paraleloSidebar = document.getElementById("paraleloSidebar");
+  const main = document.getElementById("main");
+
+  paraleloSidebar.classList.remove("open");
+  main.classList.remove("shifted-left");
+}
+
+function cargarContenidoParalelo() {
+  const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/paralelo.json"; // Cambia por el enlace real
+  const contenedorParalelo = document.getElementById("contenidoParalelo");
+
+  contenedorParalelo.innerHTML = "Cargando contenido paralelo...";
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error al cargar contenido paralelo: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      contenedorParalelo.innerHTML = data; // Inserta el contenido cargado
+    })
+    .catch(error => {
+      contenedorParalelo.innerHTML = `<p>Error: ${error.message}</p>`;
+    });
 }
 
 
