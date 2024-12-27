@@ -65,7 +65,7 @@
       li {
         padding: 15px;
         border: 1px solid #ccc;
-        margin-bottom: 10px;
+        margin-bottom: -13px;
         border-radius: 4px;
         background-color: #fff;
       width: calc(100% + 80px); /* Más ancho para extender hacia la derecha */
@@ -220,11 +220,19 @@ position: absolute;
 }
  
     
-#toggleNav:hover {
-transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
-  }
+#imgmaterial {
+  position: absolute;
+  top: -45px; /* Ajusta la distancia desde el contenedor superior */
+  left: 590px; /* Ajusta la distancia desde el contenedor izquierdo */
+  width: 30px; /* Tamaño de la imagen */
+  cursor: pointer; /* Muestra que es clickeable */
+  margin-top: 10px;
+  transition: transform 0.3s ease; /* Animación al pasar el mouse */
+}
 
-
+#imgmaterial:hover {
+  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
+}
  .tooltip {
   position: relative;
   display: inline-block;
@@ -260,7 +268,7 @@ transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
   position: absolute;
   z-index: 1;
   transform: translateX(-50%);
-  left:-100px;
+  left:600px;
   top: 0px;
 }
 .material-tooltip img {
@@ -391,10 +399,10 @@ transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
         <div class="dropdown-content" id="dropdownMenu">
           <a href="#">Según Marcos</a>
           <a href="#">Carta a los Romanos</a>
-          <a href="#">Carta a los Gálatas</a>
+          <a href="#"data-libro="Gálatas">Carta a los Gálatas</a>
           <a href="#">1 Tesalonicenses</a>
           <a href="#">2 Tesalonicenses</a>
-          <a href="#">Carta a los Hebreos</a>
+          <a href="#"data-libro="Hebreos">Carta a los Hebreos</a>
           <a href="#">Revelación Apocalipsis</a>
         </div>
       </div>
@@ -429,7 +437,7 @@ transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
 
 <!-- el menu desplegable de comentarios-->
     <div class="tooltip material-tooltip">
-<img id="toggleNav" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()">
+<img id="imgmaterial" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()">
 <span class="tooltiptext">aparato crítico</span>
 </div>
     <!-- Sidebar -->
@@ -551,50 +559,115 @@ function toggleSidebar() {
         return allData;
       }
 
-      async function searchVerses(query) {
-        const datos = await fetchAllJsonData();
-        if (!datos) return;
+async function searchVerses(query) {
+  const datos = await fetchAllJsonData();
+  if (!datos) return;
 
-        resultsContainer.innerHTML = "";
-        const normalizedQuery = query
+  resultsContainer.innerHTML = "";
+  const normalizedQuery = query
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "") // Elimina tildes
+    .toLowerCase();
+
+  // Mapear abreviaturas a nombres completos
+  const libroMap = {
+    gal: "gálatas", Gal: "Gálatas",
+    heb: "hebreos", Heb: "hebreos"
+  };
+
+  // Extraer partes de la consulta
+  const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+  if (match) {
+    let libro = match[1].trim();
+    const capitulo = match[2];
+    const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
+    const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
+
+    // Convertir abreviatura a nombre completo si es necesario
+    libro = libroMap[libro] || libro;
+
+    // Normalizar claves del JSON
+    const libroEncontrado = Object.keys(datos).find(key => {
+      const libroNormalizado = libroMap[libro] || libro; // Traduce la abreviatura o usa el valor original
+      return (
+        key
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase();
+          .toLowerCase() ===
+        libroNormalizado
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase()
+      );
+    });
 
-        const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+))?$/);
+    if (libroEncontrado) {
+      const capitulos = datos[libroEncontrado];
+      if (capitulos[capitulo]) {
+        if (versiculoInicio && versiculoFin) {
+          // Mostrar un rango de versículos
+          for (let i = versiculoInicio; i <= versiculoFin; i++) {
+            if (capitulos[capitulo][i]) {
+              const li = document.createElement("li");
+              li.innerHTML = `${libroEncontrado} ${capitulo}:${i} - ${capitulos[capitulo][i]}`;
+              resultsContainer.appendChild(li);
+            } else {
+              const li = document.createElement("li");
+              li.innerHTML = `${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.`;
+              resultsContainer.appendChild(li);
+            }
+          }
+        } else if (versiculoInicio) {
+          // Mostrar un solo versículo
+          const texto = capitulos[capitulo][versiculoInicio];
+          resultsContainer.innerHTML = texto
+            ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}</li>`
+            : "<li>Versículo no encontrado.</li>";
+        } else {
+          // Mostrar todo el capítulo
+          Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
+            const li = document.createElement("li");
+            li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
+            resultsContainer.appendChild(li);
+          });
+        }
+      } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+    } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+  } else {
+    // Nueva lógica para búsqueda de palabras
+    const resultados = [];
+    const palabraRegex = new RegExp(`(${query})`, "gi"); // Regex para buscar la palabra sin cambios
+    Object.keys(datos).forEach(libro => {
+      Object.keys(datos[libro]).forEach(capitulo => {
+        Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+          const textoNormalizado = texto
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
+          if (textoNormalizado.includes(normalizedQuery)) {
+            // Resaltar la palabra en el texto original
+            const textoResaltado = texto.replace(
+              palabraRegex,
+              "<span style='background-color: yellow; font-weight: bold;'>$1</span>"
+            );
+            resultados.push(
+              `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}</li>`
+            );
+          }
+        });
+      });
+    });
 
-        if (match) {
-          const libro = match[1].trim();
-          const capitulo = match[2];
-          const versiculo = match[3];
+    if (resultados.length > 0) {
+      resultsContainer.innerHTML = resultados.join("");
+    } else {
+      resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
+    }
+  }
+}
 
-          const libroEncontrado = Object.keys(datos).find(
-            key =>
-              key
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "")
-                .toLowerCase() === libro
-          );
 
-          if (libroEncontrado) {
-            const capitulos = datos[libroEncontrado];
-            if (capitulos[capitulo]) {
-              if (versiculo) {
-                const texto = capitulos[capitulo][versiculo];
-                resultsContainer.innerHTML = texto
-                  ? `<li>${libroEncontrado} ${capitulo}:${versiculo} - ${texto}</li>`
-                  : "<li>Versículo no encontrado.</li>";
-              } else {
-                Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
-                  const li = document.createElement("li");
-                  li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
-                  resultsContainer.appendChild(li);
-                });
-              }
-            } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-          } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-        } else resultsContainer.innerHTML = "<li>Formato incorrecto. Usa: Libro Capítulo:Versículo (ej. Gálatas 1:1).</li>";
-      }
+
 
       searchButton.addEventListener("click", () => {
         const query = searchInput.value.trim();
@@ -715,6 +788,51 @@ function cargarContenidoParalelo() {
       contenedorParalelo.innerHTML = `<p>Error: ${error.message}</p>`;
     });
 }
+
+
+// menu funcionanado al click mensaje de error si no esta disponible
+document.querySelectorAll("#dropdownMenu a").forEach(link => {
+  link.addEventListener("click", async event => {
+    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+    const libro = event.target.getAttribute("data-libro"); // Obtén el nombre del libro
+    const datos = await fetchAllJsonData(); // Carga los datos de los JSON
+
+    if (datos[libro]) {
+      mostrarCapitulo(libro, 1, datos); // Muestra el capítulo 1 del libro seleccionado
+    } else {
+      mostrarErrorLibroNoEncontrado(libro); // Llama a la función para manejar libros no encontrados
+    }
+  });
+});
+
+function mostrarCapitulo(libro, capitulo, datos) {
+  const contenedorResultados = document.getElementById("results");
+  contenedorResultados.innerHTML = ""; // Limpia los resultados anteriores
+
+  const capitulos = datos[libro];
+  if (capitulos[capitulo]) {
+    // Muestra todos los versículos del capítulo
+    Object.entries(capitulos[capitulo]).forEach(([numVersiculo, textoVersiculo]) => {
+      const li = document.createElement("li");
+      li.textContent = `${libro} ${capitulo}:${numVersiculo} - ${textoVersiculo}`;
+      contenedorResultados.appendChild(li);
+    });
+  } else {
+    contenedorResultados.innerHTML = "<li>Capítulo no encontrado.</li>";
+  }
+}
+
+function mostrarErrorLibroNoEncontrado(libro) {
+  const contenedorResultados = document.getElementById("results");
+  contenedorResultados.innerHTML = `<li> El libro no se encuentra disponible.</li>`;
+}
+
+document.addEventListener("click", event => {
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  if (!document.getElementById("dropdownButton").contains(event.target)) {
+    dropdownMenu.style.display = "none"; // Oculta el menú si se hace clic fuera de él
+  }
+});
 
 
     </script>
