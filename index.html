@@ -374,7 +374,7 @@ position: absolute;
 
 /* Ajuste del contenido principal cuando el sidebar está abierto */
 #main.shifted-left {
-  margin-left: 10%; /* Igual al ancho del sidebar izquierdo */
+  margin-left: 10%; /* Ajusta al ancho de tu sidebar */
   transition: margin-left 0.4s ease; /* Animación suave */
 }
 
@@ -832,20 +832,23 @@ function copiarContenido() {
 
 
 // Función para alternar el nuevo sidebar
+
+
+
+
 function toggleParaleloSidebar() {
   const paraleloSidebar = document.getElementById("paraleloSidebar");
   const main = document.getElementById("main");
+
   const isOpen = paraleloSidebar.classList.contains("open");
 
   if (isOpen) {
-    // Cierra el sidebar
     paraleloSidebar.classList.remove("open");
     main.classList.remove("shifted-left");
   } else {
-    // Abre el sidebar
     paraleloSidebar.classList.add("open");
     main.classList.add("shifted-left");
-    cargarContenidoParalelo(); // Cargar contenido dinámico
+    cargarLibros(); // Cargar libros dinámicamente
   }
 }
 
@@ -856,6 +859,7 @@ function closeParaleloSidebar() {
   paraleloSidebar.classList.remove("open");
   main.classList.remove("shifted-left");
 }
+
 
 function cargarContenidoParalelo() {
   const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/paralelo.json"; // Cambia por el enlace real
@@ -1015,24 +1019,6 @@ function mostrarCapitulo(capitulo) {
   chapterContent.innerHTML = htmlContent; // Muestra el contenido del capítulo
 }
 
-
-
-    function toggleParaleloSidebar() {
-      const paraleloSidebar = document.getElementById("paraleloSidebar");
-      const isOpen = paraleloSidebar.classList.contains("open");
-
-      if (isOpen) {
-        paraleloSidebar.classList.remove("open");
-      } else {
-        paraleloSidebar.classList.add("open");
-        cargarLibros(); // Cargar libros dinámicamente
-      }
-    }
-
-    function closeParaleloSidebar() {
-      const paraleloSidebar = document.getElementById("paraleloSidebar");
-      paraleloSidebar.classList.remove("open");
-    }
 
 
     </script>
