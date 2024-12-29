@@ -378,7 +378,62 @@ position: absolute;
   transition: margin-left 0.4s ease; /* Animación suave */
 }
 
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+    /* Botones de capítulo */
+    #chapterButtons, #bookButtons {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .chapter-button, .book-button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .chapter-button:hover, .book-button:hover {
+      background-color: #0056b3;
+    }
     </style>
   </head>
   <body>
@@ -427,13 +482,7 @@ position: absolute;
   <span class="tooltiptext">Paralelo</span>
 </div>
 
-<!-- Sidebar paralelo (para contenido paralelo) -->
-<div id="paraleloSidebar">
-  <a href="javascript:void(0)" onclick="closeParaleloSidebar()">&times; Cerrar</a>
-  <div id="contenidoParalelo" style="padding: 10px;">
-    <p>Versión de Biblia paralela se mostrará aquí.</p>
-  </div>
-</div>
+
 
 <!-- el menu desplegable de comentarios-->
     <div class="tooltip material-tooltip">
@@ -445,7 +494,7 @@ position: absolute;
    
 
   <div id="menuSidebar">
-    <button onclick="mostrarSeccion('comentarios')">Comentarios</button>
+    <button onclick="mostrarSeccion('comentarios')">Comentarios de Eric de Jesús Rodríguez Mendoza</button>
     <button onclick="mostrarSeccion('critico')">Aparato Crítico NA28</button>
     <button onclick="mostrarSeccion('mapas')">Mapas</button>
   </div>
@@ -460,8 +509,34 @@ position: absolute;
       <p>Contenido del Aparato Crítico NA28</p>
     </div>
     <div id="mapas" class="seccionSidebar" style="display: none;">
-      <p>Contenido de mapas</p>
-    </div>
+ <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/kYBZVlB.jpeg')">Mapa de los pueblos</a>
+  </p>
+  <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/zLScQV2.png')">Mapa del éxodo</a>
+  </p>
+  <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a>
+  </p>
+
+  <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a>
+  </p>
+  <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/95ex03o.png')">Viajes de Saul (Pablo)</a>
+  </p>
+  <p>
+    <a href="#" onclick="abrirModal('https://i.imgur.com/BiTNN4L.png')">Lugares donde Yehoshúa' vivió y enseñó</a>
+  </p>
+ 
+</div>
+
+    <div id="modal" class="modal">
+  <span class="close" onclick="cerrarModal()">&times;</span>
+  <img id="modalImg" class="modal-content" alt="Mapa de los pueblos">
+  <div id="caption"></div>
+</div>
+
   </div>
 </div>
 
@@ -473,6 +548,16 @@ position: absolute;
 </div>
 
 
+<!-- Sidebar paralelo (para contenido paralelo) -->
+<div id="paraleloSidebar">
+    <a href="javascript:void(0)" onclick="closeParaleloSidebar()">&times; Cerrar</a>
+    <div id="contenidoParalelo" style="padding: 10px;">
+      <div id="bookButtons"></div>
+      <div id="chapterButtons"></div>
+      <div id="chapterContent"></div>
+    </div>
+  </div>
+
 <!-- el id de resultados generales-->
       <ul id="results"></ul>   
 
@@ -481,6 +566,8 @@ position: absolute;
   
 
 <script>
+
+
   function cargarComentarios() {
     const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
     const contenedor = document.getElementById("contenidoComentarios");
@@ -506,6 +593,7 @@ position: absolute;
 
 
     <script>
+
       // Funciones del sidebar
 
 function toggleSidebar() {
@@ -742,6 +830,7 @@ function copiarContenido() {
   }
 }
 
+
 // Función para alternar el nuevo sidebar
 function toggleParaleloSidebar() {
   const paraleloSidebar = document.getElementById("paraleloSidebar");
@@ -833,6 +922,117 @@ document.addEventListener("click", event => {
     dropdownMenu.style.display = "none"; // Oculta el menú si se hace clic fuera de él
   }
 });
+
+function abrirModal(imageUrl) {
+  const modal = document.getElementById("modal");
+  const modalImg = document.getElementById("modalImg");
+  modal.style.display = "block";
+  modalImg.src = imageUrl; // Establece la imagen del modal con la URL proporcionada
+}
+
+function cerrarModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+}
+
+
+ const books = {
+      "1 Corintios": "https://raw.githubusercontent.com/xtiam57/church-utils/refs/heads/main/dist/biblia/1_corintios.json",
+      "Apocalipsis": "https://raw.githubusercontent.com/xtiam57/church-utils/refs/heads/main/dist/biblia/apocalipsis.json"
+    };
+
+    let dataCache = {}; // Caché de datos cargados
+    let currentBook = null; // Libro actualmente seleccionado
+
+    function cargarLibros() {
+      const bookButtonsContainer = document.getElementById("bookButtons");
+      bookButtonsContainer.innerHTML = ""; // Limpia los botones de libros
+
+      for (const bookName in books) {
+        const button = document.createElement("button");
+        button.textContent = bookName;
+        button.className = "book-button";
+        button.onclick = () => cargarCapitulos(bookName, books[bookName]);
+        bookButtonsContainer.appendChild(button);
+      }
+    }
+
+function cargarCapitulos(bookName, url) {
+  const chapterButtonsContainer = document.getElementById("chapterButtons");
+  const chapterContent = document.getElementById("chapterContent");
+
+  if (currentBook === bookName) {
+    currentBook = null;
+    chapterButtonsContainer.innerHTML = "";
+    chapterContent.innerHTML = "";
+    return;
+  }
+
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error al cargar contenido: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      currentBook = bookName;
+      dataCache = data; 
+      chapterButtonsContainer.innerHTML = "";
+      chapterContent.innerHTML = "";
+
+      data.forEach((_, idx) => {
+        const button = document.createElement("button");
+        button.textContent = `Capítulo ${idx + 1}`;
+        button.className = "chapter-button";
+        button.onclick = () => mostrarCapitulo(idx + 1);
+        chapterButtonsContainer.appendChild(button);
+      });
+    })
+    .catch(error => {
+      chapterButtonsContainer.innerHTML = `<p>Error: ${error.message}</p>`;
+    });
+}
+
+
+
+function mostrarCapitulo(capitulo) {
+  const chapterContent = document.getElementById("chapterContent");
+  const chapterButtonsContainer = document.getElementById("chapterButtons");
+  chapterButtonsContainer.innerHTML = ""; // Oculta los botones de capítulos
+
+  if (!dataCache || !dataCache[capitulo - 1]) { // Capítulo basado en índice
+    chapterContent.innerHTML = `<p>Error: No se pudo cargar el capítulo.</p>`;
+    return;
+  }
+
+  // Muestra los versículos del capítulo seleccionado
+  let htmlContent = `<h4>Capítulo ${capitulo}</h4>`;
+  dataCache[capitulo - 1].forEach((verso, idx) => {
+    htmlContent += `<p><b>${capitulo}:${idx + 1}</b> - ${verso}</p>`;
+  });
+
+  chapterContent.innerHTML = htmlContent; // Muestra el contenido del capítulo
+}
+
+
+
+    function toggleParaleloSidebar() {
+      const paraleloSidebar = document.getElementById("paraleloSidebar");
+      const isOpen = paraleloSidebar.classList.contains("open");
+
+      if (isOpen) {
+        paraleloSidebar.classList.remove("open");
+      } else {
+        paraleloSidebar.classList.add("open");
+        cargarLibros(); // Cargar libros dinámicamente
+      }
+    }
+
+    function closeParaleloSidebar() {
+      const paraleloSidebar = document.getElementById("paraleloSidebar");
+      paraleloSidebar.classList.remove("open");
+    }
 
 
     </script>
