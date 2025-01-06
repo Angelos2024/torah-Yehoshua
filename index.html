@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Buscador de Versículos Bíblicos</title>
   <head>
     <title>Buscador de Versículos Bíblicos</title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="stylesheet" href="css/estiloparalelo.css">
+</head>
+<body>
+
     <style>
       /* Estilo general */
       * {
@@ -9,7 +17,6 @@
         margin: 0;
         padding: 0;
       }
-
       body {
         font-family: Arial, sans-serif;
         padding: 20px;
@@ -19,21 +26,18 @@
         color: #333;
         line-height: 1.6;
       }
-
       h1 {
         text-align: center;
         color: #4CAF50;
       }    /* no lo estoy usando pero es para titulos, color y centrado */
       
-
-      .search-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 10px;
-        margin-left: -60px; /* Desplaza hacia la izquierda */
+       .search-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+          margin-left: -60px;
       }
-
       input[type="text"] {
         flex: 1;
         padding: 10px;
@@ -41,7 +45,6 @@
         border-radius: 4px;
         font-size: 16px;
       }
-
       button {
         padding: 8px 12px;
         border: 1px solid #ccc;
@@ -51,28 +54,25 @@
         font-size: 14px;
         cursor: pointer;
       }
-
       button:hover {
         background-color: #5d5f5d;
       }
-
       ul {
-        list-style-type: none;
-        padding: 0;
-        margin-top: -23px;
+      list-style-type: none;
+      padding: 0;
+      margin-top; -23px;
       }
+       li {
+       padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: -13px;
+    border-radius: 4px;
+    background-color: #fff;
+    width: calc(100% + 80px);
+    margin-left: -90px;
+    margin-top: 20px
 
-      li {
-        padding: 15px;
-        border: 1px solid #ccc;
-        margin-bottom: -13px;
-        border-radius: 4px;
-        background-color: #fff;
-      width: calc(100% + 80px); /* Más ancho para extender hacia la derecha */
-  margin-left: -90px; /* Desplaza hacia la izquierda */
- margin-top: 20px;
-      }
-
+    }
       /* Sidebar */
    #mySidebar {
     width: 0; /* Ancho inicial */
@@ -87,15 +87,12 @@
     padding-top: 20px; /* Espaciado interno desde el contenido superior */
     color: white;
   }
-
   #mySidebar.open {
     width: 32%;
     height: 600px;
     margin-top: 25px;
   top: 115px;
   }
-
-
       #mySidebar a {
         padding: 10px 15px;
         text-decoration: none;
@@ -104,33 +101,24 @@
         display: block;
         transition: 0.3s;
       }
-
       #mySidebar a:hover {
         background-color: #575757;
       }
-
       #main {
         transition: margin-right 0.3s;
         padding: 20px;
-
       }
       #main.shifted {
     margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
   transition: margin-right 0.4s ease; /* Animación suave */
 }
-
    
-
       /* Estilos específicos para el menú desplegable */
       .dropdown-label {
-        display: inline-block;
-        font-size: 16px;
-        font-weight: bold;
-        color: #800000;
-        cursor: pointer;
-        position: relative;
-        margin-left: -60px; /* Desplaza hacia la izquierda */
+       margin-bottom: 5px; /* Espacio entre el label y el select */
+  font-size: 14px; /* Ajusta el tamaño del texto si es necesario */
       }
+
 
       .dropdown-content {
         display: none; /* Inicialmente oculto */
@@ -140,7 +128,6 @@
         box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
         z-index: 1;
       }
-
       .dropdown-content a {
         color: #800000;
         background-color: #ffffff;
@@ -148,12 +135,10 @@
         text-decoration: none;
         display: block;
       }
-
       .dropdown-content a:hover {
         color: #ffffff;
         background-color: #333333;
       }
-
       #welcomeMessage {
   text-align: center;
   margin: 1px -10px;
@@ -169,7 +154,6 @@
   gap: 10px;
   margin-bottom: 20px;
 }
-
 #menuSidebar button {
   padding: 10px;
   border: none;
@@ -179,12 +163,10 @@
   cursor: pointer;  /* Muestra que es clickeable */
   border-radius: 4px;
 }
-
 #menuSidebar button:hover {
   background-color: #575757;
   transform: scale(1.05); /* Amplía la imagen ligeramente al pasar el mouse */
 }
-
 .seccionSidebar {
   display: none; /* Oculta todas las secciones por defecto */
   color: white;
@@ -192,7 +174,6 @@
   background-color: #222;
   border-radius: 4px;
 }
-
 #imgcopiar {
 position: absolute;
   top: -45px; /* Ajusta la distancia desde el contenedor superior */
@@ -202,7 +183,6 @@ position: absolute;
   margin-top: 10px;
   transition: transform 0.3s ease; /* Animación al pasar el mouse */
 }
-
 #imgcopiar:hover {
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
 }
@@ -229,7 +209,6 @@ position: absolute;
   margin-top: 10px;
   transition: transform 0.3s ease; /* Animación al pasar el mouse */
 }
-
 #imgmaterial:hover {
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
 }
@@ -239,7 +218,6 @@ position: absolute;
   cursor: pointer;
   margin-top: -20px;
 }
-
 .tooltip .tooltiptext {
   visibility: hidden;
   width: 70px;
@@ -250,12 +228,9 @@ position: absolute;
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  top: 40px; /* Ajusta según cada tooltip */
-  left: -70px;
+  left: -175px;
   transform: translateX(-50%);
 }
-
-
 /* General tooltip */
 .material-tooltip .tooltiptext {
   visibility: hidden;
@@ -291,27 +266,6 @@ position: absolute;
   left:-100px;
   top: 0px;
 }
-
-/* Tooltip específico para paralelo */
-.paralelo-tooltip .tooltiptext {
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  transform: translateX(-50%);
-  left: -180px;
-  top: 0px;
-}
-
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
 /* Específico para el tooltip de copiar */
 .copiar-tooltip img {
   top: -25px;
@@ -319,65 +273,14 @@ position: absolute;
   width: 30px;
   transition: transform 0.3s ease;
 }
-
 .copiar-tooltip img:hover {
   transform: scale(1.2);
 }
-
-/* Específico para el tooltip de paralelo */
-.paralelo-tooltip img {
-  top: -25px;
-  left: -190px;
-  width: 30px;
-  transition: transform 0.3s ease;
-}
-
-.paralelo-tooltip img:hover {
-  transform: scale(1.2);
-}
-
-/* Estilo del nuevo sidebar (lado izquierdo) */
-/* Sidebar del lado izquierdo (con empuje del contenido central) */
-#paraleloSidebar {
-  width: 0; /* Ancho inicial cerrado */
-  position: fixed;
-  z-index: 2; /* Más alto para que quede encima del contenido */
-  top: 115px; /* Ajusta según tu diseño */
-  left: 0; /* Se desliza desde la izquierda */
-  background-color: #111;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scroll vertical si es necesario */
-  transition: width 0.4s ease; /* Animación suave */
-  padding-top: 20px; /* Espaciado interno */
-  color: white;
-}
-
-#paraleloSidebar.open {
-  width: 24%; /* Ancho del sidebar al abrirse */
-  height: 100%; /* Ajusta según tu diseño */
-  top: 140px;
-}
-
-/* Links dentro del sidebar */
-#paraleloSidebar a {
-  padding: 10px 15px;
-  text-decoration: none;
-  font-size: 18px;
-  color: white;
-  display: block;
-  transition: 0.3s;
-}
-
-#paraleloSidebar a:hover {
-  background-color: #575757;
-}
-
 /* Ajuste del contenido principal cuando el sidebar está abierto */
 #main.shifted-left {
   margin-left: 10%; /* Ajusta al ancho de tu sidebar */
   transition: margin-left 0.4s ease; /* Animación suave */
 }
-
 .modal {
   display: none;
   position: fixed;
@@ -389,14 +292,12 @@ position: absolute;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
 }
-
 .modal-content {
   margin: auto;
   display: block;
   width: 80%;
   max-width: 700px;
 }
-
 .close {
   position: absolute;
   top: 20px;
@@ -406,14 +307,12 @@ position: absolute;
   font-weight: bold;
   cursor: pointer;
 }
-
 .close:hover,
 .close:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
-
     /* Botones de capítulo */
     #chapterButtons, #bookButtons {
       margin-top: 20px;
@@ -421,23 +320,64 @@ position: absolute;
       flex-wrap: wrap;
       gap: 5px;
     }
-
     .chapter-button, .book-button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
+ 
+    padding: 10px;
+    border: none;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 1px;
     }
-
     .chapter-button:hover, .book-button:hover {
       background-color: #0056b3;
     }
+    /* Contenedor flexible para los selectores */
+    /* Contenedor flexible para los selectores */
+  #myDIV {
+    position:absolute;
+  margin-top: 100px;
+  padding:10px;
+  right: 0px;
+  display: none; /* Oculto por defecto */
+  }
+      .highlight {
+      background-color: yellow;
+      font-weight: bold;
+    }
+    .nested {
+      display: none;
+      padding-left: 20px;
+    }
+    .expandable {
+      cursor: pointer;
+    }
+    .full-chapter-link {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      text-decoration: underline;
+      color: #4CAF50;
+      cursor: pointer;
+    }
+
     </style>
+
   </head>
   <body>
 
+
+    <!-- codigo nuevo buscador-->
+<div style="display: flex; " >
+
+  <div id="myDIV"  style="flex-shrink: 0; width: 250px;">
+    <h3>Resultados</h3>
+
+    <ul id="countResults" style="margin-top:-23px ;"></ul>
+
+  </div>
+  </div>
       <div class="search-container">
         <input
           type="text"
@@ -446,10 +386,14 @@ position: absolute;
         />
         <button id="searchButton">Buscar</button>
       </div>
-
-
   <!-- lista de libros disponibles--> 
-<div class="dropdown-label" id="dropdownButton">
+<div class="dropdown-label" id="dropdownButton" style="      display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        color: #800000;
+        cursor: pointer;
+        position: relative;
+        margin-left: -60px; /* Desplaza hacia la izquierda */">
         Bible Book List
         <div class="dropdown-content" id="dropdownMenu">
           <a href="#">Según Marcos</a>
@@ -461,48 +405,77 @@ position: absolute;
           <a href="#">Revelación Apocalipsis</a>
         </div>
       </div>
-
-
       <div id="main">
       <!-- iconos debajo del buscador-->
 
-<div class="tooltip copiar-tooltip">
+
+      <div class="tooltip copiar-tooltip">
   <img id="imgcopiar" src="https://i.imgur.com/YaVe5C3.png" 
        alt="Copiar contenido" 
        onclick="copiarContenido()" />
   <span class="tooltiptext">Copiar</span>
 </div>
-
-<!-- Tooltip para "paralelo" -->
-
-<div class="tooltip paralelo-tooltip">
-  <img id="imgparalelo" src="https://i.imgur.com/xB2Fvor.png" 
-       alt="Contenido paralelo" 
-       onclick="toggleParaleloSidebar()" />
-  <span class="tooltiptext">Paralelo</span>
-</div>
-
-
-
-<!-- el menu desplegable de comentarios-->
-    <div class="tooltip material-tooltip">
+ <div class="tooltip material-tooltip">
 <img id="imgmaterial" src="https://i.imgur.com/oJRwGnT.png" alt="Menú" onclick="toggleSidebar()">
 <span class="tooltiptext">aparato crítico</span>
 </div>
+
+ <!-- Tooltip para "paralelo" -->
+    <div class="tooltip paralelo-tooltip">
+      <img id="imgparalelo" src="https://i.imgur.com/xB2Fvor.png" 
+          alt="Contenido paralelo" 
+           onclick="toggleParaleloSidebar()" />
+      <span class="tooltiptext">Paralelo</span>
+    </div>
+
+   <!-- Sidebar paralelo -->
+   <div id="paraleloSidebar">
+ <div class="dropdown-container">
+  <!-- Dropdown de versiones -->
+  <div id="versionDropdown" class="dropdown">
+  <label for="versionSelector" class="dropdown-label">Versión:</label>
+  <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
+    <option value="RVR1960">Reina-Valera 1960</option>
+    <option value="Americas">Las Américas</option>
+    <option value="Jubileos">Biblia Jubileos</option>
+
+  </select>
+</div>
+
+<div id="bookDropdown" class="dropdown">
+  <label for="bookSelector" class="dropdown-label">Libro:</label>
+  <select id="bookSelector" class="book-dropdown" onchange="cargarCapitulos()">
+    <option value="">Selecciona un libro</option>
+  </select>
+</div>
+
+<div id="chapterDropdown" class="dropdown">
+  <label for="chapterSelector" class="dropdown-label">Capítulo:</label>
+  <select id="chapterSelector" class="chapter-dropdown" onchange="mostrarCapitulo()">
+    <option value="">Selecciona un capítulo</option>
+  </select>
+</div>
+ </div>
+  <!-- Contenedor para contenido de capítulos -->
+  <div id="chapterContentSidebar" style="margin-top: 3px; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
+</div>
+
+<!-- el menu desplegable de comentarios-->
+   
     <!-- Sidebar -->
     <div id="mySidebar">
    
-
   <div id="menuSidebar">
     <button onclick="mostrarSeccion('comentarios')">Comentarios de Eric de Jesús Rodríguez Mendoza</button>
     <button onclick="mostrarSeccion('critico')">Aparato Crítico NA28</button>
+
+
     <button onclick="mostrarSeccion('mapas')">Mapas</button>
   </div>
   <div id="contenidoSidebar">
     <!-- Contenedor para los comentarios -->
     <div id="comentarios" class="seccionSidebar">
       <p><a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a> 
-
   <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div></p>
     </div>
     <div id="critico" class="seccionSidebar" style="display: none;">
@@ -518,7 +491,6 @@ position: absolute;
   <p>
     <a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a>
   </p>
-
   <p>
     <a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a>
   </p>
@@ -530,51 +502,28 @@ position: absolute;
   </p>
  
 </div>
-
     <div id="modal" class="modal">
   <span class="close" onclick="cerrarModal()">&times;</span>
   <img id="modalImg" class="modal-content" alt="Mapa de los pueblos">
   <div id="caption"></div>
 </div>
-
   </div>
 </div>
-
-
 <!-- mensaje de bievenida-->
 <div id="welcomeMessage">
   <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
   <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
 </div>
-
-
-<!-- Sidebar paralelo (para contenido paralelo) -->
-<div id="paraleloSidebar">
-    <a href="javascript:void(0)" onclick="closeParaleloSidebar()">&times; Cerrar</a>
-    <div id="contenidoParalelo" style="padding: 10px;">
-      <div id="bookButtons"></div>
-      <div id="chapterButtons"></div>
-      <div id="chapterContent"></div>
-    </div>
-  </div>
-
 <!-- el id de resultados generales-->
-      <ul id="results"></ul>   
-
+      <ul id="results"style="margin-top: -23px;" ></ul>   
     </div>
-
-  
-
+ 
 <script>
-
-
   function cargarComentarios() {
     const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
     const contenedor = document.getElementById("contenidoComentarios");
-
     // Limpia el contenido antes de cargar nuevo
     contenedor.innerHTML = "Cargando comentarios...";
-
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -589,19 +538,16 @@ position: absolute;
         contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
       });
   }
+  
 </script>
 
-
     <script>
-
       // Funciones del sidebar
-
 function toggleSidebar() {
   const sidebar = document.getElementById("mySidebar");
   const main = document.getElementById("main");
   const toggleNav = document.getElementById("toggleNav");
   const isOpen = sidebar.classList.contains("open");
-
   if (isOpen) {
     sidebar.classList.remove("open");
     main.classList.remove("shifted");
@@ -612,182 +558,255 @@ function toggleSidebar() {
     toggleNav.src = "https://i.imgur.com/oJRwGnT.png"; // Sustituye por un enlace válido de tu imagen de cierre
   }
 }
+  
+  // JSON y búsqueda
+  const urls = [
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json"
+  ];
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+  const resultsContainer = document.getElementById("results");
+  const countResultsContainer = document.getElementById("countResults");
+  const sidebar = document.getElementById("myDIV");
 
+  const dropdownButton = document.getElementById("dropdownButton");
+  const dropdownMenu = document.getElementById("dropdownMenu");
 
-
-      // JSON y búsqueda
-      const urls = [
-        "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
-        "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json"
-      ];
-
-      const searchInput = document.getElementById("searchInput");
-      const searchButton = document.getElementById("searchButton");
-      const resultsContainer = document.getElementById("results");
-      const dropdownButton = document.getElementById("dropdownButton");
-      const dropdownMenu = document.getElementById("dropdownMenu");
-
-      async function fetchJsonData(url) {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
-          return await response.json();
-        } catch (error) {
-          console.error(`Error:`, error);
-          return null;
-        }
-      }
-
-      async function fetchAllJsonData() {
-        const allData = {};
-        for (const url of urls) {
-          const data = await fetchJsonData(url);
-          if (data) Object.assign(allData, data);
-        }
-        return allData;
-      }
-
-async function searchVerses(query) {
-  const datos = await fetchAllJsonData();
-  if (!datos) return;
-
-  resultsContainer.innerHTML = "";
-  const normalizedQuery = query
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "") // Elimina tildes
-    .toLowerCase();
-
-  // Mapear abreviaturas a nombres completos
-  const libroMap = {
-    gal: "gálatas", Gal: "Gálatas",
-    heb: "hebreos", Heb: "hebreos"
-  };
-
-  // Extraer partes de la consulta
-  const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
-  if (match) {
-    let libro = match[1].trim();
-    const capitulo = match[2];
-    const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
-    const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
-
-    // Convertir abreviatura a nombre completo si es necesario
-    libro = libroMap[libro] || libro;
-
-    // Normalizar claves del JSON
-    const libroEncontrado = Object.keys(datos).find(key => {
-      const libroNormalizado = libroMap[libro] || libro; // Traduce la abreviatura o usa el valor original
-      return (
-        key
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase() ===
-        libroNormalizado
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-      );
-    });
-
-    if (libroEncontrado) {
-      const capitulos = datos[libroEncontrado];
-      if (capitulos[capitulo]) {
-        if (versiculoInicio && versiculoFin) {
-          // Mostrar un rango de versículos
-          for (let i = versiculoInicio; i <= versiculoFin; i++) {
-            if (capitulos[capitulo][i]) {
-              const li = document.createElement("li");
-              li.innerHTML = `${libroEncontrado} ${capitulo}:${i} - ${capitulos[capitulo][i]}`;
-              resultsContainer.appendChild(li);
-            } else {
-              const li = document.createElement("li");
-              li.innerHTML = `${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.`;
-              resultsContainer.appendChild(li);
-            }
-          }
-        } else if (versiculoInicio) {
-          // Mostrar un solo versículo
-          const texto = capitulos[capitulo][versiculoInicio];
-          resultsContainer.innerHTML = texto
-            ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}</li>`
-            : "<li>Versículo no encontrado.</li>";
-        } else {
-          // Mostrar todo el capítulo
-          Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
-            const li = document.createElement("li");
-            li.innerHTML = `${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}`;
-            resultsContainer.appendChild(li);
-          });
-        }
-      } else resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-    } else resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-  } else {
-    // Nueva lógica para búsqueda de palabras
-    const resultados = [];
-    const palabraRegex = new RegExp(`(${query})`, "gi"); // Regex para buscar la palabra sin cambios
-    Object.keys(datos).forEach(libro => {
-      Object.keys(datos[libro]).forEach(capitulo => {
-        Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
-          const textoNormalizado = texto
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase();
-          if (textoNormalizado.includes(normalizedQuery)) {
-            // Resaltar la palabra en el texto original
-            const textoResaltado = texto.replace(
-              palabraRegex,
-              "<span style='background-color: yellow; font-weight: bold;'>$1</span>"
-            );
-            resultados.push(
-              `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}</li>`
-            );
-          }
-        });
-      });
-    });
-
-    if (resultados.length > 0) {
-      resultsContainer.innerHTML = resultados.join("");
-    } else {
-      resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
+  // Función para cargar datos JSON
+  async function fetchJsonData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
+      return await response.json();
+    } catch (error) {
+      console.error(`Error:`, error);
+      return null;
     }
   }
-}
 
+  async function fetchAllJsonData() {
+    const allData = {};
+    for (const url of urls) {
+      const data = await fetchJsonData(url);
+      if (data) Object.assign(allData, data);
+    }
+    return allData;
+  }
+
+  // Función de búsqueda principal
+  async function searchVerses(query) {
+    const datos = await fetchAllJsonData();
+    if (!datos) return;
+
+    resultsContainer.innerHTML = "";
+    countResultsContainer.innerHTML = "";
+
+    const normalizedQuery = query
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+
+    // Mapear abreviaturas a nombres completos
+    const libroMap = {
+      gal: "gálatas", Gal: "Gálatas",
+      heb: "hebreos", Heb: "Hebreos"
+    };
+
+    // Verificar si es una búsqueda de versículo específico
+   const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+    if (match) {
+      let libro = match[1].trim();
+      const capitulo = match[2];
+      const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
+      const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
+
+      libro = libroMap[libro] || libro;
+      const libroEncontrado = Object.keys(datos).find( // Traduce la abreviatura o usa el valor original
+    key => {
+         return key
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase() === libro
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+     
+    });
+      if (libroEncontrado) {
+        const capitulos = datos[libroEncontrado];
+        if (capitulos[capitulo]) {
+          if (versiculoInicio && versiculoFin) {
+            for (let i = versiculoInicio; i <= versiculoFin; i++) {
+              const texto = capitulos[capitulo][i];
+              resultsContainer.innerHTML += texto
+                ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}</li>`
+                : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
+            }
+           } else if (versiculoInicio) {
+    const texto = capitulos[capitulo][versiculoInicio];
+    resultsContainer.innerHTML = texto
+        ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}<br>
+            <a href="#" onclick="showFullChapterWithHighlight('${libroEncontrado}', '${capitulo}', '${versiculoInicio}')">Leer verso completo</a>
+          </li>`
+        : "<li>Versículo no encontrado.</li>";
+} else {
+            Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
+              resultsContainer.innerHTML += `<li>${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}</li>`;
+            });
+          }
+        } else {
+          resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+        }
+      } else {
+        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+      }
+    } else {
+      // Búsqueda de palabras
+      const resultados = [];
+      const conteoPorLibro = {};
+      const ubicacionesPorLibro = {};
+      const palabraRegex = new RegExp(`(${query})`, "gi");
+
+      Object.keys(datos).forEach(libro => {
+        let libroCount = 0;
+        ubicacionesPorLibro[libro] = [];
+        Object.keys(datos[libro]).forEach(capitulo => {
+          Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+            const textoNormalizado = texto
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .toLowerCase();
+            if (textoNormalizado.includes(normalizedQuery)) {
+              const textoResaltado = texto.replace(
+                palabraRegex,
+                      "<span style='background-color: #333; color: white; cursor: pointer; font-weight: bold;'>$1</span>"
+              );
+            resultados.push(
+                `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
+                  <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span></li>`
+              );
+              libroCount++;
+               ubicacionesPorLibro[libro].push(`${capitulo}:${versiculo}`);
+            }
+          });
+        });
+        if (libroCount > 0) {
+          conteoPorLibro[libro] = libroCount;
+        }
+      });
+
+        Object.entries(conteoPorLibro).forEach(([libro, count]) => {
+        const ubicaciones = ubicacionesPorLibro[libro]
+          .map(
+            ubicacion => `<li><a href="#" onclick="showVerse('${libro}', '${ubicacion}')">${libro} ${ubicacion}</a></li>`
+          )
+          .join("");
+        countResultsContainer.innerHTML += `<li class="expandable">${libro} (${count})<ul class="nested">${ubicaciones}</ul></li>`;
+      });
+
+      if (resultados.length > 0) {
+        resultsContainer.innerHTML = resultados.join("");
+      } else {
+        resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
+      }
+    
+
+    // Mostrar u ocultar el sidebar según resultados
+    sidebar.style.display = resultados.length > 0 ? "block" : "none";
+   document.querySelectorAll(".expandable").forEach(item => {
+        item.addEventListener("click", function () {
+          this.querySelector(".nested").style.display =
+            this.querySelector(".nested").style.display === "block" ? "none" : "block";
+        });
+      });
+    }
+   }
+
+
+function showVerse(libro, ubicacion) {
+    const [capitulo, versiculo] = ubicacion.split(":");
+    fetchAllJsonData().then(datos => {
+      if (!datos[libro] || !datos[libro][capitulo]) return;
+      const texto = datos[libro][capitulo][versiculo];
+      resultsContainer.innerHTML = texto
+        ? `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`
+        : `<li>${libro} ${capitulo}:${versiculo} - Versículo no encontrado.</li>`;
+    });
+  }
+function showFullChapter(libro, capitulo) {
+    fetchAllJsonData().then(datos => {
+      if (!datos[libro] || !datos[libro][capitulo]) return;
+      const versiculos = Object.entries(datos[libro][capitulo])
+        .map(([versiculo, texto]) => `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`)
+        .join("");
+      resultsContainer.innerHTML = versiculos || "<li>Capítulo no encontrado.</li>";
+    });
+  }
+
+
+
+function showFullChapterWithHighlight(libro, capitulo, versiculoResaltado) {
+    fetchAllJsonData().then(datos => {
+        if (!datos[libro] || !datos[libro][capitulo]) return;
+        const versiculos = Object.entries(datos[libro][capitulo])
+            .map(([versiculo, texto]) => {
+                if (versiculo === versiculoResaltado) {
+                    return `<li style="background-color: #666; color: white; font-weight: bold; font-family: Arial, sans-serif; transition: background-color 0.3s ease;" 
+            onmouseover="this.style.backgroundColor='#000'" 
+            onmouseout="this.style.backgroundColor='#666'" 
+            data-temporary="true" 
+            onmouseenter="if (this.dataset.temporary === 'true') {
+              setTimeout(() => { 
+                this.style.backgroundColor = '#fff'; 
+                this.style.color = '#333'; 
+                this.style.fontWeight = 'normal'; 
+                this.style.padding = '15px'; 
+                this.style.border = '1px solid #ccc'; 
+                this.style.marginBottom = '-13px'; 
+                this.style.borderRadius = '4px'; 
+                this.style.width = 'calc(100% + 80px)'; 
+                this.style.marginLeft = '-90px'; 
+                this.style.marginTop = '20px'; 
+
+                // Elimina los eventos de hover
+                this.removeAttribute('onmouseover');
+                this.removeAttribute('onmouseout');
+                this.dataset.temporary = 'false'; // Desactiva el estilo temporal
+              }, 5000);
+            }">
+            ${libro} ${capitulo}:${versiculo} - ${texto}
+        </li>`;
+
+
+                }
+                return `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`;
+            })
+            .join("");
+        resultsContainer.innerHTML = versiculos || "<li>Capítulo no encontrado.</li>";
+    });
+}
 
 
 
       searchButton.addEventListener("click", () => {
-        const query = searchInput.value.trim();
-        if (query) searchVerses(query);
-      });
+    const query = searchInput.value.trim();
+    if (query) searchVerses(query);
+  });
 
-      searchInput.addEventListener("keypress", event => {
-        if (event.key === "Enter") {
-          const query = searchInput.value.trim();
-          if (query) searchVerses(query);
-        }
-      });
+  searchInput.addEventListener("keypress", event => {
+    if (event.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (query) searchVerses(query);
+    }
+  });
 
-      // Funcionalidad del menú desplegable
-      dropdownButton.addEventListener("click", () => {
-        const isMenuVisible = dropdownMenu.style.display === "block";
-        dropdownMenu.style.display = isMenuVisible ? "none" : "block";
-      });
-
-      document.addEventListener("click", event => {
-        if (!dropdownButton.contains(event.target)) {
-          dropdownMenu.style.display = "none";
-        }
-      });
 
       // Ocultar el mensaje de bienvenida al realizar una búsqueda
 const welcomeMessage = document.getElementById("welcomeMessage");
-
 function hideWelcomeMessage() {
   welcomeMessage.style.display = "none";
 }
-
 searchButton.addEventListener("click", () => {
   const query = searchInput.value.trim();
   if (query) {
@@ -795,7 +814,6 @@ searchButton.addEventListener("click", () => {
     searchVerses(query);
   }
 });
-
 searchInput.addEventListener("keypress", event => {
   if (event.key === "Enter") {
     const query = searchInput.value.trim();
@@ -805,20 +823,28 @@ searchInput.addEventListener("keypress", event => {
     }
   }
 });
+
+   function displayChapter(libro, capitulo) {
+    fetchAllJsonData().then(datos => {
+      if (!datos[libro] || !datos[libro][capitulo]) return;
+      resultsContainer.innerHTML = "";
+      Object.entries(datos[libro][capitulo]).forEach(([numVerso, textoVerso]) => {
+        resultsContainer.innerHTML += `<li>${libro} ${capitulo}:${numVerso} - ${textoVerso}</li>`;
+      });
+    });
+  }
+
 function mostrarSeccion(seccion) {
   const secciones = document.querySelectorAll(".seccionSidebar");
   secciones.forEach(sec => (sec.style.display = "none")); // Oculta todas las secciones
-
   const seccionSeleccionada = document.getElementById(seccion);
   if (seccionSeleccionada) {
     seccionSeleccionada.style.display = "block"; // Muestra la sección seleccionada
   }
 }
-
 function copiarContenido() {
   const resultados = document.getElementById("results");
   const texto = resultados.innerText; // Obtiene el texto de los resultados
-
   if (texto) {
     navigator.clipboard.writeText(texto).then(() => {
       alert("El contenido ha sido copiado.");
@@ -830,197 +856,20 @@ function copiarContenido() {
   }
 }
 
+      // Funcionalidad del menú desplegable
+      dropdownButton.addEventListener("click", () => {
+        const isMenuVisible = dropdownMenu.style.display === "block";
+        dropdownMenu.style.display = isMenuVisible ? "none" : "block";
+      });
+      document.addEventListener("click", event => {
+        if (!dropdownButton.contains(event.target)) {
+          dropdownMenu.style.display = "none";
+        }
+      });
 
 // Función para alternar el nuevo sidebar
-
-
-
-
-function toggleParaleloSidebar() {
-  const paraleloSidebar = document.getElementById("paraleloSidebar");
-  const main = document.getElementById("main");
-
-  const isOpen = paraleloSidebar.classList.contains("open");
-
-  if (isOpen) {
-    paraleloSidebar.classList.remove("open");
-    main.classList.remove("shifted-left");
-  } else {
-    paraleloSidebar.classList.add("open");
-    main.classList.add("shifted-left");
-    cargarLibros(); // Cargar libros dinámicamente
-  }
-}
-
-function closeParaleloSidebar() {
-  const paraleloSidebar = document.getElementById("paraleloSidebar");
-  const main = document.getElementById("main");
-
-  paraleloSidebar.classList.remove("open");
-  main.classList.remove("shifted-left");
-}
-
-
-function cargarContenidoParalelo() {
-  const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/paralelo.json"; // Cambia por el enlace real
-  const contenedorParalelo = document.getElementById("contenidoParalelo");
-
-  contenedorParalelo.innerHTML = "Cargando contenido paralelo...";
-
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error al cargar contenido paralelo: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(data => {
-      contenedorParalelo.innerHTML = data; // Inserta el contenido cargado
-    })
-    .catch(error => {
-      contenedorParalelo.innerHTML = `<p>Error: ${error.message}</p>`;
-    });
-}
-
-
-// menu funcionanado al click mensaje de error si no esta disponible
-document.querySelectorAll("#dropdownMenu a").forEach(link => {
-  link.addEventListener("click", async event => {
-    event.preventDefault(); // Evita el comportamiento predeterminado del enlace
-    const libro = event.target.getAttribute("data-libro"); // Obtén el nombre del libro
-    const datos = await fetchAllJsonData(); // Carga los datos de los JSON
-
-    if (datos[libro]) {
-      mostrarCapitulo(libro, 1, datos); // Muestra el capítulo 1 del libro seleccionado
-    } else {
-      mostrarErrorLibroNoEncontrado(libro); // Llama a la función para manejar libros no encontrados
-    }
-  });
-});
-
-function mostrarCapitulo(libro, capitulo, datos) {
-  const contenedorResultados = document.getElementById("results");
-  contenedorResultados.innerHTML = ""; // Limpia los resultados anteriores
-
-  const capitulos = datos[libro];
-  if (capitulos[capitulo]) {
-    // Muestra todos los versículos del capítulo
-    Object.entries(capitulos[capitulo]).forEach(([numVersiculo, textoVersiculo]) => {
-      const li = document.createElement("li");
-      li.textContent = `${libro} ${capitulo}:${numVersiculo} - ${textoVersiculo}`;
-      contenedorResultados.appendChild(li);
-    });
-  } else {
-    contenedorResultados.innerHTML = "<li>Capítulo no encontrado.</li>";
-  }
-}
-
-function mostrarErrorLibroNoEncontrado(libro) {
-  const contenedorResultados = document.getElementById("results");
-  contenedorResultados.innerHTML = `<li> El libro no se encuentra disponible.</li>`;
-}
-
-document.addEventListener("click", event => {
-  const dropdownMenu = document.getElementById("dropdownMenu");
-  if (!document.getElementById("dropdownButton").contains(event.target)) {
-    dropdownMenu.style.display = "none"; // Oculta el menú si se hace clic fuera de él
-  }
-});
-
-function abrirModal(imageUrl) {
-  const modal = document.getElementById("modal");
-  const modalImg = document.getElementById("modalImg");
-  modal.style.display = "block";
-  modalImg.src = imageUrl; // Establece la imagen del modal con la URL proporcionada
-}
-
-function cerrarModal() {
-  const modal = document.getElementById("modal");
-  modal.style.display = "none";
-}
-
-
- const books = {
-      "1 Corintios": "https://raw.githubusercontent.com/xtiam57/church-utils/refs/heads/main/dist/biblia/1_corintios.json",
-      "Apocalipsis": "https://raw.githubusercontent.com/xtiam57/church-utils/refs/heads/main/dist/biblia/apocalipsis.json"
-    };
-
-    let dataCache = {}; // Caché de datos cargados
-    let currentBook = null; // Libro actualmente seleccionado
-
-    function cargarLibros() {
-      const bookButtonsContainer = document.getElementById("bookButtons");
-      bookButtonsContainer.innerHTML = ""; // Limpia los botones de libros
-
-      for (const bookName in books) {
-        const button = document.createElement("button");
-        button.textContent = bookName;
-        button.className = "book-button";
-        button.onclick = () => cargarCapitulos(bookName, books[bookName]);
-        bookButtonsContainer.appendChild(button);
-      }
-    }
-
-function cargarCapitulos(bookName, url) {
-  const chapterButtonsContainer = document.getElementById("chapterButtons");
-  const chapterContent = document.getElementById("chapterContent");
-
-  if (currentBook === bookName) {
-    currentBook = null;
-    chapterButtonsContainer.innerHTML = "";
-    chapterContent.innerHTML = "";
-    return;
-  }
-
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error al cargar contenido: ${response.status}`);
-      }
-      return response.json();
-    })
-    .then(data => {
-      currentBook = bookName;
-      dataCache = data; 
-      chapterButtonsContainer.innerHTML = "";
-      chapterContent.innerHTML = "";
-
-      data.forEach((_, idx) => {
-        const button = document.createElement("button");
-        button.textContent = `Capítulo ${idx + 1}`;
-        button.className = "chapter-button";
-        button.onclick = () => mostrarCapitulo(idx + 1);
-        chapterButtonsContainer.appendChild(button);
-      });
-    })
-    .catch(error => {
-      chapterButtonsContainer.innerHTML = `<p>Error: ${error.message}</p>`;
-    });
-}
-
-
-
-function mostrarCapitulo(capitulo) {
-  const chapterContent = document.getElementById("chapterContent");
-  const chapterButtonsContainer = document.getElementById("chapterButtons");
-  chapterButtonsContainer.innerHTML = ""; // Oculta los botones de capítulos
-
-  if (!dataCache || !dataCache[capitulo - 1]) { // Capítulo basado en índice
-    chapterContent.innerHTML = `<p>Error: No se pudo cargar el capítulo.</p>`;
-    return;
-  }
-
-  // Muestra los versículos del capítulo seleccionado
-  let htmlContent = `<h4>Capítulo ${capitulo}</h4>`;
-  dataCache[capitulo - 1].forEach((verso, idx) => {
-    htmlContent += `<p><b>${capitulo}:${idx + 1}</b> - ${verso}</p>`;
-  });
-
-  chapterContent.innerHTML = htmlContent; // Muestra el contenido del capítulo
-}
-
-
-
     </script>
+   <script src="js/scriptparalelo.js"></script>
+
   </body>
 </html>
