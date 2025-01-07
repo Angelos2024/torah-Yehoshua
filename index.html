@@ -348,7 +348,7 @@ position: absolute;
     }
     .nested {
       display: none;
-      padding-left: 20px;
+      padding-left: 100px;
     }
     .expandable {
       cursor: pointer;
@@ -518,6 +518,7 @@ position: absolute;
       <ul id="results"style="margin-top: -23px;" ></ul>   
     </div>
  
+
 <script>
   function cargarComentarios() {
     const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
@@ -562,7 +563,8 @@ function toggleSidebar() {
   // JSON y búsqueda
   const urls = [
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json"
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json"
   ];
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
@@ -610,7 +612,8 @@ function toggleSidebar() {
     // Mapear abreviaturas a nombres completos
     const libroMap = {
       gal: "gálatas", Gal: "Gálatas",
-      heb: "hebreos", Heb: "Hebreos"
+      heb: "hebreos", Heb: "Hebreos",
+      "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses","1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses", "1 tesalonicenses": "1Tesalonicenses", "1 tesalonicenses": "1Tesalonicenses"
     };
 
     // Verificar si es una búsqueda de versículo específico
@@ -870,6 +873,8 @@ function copiarContenido() {
 // Función para alternar el nuevo sidebar
     </script>
    <script src="js/scriptparalelo.js"></script>
+
+
 
   </body>
 </html>
