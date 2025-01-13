@@ -91,7 +91,7 @@
     width: 32%;
     height: 600px;
     margin-top: 25px;
-  top: 115px;
+  top: 80px;
   }
       #mySidebar a {
         padding: 10px 15px;
@@ -176,8 +176,8 @@
 }
 #imgcopiar {
 position: absolute;
-  top: -45px; /* Ajusta la distancia desde el contenedor superior */
-  left: -120px; /* Ajusta la distancia desde el contenedor izquierdo */
+  top: -30px; /* Ajusta la distancia desde el contenedor superior */
+  left: -175px; /* Ajusta la distancia desde el contenedor izquierdo */
   width: 30px; /* Tamaño de la imagen */
   cursor: pointer; /* Muestra que es clickeable */
   margin-top: 10px;
@@ -191,8 +191,8 @@ position: absolute;
 }
 #imgparalelo {
   position: absolute;
-  top: -45px; /* Ajusta la distancia desde el contenedor superior */
-  left: -190px; /* Ajusta la distancia desde el contenedor izquierdo */
+  top: -30px; /* Ajusta la distancia desde el contenedor superior */
+  left: -245px; /* Ajusta la distancia desde el contenedor izquierdo */
   width: 30px; /* Tamaño de la imagen */
   cursor: pointer; /* Muestra que es clickeable */
   margin-top: 10px;
@@ -202,7 +202,7 @@ position: absolute;
     
 #imgmaterial {
   position: absolute;
-  top: -45px; /* Ajusta la distancia desde el contenedor superior */
+  top: -30px; /* Ajusta la distancia desde el contenedor superior */
   left: 590px; /* Ajusta la distancia desde el contenedor izquierdo */
   width: 30px; /* Tamaño de la imagen */
   cursor: pointer; /* Muestra que es clickeable */
@@ -228,7 +228,8 @@ position: absolute;
   padding: 5px 0;
   position: absolute;
   z-index: 1;
-  left: -175px;
+  left: -220px;
+  top: 18px;
   transform: translateX(-50%);
 }
 /* General tooltip */
@@ -244,7 +245,7 @@ position: absolute;
   z-index: 1;
   transform: translateX(-50%);
   left:600px;
-  top: 0px;
+  top: 18px;
 }
 .material-tooltip img {
   margin-top: -2px;
@@ -263,8 +264,8 @@ position: absolute;
   position: absolute;
   z-index: 1;
   transform: translateX(-50%);
-  left:-100px;
-  top: 0px;
+  left:-155px;
+  top: 18px;
 }
 /* Específico para el tooltip de copiar */
 .copiar-tooltip img {
@@ -440,11 +441,7 @@ font-display: left;
         </div>
       </div>
 
-      <div id="main">
-      <!-- iconos debajo del buscador-->
-
-
-      <div class="tooltip copiar-tooltip">
+        <div class="tooltip copiar-tooltip">
   <img id="imgcopiar" src="https://i.imgur.com/YaVe5C3.png" 
        alt="Copiar contenido" 
        onclick="copiarContenido()" />
@@ -462,6 +459,12 @@ font-display: left;
            onclick="toggleParaleloSidebar()" />
       <span class="tooltiptext">Paralelo</span>
     </div>
+
+      <div id="main">
+      <!-- iconos debajo del buscador-->
+
+
+    
 
    <!-- Sidebar paralelo -->
    <div id="paraleloSidebar">
@@ -564,8 +567,7 @@ font-display: left;
 
 <script>
 
-  let currentBook = null;
-let currentChapter = null;
+
 
   // Función para mostrar el primer capítulo de un libro
 async function showFirstChapter(libro) {
@@ -696,6 +698,7 @@ function toggleSidebar() {
   ];
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
+
   const resultsContainer = document.getElementById("results");
   const countResultsContainer = document.getElementById("countResults");
   const sidebar = document.getElementById("myDIV");
@@ -704,16 +707,6 @@ function toggleSidebar() {
   const dropdownMenu = document.getElementById("dropdownMenu");
 
   // Función para cargar datos JSON
-  async function fetchJsonData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Error:`, error);
-      return null;
-    }
-  }
 
  async function fetchJsonData(url) {
     try {
@@ -1034,6 +1027,16 @@ function copiarContenido() {
           dropdownMenu.style.display = "none";
         }
       });
+
+
+const state = {
+  currentBook: null,
+  currentChapter: null,
+};
+
+// Al acceder o actualizar
+state.currentBook = libro;
+state.currentChapter = capitulo;
 
 // Función para alternar el nuevo sidebar
     </script>
