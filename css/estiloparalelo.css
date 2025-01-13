@@ -20,39 +20,8 @@
   margin-top: -20px;
 }
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  top: 40px; /* Ajusta según cada tooltip */
-  left: -70px;
-  transform: translateX(-50%);
-}
 
 
-
-
-/* Tooltip específico para paralelo */
-.paralelo-tooltip .tooltiptext {
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  transform: translateX(-50%);
-  left: -180px;
-  top: 0px;
-}
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
@@ -71,12 +40,7 @@
 }
 
 /* Específico para el tooltip de paralelo */
-.paralelo-tooltip img {
-  top: -25px;
-  left: -190px;
-  width: 30px;
-  transition: transform 0.3s ease;
-}
+
 
 .paralelo-tooltip img:hover {
   transform: scale(1.2);
@@ -101,7 +65,7 @@
 #paraleloSidebar.open {
   width: 24%; /* Ancho del sidebar al abrirse */
   height: 600px; /* Ajusta según tu diseño */
-  top: 140px;
+  top: 105px;
 }
 
 /* Links dentro del sidebar */
@@ -133,11 +97,7 @@
       color: white;
     }
 
-    #paraleloSidebar.open {
-      width: 24%;
-      height: 600px;
-      top: 140px;
-    }
+
 
     #paraleloSidebar a {
       padding: 1px 15px;
