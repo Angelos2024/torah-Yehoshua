@@ -3,7 +3,7 @@
 <head>
   <title>Buscador de Versículos Bíblicos</title>
   <head>
-    <title>Buscador de Versículos Bíblicos</title>
+  
  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
        <link rel="stylesheet" href="css/estiloparalelo.css">
@@ -106,7 +106,7 @@
       }
       #main {
         transition: margin-right 0.3s;
-        padding: 20px;
+        padding: 2px;
       }
       #main.shifted {
     margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
@@ -361,6 +361,12 @@ position: absolute;
       color: #4CAF50;
       cursor: pointer;
     }
+    #prevPage{
+
+font-display: left;
+
+    }
+
 
     </style>
 
@@ -386,6 +392,34 @@ position: absolute;
         />
         <button id="searchButton">Buscar</button>
       </div>
+
+  <div style="position: relative; display: flex;">
+
+  <!-- Botón de Página Anterior -->
+  <button id="prevPage" 
+          style="position: absolute; 
+                 left: 200px; /* Muy a la izquierda */
+                 top: 13%; /* Ajusta la altura según necesites */
+                 transform: translateY(-15%); /* Centrar verticalmente */
+                 display: none; 
+                 padding: 8px 20px; 
+                 width: 150px;">
+    Página Anterior
+  </button>
+
+  <!-- Botón de Página Siguiente -->
+  <button id="nextPage" 
+          style="position: absolute; 
+                 right: 35px; /* Muy a la derecha */
+                 top: 13%; /* Ajusta la altura según necesites */
+                 transform: translateY(-15%); /* Centrar verticalmente */
+                 display: none; 
+                 padding: 8px 20px; 
+                 width: 150px;">
+    Página Siguiente
+  </button>
+  
+</div>
   <!-- lista de libros disponibles--> 
 <div class="dropdown-label" id="dropdownButton" style="      display: inline-block;
         font-size: 16px;
@@ -399,12 +433,13 @@ position: absolute;
           <a href="#">Según Marcos</a>
           <a href="#">Carta a los Romanos</a>
           <a href="#"data-libro="Gálatas">Carta a los Gálatas</a>
-          <a href="#">1 Tesalonicenses</a>
+          <a href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
           <a href="#">2 Tesalonicenses</a>
           <a href="#"data-libro="Hebreos">Carta a los Hebreos</a>
           <a href="#">Revelación Apocalipsis</a>
         </div>
       </div>
+
       <div id="main">
       <!-- iconos debajo del buscador-->
 
@@ -461,7 +496,7 @@ position: absolute;
 </div>
 
 <!-- el menu desplegable de comentarios-->
-   
+  
     <!-- Sidebar -->
     <div id="mySidebar">
    
@@ -514,12 +549,105 @@ position: absolute;
   <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
   <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
 </div>
+
+
+
 <!-- el id de resultados generales-->
-      <ul id="results"style="margin-top: -23px;" ></ul>   
-    </div>
- 
+<ul id="results" style="margin-top: -23px;"></ul>
+
+
+
+
+
+
+
 
 <script>
+
+  let currentBook = null;
+let currentChapter = null;
+
+  // Función para mostrar el primer capítulo de un libro
+async function showFirstChapter(libro) {
+    currentBook = libro; // Actualizar el libro actual
+    const datos = await fetchAllJsonData();
+    if (!datos || !datos[libro]) {
+        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+        return;
+    }
+
+    const capitulos = datos[libro];
+    const primerCapitulo = Object.keys(capitulos)[0]; // Obtener el primer capítulo
+    currentChapter = primerCapitulo; // Actualizar el capítulo actual
+    const versos = capitulos[primerCapitulo];
+
+    // Limpiar resultados y mostrar los versos del primer capítulo
+    resultsContainer.innerHTML = ""; // Elimina cualquier encabezado
+    Object.entries(versos).forEach(([versiculo, texto]) => {
+        resultsContainer.innerHTML += `<li>${libro} ${primerCapitulo}:${versiculo} - ${texto}</li>`;
+    });
+
+    // Actualizar navegación
+    showFullChapter(libro, primerCapitulo);
+
+    // Ocultar mensaje de bienvenida y mostrar resultados
+    hideWelcomeMessage();
+    sidebar.style.display = "block";
+}
+
+
+
+// Añadir evento a cada opción del menú desplegable
+document.querySelectorAll("#dropdownMenu a").forEach(item => {
+  item.addEventListener("click", event => {
+    event.preventDefault();
+    const libro = item.getAttribute("data-libro"); // Obtener el libro seleccionado
+    if (libro) {
+      showFirstChapter(libro);
+    }
+  });
+});
+
+   
+ const prevPageButton = document.getElementById("prevPage");
+  const nextPageButton = document.getElementById("nextPage");
+
+  async function showFullChapter(libro, capitulo) {
+    currentBook = libro; // Actualizar el libro actual
+    currentChapter = capitulo; // Actualizar el capítulo actual
+    const datos = await fetchAllJsonData();
+    if (!datos[libro] || !datos[libro][capitulo]) return;
+
+    resultsContainer.innerHTML = "";
+
+    Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
+        resultsContainer.innerHTML += `<li>${libro} ${capitulo}:${numVerso} - ${texto}</li>`;
+    });
+
+    // Determinar capítulos anterior y siguiente
+    const chapterNumbers = Object.keys(datos[libro]).map(Number).sort((a, b) => a - b);
+    const currentChapterIndex = chapterNumbers.indexOf(parseInt(capitulo));
+
+    const prevChapter = chapterNumbers[currentChapterIndex - 1];
+    const nextChapter = chapterNumbers[currentChapterIndex + 1];
+
+    // Mostrar u ocultar botones según disponibilidad
+    if (prevChapter) {
+        prevPageButton.style.display = "inline-block";
+        prevPageButton.onclick = () => showFullChapter(libro, prevChapter);
+    } else {
+        prevPageButton.style.display = "none";
+    }
+
+    if (nextChapter) {
+        nextPageButton.style.display = "inline-block";
+        nextPageButton.onclick = () => showFullChapter(libro, nextChapter);
+    } else {
+        nextPageButton.style.display = "none";
+    }
+}
+
+  
   function cargarComentarios() {
     const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
     const contenedor = document.getElementById("contenidoComentarios");
@@ -587,6 +715,17 @@ function toggleSidebar() {
     }
   }
 
+ async function fetchJsonData(url) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
+      return await response.json();
+    } catch (error) {
+      console.error(`Error:`, error);
+      return null;
+    }
+  }
+
   async function fetchAllJsonData() {
     const allData = {};
     for (const url of urls) {
@@ -597,155 +736,181 @@ function toggleSidebar() {
   }
 
   // Función de búsqueda principal
-  async function searchVerses(query) {
-    const datos = await fetchAllJsonData();
-    if (!datos) return;
+// Modificar la función searchVerses para manejar búsquedas de capítulos completos
+// Función de búsqueda principal
+// Modificar la función searchVerses para manejar búsquedas de capítulos completos y versículos específicos
+async function searchVerses(query) {
+  const datos = await fetchAllJsonData();
+  if (!datos) return;
 
-    resultsContainer.innerHTML = "";
-    countResultsContainer.innerHTML = "";
+  resultsContainer.innerHTML = "";
+  countResultsContainer.innerHTML = "";
+    prevPageButton.style.display = "none"; // Ocultar botón "Anterior"
+  nextPageButton.style.display = "none"; // Ocultar botón "Siguiente"
 
-    const normalizedQuery = query
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase();
+  const normalizedQuery = query
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
 
-    // Mapear abreviaturas a nombres completos
-    const libroMap = {
-      gal: "gálatas", Gal: "Gálatas",
-      heb: "hebreos", Heb: "Hebreos",
-      "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses","1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses", "1 tesalonicenses": "1Tesalonicenses", "1 tesalonicenses": "1Tesalonicenses"
-    };
+  // Mapear abreviaturas a nombres completos
+  const libroMap = {
+    gal: "gálatas", Gal: "Gálatas",
+    heb: "hebreos", Heb: "Hebreos",
+    "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses",
+    "1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses",
+    "1 tesalonicenses": "1Tesalonicenses"
+  };
 
-    // Verificar si es una búsqueda de versículo específico
-   const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
-    if (match) {
-      let libro = match[1].trim();
-      const capitulo = match[2];
-      const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
-      const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
+  // Verificar si es una búsqueda de versículos específicos o capítulos completos
+  const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+  if (match) {
+    let libro = match[1].trim();
+    const capitulo = match[2];
+    const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
+    const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
 
-      libro = libroMap[libro] || libro;
-      const libroEncontrado = Object.keys(datos).find( // Traduce la abreviatura o usa el valor original
-    key => {
-         return key
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase() === libro
+    libro = libroMap[libro] || libro;
+    const libroEncontrado = Object.keys(datos).find(key => {
+      return key
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase() === libro
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+    });
+
+if (libroEncontrado) {
+  const capitulos = datos[libroEncontrado];
+  if (capitulos[capitulo]) {
+
+    // Lógica de versículo o rango
+    if (versiculoInicio && versiculoFin) {
+      // Mostrar rango de versículos
+      for (let i = versiculoInicio; i <= versiculoFin; i++) {
+        const texto = capitulos[capitulo][i];
+        resultsContainer.innerHTML += texto
+          ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
+              <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
+             </li>`
+          : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
+      }
+
+      // Ocultar botones de navegación para búsquedas de rango de versículos
+      prevPageButton.style.display = "none";
+      nextPageButton.style.display = "none";
+      return;
+    } else if (versiculoInicio) {
+      // Mostrar un versículo específico
+      const texto = capitulos[capitulo][versiculoInicio];
+      if (texto) {
+        resultsContainer.innerHTML = `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
+          <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}', '${versiculoInicio}')">Leer capítulo completo</a>
+        </li>`;
+      } else {
+        resultsContainer.innerHTML = `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
+      }
+
+      // Ocultar botones de navegación para búsquedas de un versículo
+      prevPageButton.style.display = "none";
+      nextPageButton.style.display = "none";
+      return;
+    } else {
+      // Mostrar capítulo completo
+      showFullChapter(libroEncontrado, capitulo);
+      return;
+    }
+  } else {
+    resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+    return;
+  }
+} else {
+  resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+  return;
+}
+
+  }
+
+  // Si no es búsqueda de versículo o capítulo, realizar búsqueda por palabras
+  const resultados = [];
+  const conteoPorLibro = {};
+  const ubicacionesPorLibro = {};
+  const palabraRegex = new RegExp(`(${query})`, "gi");
+
+  Object.keys(datos).forEach(libro => {
+    let libroCount = 0;
+    ubicacionesPorLibro[libro] = [];
+    Object.keys(datos[libro]).forEach(capitulo => {
+      Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+        const textoNormalizado = texto
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .toLowerCase();
-     
+        if (textoNormalizado.includes(normalizedQuery)) {
+          const textoResaltado = texto.replace(
+            palabraRegex,
+            "<span style='background-color: #333; color: white; font-weight: bold;'>$1</span>"
+          );
+          resultados.push(
+            `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
+              <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span></li>`
+          );
+          libroCount++;
+          ubicacionesPorLibro[libro].push(`${capitulo}:${versiculo}`);
+        }
+      });
     });
-      if (libroEncontrado) {
-        const capitulos = datos[libroEncontrado];
-        if (capitulos[capitulo]) {
-          if (versiculoInicio && versiculoFin) {
-            for (let i = versiculoInicio; i <= versiculoFin; i++) {
-              const texto = capitulos[capitulo][i];
-              resultsContainer.innerHTML += texto
-                ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}</li>`
-                : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
-            }
-           } else if (versiculoInicio) {
-    const texto = capitulos[capitulo][versiculoInicio];
-    resultsContainer.innerHTML = texto
-        ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}<br>
-            <a href="#" onclick="showFullChapterWithHighlight('${libroEncontrado}', '${capitulo}', '${versiculoInicio}')">Leer verso completo</a>
-          </li>`
-        : "<li>Versículo no encontrado.</li>";
-} else {
-            Object.entries(capitulos[capitulo]).forEach(([numVerso, textoVerso]) => {
-              resultsContainer.innerHTML += `<li>${libroEncontrado} ${capitulo}:${numVerso} - ${textoVerso}</li>`;
-            });
-          }
-        } else {
-          resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-        }
-      } else {
-        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-      }
-    } else {
-      // Búsqueda de palabras
-      const resultados = [];
-      const conteoPorLibro = {};
-      const ubicacionesPorLibro = {};
-      const palabraRegex = new RegExp(`(${query})`, "gi");
-
-      Object.keys(datos).forEach(libro => {
-        let libroCount = 0;
-        ubicacionesPorLibro[libro] = [];
-        Object.keys(datos[libro]).forEach(capitulo => {
-          Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
-            const textoNormalizado = texto
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .toLowerCase();
-            if (textoNormalizado.includes(normalizedQuery)) {
-              const textoResaltado = texto.replace(
-                palabraRegex,
-                      "<span style='background-color: #333; color: white; cursor: pointer; font-weight: bold;'>$1</span>"
-              );
-            resultados.push(
-                `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
-                  <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span></li>`
-              );
-              libroCount++;
-               ubicacionesPorLibro[libro].push(`${capitulo}:${versiculo}`);
-            }
-          });
-        });
-        if (libroCount > 0) {
-          conteoPorLibro[libro] = libroCount;
-        }
-      });
-
-        Object.entries(conteoPorLibro).forEach(([libro, count]) => {
-        const ubicaciones = ubicacionesPorLibro[libro]
-          .map(
-            ubicacion => `<li><a href="#" onclick="showVerse('${libro}', '${ubicacion}')">${libro} ${ubicacion}</a></li>`
-          )
-          .join("");
-        countResultsContainer.innerHTML += `<li class="expandable">${libro} (${count})<ul class="nested">${ubicaciones}</ul></li>`;
-      });
-
-      if (resultados.length > 0) {
-        resultsContainer.innerHTML = resultados.join("");
-      } else {
-        resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
-      }
-    
-
-    // Mostrar u ocultar el sidebar según resultados
-    sidebar.style.display = resultados.length > 0 ? "block" : "none";
-   document.querySelectorAll(".expandable").forEach(item => {
-        item.addEventListener("click", function () {
-          this.querySelector(".nested").style.display =
-            this.querySelector(".nested").style.display === "block" ? "none" : "block";
-        });
-      });
+    if (libroCount > 0) {
+      conteoPorLibro[libro] = libroCount;
     }
-   }
+  });
+
+  Object.entries(conteoPorLibro).forEach(([libro, count]) => {
+    const ubicaciones = ubicacionesPorLibro[libro]
+      .map(
+        ubicacion => `<li><a href="#" onclick="showVerse('${libro}', '${ubicacion}')">${libro} ${ubicacion}</a></li>`
+      )
+      .join("");
+    countResultsContainer.innerHTML += `<li class="expandable">${libro} (${count})<ul class="nested">${ubicaciones}</ul></li>`;
+  });
+
+  if (resultados.length > 0) {
+    resultsContainer.innerHTML = resultados.join("");
+  } else {
+    resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
+  }
+
+  // Mostrar u ocultar el sidebar según resultados
+  sidebar.style.display = resultados.length > 0 ? "block" : "none";
+  document.querySelectorAll(".expandable").forEach(item => {
+    item.addEventListener("click", function () {
+      this.querySelector(".nested").style.display =
+        this.querySelector(".nested").style.display === "block" ? "none" : "block";
+    });
+  });
+}
+
+// Funciones auxiliares: showVerse, showFullChapter, etc. permanecen iguales
 
 
 function showVerse(libro, ubicacion) {
     const [capitulo, versiculo] = ubicacion.split(":");
     fetchAllJsonData().then(datos => {
-      if (!datos[libro] || !datos[libro][capitulo]) return;
-      const texto = datos[libro][capitulo][versiculo];
-      resultsContainer.innerHTML = texto
-        ? `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`
-        : `<li>${libro} ${capitulo}:${versiculo} - Versículo no encontrado.</li>`;
+        if (!datos[libro] || !datos[libro][capitulo]) return;
+        const texto = datos[libro][capitulo][versiculo];
+        resultsContainer.innerHTML = texto
+            ? `<li>${libro} ${capitulo}:${versiculo} - ${texto}
+               <br>
+               <a href="#" onclick="showFullChapter('${libro}', '${capitulo}')" class="full-chapter-link">Leer capítulo completo</a>
+               </li>`
+            : `<li>${libro} ${capitulo}:${versiculo} - Versículo no encontrado.</li>`;
     });
-  }
-function showFullChapter(libro, capitulo) {
-    fetchAllJsonData().then(datos => {
-      if (!datos[libro] || !datos[libro][capitulo]) return;
-      const versiculos = Object.entries(datos[libro][capitulo])
-        .map(([versiculo, texto]) => `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`)
-        .join("");
-      resultsContainer.innerHTML = versiculos || "<li>Capítulo no encontrado.</li>";
-    });
-  }
+    // Ocultar botones de navegación
+  prevPageButton.style.display = "none";
+  nextPageButton.style.display = "none";
+}
+
 
 
 
