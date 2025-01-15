@@ -343,6 +343,7 @@ position: absolute;
   right: 0px;
   display: none; /* Oculto por defecto */
   }
+
       .highlight {
       background-color: yellow;
       font-weight: bold;
@@ -367,6 +368,23 @@ position: absolute;
 font-display: left;
 
     }
+#comentarios {
+    position: absolute;
+    right: -6px;
+    top: 80px;
+    width: 26%;
+    height: 600px;
+    margin-top: 25px;
+    background-color: #282828;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out; /* Transición suave */
+}
+ 
 
 
     </style>
@@ -377,12 +395,24 @@ font-display: left;
 
     <!-- codigo nuevo buscador-->
 <div style="display: flex; " >
+<!-- Botón para mostrar/ocultar comentarios -->
+<button id="toggleComentarios" style="position: absolute; right: 10px; top: 50px;">
+    Mostrar Comentarios
+</button>
+
+<!-- Contenedor para comentarios -->
+<div id="comentarios" style="display: none;  z-index: 2;">
+    <h3>Comentarios</h3>
+    <div id="contenidoComentarios">
+        <!-- Aquí se cargarán los comentarios -->
+    </div>
+</div>
 
   <div id="myDIV"  style="flex-shrink: 0; width: 250px;">
+
     <h3>Resultados</h3>
 
-    <ul id="countResults" style="margin-top:-23px ;"></ul>
-
+    <ul id="countResults" style="margin-top:-23px  z-index: 1;"></ul>
   </div>
   </div>
       <div class="search-container">
@@ -498,24 +528,21 @@ font-display: left;
   <div id="chapterContentSidebar" style="margin-top: 3px; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
 </div>
 
-<!-- el menu desplegable de comentarios-->
+<!-- el menu desplegable aparato critico-->
   
     <!-- Sidebar -->
     <div id="mySidebar">
    
   <div id="menuSidebar">
-    <button onclick="mostrarSeccion('comentarios')">Comentarios de Eric de Jesús Rodríguez Mendoza</button>
+    
     <button onclick="mostrarSeccion('critico')">Aparato Crítico NA28</button>
 
 
     <button onclick="mostrarSeccion('mapas')">Mapas</button>
   </div>
   <div id="contenidoSidebar">
-    <!-- Contenedor para los comentarios -->
-    <div id="comentarios" class="seccionSidebar">
-      <p><a href="#" onclick="cargarComentarios()">Comentarios Gálatas 1</a> 
-  <div id="contenidoComentarios" style="margin-top: 10px; color: white; padding: 10px;"></div></p>
-    </div>
+    <!-- Contenedor para aparato critico -->
+    
     <div id="critico" class="seccionSidebar" style="display: none;">
       <p>Contenido del Aparato Crítico NA28</p>
     </div>
@@ -595,6 +622,9 @@ async function showFirstChapter(libro) {
     // Ocultar mensaje de bienvenida y mostrar resultados
     hideWelcomeMessage();
     sidebar.style.display = "block";
+
+      // **Actualizar comentarios**
+    cargarComentariosCapitulo(libro, primerCapitulo);
 }
 
 
@@ -647,28 +677,48 @@ document.querySelectorAll("#dropdownMenu a").forEach(item => {
     } else {
         nextPageButton.style.display = "none";
     }
+
+    // Cargar comentarios dinámicos para el capítulo actual
+    cargarComentariosCapitulo(libro, capitulo);
 }
 
-  
-  function cargarComentarios() {
-    const url = "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/galatas/galatas1.html"; // Enlace RAW de galatas
-    const contenedor = document.getElementById("contenidoComentarios");
-    // Limpia el contenido antes de cargar nuevo
-    contenedor.innerHTML = "Cargando comentarios...";
+ const toggleButton = document.getElementById("toggleComentarios");
+const comentariosDiv = document.getElementById("comentarios");
+const contenidoComentarios = document.getElementById("contenidoComentarios");
+
+toggleButton.addEventListener("click", () => {
+    // Alternar visibilidad
+    if (comentariosDiv.style.display === "none") {
+        comentariosDiv.style.display = "block";
+        toggleButton.textContent = "Ocultar Comentarios";
+        cargarComentariosCapitulo(currentBook, currentChapter); // Carga comentarios del capítulo actual
+    } else {
+        comentariosDiv.style.display = "none";
+        toggleButton.textContent = "Mostrar Comentarios";
+    }
+});
+
+function cargarComentarios() {
+    const url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas1.html`;
+
+    contenidoComentarios.innerHTML = "Cargando comentarios...";
+
     fetch(url)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`Error al cargar el archivo: ${response.status}`);
-        }
-        return response.text();
-      })
-      .then(data => {
-        contenedor.innerHTML = data; // Inserta el contenido del archivo HTML
-      })
-      .catch(error => {
-        contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
-      });
-  }
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Error al cargar el archivo: ${response.status}`);
+            }
+            return response.text();
+        })
+        .then(data => {
+            contenidoComentarios.innerHTML = data; // Inserta el contenido dinámico
+        })
+        .catch(error => {
+            contenidoComentarios.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
+        });
+}
+
+
   
 </script>
 
@@ -728,17 +778,14 @@ function toggleSidebar() {
     return allData;
   }
 
-  // Función de búsqueda principal
-// Modificar la función searchVerses para manejar búsquedas de capítulos completos
 // Función de búsqueda principal
-// Modificar la función searchVerses para manejar búsquedas de capítulos completos y versículos específicos
 async function searchVerses(query) {
   const datos = await fetchAllJsonData();
   if (!datos) return;
 
   resultsContainer.innerHTML = "";
   countResultsContainer.innerHTML = "";
-    prevPageButton.style.display = "none"; // Ocultar botón "Anterior"
+  prevPageButton.style.display = "none"; // Ocultar botón "Anterior"
   nextPageButton.style.display = "none"; // Ocultar botón "Siguiente"
 
   const normalizedQuery = query
@@ -774,58 +821,44 @@ async function searchVerses(query) {
         .toLowerCase();
     });
 
-if (libroEncontrado) {
-  const capitulos = datos[libroEncontrado];
-  if (capitulos[capitulo]) {
+    if (libroEncontrado) {
+      const capitulos = datos[libroEncontrado];
+      if (capitulos[capitulo]) {
 
-    // Lógica de versículo o rango
-    if (versiculoInicio && versiculoFin) {
-      // Mostrar rango de versículos
-      for (let i = versiculoInicio; i <= versiculoFin; i++) {
-        const texto = capitulos[capitulo][i];
-        resultsContainer.innerHTML += texto
-          ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
+        // Lógica de versículo o rango
+        if (versiculoInicio && versiculoFin) {
+          for (let i = versiculoInicio; i <= versiculoFin; i++) {
+            const texto = capitulos[capitulo][i];
+            resultsContainer.innerHTML += texto
+              ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
+                  <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
+                 </li>`
+              : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
+          }
+          return;
+        } else if (versiculoInicio) {
+          const texto = capitulos[capitulo][versiculoInicio];
+          resultsContainer.innerHTML = texto
+            ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
               <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
-             </li>`
-          : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
-      }
-
-      // Ocultar botones de navegación para búsquedas de rango de versículos
-      prevPageButton.style.display = "none";
-      nextPageButton.style.display = "none";
-      return;
-    } else if (versiculoInicio) {
-      // Mostrar un versículo específico
-      const texto = capitulos[capitulo][versiculoInicio];
-      if (texto) {
-        resultsContainer.innerHTML = `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
-          <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}', '${versiculoInicio}')">Leer capítulo completo</a>
-        </li>`;
+            </li>`
+            : `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
+          return;
+        } else {
+          showFullChapter(libroEncontrado, capitulo);
+          cargarComentariosCapitulo(libroEncontrado, capitulo);
+          return;
+        }
       } else {
-        resultsContainer.innerHTML = `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
+        resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+        return;
       }
-
-      // Ocultar botones de navegación para búsquedas de un versículo
-      prevPageButton.style.display = "none";
-      nextPageButton.style.display = "none";
-      return;
     } else {
-      // Mostrar capítulo completo
-      showFullChapter(libroEncontrado, capitulo);
+      resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
       return;
     }
-  } else {
-    resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-    return;
-  }
-} else {
-  resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-  return;
-}
-
   }
 
-  // Si no es búsqueda de versículo o capítulo, realizar búsqueda por palabras
   const resultados = [];
   const conteoPorLibro = {};
   const ubicacionesPorLibro = {};
@@ -874,7 +907,6 @@ if (libroEncontrado) {
     resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
   }
 
-  // Mostrar u ocultar el sidebar según resultados
   sidebar.style.display = resultados.length > 0 ? "block" : "none";
   document.querySelectorAll(".expandable").forEach(item => {
     item.addEventListener("click", function () {
@@ -883,6 +915,45 @@ if (libroEncontrado) {
     });
   });
 }
+
+
+// Función para cargar comentarios según el capítulo
+function cargarComentariosCapitulo(libro, capitulo) {
+  const comentariosURLs = {
+    "Gálatas": {
+      1: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas1.html",
+      2: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas2.html"
+    },
+    "Hebreos": {
+      5: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/hebreos/hebreos5.html"
+    }
+  };
+
+  const url = comentariosURLs[libro]?.[capitulo];
+  const contenedor = document.getElementById("contenidoComentarios");
+
+  if (!url) {
+    contenedor.innerHTML = "<p>Comentarios no disponibles para este capítulo.</p>";
+    return;
+  }
+
+  contenedor.innerHTML = "Cargando comentarios...";
+  fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`Error al cargar el archivo: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then(data => {
+      contenedor.innerHTML = data;
+    })
+    .catch(error => {
+      contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
+    });
+}
+
+
 
 // Funciones auxiliares: showVerse, showFullChapter, etc. permanecen iguales
 
