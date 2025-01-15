@@ -49,6 +49,7 @@
     if (isOpen) {
       paraleloSidebar.classList.remove("open");
       main.classList.remove("shifted-left");
+
     } else {
       paraleloSidebar.classList.add("open");
       main.classList.add("shifted-left");
@@ -73,6 +74,10 @@
   // Cargar los libros en el dropdown
   function cargarLibros(libros) {
     const bookSelector = document.getElementById("bookSelector");
+     if (bookSelector.children.length > 1) {
+    // Si ya hay opciones cargadas, no recargar
+    return;
+  }
     bookSelector.innerHTML = '<option value="">Seleccionar</option>'; // Limpiar libros previos
 
     for (const bookName in libros) {
