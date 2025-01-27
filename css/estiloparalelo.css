@@ -1,18 +1,6 @@
-* {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      max-width: 600px;
-      margin: auto;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
-    }
+
+
     .tooltip {
   position: relative;
   display: inline-block;
@@ -65,7 +53,7 @@
 #paraleloSidebar.open {
   width: 24%; /* Ancho del sidebar al abrirse */
   height: 600px; /* Ajusta según tu diseño */
-  top: 105px;
+  top: 115px;
 }
 
 /* Links dentro del sidebar */
@@ -82,43 +70,16 @@
   background-color: #575757;
 }
 
-    /* Sidebar del lado izquierdo */
-    #paraleloSidebar {
-      width: 0;
-      position: absolute;
-      z-index: 2;
-      top: 115px;
-      left: 0;
-      background-color: #111;
-      overflow-x: hidden;
-      overflow-y: auto;
-      transition: width 0.4s ease;
-      padding-top: 20px;
-      color: white;
-    }
 
-
-
-    #paraleloSidebar a {
-      padding: 1px 15px;
-      text-decoration: none;
-      font-size: 15px;
-      color: white;
-      display: block;
-      transition: 0.3s;
-    }
-
-    #paraleloSidebar a:hover {
-      background-color: #575757;
-    }
 
     #main {
       transition: margin-left 0.3s;
-      padding: 20px;
+      padding: 2px;
     }
 
     #main.shifted-left {
-      margin-left: 24%; /* Ajusta al ancho del sidebar */
+      margin-left: 10%; /* Ajusta al ancho del sidebar */
+    transition: margin-left 0.4s ease; /* Animación suave */
     }
 
     /* Dropdowns */
