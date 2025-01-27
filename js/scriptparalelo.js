@@ -96,7 +96,7 @@
   function cargarCapitulos() {
     const bookSelector = document.getElementById("bookSelector");
     const bookName = bookSelector.value;
- 
+
     if (!bookName) return; // Salir si no hay libro seleccionado
 
     const url = versionesBiblia[currentVersion][bookName];
