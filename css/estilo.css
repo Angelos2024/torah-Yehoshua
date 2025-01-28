@@ -9,16 +9,7 @@ h1 {
 } /* no lo estoy usando pero es para titulos, color y centrado */
 
 
-input[type="text"] {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
 
-
-}
 
 
 
@@ -84,24 +75,6 @@ input[type="text"] {
   padding: 10px;
   background-color: #222;
   border-radius: 4px;
-}
-#imgcopiar {
-  width: 30px; /* Tamaño fijo de la imagen */
-  height: 30px; /* Asegura proporción cuadrada */
-  cursor: pointer; /* Muestra que es clickeable */
-  transition: transform 0.3s ease; /* Suaviza la animación al pasar el mouse */
-}
-#imgcopiar:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
-}
-#imgparalelo:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
-}
-#imgparalelo {
- width: 30px; /* Tamaño fijo de la imagen */
-  height: 30px; /* Asegura proporción cuadrada */
-  cursor: pointer; /* Muestra que es clickeable */
-  transition: transform 0.3s ease; /* Suaviza la animación al pasar el mouse */
 }
 
 
@@ -283,14 +256,7 @@ input[type="text"] {
 }
 
 
-/* Media Query para pantallas más pequeñas */
-@media (max-width: 768px) {
-  #imgmaterial, #imgparalelo, #imgcopiar {
-    position: relative;  /* Cambia de absoluta a relativa para que se adapten mejor */
-    left: 0;             /* Ajusta el desplazamiento a la izquierda */
-    top: auto;           /* Elimina cualquier desplazamiento vertical */
-    margin-top: 10px;    /* Espaciado superior para que no se solapen */
-  }
+
 
 
   /* Ajustar el contenedor de comentarios */
