@@ -97,14 +97,18 @@ transition: width 0.4s ease, transform 0.4s ease;
 
     #mySidebar.open {
       transform: translateX(0);
-        width: 32%;
+        width: 31%;
   height: 600px;
   margin-top: 25px;
   top: 90px;
     }
+
+
+
 #main {
   transition: margin-right 0.3s;
   padding: 2px;
+  margin-top: -20px;
 }
 #main.shifted {
   margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
@@ -125,6 +129,10 @@ transition: width 0.4s ease, transform 0.4s ease;
       padding: 1rem;
     }
 
+.dropdown-menu{
+margin-top: 10px;
+
+}
     #imgMaterial:hover {
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
  }
@@ -166,6 +174,27 @@ transition: width 0.4s ease, transform 0.4s ease;
     position: relative;
 }
 
+#sidebar2 {
+  width: 0; /* Oculto por defecto */
+  position: fixed; /* Debe ser fixed para afectar otros elementos */
+  z-index: 200; /* Más alto para que quede encima */
+  top: 115px;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: width 0.4s ease;
+  padding-top: 20px;
+  color: white;
+  height: 100vh; /* Que ocupe toda la altura */
+}
+
+
+#sidebar2.open {
+  width: 24%; /* Ancho del sidebar al abrirse */
+  height: 600px; /* Ajusta según tu diseño */
+  top: 115px;
+}
 
 
 .search-input {
@@ -201,7 +230,22 @@ transition: width 0.4s ease, transform 0.4s ease;
   </section>
 
  <style>
-
+#comentarios {
+    position: absolute;
+    right: -6px;
+    top: 70px;
+    width: 26%;
+    height: 200vh;
+    margin-top: 25px;
+    background-color: #282828;
+    color: white;
+    border: 1px solid #ccc;
+    padding: 15px;
+    overflow-y: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out; /* Transición suave */
+}
 
 
 
@@ -239,12 +283,12 @@ transition: width 0.4s ease, transform 0.4s ease;
       <!-- Contenedor de los botones -->
 <div class="d-flex align-items-center gap-4">
   <!-- Botón de Contenido Paralelo -->
-  <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Paralelo">
+  <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Biblias paralelas">
     <img 
       id="imgParalelo" 
       src="css/plus_icon_184093.png" 
       alt="Contenido paralelo"
-      onclick="toggleParaleloSidebar()" >
+      onclick="togglesidebar2()" >
   </a>
 
 
@@ -255,11 +299,11 @@ transition: width 0.4s ease, transform 0.4s ease;
       <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar">
         <img id="imgCopiar" src="css/copy-two-paper-sheets-interface-symbol_icon-icons.com_73283.png" alt="Copiar contenido" onclick="copiarContenido()"/>
       </a>
-    
+   
 
       <!-- Dropdown -->
 <div class="container" style="margin-right: 91px;">
-  <div class="dropdown" style="left: -60px;">
+  <div class="dropdown" style="left: -60px; width: 0px; height: 0px;">
     <button class="btn btn-dark dropdown-toggle custom-dropdown-btn" 
       type="button" 
       data-bs-toggle="dropdown" 
@@ -267,20 +311,18 @@ transition: width 0.4s ease, transform 0.4s ease;
       Libros de la Biblia
     </button>
     <div class="dropdown-menu custom-dropdown-content" id="dropdownMenu">
-      <a class="dropdown-item" href="#">Según Marcos</a>
-      <a class="dropdown-item" href="#">Carta a los Romanos</a>
+      <a class="dropdown-item" href="#" data-libro="Marcos">Según Marcos</a>
+      <a class="dropdown-item" href="#" data-libro="Romanos">Carta a los Romanos</a>
       <a class="dropdown-item" href="#" data-libro="Gálatas">Carta a los Gálatas</a>
       <a class="dropdown-item" href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
-      <a class="dropdown-item" href="#">2 Tesalonicenses</a>
+      <a class="dropdown-item" href="" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
       <a class="dropdown-item" href="#" data-libro="Hebreos">Carta a los Hebreos</a>
       <a class="dropdown-item" href="#">Revelación Apocalipsis</a>
     </div>
   </div>
 </div>
- <!-- Botones (inicialmente ocultos) -->
-  <img id="btnParalelo" class="boton-accion"  src="css/image.png"style="display: none;"></img>
-  <img id="btnCopiar" class="boton-accion" src="css/image(2).png"style="display: none;"></img>
-  <img id="btnMaterial" class="boton-accion" src="css/image(3).png"style="display: none;"></img>
+ </div>
+ 
 
 
 
@@ -289,7 +331,6 @@ transition: width 0.4s ease, transform 0.4s ease;
 <!-- Estilos para los botones -->
 <style>
  #btnParalelo {
-    width: 100px;
     height: 33px; /* Aumentar altura para acomodar el texto */
     padding: 2px 8px;
     margin: 10px;
@@ -314,8 +355,29 @@ transition: width 0.4s ease, transform 0.4s ease;
       transform: scale(1.2);
 }
   #btnCopiar {
-     width: 100px;
     height: 30px; /* Aumentar altura para acomodar el texto */
+    padding: 2px 8px;
+    margin: 10px;
+    background-color: black;
+  
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: -2px;
+    margin-left:10 px; /* Reducir margen para móviles */
+    display: none; /* Ocultos por defecto */
+    transition: all 0.3s ease-in-out;
+  
+    /* Asegurar el texto centrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+@media screen and (max-width: 568px) {
+    #btnCopiar,{
+          height: 30px; /* Aumentar altura para acomodar el texto */
     padding: 2px 8px;
     margin: 10px;
     background-color: black;
@@ -333,13 +395,14 @@ transition: width 0.4s ease, transform 0.4s ease;
     justify-content: center;
     align-items: center;
     text-align: center;
-  }
+    }
+}
+
 
   #btnCopiar:hover {
 transform: scale(1.2);
 }
   #btnMaterial {
-    width: 100px;
     height: 32px; /* Aumentar altura para acomodar el texto */
     padding: 2px 8px;
     margin: 10px;
@@ -373,77 +436,26 @@ transform: scale(1.2);
  #imgMaterial {
   width: 31px;
   height: 32px;
-  margin-top: -5px;
-  margin-left: 740px; /* Ajusta el margen para mantener alineación */
+  margin-top: -1px;
+  display: block;
+  
   transition: all 0.3s ease-in-out;
 }
-@media (max-width: 1200px) { /* Pantallas grandes, como laptops */
-  #imgMaterial {
-    margin-left: 660px;
-  }
-}
-@media (max-width: 1100px) { /* Pantallas grandes, como laptops */
-  #imgMaterial {
-    margin-left: 560px;
-  }
-}
 
-
-@media (max-width: 1024px) { /* Laptops más pequeñas */
-  #imgMaterial {
-    margin-left: 490px;
-  }
-}
-
-@media (max-width: 950px) { /* Tablets grandes */
-  #imgMaterial {
-    margin-left: 400px;
-  }
-}
-@media (max-width: 900px) { /* Tablets grandes */
-  #imgMaterial {
-    margin-left: 300px;
-  }
-}
 
   /* Ajustes generales para los botones */
 #imgParalelo, #imgCopiar {
   width: 33px;
   height: 33px;
   right: 15px;
-  margin-top: -5px;
-  margin-left: -9px; /* Reducir margen para móviles */
+  margin-top: -4px;
+  margin-left: -1px; /* Reducir margen para móviles */
   transition: all 0.3s ease-in-out;
 }
 
 
 
-/* Estilos para celulares pequeños */
-@media (max-width: 768px) {
-  #imgParalelo{
-    width: 30px;
-    height: 30px;
-     margin-top: -4px;
-    margin-right: -10px;
-  }
-}
-@media (max-width: 768px) {
-  #imgCopiar {
-    width: 30px;
-    height: 30px;
-     margin-top: -4px;
-    margin-right: -20px;
-  }
-}
-/* Estilos para celulares pequeños */
-@media (max-width: 768px) {
-  #imgMaterial{
-    width: 30px;
-    height: 30px;
-     margin-top: -4px;
-    margin-right: -10px;
-  }
-}
+/
 
 .dropdown-toggle {
     white-space: wrap;
@@ -452,10 +464,10 @@ transform: scale(1.2);
 /* Estilo base del botón */
 .custom-dropdown-btn {
   font-size: 14px;
-  margin-top: -5px;
+  margin-top: -26px;
   width: 168px;
   margin-right: -200px;
-  margin-left: 30px;
+  margin-left: 60px;
   font-weight: bold;
   border: 2px solid #000 !important; /* Borde negro */
   border-radius: 5px;
@@ -508,7 +520,7 @@ transform: scale(1.2);
 /* Estilo de los enlaces dentro del menú */
 .custom-dropdown-content a {
   color: #6D3961;
-  padding: 10px 15px;
+  padding: 8px 15px;
   text-decoration: none;
   display: block;
   font-size: 14px;
@@ -558,11 +570,69 @@ transform: scale(1.2);
   }
 }
 
+.tooltip .tooltip-inner {
+  background-color: black !important;
+  color: white !important;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 5px;
+}
+
+.tooltip.bs-tooltip-top .tooltip-arrow::before {
+  border-top-color: black !important;
+}
+
+.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
+  border-bottom-color: black !important;
+}
+
+.tooltip.bs-tooltip-start .tooltip-arrow::before {
+  border-left-color: black !important;
+}
+
+.tooltip.bs-tooltip-end .tooltip-arrow::before {
+  border-right-color: black !important;
+}
+
+.img-tooltip-container {
+display: inline-block; /* Asegura que solo ocupe el espacio del ícono */
+  margin-left: 700px; /* Mantiene la separación */
+  padding: 0; /* Elimina espacios adicionales */
+}
 </style>
- 
+<script>
+function ajustarMargen() {
+    let btn = document.getElementById("fuentess");
+    let ancho = window.innerWidth;
+
+    if (ancho <= 870) {
+        btn.style.marginLeft = "170px";
+    } else if (ancho <= 980) {
+        btn.style.marginLeft = "330px";
+    } else if (ancho <= 1070) {
+        btn.style.marginLeft = "430px";
+    } else if (ancho <= 1150) {
+        btn.style.marginLeft = "530px";
+    }else {
+        btn.style.marginLeft = "600px";
+    }
+}
+
+// Llamar la función al cargar la página y cuando la ventana se redimensione
+window.onload = ajustarMargen;
+window.onresize = ajustarMargen;
+</script>
+     <!-- Botón para mostrar/ocultar opciones -->
+    <button id="fuentess"class="toggle-btn" style="background-color: white; margin-left: 600px;    border: 2px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    cursor: pointer; border-color:black;" onclick="toggleOpciones()">
+
+    <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
+</button>
 
  <!-- Botón de Menú (Aparato Crítico) -->
-    <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Aparato crítico">
+    <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Aparato crítico" style="margin-left:-10px;">
   <img id="imgMaterial" src="css/add-comment_icon-icons.com_71793.png" alt="Menú" onclick="toggleSidebar()" />
     </a>
 
@@ -573,7 +643,8 @@ transform: scale(1.2);
     Mostrar Comentarios
   </button>
 </div>
-</div>
+
+
 <style>
 /* Estilo base del botón de comentarios */
 .custom-btn {
@@ -615,8 +686,12 @@ font-size: 14px;
 </style>
 
 
+
   </nav>
+
 </header>
+
+
 
 <div class="container" class="tema-uno" style="  font-family: Arial, sans-serif;
     padding: 20px;
@@ -625,28 +700,7 @@ font-size: 14px;
     color: #333;
     line-height: 1.6;">
 
-<!-- Botones de Página -->
-<div class="navbar-nav d-flex align-items-center">
-  <!-- Botón de Página Anterior -->
-  <button 
-    id="prevPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain;">
-    </div>
-  </button>
 
-  <!-- Botón de Página Siguiente -->
-  <button 
-    id="nextPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style="position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1);">
-    </div>
-  </button>
-</div>
 
 
 
@@ -736,31 +790,56 @@ h5 {
 
 </style>
 
-  
-
- <div class="tooltip copiar-tooltip">
-  <img id="imgCopiar" src="css/copy-two-paper-sheets-interface-symbol_icon-icons.com_73283.png" 
-       alt="Copiar contenido" 
-       onclick="copiarContenido()" />
-  <span class="tooltiptext">Copiar</span>
-</div>
- <div class="tooltip material-tooltip">
-<img id="imgMaterial" src="css/add-comment_icon-icons.com_71793.png" alt="Menú" onclick="toggleSidebar()">
-<span class="tooltiptext">aparato crítico</span>
-</div>
-
- <!-- Tooltip para "paralelo" -->
-    <div class="tooltip paralelo-tooltip">
-      <img id="imgParalelo" src="css/plus_icon_184093.png" 
-          alt="Contenido paralelo" 
-           onclick="toggleParaleloSidebar()" />
-      <span class="tooltiptext">Paralelo</span>
-    </div>
-
 
  <div id="main">  
 
+<!-- Botones de Página -->
+<div class="navbar-nav d-flex align-items-center">
+  <!-- Botón de Página Anterior -->
+  <button 
+    id="prevPage" 
+    class="btn border-0 bg-transparent p-0" 
+    style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
+    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain; ">
+    </div>
+  </button>
 
+  <!-- Botón de Página Siguiente -->
+  <button 
+    id="nextPage" 
+    class="btn border-0 bg-transparent p-0" 
+    style="position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
+    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1);">
+    </div>
+  </button>
+</div>
+<style>
+/* Ajustar main cuando se abre sidebar2 */
+.sidebar2-open #main {
+  margin-left: 80px; /* Empujar el contenido */
+  transition: margin-left 0.4s ease-in-out;
+}
+
+body.sidebar2-open #prevPage {
+  left: 300px !important;
+  transition: left 0.4s ease-in-out;
+}
+/* Cuando se abre, el ancho debe ser fijo */
+.sidebar2-open #sidebar2 {
+  width: 300px;
+  left: 0;
+}
+/* Mover nextPage cuando mySidebar está abierto */
+.sidebar-open #nextPage {
+    right: 350px !important;
+    transition: right 0.3s ease-in-out;
+}
+
+
+
+</style>
  <!-- Sidebar -->
    
 <div id="mySidebar" class="col-md-3">
@@ -787,7 +866,7 @@ h5 {
   </div>
 
 <!-- Sidebar paralelo -->
-<div id="paraleloSidebar" class="col-md-6 col-lg-4 mb-3">
+<div id="sidebar2" class="col-md-3">
 
 
    <div class="dropdown-container">
@@ -821,14 +900,14 @@ h5 {
 
 
        <!-- Contenedor para contenido de capítulos --></div>
-      <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: 3px; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
+      <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
     </div>
 
     
 
 
 
-<!-- el error radica en los cierres del paralelosidebar y mysidebar en medio -->
+
 
 
     <!-- Modal -->
@@ -841,22 +920,232 @@ h5 {
 
 
 
+<div id="contenedor-botones">
+  <img id="btnParalelo" class="boton-accion" src="css/image.png" style="display: none;">
+  <img id="btnCopiar" class="boton-accion" src="css/image(2).png" style="display: none;">
+  <img id="btnMaterial" class="boton-accion" src="css/image(3).png" style="display: none;">
+</div>
+
+<style>
+
+#contenedor-botones {
+    position: fixed;  /* Mantiene los botones fijos en la pantalla */
+    bottom: 20px; /* Ajusta la posición desde abajo */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Centra realmente en el eje X */
+    display: flex; /* Usa flexbox para alinear los botones */
+    gap: 15px; /* Espaciado entre los botones */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+   
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Ajustes para los botones dentro del contenedor */
+.boton-accion {
+    width: 40px; /* Ajusta el tamaño de los iconos */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.boton-accion:hover {
+    transform: scale(1.2);
+}
+</style>
+
+
+<!-- Contenedor de opciones (inicialmente oculto) -->
+    <div id="opcionesContainer">
+        <!-- Selector de fuente -->
+        <div class="custom-select" id="fuenteSelect">
+            <div class="select-selected" data-value="Arial">Arial</div>
+            <div class="select-items">
+                <div data-value="Arial">Arial</div>
+                <div data-value="Verdana">Verdana</div>
+                <div data-value="Times New Roman">Times New Roman</div>
+            </div>
+        </div>
+
+        <!-- Selector de tamaño -->
+        <div class="custom-select" id="tamanoSelect">
+            <div id="select-selected2" class="select-selected" data-value="14px">14</div>
+            <div class="select-items">
+                <div data-value="12px">12</div>
+                <div data-value="14px">14</div>
+                <div data-value="16px">16</div>
+                <div data-value="18px">18</div>
+                <div data-value="20px">20</div>
+            </div>
+        </div>
+    </div>
 
 
 <!-- Mensaje de bienvenida -->
 <div id="welcomeMessage" class="col-12 text-center mb-4">
   <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
   <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+   <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
 </div>
-
-<!-- Resultados generales -->
-<ul id="results" style="margin-top:-23px;" class="list-group col-12 mt-3" ></ul>
+ <style>
 
 
+        /* Estilos generales */
+        .custom-select {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            cursor: pointer;
+        }
+
+        .select-selected {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 150px;
+        }
+
+        .select-selected:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 0 10px black;
+        }
+
+        #select-selected2 {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 50px;
+        }
+
+        #select-selected2:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 0 10px black;
+        }
+
+        /* Contenedor de opciones */
+        .select-items {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .select-items div {
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        /* Efecto al pasar el mouse */
+        .select-items div:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* Mostrar opciones cuando está activo */
+        .select-selected.active + .select-items {
+            display: block;
+        }
+
+        /* Estilo para ocultar el contenedor */
+        #opcionesContainer {
+            display: none; /* Inicialmente oculto */
+        }
+
+        /* Botón para mostrar/ocultar */
+        .toggle-btn {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 
 
+
+    <!-- Resultados -->
+    <ul id="results" style="margin-top:-23px;" class="list-group col-12 mt-3"></ul>
+
+    <script>
+        function customSelect(id) {
+            const selectBox = document.getElementById(id);
+            const selectedDiv = selectBox.querySelector(".select-selected");
+            const optionsDiv = selectBox.querySelector(".select-items");
+
+            selectedDiv.addEventListener("click", function () {
+                this.classList.toggle("active");
+            });
+
+            optionsDiv.addEventListener("click", function (event) {
+                if (event.target.tagName === "DIV") {
+                    selectedDiv.innerText = event.target.innerText;
+                    selectedDiv.setAttribute("data-value", event.target.getAttribute("data-value"));
+                    selectedDiv.classList.remove("active"); // Cierra el dropdown
+                    cambiarEstilo();
+                }
+            });
+
+            document.addEventListener("click", function (event) {
+                if (!selectBox.contains(event.target)) {
+                    selectedDiv.classList.remove("active");
+                }
+            });
+        }
+
+        function cambiarEstilo() {
+            let fuente = document.getElementById("fuenteSelect").querySelector(".select-selected").getAttribute("data-value");
+            let tamano = document.getElementById("tamanoSelect").querySelector(".select-selected").getAttribute("data-value");
+
+            localStorage.setItem("fuenteSeleccionada", fuente);
+            localStorage.setItem("tamanoSeleccionado", tamano);
+
+            aplicarEstilo(fuente, tamano);
+        }
+
+        function aplicarEstilo(fuente, tamano) {
+            document.querySelectorAll("#results li").forEach(li => {
+                li.style.fontFamily = fuente;
+                li.style.fontSize = tamano;
+            });
+        }
+
+        function toggleOpciones() {
+    const container = document.getElementById("opcionesContainer");
+
+    if (container.style.display === "none" || container.style.display === "") {
+        container.style.display = "block";
+    } else {
+        container.style.display = "none";
+    }
+}
+
+
+        customSelect("fuenteSelect");
+        customSelect("tamanoSelect");
+    </script>
+   
 <script>
-
+let currentBook = null; 
+let currentChapter = null;
 
 
   // Función para mostrar el primer capítulo de un libro
@@ -874,10 +1163,15 @@ async function showFirstChapter(libro) {
     const versos = capitulos[primerCapitulo];
 
     // Limpiar resultados y mostrar los versos del primer capítulo
-    resultsContainer.innerHTML = ""; // Elimina cualquier encabezado
+       resultsContainer.innerHTML = "";
     Object.entries(versos).forEach(([versiculo, texto]) => {
-        resultsContainer.innerHTML += `<li>${libro} ${primerCapitulo}:${versiculo} - ${texto}</li>`;
+        let li = document.createElement("li");
+        li.textContent = `${libro} ${primerCapitulo}:${versiculo} - ${texto}`;
+        resultsContainer.appendChild(li);
     });
+
+    aplicarFuenteGuardada(); // Aplicar la fuente guardada a los nuevos <li>
+
 
     // Actualizar navegación
     showFullChapter(libro, primerCapitulo);
@@ -913,11 +1207,15 @@ document.querySelectorAll("#dropdownMenu a").forEach(item => {
     const datos = await fetchAllJsonData();
     if (!datos[libro] || !datos[libro][capitulo]) return;
 
-    resultsContainer.innerHTML = "";
-
+        resultsContainer.innerHTML = "";
     Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
-        resultsContainer.innerHTML += `<li>${libro} ${capitulo}:${numVerso} - ${texto}</li>`;
+        let li = document.createElement("li");
+        li.innerHTML = `${libro} ${capitulo}:${numVerso} - ${texto}`;
+        resultsContainer.appendChild(li);
     });
+
+    aplicarFuenteGuardada(); // Aplicar la fuente después de actualizar el capítulo
+
 
     // Determinar capítulos anterior y siguiente
     const chapterNumbers = Object.keys(datos[libro]).map(Number).sort((a, b) => a - b);
@@ -986,28 +1284,65 @@ function cargarComentarios() {
 </script>
 
     <script>
-      // Funciones del sidebar
+   // Funciones del sidebar
+// Función para alternar el sidebar principal (mySidebar)
 function toggleSidebar() {
   const sidebar = document.getElementById("mySidebar");
   const main = document.getElementById("main");
   const toggleNav = document.getElementById("toggleNav");
+  const nextPageButton = document.getElementById("nextPage");
+
   const isOpen = sidebar.classList.contains("open");
+
   if (isOpen) {
     sidebar.classList.remove("open");
     main.classList.remove("shifted");
-    toggleNav.src = "css/add-comment_icon-icons.com_71793.png"; // Ícono de menú
+    document.body.classList.remove("sidebar-open");
+
+    // Restaurar posición de nextPage cuando se cierra mySidebar
+    nextPageButton.style.right = "282px";
   } else {
     sidebar.classList.add("open");
     main.classList.add("shifted");
-    toggleNav.src = "css/add-comment_icon-icons.com_71793.png"; // Sustituye por un enlace válido de tu imagen de cierre
+    document.body.classList.add("sidebar-open");
+
+    // Ajustar posición de nextPage cuando se abre mySidebar
+    nextPageButton.style.right = "350px";
   }
 }
-  
+
+
+  // Función para alternar el sidebar paralelo (sidebar2)
+  function togglesidebar2() {
+    const sidebar2 = document.getElementById("sidebar2");
+    const prevPageButton = document.getElementById("prevPage");
+
+    const isOpen = document.body.classList.contains("sidebar2-open");
+
+    if (isOpen) {
+        document.body.classList.remove("sidebar2-open");
+        prevPageButton.style.left = "215px"; // Restaurar posición original
+    } else {
+        document.body.classList.add("sidebar2-open");
+        prevPageButton.style.left = "215px"; // Nueva posición cuando está abierto
+    }
+}
+
+
+
+
+
+
+
+
   // JSON y búsqueda
   const urls = [
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json",
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json"
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json",
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json",
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json"
   ];
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
@@ -1068,7 +1403,11 @@ async function searchVerses(query) {
     heb: "hebreos", Heb: "Hebreos",
     "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses",
     "1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses",
-    "1 tesalonicenses": "1Tesalonicenses"
+    "1 tesalonicenses": "1Tesalonicenses", 
+    "2 tes": "2Tesalonicenses", "2tes": "2Tesalonicenses",
+    "2 tesa": "2Tesalonicenses", "2Tesa": "2Tesalonicenses",
+    "2 tesalonicenses": "2Tesalonicenses",
+    "Romanos": "Romanos", "romanos": "Romanos", "Rom": "Romanos", "rom": "Romanos", "ROMANOS":"Romanos", "ROM": "Romanos", "Marcos": "Marcos", "marcos":"Marcos", "MARCOS":"Marcos", "marc": "Marcos", "Mc": "Marcos", "Mar":"Marcos", "MAR": "Marcos", "mar":"Marcos"
   };
 
   // Verificar si es una búsqueda de versículos específicos o capítulos completos
@@ -1171,7 +1510,9 @@ async function searchVerses(query) {
   });
 
   if (resultados.length > 0) {
-    resultsContainer.innerHTML = resultados.join("");
+  resultsContainer.innerHTML = resultados.join(""); 
+setTimeout(aplicarFuenteGuardada, 50); // Aplicar la fuente después de un breve retraso
+
   } else {
     resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
   }
@@ -1346,16 +1687,50 @@ function mostrarSeccion(seccion) {
 function copiarContenido() {
   const resultados = document.getElementById("results");
   const texto = resultados.innerText; // Obtiene el texto de los resultados
+
   if (texto) {
     navigator.clipboard.writeText(texto).then(() => {
-      alert("El contenido ha sido copiado.");
+      mostrarNotificacion("El contenido ha sido copiado.");
     }).catch(err => {
       console.error("Error al copiar.", err);
     });
   } else {
-    alert("No hay contenido para copiar.");
+    mostrarNotificacion("No hay contenido para copiar.");
   }
 }
+
+function mostrarNotificacion(mensaje) {
+  const notificacion = document.createElement("div");
+  notificacion.innerText = mensaje;
+  notificacion.style.position = "fixed";
+  notificacion.style.top = "115px";  // Ajusta esto para subir o bajar la notificación
+  notificacion.style.left = "50%";
+  notificacion.style.transform = "translateX(-50%)";
+  notificacion.style.background = "rgba(0, 0, 0, 0.8)";
+  notificacion.style.color = "white";
+  notificacion.style.padding = "5px 10px";
+  notificacion.style.borderRadius = "5px";
+  notificacion.style.fontSize = "16px";
+  notificacion.style.zIndex = "1000";
+  notificacion.style.opacity = "0";
+  notificacion.style.transition = "opacity 0.3s ease-in-out";
+
+  document.body.appendChild(notificacion);
+
+  // Mostrar la notificación
+  setTimeout(() => {
+    notificacion.style.opacity = "1";
+  }, 10);
+
+  // Ocultar y eliminar la notificación después de 1.5 segundos
+  setTimeout(() => {
+    notificacion.style.opacity = "0";
+    setTimeout(() => {
+      notificacion.remove();
+    }, 300);
+  }, 730);
+}
+
 
       // Funcionalidad del menú desplegable
       dropdownButton.addEventListener("click", () => {
@@ -1428,12 +1803,49 @@ const state = {
   window.addEventListener("load", ajustarElementos);
   window.addEventListener("resize", ajustarElementos);
   window.addEventListener("orientationchange", ajustarElementos);
+
+
+
+    // etiquetas de los botones
+  document.addEventListener("DOMContentLoaded", function () {
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+});
+
+
+  document.addEventListener("DOMContentLoaded", function () {
+  const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+  tooltips.forEach((tooltipTriggerEl) => {
+    const tooltip = new bootstrap.Tooltip(tooltipTriggerEl, { trigger: "hover" });
+
+    tooltipTriggerEl.addEventListener("click", function () {
+      tooltip.hide();
+    });
+  });
+});
+
+
+
+function aplicarFuenteGuardada() {
+    let fuenteGuardada = localStorage.getItem("fuenteSeleccionada") || "Arial";
+    let tamanoGuardado = localStorage.getItem("tamanoSeleccionado") || "16px";
+
+    document.querySelectorAll("#results li").forEach(li => {
+        li.style.fontFamily = fuenteGuardada;
+        li.style.fontSize = tamanoGuardado;
+    });
+}
+
 </script>
 
 
 
    <script src="js/scriptparalelo.js"></script>
-
+<!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
 </html>
