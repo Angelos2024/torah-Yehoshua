@@ -46,8 +46,9 @@ h1 {
   color: #4CAF50;
   background-color: #f0f0f0;
   padding: 15px;
+  margin-top: 40px;
   border-radius: 8px;
-  margin-left: -100px;
+  margin-left: -10px;
 }
 #menuSidebar {
   display: flex;
@@ -84,74 +85,6 @@ h1 {
   margin-top: -2px; /* Usa márgenes negativos si es necesario */
 }
 
-
-.tooltip {
-  position: relative;
-  display: inline-block;
-  cursor: pointer;
-  margin-top: -20px;
-}
-.tooltip .tooltiptext {
-  max-width: 200px; /* Para evitar que se desborden */
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  left: -220px;
-  top: 18px;
-  transform: translateX(-50%);
-}
-/* General tooltip */
-.material-tooltip .tooltiptext {
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  transform: translateX(-50%);
-  left:600px;
-  top: 18px;
-}
-.material-tooltip img {
-  margin-top: -2px;
-  width: 30px;
-  transition: transform 0.3s ease;
-}
-/* Tooltip específico para copiar */
-.copiar-tooltip .tooltiptext {
-  visibility: hidden;
-  width: 70px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-  transform: translateX(-50%);
-  left:-155px;
-  top: 18px;
-}
-/* Específico para el tooltip de copiar */
-.copiar-tooltip img {
-  top: -25px;
-  left: -100px;
-  width: 30px;
-  transition: transform 0.3s ease;
-}
-.copiar-tooltip img:hover {
-  transform: scale(1.2);
-}
-/* Ajuste del contenido principal cuando el sidebar está abierto */
 
 .modal {
   display: none;
