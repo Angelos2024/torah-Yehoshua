@@ -33,13 +33,25 @@
                                   background: #555; 
                                 } body{
 
-    background-color:#white;
+    background-color:white;
   padding: 10px;
   margin: 0;
   overflow-x: hidden; /* Evita desplazamiento lateral */
 
 
+
+li {
+    list-style: none;
 }
+.titulo-capitulo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #black; /* Azul */
+    text-align: left;
+    margin-left: -80px;
+    margin-bottom: -10px;
+}
+
 
 .form-inputs{
     position:relative;
@@ -278,7 +290,7 @@ margin-top: 10px;
 
 
 <header class="section-header">
-  <nav class="navbar navbar-light bg-light d-flex justify-content-between align-items-center px-3" style="padding: 2px 10px; height: 33px;">
+  <nav class="navbar navbar-light bg-light d-flex justify-content-between align-items-center px-3" style="padding: 2px 10px; height: 36px;">
   
       <!-- Contenedor de los botones -->
 <div class="d-flex align-items-center gap-4">
@@ -317,7 +329,7 @@ margin-top: 10px;
       <a class="dropdown-item" href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
       <a class="dropdown-item" href="" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
       <a class="dropdown-item" href="#" data-libro="Hebreos">Carta a los Hebreos</a>
-      <a class="dropdown-item" href="#">Revelación Apocalipsis</a>
+      <a class="dropdown-item" href="#" data-libro="Apocalipsis">Revelación Apocalipsis</a>
     </div>
   </div>
 </div>
@@ -1201,18 +1213,22 @@ document.querySelectorAll("#dropdownMenu a").forEach(item => {
  const prevPageButton = document.getElementById("prevPage");
   const nextPageButton = document.getElementById("nextPage");
 
-  async function showFullChapter(libro, capitulo) {
+async function showFullChapter(libro, capitulo) {
     currentBook = libro; // Actualizar el libro actual
     currentChapter = capitulo; // Actualizar el capítulo actual
     const datos = await fetchAllJsonData();
     if (!datos[libro] || !datos[libro][capitulo]) return;
 
-        resultsContainer.innerHTML = "";
+   resultsContainer.innerHTML = `<h2 class="titulo-capitulo">${libro} ${capitulo}</h2>`;
+
+
     Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
         let li = document.createElement("li");
-        li.innerHTML = `${libro} ${capitulo}:${numVerso} - ${texto}`;
+        li.innerHTML = `${numVerso}. ${texto}`; // Cambiar el formato a "1. texto"
         resultsContainer.appendChild(li);
     });
+
+
 
     aplicarFuenteGuardada(); // Aplicar la fuente después de actualizar el capítulo
 
@@ -1258,26 +1274,6 @@ toggleButton.addEventListener("click", () => {
         toggleButton.textContent = "Mostrar Comentarios";
     }
 });
-
-function cargarComentarios() {
-    const url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas1.html`;
-
-    contenidoComentarios.innerHTML = "Cargando comentarios...";
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Error al cargar el archivo: ${response.status}`);
-            }
-            return response.text();
-        })
-        .then(data => {
-            contenidoComentarios.innerHTML = data; // Inserta el contenido dinámico
-        })
-        .catch(error => {
-            contenidoComentarios.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
-        });
-}
 
 
   
@@ -1342,7 +1338,9 @@ function toggleSidebar() {
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json",
     "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json"
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json",
+    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Apocalipsis.json"
+
   ];
   const searchInput = document.getElementById("searchInput");
   const searchButton = document.getElementById("searchButton");
@@ -1407,7 +1405,7 @@ async function searchVerses(query) {
     "2 tes": "2Tesalonicenses", "2tes": "2Tesalonicenses",
     "2 tesa": "2Tesalonicenses", "2Tesa": "2Tesalonicenses",
     "2 tesalonicenses": "2Tesalonicenses",
-    "Romanos": "Romanos", "romanos": "Romanos", "Rom": "Romanos", "rom": "Romanos", "ROMANOS":"Romanos", "ROM": "Romanos", "Marcos": "Marcos", "marcos":"Marcos", "MARCOS":"Marcos", "marc": "Marcos", "Mc": "Marcos", "Mar":"Marcos", "MAR": "Marcos", "mar":"Marcos"
+    "Romanos": "Romanos", "romanos": "Romanos", "Rom": "Romanos", "rom": "Romanos", "ROMANOS":"Romanos", "ROM": "Romanos", "Marcos": "Marcos", "marcos":"Marcos", "MARCOS":"Marcos", "marc": "Marcos", "Mc": "Marcos", "Mar":"Marcos", "MAR": "Marcos", "mar":"Marcos", "Ap": "Apocalipsis", "ap":"Apocalipsis", "apocalipsis":"Apocalipsis", "APOCALIPSIS":"Apocalipsis", "Apoc":"Apocalipsis", "apoc":"Apocalipsis", "APOC":"Apocalipsis","AP":"Apocalipsis"
   };
 
   // Verificar si es una búsqueda de versículos específicos o capítulos completos
@@ -1527,42 +1525,11 @@ setTimeout(aplicarFuenteGuardada, 50); // Aplicar la fuente después de un breve
 }
 
 
+
+  </script>
+  <script src="js/cargarcomentarios.js"></script>
+  <script>
 // Función para cargar comentarios según el capítulo
-function cargarComentariosCapitulo(libro, capitulo) {
-  const comentariosURLs = {
-    "Gálatas": {
-      1: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas1.html",
-      2: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/galatas/galatas2.html"
-    },
-    "Hebreos": {
-      5: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/comentarios_codigos/hebreos/hebreos5.html"
-    }
-  };
-
-  const url = comentariosURLs[libro]?.[capitulo];
-  const contenedor = document.getElementById("contenidoComentarios");
-
-  if (!url) {
-    contenedor.innerHTML = "<p>Comentarios no disponibles para este capítulo.</p>";
-    return;
-  }
-
-  contenedor.innerHTML = "Cargando comentarios...";
-  fetch(url)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(`Error al cargar el archivo: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then(data => {
-      contenedor.innerHTML = data;
-    })
-    .catch(error => {
-      contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
-    });
-}
-
 
 
 // Funciones auxiliares: showVerse, showFullChapter, etc. permanecen iguales
