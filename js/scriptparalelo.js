@@ -1,4 +1,5 @@
 
+
   // Definimos los libros disponibles para la versión RVR1960
   const versionesBiblia = {
     RVR1960: {
@@ -37,100 +38,82 @@
 
   let currentVersion = "RVR1960"; // Versión predeterminada
   let dataCache = {}; // Caché de datos cargados
-  let currentBook = null; // Libro actual
 
-  // Alternar el sidebar paralelo
-  function toggleParaleloSidebar() {
-    const paraleloSidebar = document.getElementById("paraleloSidebar");
+
+ 
+
+  function closesidebar2() {
+    const sidebar2 = document.getElementById("sidebar2");
     const main = document.getElementById("main");
 
-    const isOpen = paraleloSidebar.classList.contains("open");
-
-    if (isOpen) {
-      paraleloSidebar.classList.remove("open");
-      main.classList.remove("shifted-left");
-
-    } else {
-      paraleloSidebar.classList.add("open");
-      main.classList.add("shifted-left");
-      cargarLibros(versionesBiblia[currentVersion]); // Cargar libros al abrir el sidebar
-    }
-  }
-
-  function closeParaleloSidebar() {
-    const paraleloSidebar = document.getElementById("paraleloSidebar");
-    const main = document.getElementById("main");
-
-    paraleloSidebar.classList.remove("open");
+    sidebar2.classList.remove("open");
     main.classList.remove("shifted-left");
   }
+document.addEventListener("DOMContentLoaded", () => {
+  cargarLibros(versionesBiblia[currentVersion]);
+});
 
-  // Cambiar versión y cargar libros
-  function cambiarVersion() {
-    currentVersion = document.getElementById("versionSelector").value;
-    cargarLibros(versionesBiblia[currentVersion]); // Actualizar libros al cambiar versión
+// Cambiar versión y cargar libros
+function cambiarVersion() {
+  currentVersion = document.getElementById("versionSelector").value;
+  currentBook = null; // Resetear libro actual
+  dataCache = {}; // Limpiar caché de capítulos
+  cargarLibros(versionesBiblia[currentVersion]); // Cargar nuevos libros
+}
+
+// Cargar los libros en el dropdown y limpiar capítulos
+function cargarLibros(libros) {
+  const bookSelector = document.getElementById("bookSelector");
+  bookSelector.innerHTML = '<option value="">Seleccionar</option>'; // Limpiar libros previos
+  document.getElementById("chapterSelector").innerHTML = '<option value="">Seleccionar</option>';
+  document.getElementById("chapterContentSidebar").innerHTML = "";
+
+  for (const bookName in libros) {
+    const option = document.createElement("option");
+    option.value = bookName;
+    option.textContent = bookName;
+    bookSelector.appendChild(option);
   }
+}
 
-  // Cargar los libros en el dropdown
-  function cargarLibros(libros) {
-    const bookSelector = document.getElementById("bookSelector");
-     if (bookSelector.children.length > 1) {
-    // Si ya hay opciones cargadas, no recargar
-    return;
-  }
-    bookSelector.innerHTML = '<option value="">Seleccionar</option>'; // Limpiar libros previos
+// Cargar capítulos cuando se seleccione un libro
+function cargarCapitulos() {
+  const bookSelector = document.getElementById("bookSelector");
+  const bookName = bookSelector.value;
 
-    for (const bookName in libros) {
-      const option = document.createElement("option");
-      option.value = bookName;
-      option.textContent = bookName;
-      bookSelector.appendChild(option);
-    }
+  if (!bookName || bookName === currentBook) return; // No recargar si ya está seleccionado
 
-    // Limpiar capítulos y resultados al cambiar de libro
-    document.getElementById("chapterSelector").innerHTML = '<option value="">Seleccionar</option>';
-    document.getElementById("chapterContentSidebar").innerHTML = "";
-  }
+  currentBook = bookName; // Guardar el libro actual seleccionado
+  dataCache = {}; // Limpiar caché anterior
+  const url = versionesBiblia[currentVersion][bookName];
+  const chapterSelector = document.getElementById("chapterSelector");
+  chapterSelector.innerHTML = '<option value="">Seleccionar</option>';
 
-  // Cargar capítulos del libro seleccionado
-  function cargarCapitulos() {
-    const bookSelector = document.getElementById("bookSelector");
-    const bookName = bookSelector.value;
+  fetch(url)
+    .then(response => {
+      if (!response.ok) throw new Error(`Error al cargar contenido: ${response.status}`);
+      return response.json();
+    })
+    .then(data => {
+      dataCache = data;
 
-    if (!bookName) return; // Salir si no hay libro seleccionado
-
-    const url = versionesBiblia[currentVersion][bookName];
-    const chapterSelector = document.getElementById("chapterSelector");
-    chapterSelector.innerHTML = '<option value="">Seleccionar</option>'; // Limpiar capítulos previos
-
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error al cargar contenido: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        dataCache = data; // Guardar datos en caché para usar en capítulos y versículos
-
-        data.forEach((_, idx) => {
-          const option = document.createElement("option");
-          option.value = idx + 1;
-          option.textContent = `Capítulo ${idx + 1}`;
-          chapterSelector.appendChild(option);
-        });
-      })
-      .catch((error) => {
-        chapterSelector.innerHTML = '<option value="">Error al cargar capítulos</option>';
-        console.error(error);
+      data.forEach((_, idx) => {
+        const option = document.createElement("option");
+        option.value = idx + 1;
+        option.textContent = `Capítulo ${idx + 1}`;
+        chapterSelector.appendChild(option);
       });
-  }
+    })
+    .catch(error => {
+      chapterSelector.innerHTML = '<option value="">Error al cargar capítulos</option>';
+      console.error(error);
+    });
+}
 
-  // Mostrar contenido del capítulo seleccionado
-  // Mostrar contenido del capítulo seleccionado
+// Mostrar contenido del capítulo seleccionado
 function mostrarCapitulo() {
   const chapterSelector = document.getElementById("chapterSelector");
-  const chapterContent = document.getElementById("chapterContentSidebar"); // Cambiado al contenedor dentro del sidebar
+  const chapterContent = document.getElementById("chapterContentSidebar");
   const chapterIndex = parseInt(chapterSelector.value, 10) - 1;
 
   if (!dataCache || !dataCache[chapterIndex]) {
@@ -138,9 +121,7 @@ function mostrarCapitulo() {
     return;
   }
 
-  // Mostrar los versículos del capítulo dentro del sidebar
-  const chapterData = dataCache[chapterIndex];
-  chapterContent.innerHTML = chapterData
+  chapterContent.innerHTML = dataCache[chapterIndex]
     .map((verso, idx) => `<p><b>${chapterIndex + 1}:${idx + 1}</b> - ${verso}</p>`)
     .join("");
 }
