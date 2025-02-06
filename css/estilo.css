@@ -17,9 +17,14 @@ h1 {
 
 /* Estilos específicos para el menú desplegable */
 .dropdown-label {
-  margin-bottom: 5px; /* Espacio entre el label y el select */
-  font-size: 14px; /* Ajusta el tamaño del texto si es necesario */
+  margin-bottom: 2px; /* Espacio entre el label y el select */
+  font-size: 12px; /* Ajusta el tamaño del texto si es necesario */
 }
+.form-label {
+  margin-bottom: 2px; /* Espacio entre el label y el select */
+  font-size: 12px; /* Ajusta el tamaño del texto si es necesario */
+}
+
 .dropdown-content {
   display: none; /* Inicialmente oculto */
   position: absolute;
