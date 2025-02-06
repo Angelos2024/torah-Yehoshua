@@ -188,7 +188,7 @@ margin-top: 10px;
 
 #sidebar2 {
   width: 0; /* Oculto por defecto */
-  position: fixed; /* Debe ser fixed para afectar otros elementos */
+  position: fixed;
   z-index: 200; /* Más alto para que quede encima */
   top: 115px;
   left: 0;
@@ -198,7 +198,7 @@ margin-top: 10px;
   transition: width 0.4s ease;
   padding-top: 20px;
   color: white;
-  height: 100vh; /* Que ocupe toda la altura */
+  height: 200vh; /* Que ocupe toda la altura */
 }
 
 
@@ -214,7 +214,7 @@ margin-top: 10px;
     border-radius: 30px;
     padding-left: 35px;
     border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
     border-top-right-radius: 2rem !important; /* Ajusta según el nivel de redondez deseado */
     border-bottom-right-radius: 2rem !important;
   }
@@ -243,13 +243,13 @@ margin-top: 10px;
 
  <style>
 #comentarios {
-    position: absolute;
+    position: fixed;
     right: -6px;
-    top: 70px;
+    top: 45px;
     width: 26%;
     height: 200vh;
     margin-top: 25px;
-    background-color: #282828;
+    background-color: black;
     color: white;
     border: 1px solid #ccc;
     padding: 15px;
@@ -257,6 +257,10 @@ margin-top: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease-in-out; /* Transición suave */
+    direction: rtl; /* Invierte la dirección del contenido */
+}
+#comentarios * {
+    direction: ltr; /* Restaura la dirección normal del contenido interno */
 }
 
 
@@ -611,6 +615,13 @@ display: inline-block; /* Asegura que solo ocupe el espacio del ícono */
   margin-left: 700px; /* Mantiene la separación */
   padding: 0; /* Elimina espacios adicionales */
 }
+
+
+.versiculo-activo {
+    background-color: yellow;
+    font-weight: bold;
+}
+
 </style>
 <script>
 function ajustarMargen() {
@@ -658,6 +669,28 @@ window.onresize = ajustarMargen;
 
 
 <style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff; /* Color de fondo */
+    z-index: 800; /* Asegura que esté por encima del contenido */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+}
+
+body {
+    padding-top: 80px; /* Ajusta este valor según la altura del header */
+}
+
+  .section-header {
+    position: sticky;
+    top: 63px;
+    width: 100%;
+    background: #fff; /* Color de fondo */
+    z-index: 1000; /* Asegura que esté por encima del contenido */
+}
+
 /* Estilo base del botón de comentarios */
 .custom-btn {
 font-size: 14px;
@@ -710,6 +743,7 @@ font-size: 14px;
    max-width: 600px !important;
     margin: auto;
     color: #333;
+    margin-top: 75px;
     line-height: 1.6;">
 
 
@@ -882,40 +916,59 @@ body.sidebar2-open #prevPage {
 
 
    <div class="dropdown-container">
-  
-        <!-- Dropdown de versiones -->
-        <div id="versionDropdown" class="dropdown">
-          <label for="versionSelector" class="dropdown-label">Versión:</label>
-          <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
+    <!-- Dropdown de versiones -->
+    <div id="versionDropdown" class="dropdown">
+        <label for="versionSelector" class="dropdown-label">Versión:</label>
+        <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
             <option value="RVR1960">Reina-Valera 1960</option>
             <option value="Americas">Las Américas</option>
             <option value="Jubileos">Biblia Jubileos</option>
-          </select>
-        </div>
+        </select>
+    </div>
 
-        <!-- Dropdown de libros -->
-        <div id="bookDropdown" class="dropdown"class="mb-3">
-          <label for="bookSelector" class="dropdown-label">Libro:</label>
-          <select id="bookSelector" class="book-dropdown" onchange="cargarCapitulos()">
+    <!-- Dropdown de libros -->
+    <div id="bookDropdown" class="dropdown">
+        <label for="bookSelector" class="dropdown-label">Libro:</label>
+        <select id="bookSelector" class="book-dropdown" onchange="cargarCapitulos()">
             <option value="">Selecciona un libro</option>
-          </select>
-        </div>
+        </select>
+    </div>
 
-        <!-- Dropdown de capítulos -->
-        <div id="chapterDropdown" class="dropdown" class="mb-3">
-          <label for="chapterSelector" class="form-label">Capítulo:</label>
-          <select id="chapterSelector" class="chapter-dropdown" onchange="mostrarCapitulo()">
+    <!-- Dropdown de capítulos -->
+    <div id="chapterDropdown" class="dropdown">
+        <label for="chapterSelector" class="dropdown-label">Capítulo:</label>
+        <select id="chapterSelector" class="chapter-dropdown" onchange="mostrarCapitulo()">
             <option value="">Selecciona un capítulo</option>
-          </select>
-        </div>
+        </select>
+
+    </div>
+
+    <!-- Espacio vacío para respetar la grid -->
+    <div></div>
+
+    <!-- Botón en la 4ta celda -->
+    <div id="syncButtonContainer">
+        <button id="syncVersionButton" class="btn" style="background-color: #fff !important;
+    border-color: #6D3961 !important;
+    box-shadow: 0 0 10px black;
+    height: 22px;
+    
+    color: #000 !important;" onclick="sincronizarVersion()">Sincronizar</button>
+    </div>
+</div>
 
 
 
-       <!-- Contenedor para contenido de capítulos --></div>
+
+
+
+       <!-- Contenedor para contenido de capítulos -->
       <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
     </div>
 
     
+<!-- Contenedor del sidebar donde se mostrará la versión sincronizada -->
+<div id="chapterContentSidebar" class="mt-3"></div>
 
 
 
@@ -939,6 +992,40 @@ body.sidebar2-open #prevPage {
 </div>
 
 <style>
+
+
+.dropdown-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    gap: 10px; /* Espaciado uniforme */
+    align-items: center; /* Alinea verticalmente */
+}
+
+/* Mantener el dropdown de capítulo en la segunda fila, primera columna */
+#chapterDropdown {
+    grid-column: 1; /* Primera columna */
+    grid-row: 2; /* Segunda fila */
+}
+
+/* Mover el botón al espacio vacío (segunda fila, segunda columna) */
+#syncButtonContainer {
+    grid-column: 2; /* Segunda columna */
+    grid-row: 2; /* Segunda fila */
+    text-align: center; /* Centrar el botón en su celda */
+}
+
+/* Ajustar tamaño del botón para que coincida con los dropdowns */
+#syncVersionButton {
+    width: 100%; /* Ocupar toda la celda */
+    height: 32px; /* Puedes hacer el botón más pequeño */
+    font-size: 14px; /* Ajustar tamaño del texto */
+    display: flex; /* Habilitar flexbox */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    text-align: center; /* Asegurar alineación del texto */
+    padding: 5px 10px; /* Espaciado interno */
+}
 
 #contenedor-botones {
     position: fixed;  /* Mantiene los botones fijos en la pantalla */
@@ -1214,20 +1301,37 @@ document.querySelectorAll("#dropdownMenu a").forEach(item => {
   const nextPageButton = document.getElementById("nextPage");
 
 async function showFullChapter(libro, capitulo) {
-    currentBook = libro; // Actualizar el libro actual
-    currentChapter = capitulo; // Actualizar el capítulo actual
+    currentBook = libro;
+    currentChapter = capitulo;
+
     const datos = await fetchAllJsonData();
     if (!datos[libro] || !datos[libro][capitulo]) return;
 
-   resultsContainer.innerHTML = `<h2 class="titulo-capitulo">${libro} ${capitulo}</h2>`;
+    // **Confirmar que estamos cargando el capítulo correcto**
+    console.log(`Mostrando en versión hebrea: ${libro} ${capitulo}`);
 
+    resultsContainer.innerHTML = `<h2 class="titulo-capitulo">${libro} ${capitulo}</h2>`;
 
     Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
         let li = document.createElement("li");
-        li.innerHTML = `${numVerso}. ${texto}`; // Cambiar el formato a "1. texto"
+        li.innerHTML = `<b>${numVerso}.</b> ${texto}`;
         resultsContainer.appendChild(li);
     });
 
+    // **No sincronizar automáticamente al cambiar de capítulo**
+    console.log("La versión paralela se mantiene en el último capítulo sincronizado.");
+
+
+
+
+
+function seleccionarVersiculo(elemento) {
+    // Quitar la selección de otros versículos
+    document.querySelectorAll(".versiculo").forEach(v => v.classList.remove("versiculo-activo"));
+
+    // Marcar el versículo seleccionado como activo
+    elemento.classList.add("versiculo-activo");
+}
 
 
     aplicarFuenteGuardada(); // Aplicar la fuente después de actualizar el capítulo
