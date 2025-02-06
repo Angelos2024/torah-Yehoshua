@@ -53,13 +53,80 @@ document.addEventListener("DOMContentLoaded", () => {
   cargarLibros(versionesBiblia[currentVersion]);
 });
 
-// Cambiar versión y cargar libros
-function cambiarVersion() {
-  currentVersion = document.getElementById("versionSelector").value;
-  currentBook = null; // Resetear libro actual
-  dataCache = {}; // Limpiar caché de capítulos
-  cargarLibros(versionesBiblia[currentVersion]); // Cargar nuevos libros
+
+async function sincronizarVersion() {
+    // Verificar si hay un libro y capítulo cargado en la versión hebrea
+    if (!currentBook || !currentChapter) {
+        alert("Navega a un capítulo en la versión hebrea antes de sincronizar.");
+        return;
+    }
+
+    console.log(`Sincronizando desde la Biblia hebrea: ${currentBook} ${currentChapter}`);
+
+    // Obtener selectores de la Biblia paralela
+    let bookSelector = document.getElementById("bookSelector");
+    let chapterSelector = document.getElementById("chapterSelector");
+
+    // **1. Si el libro en la Biblia paralela no coincide, actualizarlo**
+    if (bookSelector.value !== currentBook) {
+        console.log(`Cambiando libro en Biblia paralela de ${bookSelector.value} a ${currentBook}`);
+        bookSelector.value = currentBook;
+        bookSelector.dispatchEvent(new Event("change")); // Simular cambio de libro
+        await new Promise(resolve => setTimeout(resolve, 500)); // Esperar carga de capítulos
+    }
+
+    // **2. Si el capítulo en la Biblia paralela no coincide, actualizarlo**
+    if (chapterSelector.value !== currentChapter) {
+        console.log(`Cambiando capítulo en Biblia paralela de ${chapterSelector.value} a ${currentChapter}`);
+        chapterSelector.value = currentChapter;
+        chapterSelector.dispatchEvent(new Event("change")); // Simular cambio de capítulo
+    }
+
+    // **3. Obtener la versión seleccionada en el sidebar**
+    const versionSeleccionada = document.getElementById("versionSelector").value;
+    
+    // **4. Buscar la URL de la versión seleccionada según el libro en la versión hebrea**
+    const url = versionesBiblia[versionSeleccionada]?.[currentBook];
+
+    if (!url) {
+        alert("Este libro no está disponible en la versión seleccionada.");
+        return;
+    }
+
+    try {
+        // **5. Obtener los datos de la versión seleccionada**
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Error al cargar la versión seleccionada.");
+        const datosVersion = await response.json();
+
+        // **6. Validar que el capítulo realmente existe en la versión seleccionada**
+        if (!datosVersion[currentChapter - 1]) {
+            alert("Este capítulo no está disponible en la versión seleccionada.");
+            return;
+        }
+
+        // **7. Limpiar el contenido previo del sidebar antes de mostrar el nuevo capítulo**
+        const sidebarContent = document.getElementById("chapterContentSidebar");
+        sidebarContent.innerHTML = "";
+
+        // **8. Mostrar todos los versículos del capítulo en el sidebar**
+        console.log(`Mostrando contenido: ${currentBook} ${currentChapter} - ${versionSeleccionada}`);
+      sidebarContent.innerHTML = `<h3 style="font-size: 14px; margin-bottom: 5px;">${currentBook} ${currentChapter} - ${versionSeleccionada}</h3>`;
+        datosVersion[currentChapter - 1].forEach((texto, idx) => {
+            let p = document.createElement("p");
+            p.innerHTML = `<b>${currentChapter}:${idx + 1}</b> - ${texto}`;
+            sidebarContent.appendChild(p);
+        });
+
+    } catch (error) {
+        console.error(error);
+        alert("Hubo un error al cargar la versión seleccionada.");
+    }
 }
+
+
+
+
 
 // Cargar los libros en el dropdown y limpiar capítulos
 function cargarLibros(libros) {
@@ -74,7 +141,20 @@ function cargarLibros(libros) {
     option.textContent = bookName;
     bookSelector.appendChild(option);
   }
+
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  cargarLibros(versionesBiblia[currentVersion]);
+
+  // Agregar evento para actualizar currentBook cuando el usuario cambia manualmente el libro
+  document.getElementById("bookSelector").addEventListener("change", function () {
+    currentBook = this.value; // Actualizar el libro actual
+    cargarCapitulos(); // Cargar los capítulos del nuevo libro
+  });
+});
+
+
 
 // Cargar capítulos cuando se seleccione un libro
 function cargarCapitulos() {
