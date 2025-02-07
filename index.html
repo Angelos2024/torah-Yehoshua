@@ -20,17 +20,17 @@
                                 }
                                 /* Track */
                                 ::-webkit-scrollbar-track {
-                                  background: #f1f1f1; 
+                                  background: grey; 
                                 }
                                  
                                 /* Handle */
                                 ::-webkit-scrollbar-thumb {
-                                  background: #888; 
+                                  background: black; 
                                 }
                                 
                                 /* Handle on hover */
                                 ::-webkit-scrollbar-thumb:hover {
-                                  background: #555; 
+                                  background: black; 
                                 } body{
 
     background-color:white;
@@ -92,7 +92,7 @@ li {
 
     #mySidebar {
       width: 0; /* Ancho inicial */
-  position: absolute; /* Sidebar fijo, pero sin necesidad de especificar top, right */
+  position: fixed; /* Sidebar fijo, pero sin necesidad de especificar top, right */
   z-index: 10;
   height: 100%;
   top: 115px; /* Espacio desde la parte superior */
@@ -124,9 +124,10 @@ transition: width 0.4s ease, transform 0.4s ease;
 }
 #main.shifted {
   margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
-  transition: margin-right 0.4s ease; /* Animación suave */
+  
 }
   
+
   #searchTermContainer {
     font-size: 18px;
     padding: 10px;
@@ -149,10 +150,6 @@ margin-top: 10px;
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
  }
    #imgCopiar:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
- }
-
-  #imgParalelo:hover {
   transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
  }
 
@@ -535,7 +532,7 @@ transform: scale(1.2);
 
 /* Estilo de los enlaces dentro del menú */
 .custom-dropdown-content a {
-  color: #6D3961;
+  color: #black;
   padding: 8px 15px;
   text-decoration: none;
   display: block;
@@ -857,7 +854,7 @@ h5 {
     class="btn border-0 bg-transparent p-0" 
     style="position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
     <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1);">
+      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1); ">
     </div>
   </button>
 </div>
@@ -874,7 +871,7 @@ body.sidebar2-open #prevPage {
 }
 /* Cuando se abre, el ancho debe ser fijo */
 .sidebar2-open #sidebar2 {
-  width: 300px;
+  width: 301px;
   left: 0;
 }
 /* Mover nextPage cuando mySidebar está abierto */
@@ -886,31 +883,50 @@ body.sidebar2-open #prevPage {
 
 
 </style>
+
  <!-- Sidebar -->
-   
 <div id="mySidebar" class="col-md-3">
-      <div id="menuSidebar" class="p-3">
-
-        <button onclick="mostrarSeccion('critico')">Aparato Crítico NA28</button>
-        <button onclick="mostrarSeccion('mapas')">Mapas</button>
-      </div>
-      <div id="contenidoSidebar" class="p-3">
-        <div id="critico" class="seccionSidebar" style="display: none;">
-          <p>Contenido del Aparato Crítico NA28</p>
-        </div>
-        <div id="mapas" class="seccionSidebar" style="display: none;">
-          <p><a href="#" onclick="abrirModal('https://i.imgur.com/kYBZVlB.jpeg')">Mapa de los pueblos</a></p>
-          <p><a href="#" onclick="abrirModal('https://i.imgur.com/zLScQV2.png')">Mapa del éxodo</a></p>
-           <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a></p>
-        <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a></p>
-        <p><a href="#" onclick="abrirModal('https://i.imgur.com/95ex03o.png')">Viajes de Saul (Pablo)</a></p>
-        <p><a href="#" onclick="abrirModal('https://i.imgur.com/BiTNN4L.png')">Lugares donde Yehoshúa' vivió y enseñó</a></p>
-        </div>
-   
-</div>
-
+  <div id="menuSidebar" class="p-3">
+    <!-- Botones principales -->
+    <button onclick="toggleSubButtons('critico')">Aparato Crítico NA28</button>
+    <button onclick="toggleSeccion('mapas')">Mapas</button>
   </div>
 
+  <!-- Botones de "Aparato Crítico NA28" -->
+  <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; flex-direction: column; gap: 5px; display: none;">
+    <button onclick="mostrarSeccion('verso2')">Verso 2</button>
+    <button onclick="mostrarSeccion('verso4')">Verso 4</button>
+  </div>
+
+  <div id="contenidoSidebar" class="p-3">
+    <!-- Contenido de los versos -->
+    <div id="verso2" class="seccionSidebar" style="display: none;">
+      
+
+<object type="text/html" data="na28/2ts1/verso2.html" width="100%" height="405px"></object>
+
+
+    </div>
+
+    <div id="verso4" class="seccionSidebar" style="display: none;">
+      
+      <object type="text/html" data="na28/2ts1/verso4.html" width="100%" height="405px"></object>
+    </div>
+
+    <!-- Contenido de Mapas -->
+    <div id="mapas" class="seccionSidebar" style="display: none;">
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/kYBZVlB.jpeg')">Mapa de los pueblos</a></p>
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/zLScQV2.png')">Mapa del éxodo</a></p>
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a></p>
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a></p>
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/95ex03o.png')">Viajes de Saúl (Pablo)</a></p>
+      <p><a href="#" onclick="abrirModal('https://i.imgur.com/BiTNN4L.png')">Lugares donde Yehoshúa' vivió y enseñó</a></p>
+    </div>
+  </div>
+</div>
+
+
+  <script src="na28/js/fu8.js"></script>
 <!-- Sidebar paralelo -->
 <div id="sidebar2" class="col-md-3">
 
@@ -978,7 +994,7 @@ body.sidebar2-open #prevPage {
     <!-- Modal -->
     <div id="modal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);">
       <span class="close" onclick="cerrarModal()" style="color: white; position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 2rem;">&times;</span>
-      <img id="modalImg" class="modal-content" alt="Imagen" style="margin: auto; display: block; max-width: 90%; max-height: 90%;">
+      <img id="modalImg" class="modal-content" alt="Imagen" style="padding-top: 20px;">
       <div id="caption" style="color: white; text-align: center; padding: 10px;"></div>
     </div>
   
@@ -993,6 +1009,12 @@ body.sidebar2-open #prevPage {
 
 <style>
 
+.modal-img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    margin: auto;
+}
 
 .dropdown-container {
     display: grid;
@@ -1112,6 +1134,38 @@ body.sidebar2-open #prevPage {
             box-shadow: 0 0 10px black;
         }
 
+
+.con-variantes {
+    position: relative;
+    padding-right: 25px; /* Espacio para el botón */
+}
+
+.versiculo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px; /* Espacio para evitar que el botón 📖 cubra el texto */
+    position: relative;
+}
+
+.texto-verso {
+    flex: 1; /* Hace que el texto ocupe todo el espacio disponible */
+    margin-right: 10px; /* Deja espacio al botón 📖 */
+}
+
+.btn-na28 {
+    font-size: 12px;
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-na28:hover {
+    background: black;
+}
         #select-selected2 {
             background-color: white;
             color: black;
@@ -1307,20 +1361,42 @@ async function showFullChapter(libro, capitulo) {
     const datos = await fetchAllJsonData();
     if (!datos[libro] || !datos[libro][capitulo]) return;
 
-    // **Confirmar que estamos cargando el capítulo correcto**
     console.log(`Mostrando en versión hebrea: ${libro} ${capitulo}`);
 
     resultsContainer.innerHTML = `<h2 class="titulo-capitulo">${libro} ${capitulo}</h2>`;
 
     Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
         let li = document.createElement("li");
-        li.innerHTML = `<b>${numVerso}.</b> ${texto}`;
+        li.classList.add("versiculo");
+        li.setAttribute("data-libro", libro);
+        li.setAttribute("data-capitulo", capitulo);
+        li.setAttribute("data-versiculo", numVerso);
+
+        // Crear contenedor para texto y botón
+        let divTexto = document.createElement("span");
+        divTexto.innerHTML = `<b>${numVerso}.</b> ${texto}`;
+        divTexto.classList.add("texto-verso");
+
+        li.appendChild(divTexto);
+
+        // Construir clave para buscar en el mapa
+        let claveVerso = `${libro} ${capitulo}:${numVerso}`;
+
+        // Buscar el ID correcto en el mapa de NA28
+        let idNA28 = na28Map[claveVerso];
+
+        // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
+        if (idNA28 && document.getElementById(idNA28)) {
+            li.classList.add("con-variantes"); // Resaltar versículos con variantes
+            let boton = document.createElement("button");
+            boton.innerText = "📖"; // Icono pequeño
+            boton.classList.add("btn-na28");
+            boton.onclick = () => mostrarComentarioNA28(idNA28);
+            li.appendChild(boton);
+        }
+
         resultsContainer.appendChild(li);
     });
-
-    // **No sincronizar automáticamente al cambiar de capítulo**
-    console.log("La versión paralela se mantiene en el último capítulo sincronizado.");
-
 
 
 
