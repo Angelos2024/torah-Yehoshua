@@ -14,7 +14,7 @@
     #versionDropdown, #bookDropdown, #chapterDropdown {
         display: flex;
   flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 5px; /* Espacio entre dropdowns */
+  margin-bottom: 15px; /* Espacio entre dropdowns */
     }
 
     select {
