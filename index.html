@@ -166,10 +166,14 @@ margin-top: 10px;
         <!-- Buscador y Botón -->
         <div class="d-flex flex-nowrap align-items-center justify-content-between">
 
-          <!-- Logo -->
-         <div class="flex-shrink-0 me-3" style="margin-left: 5px;" >
-          <img class="d-none d-md-flex" src="css/2303332_ico_edited.png" width="45" alt="Logo">
-        </div>
+<!-- Logo como botón con enlace sin abrir nueva ventana -->
+<a href="https://www.torah-con-yehoshua-hamashiaj.com" class="flex-shrink-0 me-3 img-tooltip-container" style="margin-left: 5px;" data-bs-toggle="tooltip" title="Volver a inicio">
+    <img id="logo" class="d-none d-md-flex" src="https://imgur.com/92Fz1V9.png" width="45" alt="Logo">
+</a>
+
+
+
+
             <!-- Campo de Búsqueda -->
               <div class="flex-grow-1 me-2">
               <div class="input-group">
@@ -184,6 +188,7 @@ margin-top: 10px;
 }
 
 #sidebar2 {
+
   width: 0; /* Oculto por defecto */
   position: fixed;
   z-index: 200; /* Más alto para que quede encima */
@@ -196,6 +201,22 @@ margin-top: 10px;
   padding-top: 20px;
   color: white;
   height: 200vh; /* Que ocupe toda la altura */
+}
+#chapterContentSidebar::-webkit-scrollbar {
+  width: 8px;
+}
+
+#chapterContentSidebar::-webkit-scrollbar-track {
+  background:  white !important; /* Fondo negro */
+}
+
+#chapterContentSidebar::-webkit-scrollbar-thumb {
+  background: #777; /* Scroll gris */
+  border-radius: 10px;
+}
+
+#chapterContentSidebar::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Más oscuro al pasar el mouse */
 }
 
 
@@ -271,7 +292,7 @@ margin-top: 10px;
         
         <!-- Contenedor de Comentarios -->
         <div id="comentarios" style="display: none; z-index: 2; margin-top: 68px;">
-          <h3>Comentarios</h3>
+          <h6 style="background-color:white; color: black; font-family: 'Playfair Display', serif;">Comentarios Eric de Jesús Rodriguez</h6>
           <div id="contenidoComentarios">
             <!-- Aquí se cargarán los comentarios -->
           </div>
@@ -643,13 +664,13 @@ window.onload = ajustarMargen;
 window.onresize = ajustarMargen;
 </script>
      <!-- Botón para mostrar/ocultar opciones -->
-    <button id="fuentess"class="toggle-btn" style="background-color: white; margin-left: 600px;    border: 2px solid black;
-    border-radius: 5px;
-    padding: 3px;
-    cursor: pointer; border-color:black;" onclick="toggleOpciones()">
-
+    <!-- Botón con tooltip -->
+<button id="fuentess" class="toggle-btn" style="background-color: white; margin-left: 600px; border: 2px solid black;
+    border-radius: 5px; padding: 3px; cursor: pointer; border-color:black;" 
+    onclick="toggleOpciones()" data-bs-toggle="tooltip" title="Fuente">
     <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
 </button>
+
 
  <!-- Botón de Menú (Aparato Crítico) -->
     <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Aparato crítico" style="margin-left:-10px;">
@@ -880,38 +901,66 @@ body.sidebar2-open #prevPage {
     transition: right 0.3s ease-in-out;
 }
 
+#subButtonsCritico button {
+    background-color: #f0f0f0;
+    color: #000;
+    border: 2px solid #ccc;
+     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, transform 0.2s;
+    border-radius: 20px; /* Bordes redondeados */
+    font-size: 14px;
+    font-weight: bold;
+    outline: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 155px;
+    height: 24px;
+
+    text-align: center;
+}
+#subButtonsCritico button:first-child {
+    margin-left: 20px;
+}
+
+#subButtonsCritico button:last-child {
+    margin-right: 30px;
+}
+
+#subButtonsCritico button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05); /* Efecto sutil al pasar el mouse */
+}
+
+#subButtonsCritico button.activo {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #0056b3;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+}
 
 
 </style>
 
  <!-- Sidebar -->
 <div id="mySidebar" class="col-md-3">
-  <div id="menuSidebar" class="p-3">
-    <!-- Botones principales -->
-    <button onclick="toggleSubButtons('critico')">Aparato Crítico NA28</button>
-    <button onclick="toggleSeccion('mapas')">Mapas</button>
-  </div>
+    <div id="menuSidebar" class="p-3">
+        <button onclick="toggleSubButtons('critico')">Aparato Crítico NA28</button>
+        <button onclick="toggleSeccion('mapas')">Mapas</button>
+    </div>
+ <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; justify-content: space-between; gap: 30px; width: 100%;">
+    <button onclick="setModoLectura('avanzado')">Lectura Avanzada</button>
+    <button onclick="setModoLectura('simple')">Lectura Simple</button>
+</div>
 
-  <!-- Botones de "Aparato Crítico NA28" -->
-  <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; flex-direction: column; gap: 5px; display: none;">
-    <button onclick="mostrarSeccion('verso2')">Verso 2</button>
-    <button onclick="mostrarSeccion('verso4')">Verso 4</button>
-  </div>
+
 
   <div id="contenidoSidebar" class="p-3">
+    
+
+
     <!-- Contenido de los versos -->
-    <div id="verso2" class="seccionSidebar" style="display: none;">
-      
-
-<object type="text/html" data="na28/2ts1/verso2.html" width="100%" height="405px"></object>
+<script src="na28/js/comentarios.js"></script>
 
 
-    </div>
-
-    <div id="verso4" class="seccionSidebar" style="display: none;">
-      
-      <object type="text/html" data="na28/2ts1/verso4.html" width="100%" height="405px"></object>
-    </div>
 
     <!-- Contenido de Mapas -->
     <div id="mapas" class="seccionSidebar" style="display: none;">
@@ -927,6 +976,7 @@ body.sidebar2-open #prevPage {
 
 
   <script src="na28/js/fu8.js"></script>
+  
 <!-- Sidebar paralelo -->
 <div id="sidebar2" class="col-md-3">
 
@@ -937,7 +987,7 @@ body.sidebar2-open #prevPage {
         <label for="versionSelector" class="dropdown-label">Versión:</label>
         <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
             <option value="RVR1960">Reina-Valera 1960</option>
-            <option value="Americas">Las Américas</option>
+            <option value="Btx4">Biblia Textual 4</option>
             <option value="Jubileos">Biblia Jubileos</option>
         </select>
     </div>
@@ -1107,7 +1157,11 @@ body.sidebar2-open #prevPage {
   <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
   <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
    <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
+   <br>
+   <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
 </div>
+
+
  <style>
 
 
@@ -1823,14 +1877,7 @@ searchInput.addEventListener("keypress", event => {
     });
   }
 
-function mostrarSeccion(seccion) {
-  const secciones = document.querySelectorAll(".seccionSidebar");
-  secciones.forEach(sec => (sec.style.display = "none")); // Oculta todas las secciones
-  const seccionSeleccionada = document.getElementById(seccion);
-  if (seccionSeleccionada) {
-    seccionSeleccionada.style.display = "block"; // Muestra la sección seleccionada
-  }
-}
+
 function copiarContenido() {
   const resultados = document.getElementById("results");
   const texto = resultados.innerText; // Obtiene el texto de los resultados
