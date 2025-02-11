@@ -41,7 +41,7 @@
       "Exodo": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/exodo.json",
       "Levitico": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/levitico.json",
       "Numeros": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/numeros.json",
-      "Deuteronomios": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/deuteronomio.json",
+      "Deuteronomios": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/deuteronomios.json",
       "Josue": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/josue.json",
       "Jueces": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/jueces.json",
       "Rut": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/rut.json",
@@ -102,7 +102,7 @@
       "1Timoteo": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/1timoteo.json",
       "2Timoteo": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/2timoteo.json",
       "Tito": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/tito.json",
-      "Apocalipsis": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/apo.json"
+      "Apocalipsis": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/apocalipsis.json"
           },
     Jubileos: {}
   };
