@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "verso10": "na28/2ts1/verso10.html",
         "verso11": "na28/2ts1/verso11.html",
         "verso12": "na28/2ts1/verso12.html",
+        "heb1_1": "na28/heb1/heb1.html",
        
         // Agrega más comentarios aquí
     };
