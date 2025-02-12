@@ -104,30 +104,49 @@ function actualizarContenidoSeccion(idNA28) {
     seccion.style.display = "block";
 }
 
-// 🔥 Funciones separadas para abrir/cerrar el sidebar con animación
 function abrirSidebar() {
     const sidebar = document.getElementById("mySidebar");
     const main = document.getElementById("main");
+    const nextPageButton = document.getElementById("nextPage");
 
+    // Mostrar el sidebar sin usar display: block directamente
     sidebar.style.display = "block"; 
+
+    // Abrir el sidebar con animación
     setTimeout(() => {
         sidebar.classList.add("open");
         main.classList.add("shifted");
+        document.body.classList.add("sidebar-open");
     }, 10);
+
+    // Mover el botón de "Página Siguiente" al abrir el sidebar
+    if (nextPageButton) {
+        nextPageButton.style.right = "350px"; // Ajusta según necesidad
+    }
 }
 
 function cerrarSidebar() {
     const sidebar = document.getElementById("mySidebar");
     const main = document.getElementById("main");
+    const nextPageButton = document.getElementById("nextPage");
 
     sidebar.classList.remove("open");
     main.classList.remove("shifted");
+    document.body.classList.remove("sidebar-open");
 
+    // Mover el botón de "Página Siguiente" inmediatamente antes de ocultar el sidebar
+    if (nextPageButton) {
+        nextPageButton.style.right = "282px"; // Ajusta según necesidad
+    }
+
+    // Sólo ocultamos el sidebar después de la animación
     setTimeout(() => {
-        sidebar.style.display = "none"; 
-    }, 400); // 0.4s para que la animación sea fluida
+        // Esto evita que se oculte el sidebar con display: none
+        if (!sidebar.classList.contains("open")) {
+            sidebar.style.display = "none"; 
+        }
+    }, 400); // 0.4s para la animación fluida
 }
-
 
 
 
@@ -142,9 +161,11 @@ const na28Map = {
     "2Tesalonicenses 1:10": "verso10",// Aquí mapeamos correctamente el verso4 con verso4
     "2Tesalonicenses 1:11": "verso11",
     "2Tesalonicenses 1:12": "verso12",
-    "Hebreos 1:1": "verso1",
-    "Hebreos 1:2": "verso2",
+    "Hebreos 1:1": "hebreos1_1",
+    "Hebreos 1:2": "hebreos1_2",
+    "Hebreos 1:3": "hebreos1_3",
+    "Hebreos 1:4": "hebreos1_4",
+    "Hebreos 1:7": "hebreos1_7",
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
-
