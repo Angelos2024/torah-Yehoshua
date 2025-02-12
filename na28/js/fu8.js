@@ -142,6 +142,7 @@ const na28Map = {
     "2Tesalonicenses 1:10": "verso10",// Aquí mapeamos correctamente el verso4 con verso4
     "2Tesalonicenses 1:11": "verso11",
     "2Tesalonicenses 1:12": "verso12",
+    "Hebreos 1:1": "heb1_1",
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
