@@ -136,10 +136,9 @@ function cerrarSidebar() {
 // Aquí mapeamos los libros 
 const na28Map = {
     "2Tesalonicenses 1:2": "verso2",
-    "2Tesalonicenses 1:4": "verso4",  // Aquí mapeamos correctamente el verso4 con verso4
-    "Gálatas 1:2": "verso2",
-    "Gálatas 1:3": "verso3",
-    "Gálatas 1:5": "verso5",
+    "2Tesalonicenses 1:4": "verso4",
+    "2Tesalonicenses 1:8": "verso8",
+    "2Tesalonicenses 1:9": "verso9",// Aquí mapeamos correctamente el verso4 con verso4
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
