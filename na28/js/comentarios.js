@@ -7,8 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
         "verso10": "na28/2ts1/verso10.html",
         "verso11": "na28/2ts1/verso11.html",
         "verso12": "na28/2ts1/verso12.html",
-        "verso1": "na28/heb1/heb1.html",
-        "verso2": "na28/heb1/heb2.html",
+        "hebreos1_1": "na28/2ts1/hebreos1_1.html",
+        "hebreos1_2": "na28/2ts1/hebreos1_2.html",
+        "hebreos1_3": "na28/2ts1/hebreos1_3.html",
+        "hebreos1_4": "na28/2ts1/hebreos1_4.html",
+        "hebreos1_7": "na28/2ts1/hebreos1_7.html",
        
         // Agrega más comentarios aquí
     };
