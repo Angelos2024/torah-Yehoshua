@@ -3,6 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
         "verso2": "na28/2ts1/verso2.html",
         "verso4": "na28/2ts1/verso4.html",
         "verso8": "na28/2ts1/verso8.html",
+        "verso9": "na28/2ts1/verso9.html",
+        "verso10": "na28/2ts1/verso10.html",
+        "verso11": "na28/2ts1/verso11.html",
+        "verso12": "na28/2ts1/verso12.html",
        
         // Agrega más comentarios aquí
     };
