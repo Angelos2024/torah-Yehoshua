@@ -1297,7 +1297,7 @@ body.sidebar2-open #prevPage {
     <!-- Resultados -->
     <ul id="results" style="margin-top:-23px;" class="list-group col-12 mt-3"></ul>
 
-    <script>
+     <script>
         function customSelect(id) {
             const selectBox = document.getElementById(id);
             const selectedDiv = selectBox.querySelector(".select-selected");
@@ -1383,14 +1383,14 @@ async function showFirstChapter(libro) {
     });
 
     aplicarFuenteGuardada(); // Aplicar la fuente guardada a los nuevos <li>
-
+sidebar.style.display = "none";
 
     // Actualizar navegación
     showFullChapter(libro, primerCapitulo);
 
     // Ocultar mensaje de bienvenida y mostrar resultados
     hideWelcomeMessage();
-    sidebar.style.display = "block";
+    sidebar.style.display = "none";
 
       // **Actualizar comentarios**
     cargarComentariosCapitulo(libro, primerCapitulo);
@@ -1399,15 +1399,23 @@ async function showFirstChapter(libro) {
 
 
 // Añadir evento a cada opción del menú desplegable
+
 document.querySelectorAll("#dropdownMenu a").forEach(item => {
   item.addEventListener("click", event => {
     event.preventDefault();
     const libro = item.getAttribute("data-libro"); // Obtener el libro seleccionado
     if (libro) {
       showFirstChapter(libro);
+
+      // 🔴 Ocultar myDIV al seleccionar un libro desde el dropdown
+      sidebar.style.display = "none";
+
+      // Cerrar el menú desplegable
+      dropdownMenu.style.display = "none";
     }
   });
 });
+
 
    
  const prevPageButton = document.getElementById("prevPage");
@@ -1668,6 +1676,7 @@ async function searchVerses(query) {
   // Verificar si es una búsqueda de versículos específicos o capítulos completos
   const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
   if (match) {
+
     let libro = match[1].trim();
     const capitulo = match[2];
     const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
@@ -1675,52 +1684,61 @@ async function searchVerses(query) {
 
     libro = libroMap[libro] || libro;
     const libroEncontrado = Object.keys(datos).find(key => {
-      return key
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase() === libro
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLowerCase();
+        return key
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase() === libro
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase();
     });
 
     if (libroEncontrado) {
-      const capitulos = datos[libroEncontrado];
-      if (capitulos[capitulo]) {
+        const capitulos = datos[libroEncontrado];
+        if (capitulos[capitulo]) {
 
-        // Lógica de versículo o rango
-        if (versiculoInicio && versiculoFin) {
-          for (let i = versiculoInicio; i <= versiculoFin; i++) {
-            const texto = capitulos[capitulo][i];
-            resultsContainer.innerHTML += texto
-              ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
-                  <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
-                 </li>`
-              : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
-          }
-          return;
-        } else if (versiculoInicio) {
-          const texto = capitulos[capitulo][versiculoInicio];
-          resultsContainer.innerHTML = texto
-            ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
-              <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
-            </li>`
-            : `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
-          return;
+
+            // Ocultar myDIV si es búsqueda de libro/capítulo
+            sidebar.style.display = "none";
+
+            if (versiculoInicio && versiculoFin) {
+                for (let i = versiculoInicio; i <= versiculoFin; i++) {
+                    const texto = capitulos[capitulo][i];
+                    resultsContainer.innerHTML += texto
+                        ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
+                            <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
+                        </li>`
+                        : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
+                }
+                return;
+            } else if (versiculoInicio) {
+                const texto = capitulos[capitulo][versiculoInicio];
+                resultsContainer.innerHTML = texto
+                    ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
+                        <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
+                    </li>`
+                    : `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
+                return;
+            } else {
+                showFullChapter(libroEncontrado, capitulo);
+                cargarComentariosCapitulo(libroEncontrado, capitulo);
+                return;
+            }
         } else {
-          showFullChapter(libroEncontrado, capitulo);
-          cargarComentariosCapitulo(libroEncontrado, capitulo);
-          return;
+            resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
+             // 🔴 Ocultar myDIV si el libro no existe
+        sidebar.style.display = "none";
+            return;
         }
-      } else {
-        resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-        return;
-      }
     } else {
-      resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-      return;
+        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
+
+         // 🔴 Ocultar myDIV si el libro no existe
+        sidebar.style.display = "none";
+        return;
     }
-  }
+}
+
 
   const resultados = [];
   const conteoPorLibro = {};
