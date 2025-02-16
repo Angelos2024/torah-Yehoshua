@@ -2077,30 +2077,7 @@ function aplicarFuenteGuardada() {
 
 </script>
 
-<script>
-    window.addEventListener("message", function(event) {
-        console.log("Mensaje recibido desde Wix:", event.data);
 
-        if (event.data.headerColor) {
-            let header = document.querySelector(".section-header");
-            let navbar = document.querySelector("nav.navbar");
-            let navLinks = document.querySelectorAll("nav.navbar a.nav-link");
-
-            if (header) {
-                header.style.backgroundColor = event.data.headerColor;
-            }
-
-            if (navbar) {
-                navbar.style.backgroundColor = event.data.headerColor;
-                navbar.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
-            }
-
-            navLinks.forEach(link => {
-                link.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
-            });
-        }
-    });
-</script>
 
 
    <script src="js/scriptparalelo.js"></script>
