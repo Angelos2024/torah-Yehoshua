@@ -2079,28 +2079,25 @@ function aplicarFuenteGuardada() {
 
 <script>
     window.addEventListener("message", function(event) {
-        // Verificar que el mensaje venga de Wix
-        if (event.origin.includes("wixsite.com")) {  
-            console.log("Mensaje recibido desde Wix:", event.data);
+        console.log("Mensaje recibido desde Wix:", event.data);
 
-            if (event.data.headerColor) {
-                let header = document.querySelector(".section-header");
-                let navbar = document.querySelector("nav.navbar");
-                let navLinks = document.querySelectorAll("nav.navbar a.nav-link");
+        if (event.data.headerColor) {
+            let header = document.querySelector(".section-header");
+            let navbar = document.querySelector("nav.navbar");
+            let navLinks = document.querySelectorAll("nav.navbar a.nav-link");
 
-                if (header) {
-                    header.style.backgroundColor = event.data.headerColor;
-                }
-
-                if (navbar) {
-                    navbar.style.backgroundColor = event.data.headerColor;
-                    navbar.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
-                }
-
-                navLinks.forEach(link => {
-                    link.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
-                });
+            if (header) {
+                header.style.backgroundColor = event.data.headerColor;
             }
+
+            if (navbar) {
+                navbar.style.backgroundColor = event.data.headerColor;
+                navbar.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
+            }
+
+            navLinks.forEach(link => {
+                link.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
+            });
         }
     });
 </script>
