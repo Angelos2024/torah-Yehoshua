@@ -2078,6 +2078,38 @@ function aplicarFuenteGuardada() {
 </script>
 
 
+<script>
+    window.addEventListener("message", function(event) {
+        if (event.data.width) {
+            document.body.style.width = event.data.width;
+
+            let screenWidth = event.data.screenWidth;
+            let boton = document.getElementById("toggleComentarios");
+
+            if (screenWidth < 768) {
+                boton.style.fontSize = "10px";
+                boton.style.padding = "5px 10px";
+                boton.style.marginTop = "-15px";
+                boton.style.height = "30px";
+                boton.style.width = "124px";
+                boton.style.marginLeft = "-50px";
+                boton.style.backgroundColor = "#000";
+                boton.style.color = "#fff";
+                boton.style.borderColor = "#fff";
+            } else {
+                boton.style.fontSize = "14px";
+                boton.style.padding = "1px 15px";
+                boton.style.marginTop = "-5px";
+                boton.style.marginLeft = "1px";
+                boton.style.height = "auto";
+                boton.style.width = "auto";
+                boton.style.backgroundColor = "#fff";
+                boton.style.color = "#000";
+                boton.style.borderColor = "#000";
+            }
+        }
+    });
+</script>
 
    <script src="js/scriptparalelo.js"></script>
 <!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
