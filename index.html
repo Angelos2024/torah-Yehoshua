@@ -2077,36 +2077,34 @@ function aplicarFuenteGuardada() {
 
 </script>
 
-
 <script>
     window.addEventListener("message", function(event) {
-        console.log("Mensaje recibido en iframe:", event.data); // Para depuración
+        // Verificar que el mensaje venga de Wix
+        if (event.origin.includes("wixsite.com")) {  
+            console.log("Mensaje recibido desde Wix:", event.data);
 
-        if (event.data.width) {
-            document.body.style.width = event.data.width;
+            if (event.data.headerColor) {
+                let header = document.querySelector(".section-header");
+                let navbar = document.querySelector("nav.navbar");
+                let navLinks = document.querySelectorAll("nav.navbar a.nav-link");
 
-            let headerColor = event.data.headerColor;
-            let header = document.querySelector(".section-header"); // Asegúrate de que esta clase es la correcta
-            let navbar = document.querySelector("nav.navbar");
-            let navLinks = document.querySelectorAll("nav.navbar a.nav-link");
+                if (header) {
+                    header.style.backgroundColor = event.data.headerColor;
+                }
 
-            if (header) {
-                header.style.backgroundColor = headerColor;
-                console.log("Header actualizado a:", headerColor); // Para depuración
+                if (navbar) {
+                    navbar.style.backgroundColor = event.data.headerColor;
+                    navbar.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
+                }
+
+                navLinks.forEach(link => {
+                    link.style.color = event.data.headerColor === "#000" ? "#fff" : "#000";
+                });
             }
-
-            if (navbar) {
-                navbar.style.backgroundColor = headerColor;
-                navbar.style.color = headerColor === "#000" ? "#fff" : "#000";
-                console.log("Navbar actualizado"); // Para depuración
-            }
-
-            navLinks.forEach(link => {
-                link.style.color = headerColor === "#000" ? "#fff" : "#000";
-            });
         }
     });
 </script>
+
 
    <script src="js/scriptparalelo.js"></script>
 <!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
