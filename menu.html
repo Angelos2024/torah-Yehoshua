@@ -423,6 +423,12 @@ footer {
         .item a:hover {
             color: #007BFF;
         }
+  @media (min-width: 992px) {
+    .close-menu {
+        display: none !important;
+    }
+}
+
         .buttons {
             margin-top: 10px;
         }
@@ -454,6 +460,7 @@ footer {
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+ 
     <div class="collapse navbar-collapse" id="navbarNav">
         <!-- Botón "X" para cerrar el menú -->
         <button class="close-menu">&times;</button>
@@ -471,26 +478,26 @@ footer {
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     var closeMenuBtn = document.querySelector(".close-menu");
+    var menuToggle = document.querySelector(".navbar-toggler"); 
     var navbarCollapse = document.querySelector("#navbarNav");
-    var menuToggle = document.querySelector(".navbar-toggler"); // Botón de menú hamburguesa
 
-    // Ocultar el botón "X" al inicio
-    closeMenuBtn.style.display = "none";
-
-    // Mostrar "X" cuando se abre el menú en pantallas pequeñas
-    menuToggle.addEventListener("click", function() {
-        if (window.innerWidth <= 992) {
-            closeMenuBtn.style.display = navbarCollapse.classList.contains("show") ? "none" : "block";
-        }
-    });
-
-    // Cerrar menú con "X" y ocultar el botón
+    // Cerrar menú con "X"
     closeMenuBtn.addEventListener("click", function() {
-        navbarCollapse.classList.remove("show");
-        closeMenuBtn.style.display = "none";
+        $(".navbar-collapse").collapse("hide"); // Método de Bootstrap
     });
 
-    // Ocultar el botón "X" si la pantalla es grande
+    // Asegurar que la "X" aparezca solo cuando el menú está abierto
+    $(".navbar-toggler").on("click", function() {
+        setTimeout(() => {
+            if ($(".navbar-collapse").hasClass("show")) {
+                closeMenuBtn.style.display = "block";
+            } else {
+                closeMenuBtn.style.display = "none";
+            }
+        }, 300);
+    });
+
+    // Ocultar "X" cuando se cambia el tamaño de la pantalla
     window.addEventListener("resize", function() {
         if (window.innerWidth > 992) {
             closeMenuBtn.style.display = "none";
