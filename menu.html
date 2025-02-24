@@ -38,115 +38,10 @@
         display: block;
     }
 }
-#boton0 {
-    background-color: #4b2743; /* Color de fondo */
-    color: white; /* Color del texto */
-    border: 2px solid #4b2743; /* Borde opcional */
-    padding: 10px 20px; /* Espaciado interno */
-    font-size: 16px; /* Tamaño de fuente */
-    cursor: pointer; /* Cambia el cursor a una mano */
-    transition: all 0.3s ease; /* Suaviza la transición */
-}
-
-#boton0:hover {
-    background-color: white; /* Fondo blanco al pasar el mouse */
-    color: black; /* Texto negro */
-    border: 2px solid black; /* Borde negro opcional */
-}
 
 
-#descarga{
-
-    font-family: 'Sriracha', cursive;
-    font-size: 24px;
-font-weight: 550; /* SemiBold */
-    }
- #entrada {
-    margin-top: 20px;
-    margin-left: 15px;
-            max-width: 850px;
-            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-            padding: 30px;
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-        }
-
-
-
-/* Contenedor que alinea el video y el contenido */
-.contenido-video {
-    display: flex; /* Usa flexbox para alinear elementos en fila */
-    align-items: center; /* Alinea verticalmente */
-    gap: 20px; /* Espacio entre el video y el contenido */
-    justify-content: flex-start; /* Mantiene los elementos alineados a la izquierda */
-}
-
-/* Contenedor del video */
-/* Contenedor del video */
-.video-box {
-    width: 35%; /* Ajusta el tamaño del video */
-    max-width: 400px;
-    aspect-ratio: 16 / 9; /* Mantiene la proporción del video */
-    margin-left: 20px; /* Márgenes a la izquierda */
-    margin-top: 40px; /* Márgenes arriba para separarlo de otros contenidos */
-}
-
-/* Si el video es muy grande, asegura que no se desborde */
-.video-box iframe {
-    width: 130%;
-    height: 130%;
-}
-
-
-/* Contenedor del texto */
-#intro2 {
-    flex: 1; /* Hace que el contenido ocupe el espacio restante */
-    max-width: 650px;
-}
-
-/* Diseño responsive: apila el video arriba del texto en pantallas pequeñas */
-@media (max-width: 768px) {
-    .contenido-video {
-        flex-direction: column; /* Cambia a diseño vertical */
-        align-items: center; /* Centra el contenido */
-    }
-
-    .video-box {
-        width: 100%; /* Video ocupa el ancho completo */
-        max-width: 100%;
-    }
-
-    #intro2 {
-        text-align: center;
-    }
-}
-
-        #intro2 {
-    margin-top: 20px;
-    margin-right: -340px;
-    text-align: right;
-            background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
-            padding: 30px;
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-        }
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap');
-
-
-.texto-edicion {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 540; /* SemiBold */
-    font-size: 13px;
-    letter-spacing: -0.5px; /* Reduce el espacio entre letras */
-    font-stretch: 110%; /* Hace que la fuente se vea más alargada */
-}
-
-.edicion-numero {
-    font-size: 13px;
-    letter-spacing: -0.5px; /* Ajuste similar para coherencia */
-    font-weight: 540; /* Asegura que tome SemiBold */
-}
 
 
 
@@ -505,4 +400,3 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
-
