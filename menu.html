@@ -1,3 +1,21 @@
+hola<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torah con Yehoshúa HaMashiaj</title>
+    <!-- Enlace a CSS de Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Enlace a tu archivo CSS personalizado -->
+    <link href="css/styles.css" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;600;700&display=swap" rel="stylesheet">
+<!-- Bootstrap JS (asegúrate de incluir jQuery y Popper.js si usas Bootstrap 4) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
  <style>
 #likned {
     display: inline-block;
@@ -153,16 +171,12 @@ footer {
     color: white;
     padding: 20px;
     background-position: center 10%;
-
-}
-
-.hero-section {
     display: flex;
     align-items: flex-start; /* Mueve el contenido hacia arriba */
     padding-top: 50px; /* Ajusta según sea necesario */
 }
 
- @import url('link href="https://fonts.googleapis.com/css2?family=Signika:wght@300;400;600&display=swap" rel="stylesheet"');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;600&display=swap');
 .text-box {
     font-family: 'Signika', sans-serif; /* Aplica la fuente */
      font-weight: 400 !important; /* Hace el texto más delgado */
@@ -270,22 +284,22 @@ footer {
 
 
     /* 🔹 Botón "X" para cerrar el menú */
-    .close-menu {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        font-size: 24px;
-        color: white;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 1100;
-    }
-
-    .close-menu:hover {
-        color: red;
-    }
+.close-menu {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none; /* Oculto por defecto */
 }
+
+ .close-menu:hover {
+    color: red;
+}
+
 
 .grid {
             display: grid;
@@ -317,7 +331,7 @@ footer {
         .item a:hover {
             color: #007BFF;
         }
-  @media (min-width: 992px) {
+@media (min-width: 992px) {
     .close-menu {
         display: none !important;
     }
@@ -341,6 +355,7 @@ footer {
 
  </style>
 
+<!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="d-flex align-items-center text-white">
         <img src="https://imgur.com/60ChKBP.png" alt="Icono" width="35" height="35" class="mr-3">
@@ -350,15 +365,14 @@ footer {
         </div>
     </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <!-- Botón Hamburguesa con ID -->
+    <button class="navbar-toggler" id="menuToggle" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
- 
+
     <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Botón "X" para cerrar el menú -->
-       <!-- Botón de cierre "X" dentro del menú -->
-<button class="close-menu" id="closeMenuBtn">&times;</button>
+        <!-- Botón "X" para cerrar el menú con ID -->
+        <button class="close-menu" id="closeMenuBtn">&times;</button>
 
         <ul class="navbar-nav ml-auto">
             <li class="nav-item"><a class="nav-link" href="#">INICIO</a></li>
@@ -373,24 +387,25 @@ footer {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var menuToggle = document.getElementById("menuToggle");
-    var closeMenuBtn = document.getElementById("closeMenuBtn");
-    var navbarCollapse = document.getElementById("navbarCollapse");
-
-    // Inicializa el colapso de Bootstrap manualmente
-    var bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
+    var menuToggle = document.getElementById("menuToggle");  // Botón del menú hamburguesa
+    var closeMenuBtn = document.getElementById("closeMenuBtn"); // Botón "X" para cerrar
+    var navbarNav = document.getElementById("navbarNav"); // Menú de navegación
 
     // Evento para abrir el menú y mostrar la "X"
     menuToggle.addEventListener("click", function() {
         setTimeout(() => {
-            closeMenuBtn.style.display = navbarCollapse.classList.contains("show") ? "block" : "none";
+            if (navbarNav.classList.contains("show")) {
+                closeMenuBtn.style.display = "block"; // Muestra el botón "X"
+            } else {
+                closeMenuBtn.style.display = "none"; // Oculta el botón "X"
+            }
         }, 100);
     });
 
     // Evento para cerrar el menú al hacer clic en la "X"
     closeMenuBtn.addEventListener("click", function() {
-        bsCollapse.hide();
-        closeMenuBtn.style.display = "none";
+        navbarNav.classList.remove("show"); // Cierra el menú quitando la clase "show"
+        closeMenuBtn.style.display = "none"; // Oculta el botón "X"
     });
 
     // Ocultar la "X" si la pantalla es grande
@@ -400,5 +415,5 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
 </script>
+
