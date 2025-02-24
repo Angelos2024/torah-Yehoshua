@@ -476,27 +476,27 @@ footer {
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    var closeMenuBtn = document.querySelector(".close-menu");
-    var menuToggle = document.querySelector(".navbar-toggler"); 
-    var navbarCollapse = document.querySelector("#navbarNav");
+    var menuToggle = document.getElementById("menuToggle");
+    var closeMenuBtn = document.getElementById("closeMenuBtn");
+    var navbarCollapse = document.getElementById("navbarCollapse");
 
-    // Cerrar menú con "X"
-    closeMenuBtn.addEventListener("click", function() {
-        $(".navbar-collapse").collapse("hide"); // Método de Bootstrap
-    });
+    // Inicializa el colapso de Bootstrap manualmente
+    var bsCollapse = new bootstrap.Collapse(navbarCollapse, { toggle: false });
 
-    // Asegurar que la "X" aparezca solo cuando el menú está abierto
-    $(".navbar-toggler").on("click", function() {
+    // Evento para abrir el menú y mostrar la "X"
+    menuToggle.addEventListener("click", function() {
         setTimeout(() => {
-            if ($(".navbar-collapse").hasClass("show")) {
-                closeMenuBtn.style.display = "block";
-            } else {
-                closeMenuBtn.style.display = "none";
-            }
-        }, 300);
+            closeMenuBtn.style.display = navbarCollapse.classList.contains("show") ? "block" : "none";
+        }, 100);
     });
 
-    // Ocultar "X" cuando se cambia el tamaño de la pantalla
+    // Evento para cerrar el menú al hacer clic en la "X"
+    closeMenuBtn.addEventListener("click", function() {
+        bsCollapse.hide();
+        closeMenuBtn.style.display = "none";
+    });
+
+    // Ocultar la "X" si la pantalla es grande
     window.addEventListener("resize", function() {
         if (window.innerWidth > 992) {
             closeMenuBtn.style.display = "none";
