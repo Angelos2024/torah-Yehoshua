@@ -1663,8 +1663,9 @@ async function searchVerses(query) {
 
   // Mapear abreviaturas a nombres completos
   const libroMap = {
-    gal: "gálatas", Gal: "Gálatas",
-    heb: "hebreos", Heb: "Hebreos",
+   gal: "gálatas", Gal: "Gálatas",
+   "galatas": "Gálatas", "Galatas":"Gálatas", "galatas": "Gálatas",
+    heb: "hebreos", Heb: "Hebreos", "hebreos": "Hebreos", "Hebreos": "Hebreos", "HEBREOS":"Hebreos",
     "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses",
     "1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses",
     "1 tesalonicenses": "1Tesalonicenses", 
