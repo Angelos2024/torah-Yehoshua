@@ -9,7 +9,8 @@
                        
                             
                           
-
+  <link rel="stylesheet" href="css/responsives.css">
+   <link rel="stylesheet" href="css/responsivemovil.css">
        <link rel="stylesheet" href="css/estiloparalelo.css">
        <link rel="stylesheet" href="css/estilo.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -112,7 +113,6 @@ transition: width 0.4s ease, transform 0.4s ease;
     #mySidebar.open {
       transform: translateX(0);
         width: 31%;
-  height: 600px;
   margin-top: 25px;
   top: 90px;
     }
@@ -157,6 +157,32 @@ margin-top: 10px;
 
 
   </style>
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    function checkScreenWidth() {
+        let width = window.innerWidth;
+
+        if (width <= 991) {
+            // Si es menor o igual a 991px, redirigir a la versión móvil
+            if (!window.location.href.includes("versionmovil.html")) {
+                window.location.href = "versionmovil.html";
+            }
+        } else {
+            // Si es mayor a 991px, redirigir a la versión PC
+            if (!window.location.href.includes("index.html")) {
+                window.location.href = "index.html";
+            }
+        }
+    }
+
+    checkScreenWidth(); // Verificar al cargar la página
+
+    // Detectar cambios en el tamaño de la pantalla
+    window.addEventListener("resize", checkScreenWidth);
+});
+</script>
+
 </head>
 <body class="container-fluid">
   <section class="header border-bottom bg-white">
@@ -221,12 +247,6 @@ margin-top: 10px;
   background: #555; /* Más oscuro al pasar el mouse */
 }
 
-
-#sidebar2.open {
-  width: 24%; /* Ancho del sidebar al abrirse */
-  height: 600px; /* Ajusta según tu diseño */
-  top: 115px;
-}
 
 
 .search-input {
@@ -520,20 +540,7 @@ transform: scale(1.2);
   box-shadow: 0 0 10px black;
   color: #000 !important; /* Texto negro al pasar el mouse */
 }
-@media (max-width: 768px) {
-  .custom-dropdown-btn {
 
-    font-size: 10px; /* Reducir el tamaño del texto */
-    padding: 5px 10px; /* Ajustar paddin32*/
-    margin-top: -15px;
-    height:29px;
-    width: 118px;
-    margin-right: -150px;
-     margin-left: -15px;
-    background-color: #000 !important; /* Fondo negro */
-    color: #fff !important; /* Texto blanco */
-    border-color: #fff !important; /* Borde blanco */
-  }
 
 .custom-dropdown-btn:hover {
   background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
@@ -574,10 +581,10 @@ transform: scale(1.2);
 /* Fondo negro solo en pantallas pequeñas */
 @media (max-width: 1068px) {
   header.section-header {
-    background-color: #000 !important; /* Fondo negro */
+    background-color: white !important; /* Fondo negro */
   }
   nav.navbar {
-    background-color: #000 !important; /* Fondo negro para el navbar */
+    background-color: white; !important; /* Fondo negro para el navbar */
     color: #fff; /* Texto blanco */
   }
   nav.navbar a.nav-link {
@@ -588,23 +595,7 @@ transform: scale(1.2);
   }
 }
 
-@media (max-width: 768px) {
-  .header {
-    background-color: #000 !important; /* Fondo negro */
-    color: #fff !important; /* Texto en blanco */
-  }
 
-  .header input,
-  .header .search-icon {
-    color: #fff !important; /* Texto del buscador en blanco */
-  }
-
-  .header .form-control {
-    background-color: #333 !important; /* Fondo del input en gris oscuro */
-    border: 1px solid #555 !important; /* Borde gris oscuro */
-    color: #fff !important;
-  }
-}
 
 .tooltip .tooltip-inner {
   background-color: black !important;
@@ -735,19 +726,7 @@ font-size: 14px;
 
 
 
-@media (max-width: 768px) {
-  .custom-btn {
-    font-size: 10px;
-        padding: 5px 10px;
-        margin-top: -15px;
-        height: 30px;
-        width: 124px;
-        margin-left: -50px;
-        background-color: #000 !important;
-        color: #fff !important;
-        border-color: #fff !important;
-  }
-}
+
 </style>
 
 
@@ -884,28 +863,13 @@ h5 {
 <style>
 /* Ajustar main cuando se abre sidebar2 */
 .sidebar2-open #main {
-  margin-left: 80px; /* Empujar el contenido */
+  margin-left: 10px; /* Empujar el contenido */
   transition: margin-left 0.4s ease-in-out;
 }
 #prevPage, #nextPage {
     z-index: 9999; /* Valor alto para estar por encima de otros elementos */
 }
 
-
-body.sidebar2-open #prevPage {
-  left: 300px !important;
-  transition: left 0.4s ease-in-out;
-}
-/* Cuando se abre, el ancho debe ser fijo */
-.sidebar2-open #sidebar2 {
-  width: 301px;
-  left: 0;
-}
-/* Mover nextPage cuando mySidebar está abierto */
-.sidebar-open #nextPage {
-    right: 350px !important;
-    transition: right 0.3s ease-in-out;
-}
 
 #subButtonsCritico button {
     background-color: #f0f0f0;
@@ -953,8 +917,7 @@ body.sidebar2-open #prevPage {
         <button onclick="toggleSeccion('mapas')">Mapas</button>
     </div>
  <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; justify-content: space-between; gap: 30px; width: 100%;">
-    <button onclick="setModoLectura('avanzado')">Lectura Avanzada</button>
-    <button onclick="setModoLectura('simple')">Lectura Simple</button>
+
 </div>
 
 
@@ -1663,9 +1626,8 @@ async function searchVerses(query) {
 
   // Mapear abreviaturas a nombres completos
   const libroMap = {
-   gal: "gálatas", Gal: "Gálatas",
-   "galatas": "Gálatas", "Galatas":"Gálatas", "galatas": "Gálatas",
-    heb: "hebreos", Heb: "Hebreos", "hebreos": "Hebreos", "Hebreos": "Hebreos", "HEBREOS":"Hebreos",
+    gal: "gálatas", Gal: "Gálatas",
+    heb: "hebreos", Heb: "Hebreos",
     "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses",
     "1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses",
     "1 tesalonicenses": "1Tesalonicenses", 
@@ -1994,62 +1956,6 @@ const state = {
 
  <!-- Script para cambiar imágenes por botones en pantalla chica -->
 <script>
-  function ajustarElementos() {
-    const imgParalelo = document.getElementById("imgParalelo");
-    const imgCopiar = document.getElementById("imgCopiar");
-    const imgMaterial = document.getElementById("imgMaterial");
-
-    const btnParalelo = document.getElementById("btnParalelo");
-    const btnCopiar = document.getElementById("btnCopiar");
-    const btnMaterial = document.getElementById("btnMaterial");
-
-    if (!imgParalelo || !imgCopiar || !imgMaterial || !btnParalelo || !btnCopiar || !btnMaterial) {
-      console.error("No se encontraron algunos elementos. Verifica los IDs en el HTML.");
-      return;
-    }
-
-    console.log("Ancho de pantalla detectado:", window.innerWidth);
-
-    if (window.innerWidth <= 768) {
-      // Ocultar imágenes y mostrar botones
-      imgParalelo.style.display = "none";
-      imgCopiar.style.display = "none";
-      imgMaterial.style.display = "none";
-
-      btnParalelo.style.display = "inline-block";
-      btnCopiar.style.display = "inline-block";
-      btnMaterial.style.display = "inline-block";
-    } else {
-      // Mostrar imágenes y ocultar botones
-      imgParalelo.style.display = "inline-block";
-      imgCopiar.style.display = "inline-block";
-      imgMaterial.style.display = "inline-block";
-
-      btnParalelo.style.display = "none";
-      btnCopiar.style.display = "none";
-      btnMaterial.style.display = "none";
-    }
-
-    // Hacer que los botones tengan la misma funcionalidad que las imágenes
-    btnParalelo.onclick = () => imgParalelo.click();
-    btnCopiar.onclick = () => imgCopiar.click();
-    btnMaterial.onclick = () => imgMaterial.click();
-  }
-
-  // Ejecutar la función al cargar la página y cuando cambie el tamaño de la ventana
-  window.addEventListener("load", ajustarElementos);
-  window.addEventListener("resize", ajustarElementos);
-  window.addEventListener("orientationchange", ajustarElementos);
-
-
-
-    // etiquetas de los botones
-  document.addEventListener("DOMContentLoaded", function () {
-  var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-});
 
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -2086,4 +1992,4 @@ function aplicarFuenteGuardada() {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   </body>
-</html>
+</html> 
