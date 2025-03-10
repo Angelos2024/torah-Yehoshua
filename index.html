@@ -4,161 +4,21 @@
                               
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                                <title>Torah con Yehoshúa'</title>
+                                <title>Snippet - BBBootstrap</title>
                                 <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
                        
                             
                           
-  <link rel="stylesheet" href="css/responsives.css">
+
    <link rel="stylesheet" href="css/responsivemovil.css">
-       <link rel="stylesheet" href="css/estiloparalelo.css">
-       <link rel="stylesheet" href="css/estilo.css">
+
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-                                <style>::-webkit-scrollbar {
-                                  width: 15px;
-                                }
-                                /* Track */
-                                ::-webkit-scrollbar-track {
-                                  background: #eaeaea; 
-                                }
-                                 
-                                /* Handle */
-                                ::-webkit-scrollbar-thumb {
-                                  background: black; 
-                                }
-                                
-                                /* Handle on hover */
-                                ::-webkit-scrollbar-thumb:hover {
-                                  background: black; 
-                                } body{
-
-    background-color:white;
-  padding: 10px;
-  margin: 0;
-  overflow-x: hidden; /* Evita desplazamiento lateral */
-
-
-
-li {
-    list-style: none;
-}
-.titulo-capitulo {
-    font-size: 23px;
-    font-weight: bold;
-    color: #black; /* Azul */
-    text-align: left;
-    margin-left: -80px;
-    margin-bottom: -10px;
-}
-
-
-.form-inputs{
-    position:relative;
-}
-.form-inputs .form-control{
-    height:45px; 
-}
-
-.form-inputs .form-control:focus{
-    box-shadow:none;
-    border:1px solid #000;
-}
-.nav-link {
-  padding: 0 !important;
-  }
-
-.form-inputs i{
-    position:absolute;
-    right:10px;
-    top:15px;
-}
-
-.shop-bag{
-    background-color:#000;
-    color:#fff;
-    height:50px;
-    width:50px;
-    font-size:25px;
-    display:flex;
-    border-radius:50%;
-    align-items:center;
-    justify-content:center;
-}
-
-.qty{
-    font-size:12px;
-}
-
-    #mySidebar {
-      width: 0; /* Ancho inicial */
-  position: fixed; /* Sidebar fijo, pero sin necesidad de especificar top, right */
-  z-index: 10;
-  height: 100%;
-  top: 115px; /* Espacio desde la parte superior */
-  right: 0; /* Posición en la derecha */
-  background-color: #111;
-  overflow-x: hidden;
-  overflow-y: auto; /* Añade scroll vertical si el contenido es mayor que la ventana */
-  transition: width 0.4s;
-transition: width 0.4s ease, transform 0.4s ease;
-  overflow-x: hidden;
-  color: white;
-      transform: translateX(100%);
-    }
-
-    #mySidebar.open {
-      transform: translateX(0);
-        width: 31%;
-  margin-top: 25px;
-  top: 90px;
-    }
-
-
-
-#main {
-  transition: margin-right 0.3s;
-  padding: 2px;
-  margin-top: -20px;
-}
-#main.shifted {
-  margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
-  
-}
-  
-
-  #searchTermContainer {
-    font-size: 18px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-
-
-
-    #contenidoSidebar {
-      padding: 1rem;
-    }
-
-.dropdown-menu{
-margin-top: 10px;
-
-}
-    #imgMaterial:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
- }
-   #imgCopiar:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
- }
-
-
-  </style>
-
-  <script>
+      <link rel="stylesheet" href="css/estilosmovil.css">
+      <script>
 document.addEventListener("DOMContentLoaded", function () {
     function checkScreenWidth() {
         let width = window.innerWidth;
@@ -184,1450 +44,505 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 </head>
-<body class="container-fluid">
-  <section class="header border-bottom bg-white">
-    <div class="container-fluid">
-      <div class="row py-3 align-items-center justify-content-center text-center">
-
-        
-
-        <!-- Buscador y Botón -->
-        <div class="d-flex flex-nowrap align-items-center justify-content-between">
-
-<!-- Logo como botón con enlace sin abrir nueva ventana -->
-<a href="https://www.torah-con-yehoshua-hamashiaj.com" class="flex-shrink-0 me-3 img-tooltip-container" style="margin-left: 5px;" data-bs-toggle="tooltip" title="Volver a inicio">
-    <img id="logo" class="d-none d-md-flex" src="https://imgur.com/92Fz1V9.png" width="45" alt="Logo">
-</a>
-
-
-
-
-            <!-- Campo de Búsqueda -->
-              <div class="flex-grow-1 me-2">
-              <div class="input-group">
-                <!-- Input de Búsqueda -->
-                <input type="text" class="form-control search-input"
-                  id="searchInput" 
-                  placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)" />
-                   <i class="fas fa-search search-icon"></i>
-                <style>
-                .search-container {
-    position: relative;
-}
-
-#sidebar2 {
-
-  width: 0; /* Oculto por defecto */
-  position: fixed;
-  z-index: 200; /* Más alto para que quede encima */
-  top: 115px;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition: width 0.4s ease;
-  padding-top: 20px;
-  color: white;
-  height: 200vh; /* Que ocupe toda la altura */
-}
-#chapterContentSidebar::-webkit-scrollbar {
-  width: 8px;
-}
-
-#chapterContentSidebar::-webkit-scrollbar-track {
-  background:  white !important; /* Fondo negro */
-}
-
-#chapterContentSidebar::-webkit-scrollbar-thumb {
-  background: #777; /* Scroll gris */
-  border-radius: 10px;
-}
-
-#chapterContentSidebar::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Más oscuro al pasar el mouse */
-}
-
-
-
-.search-input {
-    height: 43px;
-    border-radius: 30px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 2rem !important; /* Ajusta según el nivel de redondez deseado */
-    border-bottom-right-radius: 2rem !important;
-  }
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-</style>
-                <!-- Botón de Búsqueda -->
-                <button 
-                  id="searchButton" 
-                  style=" display:none;">
-                  Buscar
-                </button>
-              </div>
-            </div>
-
-          </div>
+<body>
+    <div id="fixedHeaderContainer">
+    <div class="header">
+        <h4>Buscador Bíblico</h4>
+        <div class="header-icons">
+            <i class="fas fa-cog"></i>
+            <i class="fas fa-ellipsis-v"></i>
         </div>
-      </div>
-  </section>
-
- <style>
-#comentarios {
-    position: fixed;
-    right: -6px;
-    top: 45px;
-    width: 26%;
-    height: 200vh;
-    margin-top: 25px;
-    background-color: black;
-    color: white;
-    border: 1px solid #ccc;
-    padding: 15px;
-    overflow-y: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out; /* Transición suave */
-    direction: rtl; /* Invierte la dirección del contenido */
-}
-#comentarios * {
-    direction: ltr; /* Restaura la dirección normal del contenido interno */
-}
-
-
-
-
-
-</style>
-
-
-        </div>
-        
-        <!-- Contenedor de Comentarios -->
-        <div id="comentarios" style="display: none; z-index: 2; margin-top: 68px;">
-          <h6 style="background-color:white; color: black; font-family: 'Playfair Display', serif;">Comentarios Eric de Jesús Rodriguez</h6>
-          <div id="contenidoComentarios">
-            <!-- Aquí se cargarán los comentarios -->
-          </div>
-        </div>
-
-
-        <!-- Contenedor Adicional -->
-        
-      </div>
     </div>
-  </div>
- 
-
-</section>
-
- 
-
-
-<header class="section-header">
-  <nav class="navbar navbar-light bg-light d-flex justify-content-between align-items-center px-3" style="padding: 2px 10px; height: 36px;">
-  
-      <!-- Contenedor de los botones -->
-<div class="d-flex align-items-center gap-4">
-  <!-- Botón de Contenido Paralelo -->
-  <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Biblias paralelas">
-    <img 
-      id="imgParalelo" 
-      src="css/plus_icon_184093.png" 
-      alt="Contenido paralelo"
-      onclick="togglesidebar2()" >
-  </a>
-
-
-
-
-
- <!-- Botón de Copiar -->
-      <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar">
-        <img id="imgCopiar" src="css/copy-two-paper-sheets-interface-symbol_icon-icons.com_73283.png" alt="Copiar contenido" onclick="copiarContenido()"/>
-      </a>
-   
-
-      <!-- Dropdown -->
-<div class="container" style="margin-right: 91px;">
-  <div class="dropdown" style="left: -60px; width: 0px; height: 0px;">
-    <button class="btn btn-dark dropdown-toggle custom-dropdown-btn" 
-      type="button" 
-      data-bs-toggle="dropdown" 
-      id="dropdownButton">
-      Libros de la Biblia
-    </button>
-    <div class="dropdown-menu custom-dropdown-content" id="dropdownMenu">
-      <a class="dropdown-item" href="#" data-libro="Marcos">Según Marcos</a>
-      <a class="dropdown-item" href="#" data-libro="Romanos">Carta a los Romanos</a>
-      <a class="dropdown-item" href="#" data-libro="Gálatas">Carta a los Gálatas</a>
-      <a class="dropdown-item" href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
-      <a class="dropdown-item" href="" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
-      <a class="dropdown-item" href="#" data-libro="Hebreos">Carta a los Hebreos</a>
-      <a class="dropdown-item" href="#" data-libro="Apocalipsis">Revelación Apocalipsis</a>
+    <div class="search-bar-container">
+                <button class="btn btn-success" id="OpenMod">
+            <i class="fas fa-book" id="dropdownMenu"></i>
+        </button>
+    <div class="search-bar">
+        <input type="text" id="searchInput" class="form-control" placeholder="Escribe tu búsqueda...">
+        <button class="btn btn-success" id="searchButton">
+        </button>
     </div>
-  </div>
-</div>
- </div>
- 
 
 
+     
 
-<!-- Estilos para los botones -->
-<!-- Estilos para los botones -->
-<!-- Estilos para los botones -->
-<style>
- #btnParalelo {
-    height: 33px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left: -190px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-#btnParalelo:hover {
-      transform: scale(1.2);
-}
-  #btnCopiar {
-    height: 30px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
-  
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left:10 px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-@media screen and (max-width: 568px) {
-    #btnCopiar,{
-          height: 30px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
-  
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left: -20px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    }
-}
-
-
-  #btnCopiar:hover {
-transform: scale(1.2);
-}
-  #btnMaterial {
-    height: 32px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
-
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left: -20px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  #btnMaterial:hover {
-transform: scale(1.2);
-}
-  
-</style>
-
-
-<style>
-
-
-  
- #imgMaterial {
-  width: 31px;
-  height: 32px;
-  margin-top: -1px;
-  display: block;
-  
-  transition: all 0.3s ease-in-out;
-}
-
-
-  /* Ajustes generales para los botones */
-#imgParalelo, #imgCopiar {
-  width: 33px;
-  height: 33px;
-  right: 15px;
-  margin-top: -4px;
-  margin-left: -1px; /* Reducir margen para móviles */
-  transition: all 0.3s ease-in-out;
-}
-
-
-
-/
-
-.dropdown-toggle {
-    white-space: wrap;
-}
-
-/* Estilo base del botón */
-.custom-dropdown-btn {
-  font-size: 14px;
-  margin-top: -26px;
-  width: 168px;
-  margin-right: -200px;
-  margin-left: 60px;
-  font-weight: bold;
-  border: 2px solid #000 !important; /* Borde negro */
-  border-radius: 5px;
-  padding: 1px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  background-color: #fff !important; /* Fondo blanco */
-  color: #000 !important; /* Texto negro */
-
-}
-.custom-dropdown-btn:hover {
-  background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px black;
-  color: #000 !important; /* Texto negro al pasar el mouse */
-}
-
-
-.custom-dropdown-btn:hover {
-  background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px white;
-  color: #000 !important; /* Texto negro al pasar el mouse */
-}}
-
-/* Contenedor del menú */
-.custom-dropdown-content {
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
-}
-
-/* Estilo de los enlaces dentro del menú */
-.custom-dropdown-content a {
-  color: #black;
-  padding: 8px 15px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
-}
-
-.custom-dropdown-content a:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-
-
-</style>
-<style>
-/* Fondo negro solo en pantallas pequeñas */
-@media (max-width: 1068px) {
-  header.section-header {
-    background-color: white !important; /* Fondo negro */
-  }
-  nav.navbar {
-    background-color: white; !important; /* Fondo negro para el navbar */
-    color: #fff; /* Texto blanco */
-  }
-  nav.navbar a.nav-link {
-    color: #fff !important; /* Enlaces en blanco */
-  }
-  nav.navbar a.nav-link:hover {
-    color: #f0f0f0 !important; /* Enlaces en gris claro al pasar el mouse */
-  }
-}
-
-
-
-.tooltip .tooltip-inner {
-  background-color: black !important;
-  color: white !important;
-  font-size: 14px;
-  padding: 6px 10px;
-  border-radius: 5px;
-}
-
-.tooltip.bs-tooltip-top .tooltip-arrow::before {
-  border-top-color: black !important;
-}
-
-.tooltip.bs-tooltip-bottom .tooltip-arrow::before {
-  border-bottom-color: black !important;
-}
-
-.tooltip.bs-tooltip-start .tooltip-arrow::before {
-  border-left-color: black !important;
-}
-
-.tooltip.bs-tooltip-end .tooltip-arrow::before {
-  border-right-color: black !important;
-}
-
-.img-tooltip-container {
-display: inline-block; /* Asegura que solo ocupe el espacio del ícono */
-  margin-left: 700px; /* Mantiene la separación */
-  padding: 0; /* Elimina espacios adicionales */
-}
-
-
-.versiculo-activo {
-    background-color: yellow;
-    font-weight: bold;
-}
-
-</style>
-<script>
-function ajustarMargen() {
-    let btn = document.getElementById("fuentess");
-    let ancho = window.innerWidth;
-
-    if (ancho <= 870) {
-        btn.style.marginLeft = "170px";
-    } else if (ancho <= 980) {
-        btn.style.marginLeft = "330px";
-    } else if (ancho <= 1070) {
-        btn.style.marginLeft = "430px";
-    } else if (ancho <= 1150) {
-        btn.style.marginLeft = "530px";
-    }else {
-        btn.style.marginLeft = "600px";
-    }
-}
-
-// Llamar la función al cargar la página y cuando la ventana se redimensione
-window.onload = ajustarMargen;
-window.onresize = ajustarMargen;
-</script>
-     <!-- Botón para mostrar/ocultar opciones -->
-    <!-- Botón con tooltip -->
-<button id="fuentess" class="toggle-btn" style="background-color: white; margin-left: 600px; border: 2px solid black;
-    border-radius: 5px; padding: 3px; cursor: pointer; border-color:black;" 
-    onclick="toggleOpciones()" data-bs-toggle="tooltip" title="Fuente">
-    <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
-</button>
-
-
- <!-- Botón de Menú (Aparato Crítico) -->
-    <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Aparato crítico" style="margin-left:-10px;">
-  <img id="imgMaterial" src="css/add-comment_icon-icons.com_71793.png" alt="Menú" onclick="toggleSidebar()" />
-    </a>
-
-
-          <!-- Botón de Comentarios -->
-<div class="flex-shrink-0">
-  <button id="toggleComentarios" class="btn btn-primary custom-btn">
-    Mostrar Comentarios
-  </button>
+   <div id="fullscreenModal" class="fullscreen-modal">
+    <div class="modal-content-custom">
+        <div id="librosContainer">
+            <a href="#" data-libro="Marcos">Según Marcos</a>
+            <a href="#" data-libro="Romanos">Carta a los Romanos</a>
+            <a href="#" data-libro="Gálatas">Carta a los Gálatas</a>
+            <a href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
+            <a href="#" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
+            <a href="#" data-libro="Hebreos">Carta a los Hebreos</a>
+            <a href="#" data-libro="Apocalipsis">Revelación Apocalipsis</a>
+        </div>
+        
+        <!-- Contenedor para mostrar los capítulos -->
+        <div id="capitulosContainer" style="display: none;"></div>
+        
+        <button class="close-btn" id="closeModal">Cerrar</button>
+    </div>
 </div>
 
 
-<style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff; /* Color de fondo */
-    z-index: 800; /* Asegura que esté por encima del contenido */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-}
-
-body {
-    padding-top: 80px; /* Ajusta este valor según la altura del header */
-}
-
-  .section-header {
-    position: sticky;
-    top: 63px;
-    width: 100%;
-    background: #fff; /* Color de fondo */
-    z-index: 1000; /* Asegura que esté por encima del contenido */
-}
-
-/* Estilo base del botón de comentarios */
-.custom-btn {
-font-size: 14px;
-  margin-top: -5px;
-  font-weight: bold;
-  margin-left: 1px;
-  border: 2px solid #000 !important; /* Borde negro */
-  border-radius: 5px;
-  padding: 1px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  background-color: #fff !important; /* Fondo blanco */
-  color: #000 !important; /* Texto negro */
-}
-
-.custom-btn:hover {
- background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px black;
-  color: #000 !important; /* Texto negro al pasar el mouse */
-}
-
-
-
-
-</style>
-
-
-
-  </nav>
-
-</header>
-
-
-
-<div class="container" class="tema-uno" style="  font-family: Arial, sans-serif;
-    padding: 20px;
-   max-width: 600px !important;
-    margin: auto;
-    color: #333;
-    margin-top: 75px;
-    line-height: 1.6;">
-
-
-
-
-
-
-
-<div id="myDIV"  style="flex-shrink: 0; width: 250px;">
-  <div id="searchTermContainer" style="font-weight: bold; margin-bottom: 10px;"></div>
-  <h5>Resultados</h5>
-  
+<div id="sidebarconteo">
+    <div id="searchTermContainer" style="font-weight: bold; margin-bottom: 10px;"></div>
+    <h5>Resultados</h5>
     <ul id="countResults" style="
-    margin-top: -23px;
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 10px;
-    width: 100%;
+        margin-top: -5px;
+        list-style-type: none;
+        padding: 0;
+        margin-bottom: 10px;
+        width: 100%;
     "></ul>
 </div>
-<style>
-h5 {
-  background-color: white;
-    font-size: 18px;
-    font-weight: bold;
-    color: #000; /* Negro */
-    text-align: center;
-    padding: 10px;
-    border-bottom: 7px solid #333; /* Línea sutil debajo */
-}
 
-#countResults {
-    margin-top: -23px;
-    background: #f8f9fa; /* Color de fondo suave */
-    border: 1px solid #ddd; /* Borde sutil */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 5px;
-    max-width: 300px; /* Ajusta el ancho máximo */
-    list-style: none; /* Quita los puntos de la lista */
-}
+<!-- Botón para abrir/cerrar sidebar -->
+<div class="toggle-btn" onclick="toggleSidebar()">☰</div>
 
-
-#results li {
-    padding: 15px;
-    border: 1px solid #ccc;
-    margin-bottom: -13px;
-    border-radius: 4px;
-    background-color: #fff;
-    width: calc(100% + 80px);
-    margin-left: -90px;
-    margin-top: 20px;
-
-}
-#countResults ul {
-  list-style-type: none;
-    padding: 0;
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-#countResults li {
-    padding: 5px 10px;
-    border-bottom: 1px solid #ddd; /* Separadores entre elementos */
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-#countResults li:last-child {
-    border-bottom: none; /* Quitar el borde del último elemento */
-}
-
-#countResults li:hover {
-    background: #e2e6ea; /* Cambio de color al pasar el mouse */
-}
-
-#countResults .nested {
-    display: none; /* Inicialmente oculto */
-    padding-left: 15px;
-}
-
-#countResults .expandable {
-    font-weight: bold;
-    color: #333;
-}
-
-#countResults .expandable:hover {
-    color: #007bff; /* Azul al pasar el mouse */
-}
-
-
-</style>
-
-
- <div id="main">  
-
-<!-- Botones de Página -->
-<div class="navbar-nav d-flex align-items-center">
-  <!-- Botón de Página Anterior -->
-  <button 
-    id="prevPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain; ">
-    </div>
-  </button>
-
-  <!-- Botón de Página Siguiente -->
-  <button 
-    id="nextPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style=  "position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1); ">
-    </div>
-  </button>
-</div>
-<style>
-/* Ajustar main cuando se abre sidebar2 */
-.sidebar2-open #main {
-  margin-left: 10px; /* Empujar el contenido */
-  transition: margin-left 0.4s ease-in-out;
-}
-#prevPage, #nextPage {
-    z-index: 9999; /* Valor alto para estar por encima de otros elementos */
-}
-
-
-#subButtonsCritico button {
-    background-color: #f0f0f0;
-    color: #000;
-    border: 2px solid #ccc;
-     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
-    border-radius: 20px; /* Bordes redondeados */
-    font-size: 14px;
-    font-weight: bold;
-    outline: none;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    width: 155px;
-    height: 24px;
-
-    text-align: center;
-}
-#subButtonsCritico button:first-child {
-    margin-left: 20px;
-}
-
-#subButtonsCritico button:last-child {
-    margin-right: 30px;
-}
-
-#subButtonsCritico button:hover {
-    background-color: #e0e0e0;
-    transform: scale(1.05); /* Efecto sutil al pasar el mouse */
-}
-
-#subButtonsCritico button.activo {
-    background-color: #007bff;
-    color: white;
-    border: 2px solid #0056b3;
-    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
-}
-
-
-</style>
-
- <!-- Sidebar -->
-<div id="mySidebar" class="col-md-3">
-    <div id="menuSidebar" class="p-3">
-        <button onclick="toggleSubButtons('critico')">Aparato Crítico NA28</button>
-        <button onclick="toggleSeccion('mapas')">Mapas</button>
-    </div>
- <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; justify-content: space-between; gap: 30px; width: 100%;">
-
-</div>
-
-
-
-  <div id="contenidoSidebar" class="p-3">
-    
-
-
-    <!-- Contenido de los versos -->
-<script rel="preload" src="na28/js/comentarios.js"></script>
-
-
-
-    <!-- Contenido de Mapas -->
-    <div id="mapas" class="seccionSidebar" style="display: none;">
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/kYBZVlB.jpeg')">Mapa de los pueblos</a></p>
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/zLScQV2.png')">Mapa del éxodo</a></p>
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a></p>
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a></p>
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/95ex03o.png')">Viajes de Saúl (Pablo)</a></p>
-      <p><a href="#" onclick="abrirModal('https://i.imgur.com/BiTNN4L.png')">Lugares donde Yehoshúa' vivió y enseñó</a></p>
-    </div>
-  </div>
-</div>
-
-
-  <script src="na28/js/fu8.js"></script>
-  
-<!-- Sidebar paralelo -->
-<div id="sidebar2" class="col-md-3">
-
-
-   <div class="dropdown-container">
-    <!-- Dropdown de versiones -->
-    <div id="versionDropdown" class="dropdown">
-        <label for="versionSelector" class="dropdown-label">Versión:</label>
-        <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
-            <option value="RVR1960">Reina-Valera 1960</option>
-            <option value="Btx4">Biblia Textual 4</option>
-            <option value="Jubileos">Biblia Jubileos</option>
-        </select>
-    </div>
-
-    <!-- Dropdown de libros -->
-    <div id="bookDropdown" class="dropdown">
-        <label for="bookSelector" class="dropdown-label">Libro:</label>
-        <select id="bookSelector" class="book-dropdown" onchange="cargarCapitulos()">
-            <option value="">Selecciona un libro</option>
-        </select>
-    </div>
-
-    <!-- Dropdown de capítulos -->
-    <div id="chapterDropdown" class="dropdown">
-        <label for="chapterSelector" class="dropdown-label">Capítulo:</label>
-        <select id="chapterSelector" class="chapter-dropdown" onchange="mostrarCapitulo()">
-            <option value="">Selecciona un capítulo</option>
-        </select>
-
-    </div>
-
-    <!-- Espacio vacío para respetar la grid -->
-    <div></div>
-
-    <!-- Botón en la 4ta celda -->
-    <div id="syncButtonContainer">
-        <button id="syncVersionButton" class="btn" style="background-color: #fff !important;
-    border-color: #6D3961 !important;
-    box-shadow: 0 0 10px black;
-    height: 22px;
-    
-    color: #000 !important;" onclick="sincronizarVersion()">Sincronizar</button>
-    </div>
-</div>
-
-
-
-
-
-
-       <!-- Contenedor para contenido de capítulos -->
-      <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
-    </div>
-
-    
-<!-- Contenedor del sidebar donde se mostrará la versión sincronizada -->
-<div id="chapterContentSidebar" class="mt-3"></div>
-
-
-
-
-
-
-    <!-- Modal -->
-    <div id="modal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);">
-      <span class="close" onclick="cerrarModal()" style="color: white; position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 2rem;">&times;</span>
-      <img id="modalImg" class="modal-content" alt="Imagen" style="padding-top: 20px;">
-      <div id="caption" style="color: white; text-align: center; padding: 10px;"></div>
-    </div>
-  
-
-
-
-<div id="contenedor-botones">
-  <img id="btnParalelo" class="boton-accion" src="css/image.png" style="display: none;">
-  <img id="btnCopiar" class="boton-accion" src="css/image(2).png" style="display: none;">
-  <img id="btnMaterial" class="boton-accion" src="css/image(3).png" style="display: none;">
-</div>
-
-<style>
-
-.modal-img {
-    max-width: 100%;
-    max-height: 80vh;
-    display: block;
-    margin: auto;
-}
-
-.dropdown-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-    grid-template-rows: repeat(2, auto); /* 2 filas */
-    gap: 10px; /* Espaciado uniforme */
-    align-items: center; /* Alinea verticalmente */
-}
-
-/* Mantener el dropdown de capítulo en la segunda fila, primera columna */
-#chapterDropdown {
-    grid-column: 1; /* Primera columna */
-    grid-row: 2; /* Segunda fila */
-}
-
-/* Mover el botón al espacio vacío (segunda fila, segunda columna) */
-#syncButtonContainer {
-    grid-column: 2; /* Segunda columna */
-    grid-row: 2; /* Segunda fila */
-    text-align: center; /* Centrar el botón en su celda */
-}
-
-/* Ajustar tamaño del botón para que coincida con los dropdowns */
-#syncVersionButton {
-    width: 100%; /* Ocupar toda la celda */
-    height: 32px; /* Puedes hacer el botón más pequeño */
-    font-size: 14px; /* Ajustar tamaño del texto */
-    display: flex; /* Habilitar flexbox */
-    align-items: center; /* Centrar verticalmente */
-    justify-content: center; /* Centrar horizontalmente */
-    text-align: center; /* Asegurar alineación del texto */
-    padding: 5px 10px; /* Espaciado interno */
-}
-
-#contenedor-botones {
-    position: fixed;  /* Mantiene los botones fijos en la pantalla */
-    bottom: 20px; /* Ajusta la posición desde abajo */
-    left: 50%; /* Centra horizontalmente */
-    transform: translateX(-50%); /* Centra realmente en el eje X */
-    display: flex; /* Usa flexbox para alinear los botones */
-    gap: 15px; /* Espaciado entre los botones */
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
-   
-    padding: 10px;
-    border-radius: 10px;
-}
-
-/* Ajustes para los botones dentro del contenedor */
-.boton-accion {
-    width: 40px; /* Ajusta el tamaño de los iconos */
-    height: 40px;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-}
-
-.boton-accion:hover {
-    transform: scale(1.2);
-}
-</style>
-
-
-<!-- Contenedor de opciones (inicialmente oculto) -->
-    <div id="opcionesContainer">
-        <!-- Selector de fuente -->
-        <div class="custom-select" id="fuenteSelect">
-            <div class="select-selected" data-value="Arial">Arial</div>
-            <div class="select-items">
-                <div data-value="Arial">Arial</div>
-                <div data-value="Verdana">Verdana</div>
-                <div data-value="Times New Roman">Times New Roman</div>
-            </div>
-        </div>
-
-        <!-- Selector de tamaño -->
-        <div class="custom-select" id="tamanoSelect">
-            <div id="select-selected2" class="select-selected" data-value="14px">14</div>
-            <div class="select-items">
-                <div data-value="12px">12</div>
-                <div data-value="14px">14</div>
-                <div data-value="16px">16</div>
-                <div data-value="18px">18</div>
-                <div data-value="20px">20</div>
-            </div>
-        </div>
-    </div>
-
-
-<!-- Mensaje de bienvenida -->
-<div id="welcomeMessage" class="col-12 text-center mb-4">
-  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
-  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
-   <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
-   <br>
-   <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
-</div>
-
-
- <style>
-
-
-        /* Estilos generales */
-        .custom-select {
-            position: relative;
-            display: inline-block;
-            width: 150px;
-            cursor: pointer;
-        }
-
-        .select-selected {
-            background-color: white;
-            color: black;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            width: 150px;
-        }
-
-        .select-selected:hover {
-            background-color: #f0f0f0;
-            box-shadow: 0 0 10px black;
-        }
-
-
-.con-variantes {
-    position: relative;
-    padding-right: 25px; /* Espacio para el botón */
-}
-
-.versiculo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 10px; /* Espacio para evitar que el botón 📖 cubra el texto */
-    position: relative;
-}
-
-.texto-verso {
-    flex: 1; /* Hace que el texto ocupe todo el espacio disponible */
-    margin-right: 10px; /* Deja espacio al botón 📖 */
-}
-
-.btn-na28 {
-    font-size: 12px;
-    color: white;
-    border: none;
-    padding: 2px 5px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.btn-na28:hover {
-    background: black;
-}
-        #select-selected2 {
-            background-color: white;
-            color: black;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            width: 50px;
-        }
-
-        #select-selected2:hover {
-            background-color: #f0f0f0;
-            box-shadow: 0 0 10px black;
-        }
-
-        /* Contenedor de opciones */
-        .select-items {
-            display: none;
-            position: absolute;
-            background-color: white;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 100%;
-            z-index: 10;
-            max-height: 200px;
-            overflow-y: auto;
-        }
-
-        .select-items div {
-            padding: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        /* Efecto al pasar el mouse */
-        .select-items div:hover {
-            background-color: black;
-            color: white;
-        }
-
-        /* Mostrar opciones cuando está activo */
-        .select-selected.active + .select-items {
-            display: block;
-        }
-
-        /* Estilo para ocultar el contenedor */
-        #opcionesContainer {
-            display: none; /* Inicialmente oculto */
-        }
-
-        /* Botón para mostrar/ocultar */
-        .toggle-btn {
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-
-        .toggle-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
-
-
-
-    <!-- Resultados -->
-    <ul id="results" style="margin-top:-23px;" class="list-group col-12 mt-3"></ul>
-
-     <script>
-        function customSelect(id) {
-            const selectBox = document.getElementById(id);
-            const selectedDiv = selectBox.querySelector(".select-selected");
-            const optionsDiv = selectBox.querySelector(".select-items");
-
-            selectedDiv.addEventListener("click", function () {
-                this.classList.toggle("active");
-            });
-
-            optionsDiv.addEventListener("click", function (event) {
-                if (event.target.tagName === "DIV") {
-                    selectedDiv.innerText = event.target.innerText;
-                    selectedDiv.setAttribute("data-value", event.target.getAttribute("data-value"));
-                    selectedDiv.classList.remove("active"); // Cierra el dropdown
-                    cambiarEstilo();
-                }
-            });
-
-            document.addEventListener("click", function (event) {
-                if (!selectBox.contains(event.target)) {
-                    selectedDiv.classList.remove("active");
-                }
-            });
-        }
-
-        function cambiarEstilo() {
-            let fuente = document.getElementById("fuenteSelect").querySelector(".select-selected").getAttribute("data-value");
-            let tamano = document.getElementById("tamanoSelect").querySelector(".select-selected").getAttribute("data-value");
-
-            localStorage.setItem("fuenteSeleccionada", fuente);
-            localStorage.setItem("tamanoSeleccionado", tamano);
-
-            aplicarEstilo(fuente, tamano);
-        }
-
-        function aplicarEstilo(fuente, tamano) {
-            document.querySelectorAll("#results li").forEach(li => {
-                li.style.fontFamily = fuente;
-                li.style.fontSize = tamano;
-            });
-        }
-
-        function toggleOpciones() {
-    const container = document.getElementById("opcionesContainer");
-
-    if (container.style.display === "none" || container.style.display === "") {
-        container.style.display = "block";
-    } else {
-        container.style.display = "none";
-    }
-}
-
-
-        customSelect("fuenteSelect");
-        customSelect("tamanoSelect");
-    </script>
-   
 <script>
-let currentBook = null; 
-let currentChapter = null;
 
-
-  // Función para mostrar el primer capítulo de un libro
-async function showFirstChapter(libro) {
-    currentBook = libro; // Actualizar el libro actual
-    const datos = await fetchAllJsonData();
-    if (!datos || !datos[libro]) {
-        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-        return;
-    }
-
-    const capitulos = datos[libro];
-    const primerCapitulo = Object.keys(capitulos)[0]; // Obtener el primer capítulo
-    currentChapter = primerCapitulo; // Actualizar el capítulo actual
-    const versos = capitulos[primerCapitulo];
-
-    // Limpiar resultados y mostrar los versos del primer capítulo
-       resultsContainer.innerHTML = "";
-    Object.entries(versos).forEach(([versiculo, texto]) => {
-        let li = document.createElement("li");
-        li.textContent = `${libro} ${primerCapitulo}:${versiculo} - ${texto}`;
-        resultsContainer.appendChild(li);
-    });
-
-    aplicarFuenteGuardada(); // Aplicar la fuente guardada a los nuevos <li>
-sidebar.style.display = "none";
-
-    // Actualizar navegación
-    showFullChapter(libro, primerCapitulo);
-
-    // Ocultar mensaje de bienvenida y mostrar resultados
-    hideWelcomeMessage();
-    sidebar.style.display = "none";
-
-      // **Actualizar comentarios**
-    cargarComentariosCapitulo(libro, primerCapitulo);
-}
-
-
-
-// Añadir evento a cada opción del menú desplegable
-
-document.querySelectorAll("#dropdownMenu a").forEach(item => {
-  item.addEventListener("click", event => {
-    event.preventDefault();
-    const libro = item.getAttribute("data-libro"); // Obtener el libro seleccionado
-    if (libro) {
-      showFirstChapter(libro);
-
-      // 🔴 Ocultar myDIV al seleccionar un libro desde el dropdown
-      sidebar.style.display = "none";
-
-      // Cerrar el menú desplegable
-      dropdownMenu.style.display = "none";
-    }
-  });
+    document.querySelector(".fa-cog").addEventListener("click", function() {
+    this.classList.toggle("clicked");
 });
 
+    function toggleSidebar() {
+        let sidebar = document.getElementById("sidebarconteo");
+        sidebar.classList.toggle("active");
+    }
 
-   
- const prevPageButton = document.getElementById("prevPage");
-  const nextPageButton = document.getElementById("nextPage");
+    document.addEventListener("DOMContentLoaded", function () {
+    let settingsIcon = document.querySelector(".fas.fa-cog");
+    let settingsMenu = document.getElementById("settingsMenu");
 
-async function showFullChapter(libro, capitulo) {
-    currentBook = libro;
-    currentChapter = capitulo;
+    settingsIcon.addEventListener("click", function (event) {
+        event.stopPropagation(); // Evita que el clic cierre el menú inmediatamente
+        settingsMenu.style.display = (settingsMenu.style.display === "block") ? "none" : "block";
+    });
 
-    const datos = await fetchAllJsonData();
-    if (!datos[libro] || !datos[libro][capitulo]) return;
-
-    console.log(`Mostrando en versión hebrea: ${libro} ${capitulo}`);
-
-    resultsContainer.innerHTML = `<h2 class="titulo-capitulo">${libro} ${capitulo}</h2>`;
-
-    Object.entries(datos[libro][capitulo]).forEach(([numVerso, texto]) => {
-        let li = document.createElement("li");
-        li.classList.add("versiculo");
-        li.setAttribute("data-libro", libro);
-        li.setAttribute("data-capitulo", capitulo);
-        li.setAttribute("data-versiculo", numVerso);
-
-        // Crear contenedor para texto y botón
-        let divTexto = document.createElement("span");
-        divTexto.innerHTML = `<b>${numVerso}.</b> ${texto}`;
-        divTexto.classList.add("texto-verso");
-
-        li.appendChild(divTexto);
-
-        // Construir clave para buscar en el mapa
-        let claveVerso = `${libro} ${capitulo}:${numVerso}`;
-
-        // Buscar el ID correcto en el mapa de NA28
-        let idNA28 = na28Map[claveVerso];
-
-        // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
-        if (idNA28 && document.getElementById(idNA28)) {
-            li.classList.add("con-variantes"); // Resaltar versículos con variantes
-            let boton = document.createElement("button");
-            boton.innerText = "📖"; // Icono pequeño
-            boton.classList.add("btn-na28");
-            boton.onclick = () => mostrarComentarioNA28(idNA28);
-            li.appendChild(boton);
+    document.addEventListener("click", function (event) {
+        if (!settingsMenu.contains(event.target) && event.target !== settingsIcon) {
+            settingsMenu.style.display = "none";
         }
-
-        resultsContainer.appendChild(li);
     });
+});
+function toggleNavigationButtons() {
+    let isEnabled = document.getElementById("toggleNavButtons").checked;
 
+    // Guardar preferencia en localStorage
+    localStorage.setItem("navButtonsVisible", isEnabled);
 
+    // Obtener los botones de navegación
+    let buttons = document.querySelectorAll("#prevChapterBtn, #nextChapterBtn, #prevChapterBtnBottom, #nextChapterBtnBottom");
 
-
-function seleccionarVersiculo(elemento) {
-    // Quitar la selección de otros versículos
-    document.querySelectorAll(".versiculo").forEach(v => v.classList.remove("versiculo-activo"));
-
-    // Marcar el versículo seleccionado como activo
-    elemento.classList.add("versiculo-activo");
+    buttons.forEach(button => {
+        if (isEnabled) {
+            button.style.position = "relative";  // Mostrar en su posición normal
+            button.style.left = "0";  
+            button.style.visibility = "visible"; 
+            button.style.opacity = "1"; 
+            button.style.pointerEvents = "auto"; // Permitir interacción
+            button.style.transition = "opacity 0.3s ease-out";
+        } else {
+            button.style.position = "absolute"; // Ocultar fuera de pantalla
+            button.style.left = "-9999px"; 
+            button.style.visibility = "hidden"; 
+            button.style.opacity = "0"; 
+            button.style.pointerEvents = "none"; // Evitar clics
+        }
+    });
 }
 
 
-    aplicarFuenteGuardada(); // Aplicar la fuente después de actualizar el capítulo
+// Restaurar configuración al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+    let storedValue = localStorage.getItem("navButtonsVisible");
+
+    // Si no hay valor guardado, activar por defecto
+    let isEnabled = storedValue === null ? true : storedValue === "true";
+
+    // Aplicar el estado del toggle en el checkbox
+    document.getElementById("toggleNavButtons").checked = isEnabled;
+
+    // Aplicar la configuración
+    toggleNavigationButtons();
+});
 
 
-    // Determinar capítulos anterior y siguiente
-    const chapterNumbers = Object.keys(datos[libro]).map(Number).sort((a, b) => a - b);
-    const currentChapterIndex = chapterNumbers.indexOf(parseInt(capitulo));
 
-    const prevChapter = chapterNumbers[currentChapterIndex - 1];
-    const nextChapter = chapterNumbers[currentChapterIndex + 1];
+// Asegurar que se aplique al cambiar de capítulo
+document.addEventListener("chapterChanged", toggleNavigationButtons);
 
-    // Mostrar u ocultar botones según disponibilidad
-    if (prevChapter) {
-        prevPageButton.style.display = "inline-block";
-        prevPageButton.onclick = () => showFullChapter(libro, prevChapter);
-    } else {
-        prevPageButton.style.display = "none";
+
+
+</script>
+ 
+         
+
+
+
+<div class="settings-menu" id="settingsMenu">
+    <label class="switch">
+        <input type="checkbox" id="toggleNavButtons" onchange="toggleNavigationButtons()">
+        <span class="slider"></span>
+    </label>
+    <span style="font-size: 14px;">Ver botones / Touch</span>
+
+    <label for="fontSelector">Fuente:</label>
+    <select id="fontSelector" class="config-dropdown">
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Times New Roman">Times New Roman</option>
+    </select>
+
+    <label for="fontSizeSelector">Tamaño:</label>
+<select id="fontSizeSelector" class="config-dropdown">
+    <option value="12">12</option>
+    <option value="14">14</option>
+    <option value="16">16</option>
+    <option value="20">20</option>
+</select>
+
+</div>
+<div class="settings-menu" id="menuOpciones">
+    <h6>Opciones</h6>
+    <label class="switch">
+        <input type="checkbox" id="toggleDarkModeSwitch">
+        <span class="slider round"></span>
+    </label>
+    <span style="font-size: 14px;">Modo Oscuro</span>
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+document.querySelector(".fa-ellipsis-v").addEventListener("click", function(event) {
+    event.stopPropagation();
+    let menu = document.getElementById("menuOpciones");
+    menu.style.display = (menu.style.display === "block") ? "none" : "block";
+});
+
+document.addEventListener("click", function(event) {
+    let menu = document.getElementById("menuOpciones");
+    if (!menu.contains(event.target) && event.target !== document.querySelector(".fa-ellipsis-v")) {
+        menu.style.display = "none";
     }
+});
 
-    if (nextChapter) {
-        nextPageButton.style.display = "inline-block";
-        nextPageButton.onclick = () => showFullChapter(libro, nextChapter);
+document.getElementById("toggleDarkModeSwitch").addEventListener("change", function() {
+    document.body.classList.toggle("dark-mode");
+
+    let header = document.querySelector(".header");
+    let botones = document.querySelectorAll("button.btn-success, .toggle-btn");
+
+    if (document.body.classList.contains("dark-mode")) {
+        header.style.backgroundColor = "#222";
+        header.style.color = "#fff";
+        botones.forEach(btn => {
+            btn.style.backgroundColor = "#000";
+            btn.style.color = "#fff";
+            btn.style.border = "1px solid #fff";
+        });
+        localStorage.setItem("modoOscuro", "true"); // Guardar preferencia
     } else {
-        nextPageButton.style.display = "none";
+        header.style.backgroundColor = "";
+        header.style.color = "";
+        botones.forEach(btn => {
+            btn.style.backgroundColor = "";
+            btn.style.color = "";
+            btn.style.border = "";
+        });
+        localStorage.setItem("modoOscuro", "false"); // Guardar preferencia
     }
+});
 
-    // Cargar comentarios dinámicos para el capítulo actual
-    cargarComentariosCapitulo(libro, capitulo);
-}
+document.addEventListener("DOMContentLoaded", function () {
+    let modoOscuroActivo = localStorage.getItem("modoOscuro") === "true";
+    let switchModoOscuro = document.getElementById("toggleDarkModeSwitch");
 
- const toggleButton = document.getElementById("toggleComentarios");
-const comentariosDiv = document.getElementById("comentarios");
-const contenidoComentarios = document.getElementById("contenidoComentarios");
+    if (modoOscuroActivo) {
+        document.body.classList.add("dark-mode");
+        switchModoOscuro.checked = true;
 
-toggleButton.addEventListener("click", () => {
-    // Alternar visibilidad
-    if (comentariosDiv.style.display === "none") {
-        comentariosDiv.style.display = "block";
-        toggleButton.textContent = "Ocultar Comentarios";
-        cargarComentariosCapitulo(currentBook, currentChapter); // Carga comentarios del capítulo actual
-    } else {
-        comentariosDiv.style.display = "none";
-        toggleButton.textContent = "Mostrar Comentarios";
+        let header = document.querySelector(".header");
+        let botones = document.querySelectorAll("button.btn-success, .toggle-btn");
+
+        header.style.backgroundColor = "#222";
+        header.style.color = "#fff";
+        botones.forEach(btn => {
+            btn.style.backgroundColor = "#000";
+            btn.style.color = "#fff";
+            btn.style.border = "1px solid #fff";
+        });
     }
 });
 
 
-  
+
 </script>
 
-    <script>
-   // Funciones del sidebar
-// Función para alternar el sidebar principal (mySidebar)
-function toggleSidebar() {
-  const sidebar = document.getElementById("mySidebar");
-  const main = document.getElementById("main");
-  const toggleNav = document.getElementById("toggleNav"); // Aseguramos que toggleNav está declarado
-  const nextPageButton = document.getElementById("nextPage");
+<!-- Resultados -->
 
-  const isOpen = sidebar.classList.contains("open");
+    <ul id="results" style="margin-top:130px !important; padding-bottom:80px; background-color:#e5ddd5;" class="list-group col-12 mt-3">
+    </ul>
 
-  if (isOpen) {
-    // Cerrar el sidebar
-    sidebar.classList.remove("open");
-    main.classList.remove("shifted");
-    document.body.classList.remove("sidebar-open");
+<div id="sidebar">
+    <h5>NA28</h5>
+    <p>Aquí irá el contenido del aparato critico de cada verso disponible, busca algun verso que te interese y si encuentras     <i class="bi bi-bookmark"></i> solo da click para leerlo. </p>
+    <br>
+    <p>📖 La NA28 (Nestle-Aland 28) es una edición del Nuevo Testamento en griego, usada por académicos y traductores para estudiar el texto original de la Biblia. Es considerada una de las versiones más precisas, ya que se basa en los manuscritos más antiguos y confiables.  </p>
 
-    // Restaurar posición de nextPage cuando se cierra mySidebar
-    nextPageButton.style.right = "282px";
+    <br>
+    <br>
+    <br>
+</div>
+<div id="sidebarparalelo">
+  <h5>Biblia Paralela</h5> <!-- Botón para ocultar/mostrar búsqueda -->
+<!-- Botón para ocultar/mostrar búsqueda -->
+<button id="toggleSearchOptions" class="toggle-btn-sidebar">
+    <i class="fas fa-chevron-up"></i>
+</button>
 
-    // Si toggleNav es un botón que debe cambiar su estado visual al cerrar el sidebar
-    if (toggleNav) {
-      toggleNav.classList.remove("active");  // Eliminar la clase activa si la tiene
+<!-- Contenedor de los filtros de búsqueda -->
+<div id="searchOptionsContainer">
+    <label for="versionSelect">Versión:</label>
+    <select id="versionSelect">
+        <option value="RVR1960">RVR1960</option>
+        <option value="BTX4">BTX4</option>
+    </select>
+
+    <label for="libroSelect">Libro:</label>
+    <select id="libroSelect">
+        <option value="">-- Elige versión primero --</option>
+    </select>
+
+    <label for="capituloSelect">Capítulo:</label>
+    <select id="capituloSelect">
+        <option value="">-- Elige libro primero --</option>
+    </select>
+
+    <!-- Botones de búsqueda y sincronización -->
+    <button id="btnCargar">Buscar</button>
+    <button id="btnSync">Sincronizar</button>
+</div>
+
+<!-- Este div SIEMPRE estará visible -->
+<div id="contenidoBiblia" style="margin-top:20px;"></div>
+
+</div>
+
+<div id="sidebarcomentarios">
+<div id="contenedorComentarios">
+        <p id="mensajeNoComentarios">No hay comentarios</p>
+    </div>
+</div>
+
+    
+    <div class="bottom-nav">
+        <i class="fas fa-home" id="home"></i>  <!-- home volver a pagina principal -->
+        <i class="fas fa-book" id="imgMaterial"></i>  <!-- aparato critico na28 -->
+<i class="fas fa-message" id="toggleComentarios"></i>         <!-- Ícono de comentarios -->
+        <i class="fas fa-book-open" id="sidebar2"></i>  <!-- biblia paralela -->
+    </div>
+    
+    <div class="floating-button" id="flotante" style="z-index: 1001;">
+        <i class="fas fa-plus"></i>
+    </div>
+
+   <script src="js/cargarcomentariosmovil.js"></script>
+        <script>
+
+
+document.getElementById("sidebar2").addEventListener("click", function() {
+    let sidebar = document.getElementById("sidebarparalelo");
+    sidebar.classList.toggle("active"); // Alternar la clase para mostrar/ocultar
+});
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let boton = document.getElementById("flotante");
+    let menu = document.querySelector(".bottom-nav");
+
+    boton.addEventListener("click", function () {
+        menu.classList.toggle("hidden"); // Alternar clase para ocultar/mostrar
+    });
+});
+
+
+
+
+            /* codigo del menu de libros*/
+        document.getElementById("OpenMod").addEventListener("click", function() {
+            document.getElementById("fullscreenModal").style.display = "flex";
+        });
+
+       document.getElementById("closeModal").addEventListener("click", function() {
+    document.getElementById("fullscreenModal").style.display = "none";
+});
+
+// Evento para abrir el modal y resetear la vista
+document.getElementById("OpenMod").addEventListener("click", () => {
+    let modal = document.getElementById("fullscreenModal");
+    let librosContainer = document.getElementById("librosContainer");
+    let capitulosContainer = document.getElementById("capitulosContainer");
+
+    // Restaurar la vista inicial
+    librosContainer.style.display = "block";  // Mostrar la lista de libros
+    capitulosContainer.style.display = "none"; // Ocultar los capítulos previos
+
+    // Mostrar el modal
+    modal.style.display = "flex";
+});
+
+// Manejar la selección de libros y mostrar capítulos
+document.querySelectorAll(".modal-content-custom a").forEach(item => {
+    item.addEventListener("click", async function(event) {
+        event.preventDefault(); // Evitar recarga
+
+        let libroSeleccionado = this.dataset.libro;
+        let capitulosContainer = document.getElementById("capitulosContainer");
+        let librosContainer = document.getElementById("librosContainer");
+
+        // Cargar los datos si aún no se han descargado
+        await fetchAllJsonData();
+        
+        // Verificar si el libro existe en los datos cargados
+        if (!bibliaDatos[libroSeleccionado]) {
+            capitulosContainer.innerHTML = `<p>No se encontraron capítulos para ${libroSeleccionado}.</p>`;
+            return;
+        }
+
+        // Ocultar la lista de libros y mostrar la de capítulos
+        librosContainer.style.display = "none";
+        capitulosContainer.style.display = "block";
+
+        // Generar la lista de capítulos
+        let fragment = document.createDocumentFragment();
+        Object.keys(bibliaDatos[libroSeleccionado]).forEach(capitulo => {
+            let button = document.createElement("button");
+            button.textContent = `Capítulo ${capitulo}`;
+            button.classList.add("capitulo-btn");
+            button.addEventListener("click", () => {
+                showFullChapter(libroSeleccionado, capitulo);
+                
+                // Cerrar el modal al seleccionar un capítulo
+                document.getElementById("fullscreenModal").style.display = "none";
+            });
+            fragment.appendChild(button);
+        });
+
+        // Limpiar y agregar los capítulos al modal
+        capitulosContainer.innerHTML = "";
+        capitulosContainer.appendChild(fragment);
+
+        // Agregar un botón para volver a la lista de libros
+        let backButton = document.createElement("button");
+        backButton.textContent = "← Volver a libros";
+        backButton.classList.add("back-btn");
+        backButton.addEventListener("click", () => {
+            capitulosContainer.style.display = "none";
+            librosContainer.style.display = "block";
+        });
+
+        capitulosContainer.appendChild(backButton);
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function checkSwipe() {
+        if (!currentBook || !currentChapter) return;
+
+        let prevButton = document.getElementById("prevChapterBtn");
+        let nextButton = document.getElementById("nextChapterBtn");
+
+        let prevVisible = prevButton && prevButton.style.display !== "none";
+        let nextVisible = nextButton && nextButton.style.display !== "none";
+
+        if (touchStartX - touchEndX > 50 && nextVisible) {
+            showNextChapter();
+        } else if (touchEndX - touchStartX > 50 && prevVisible) {
+            showPreviousChapter();
+        }
     }
-  } else {
-    // Asegurarse de que el sidebar es visible
-    sidebar.style.display = "block";  // Asegura que el sidebar sea visible
 
-    // Abrir el sidebar con animación
-    setTimeout(() => {
-      sidebar.classList.add("open");
-      main.classList.add("shifted");
-      document.body.classList.add("sidebar-open");
+    document.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
 
-      // Ajustar la posición de nextPage cuando se abre mySidebar
-      nextPageButton.style.right = "350px";
-
-      // Si toggleNav es un botón que debe cambiar su estado visual al abrir el sidebar
-      if (toggleNav) {
-        toggleNav.classList.add("active");  // Añadir la clase activa cuando se abre el sidebar
-      }
-    }, 10); // Se usa setTimeout para animación
-  }
-}
+    document.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        checkSwipe();
+    });
+});
 
 
-
-  // Función para alternar el sidebar paralelo (sidebar2)
-  function togglesidebar2() {
-    const sidebar2 = document.getElementById("sidebar2");
-    const prevPageButton = document.getElementById("prevPage");
-
-    const isOpen = document.body.classList.contains("sidebar2-open");
-
-    if (isOpen) {
-        document.body.classList.remove("sidebar2-open");
-        prevPageButton.style.left = "215px"; // Restaurar posición original
-    } else {
-        document.body.classList.add("sidebar2-open");
-        prevPageButton.style.left = "215px"; // Nueva posición cuando está abierto
-    }
-}
-
-
-
-
-
-
-
-
-  // JSON y búsqueda
-  const urls = [
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json",
-    "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Apocalipsis.json"
-
-  ];
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-
-  const resultsContainer = document.getElementById("results");
-  const countResultsContainer = document.getElementById("countResults");
-  const sidebar = document.getElementById("myDIV");
-
-  const dropdownButton = document.getElementById("dropdownButton");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-
-  // Función para cargar datos JSON
-
- async function fetchJsonData(url) {
-    try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
-      return await response.json();
-    } catch (error) {
-      console.error(`Error:`, error);
-      return null;
-    }
-  }
-
-  async function fetchAllJsonData() {
-    const allData = {};
-    for (const url of urls) {
-      const data = await fetchJsonData(url);
-      if (data) Object.assign(allData, data);
-    }
-    return allData;
-  }
-
-// Función de búsqueda principal
-async function searchVerses(query) {
+        async function mostrarCapitulos(libro) {
   const datos = await fetchAllJsonData();
-  if (!datos) return;
+  if (!datos[libro]) return;
+  
+  let capitulosHtml = Object.keys(datos[libro])
+    .map(cap => `<a href="#" onclick="showFullChapter('${libro}', '${cap}')">Capítulo ${cap}</a>`)
+    .join("");
+
+  document.getElementById("results").innerHTML = `<div class="chapter-list">${capitulosHtml}</div>`;
+}
+    </script>
+ <script>
+
+// URLs de los JSONs
+const urls = [
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Apocalipsis.json"
+];
+
+// Elementos del DOM
+const searchInput = document.getElementById("searchInput");
+const searchButton = document.getElementById("searchButton");
+const resultsContainer = document.getElementById("results");
+const countResultsContainer = document.getElementById("countResults");
+
+// Cargar todos los JSONs en memoria
+let bibliaDatos = {};
+
+async function fetchJsonData(url) {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Error al cargar JSON: ${response.status}`);
+    return await response.json();
+  } catch (error) {
+    console.error(`Error:`, error);
+    return null;
+  }
+}
+
+async function fetchAllJsonData() {
+  if (Object.keys(bibliaDatos).length) return bibliaDatos; // Usa caché si ya está cargado
+  const responses = await Promise.all(urls.map(url => fetchJsonData(url)));
+  responses.forEach(data => { if (data) Object.assign(bibliaDatos, data); });
+  return bibliaDatos;
+}
 
 
- // Mostrar la palabra buscada en el contenedor
-  const searchTermContainer = document.getElementById("searchTermContainer");
-  searchTermContainer.innerHTML = `Busqueda: <span style="color: #007bff;">${query}</span>`;
-
-
-  resultsContainer.innerHTML = "";
-  countResultsContainer.innerHTML = "";
-  prevPageButton.style.display = "none"; // Ocultar botón "Anterior"
-  nextPageButton.style.display = "none"; // Ocultar botón "Siguiente"
-
-  const normalizedQuery = query
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-
-  // Mapear abreviaturas a nombres completos
-  const libroMap = {
-    gal: "gálatas", Gal: "Gálatas",
-    heb: "hebreos", Heb: "Hebreos",
+// Mapa de abreviaturas de libros
+const libroMap = {
+   gal: "gálatas", Gal: "Gálatas",
+   "galatas": "Gálatas", "Galatas":"Gálatas", "galatas": "Gálatas",
+    heb: "hebreos", Heb: "Hebreos", "hebreos": "Hebreos", "Hebreos": "Hebreos", "HEBREOS":"Hebreos",
     "1 tes": "1Tesalonicenses", "1tes": "1Tesalonicenses",
     "1 tesa": "1Tesalonicenses", "1Tesa": "1Tesalonicenses",
     "1 tesalonicenses": "1Tesalonicenses", 
@@ -1637,357 +552,545 @@ async function searchVerses(query) {
     "Romanos": "Romanos", "romanos": "Romanos", "Rom": "Romanos", "rom": "Romanos", "ROMANOS":"Romanos", "ROM": "Romanos", "Marcos": "Marcos", "marcos":"Marcos", "MARCOS":"Marcos", "marc": "Marcos", "Mc": "Marcos", "Mar":"Marcos", "MAR": "Marcos", "mar":"Marcos", "Ap": "Apocalipsis", "ap":"Apocalipsis", "apocalipsis":"Apocalipsis", "APOCALIPSIS":"Apocalipsis", "Apoc":"Apocalipsis", "apoc":"Apocalipsis", "APOC":"Apocalipsis","AP":"Apocalipsis"
   };
 
-  // Verificar si es una búsqueda de versículos específicos o capítulos completos
-  const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
-  if (match) {
+// 🔥 Variables globales para la versión principal
+let currentBook = null;
+let currentChapter = null;
 
-    let libro = match[1].trim();
-    const capitulo = match[2];
-    const versiculoInicio = match[3] ? parseInt(match[3], 10) : null;
-    const versiculoFin = match[4] ? parseInt(match[4], 10) : null;
-
-    libro = libroMap[libro] || libro;
-    const libroEncontrado = Object.keys(datos).find(key => {
-        return key
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase() === libro
-            .normalize("NFD")
-            .replace(/[\u0300-\u036f]/g, "")
-            .toLowerCase();
-    });
-
-    if (libroEncontrado) {
-        const capitulos = datos[libroEncontrado];
-        if (capitulos[capitulo]) {
-
-
-            // Ocultar myDIV si es búsqueda de libro/capítulo
-            sidebar.style.display = "none";
-
-            if (versiculoInicio && versiculoFin) {
-                for (let i = versiculoInicio; i <= versiculoFin; i++) {
-                    const texto = capitulos[capitulo][i];
-                    resultsContainer.innerHTML += texto
-                        ? `<li>${libroEncontrado} ${capitulo}:${i} - ${texto}
-                            <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
-                        </li>`
-                        : `<li>${libroEncontrado} ${capitulo}:${i} - Versículo no encontrado.</li>`;
-                }
-                return;
-            } else if (versiculoInicio) {
-                const texto = capitulos[capitulo][versiculoInicio];
-                resultsContainer.innerHTML = texto
-                    ? `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - ${texto}
-                        <a href="#" class="full-chapter-link" onclick="showFullChapter('${libroEncontrado}', '${capitulo}')">Leer capítulo completo</a>
-                    </li>`
-                    : `<li>${libroEncontrado} ${capitulo}:${versiculoInicio} - Versículo no encontrado.</li>`;
-                return;
-            } else {
-                showFullChapter(libroEncontrado, capitulo);
-                cargarComentariosCapitulo(libroEncontrado, capitulo);
-                return;
-            }
-        } else {
-            resultsContainer.innerHTML = "<li>Capítulo no encontrado.</li>";
-             // 🔴 Ocultar myDIV si el libro no existe
-        sidebar.style.display = "none";
-            return;
-        }
-    } else {
-        resultsContainer.innerHTML = "<li>Libro no encontrado.</li>";
-
-         // 🔴 Ocultar myDIV si el libro no existe
-        sidebar.style.display = "none";
+// Función de búsqueda
+async function searchVerses(query) {
+    if (!query || typeof query !== "string") {
+        console.error("searchVerses: query es inválido", query);
         return;
     }
-}
 
+    const datos = await fetchAllJsonData();
+    if (!datos) return;
 
-  const resultados = [];
-  const conteoPorLibro = {};
-  const ubicacionesPorLibro = {};
-  const palabraRegex = new RegExp(`(${query})`, "gi");
+    // Resetear contenedores
+    resultsContainer.innerHTML = "";
+    countResultsContainer.innerHTML = "";
 
-  Object.keys(datos).forEach(libro => {
-    let libroCount = 0;
-    ubicacionesPorLibro[libro] = [];
-    Object.keys(datos[libro]).forEach(capitulo => {
-      Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
-        const textoNormalizado = texto
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase();
-        if (textoNormalizado.includes(normalizedQuery)) {
-          const textoResaltado = texto.replace(
-            palabraRegex,
-            "<span style='background-color: #333; color: white; font-weight: bold;'>$1</span>"
-          );
-          resultados.push(
-            `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
-              <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span></li>`
-          );
-          libroCount++;
-          ubicacionesPorLibro[libro].push(`${capitulo}:${versiculo}`);
-        }
-      });
-    });
-    if (libroCount > 0) {
-      conteoPorLibro[libro] = libroCount;
+    let tituloCapitulo = document.getElementById("tituloCapitulo");
+    if (tituloCapitulo) {
+        tituloCapitulo.style.display = "none"; 
     }
-  });
 
-  Object.entries(conteoPorLibro).forEach(([libro, count]) => {
-    const ubicaciones = ubicacionesPorLibro[libro]
-      .map(
-        ubicacion => `<li><a href="#" onclick="showVerse('${libro}', '${ubicacion}')">${libro} ${ubicacion}</a></li>`
-      )
-      .join("");
-    countResultsContainer.innerHTML += `<li class="expandable">${libro} (${count})<ul class="nested">${ubicaciones}</ul></li>`;
-  });
+    const normalizedQuery = query
+        .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  if (resultados.length > 0) {
-  resultsContainer.innerHTML = resultados.join(""); 
-setTimeout(aplicarFuenteGuardada, 50); // Aplicar la fuente después de un breve retraso
+    const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+    if (match) {
+        let libro = match[1].trim();
+        const capitulo = match[2];
 
-  } else {
-    resultsContainer.innerHTML = "<li>No se encontraron coincidencias.</li>";
-  }
+        libro = libroMap[libro] || libro;
+        const libroEncontrado = Object.keys(datos).find(key =>
+            key.toLowerCase() === libro.toLowerCase()
+        );
 
-  sidebar.style.display = resultados.length > 0 ? "block" : "none";
-  document.querySelectorAll(".expandable").forEach(item => {
-    item.addEventListener("click", function () {
-      this.querySelector(".nested").style.display =
-        this.querySelector(".nested").style.display === "block" ? "none" : "block";
-    });
-  });
+        if (libroEncontrado && datos[libroEncontrado][capitulo]) {
+            currentBook = libroEncontrado;
+            currentChapter = parseInt(capitulo, 10);
+
+            showFullChapter(libroEncontrado, capitulo);
+            return;
+        }
+    }
+
+    if (!query) return;
+
+    try {
+        const palabraRegex = new RegExp(`(${query})`, "gi");
+        let resultados = [];
+
+        Object.keys(datos).forEach(libro => {
+            Object.keys(datos[libro]).forEach(capitulo => {
+                Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+                    const textoNormalizado = texto
+                        .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+                    if (textoNormalizado.includes(normalizedQuery)) {
+                        const textoResaltado = texto.replace(
+                            palabraRegex,
+                            "<span style='background-color: #ffeb3b; font-weight: bold;'>$1</span>"
+                        );
+                        resultados.push(
+                            `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
+                              <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span>
+                            </li>`
+                        );
+                    }
+                });
+            });
+        });
+
+        resultsContainer.innerHTML = resultados.length > 0 ? resultados.join("") : "<li>No se encontraron coincidencias.</li>";
+    } catch (error) {
+        console.error("Error en palabraRegex:", error);
+    }
 }
 
 
 
-  </script>
-  <script src="js/cargarcomentarios.js"></script>
-  <script>
-// Función para cargar comentarios según el capítulo
-
-
-// Funciones auxiliares: showVerse, showFullChapter, etc. permanecen iguales
-
-
-function showVerse(libro, ubicacion) {
-    const [capitulo, versiculo] = ubicacion.split(":");
+function showFullChapter(libro, capitulo) {
     fetchAllJsonData().then(datos => {
         if (!datos[libro] || !datos[libro][capitulo]) return;
-        const texto = datos[libro][capitulo][versiculo];
-        resultsContainer.innerHTML = texto
-            ? `<li>${libro} ${capitulo}:${versiculo} - ${texto}
-               <br>
-               <a href="#" onclick="showFullChapter('${libro}', '${capitulo}')" class="full-chapter-link">Leer capítulo completo</a>
-               </li>`
-            : `<li>${libro} ${capitulo}:${versiculo} - Versículo no encontrado.</li>`;
-    });
-    // Ocultar botones de navegación
-  prevPageButton.style.display = "none";
-  nextPageButton.style.display = "none";
-}
 
+        currentBook = libro;
+        currentChapter = parseInt(capitulo, 10);
 
-
-
-function showFullChapterWithHighlight(libro, capitulo, versiculoResaltado) {
-    fetchAllJsonData().then(datos => {
-        if (!datos[libro] || !datos[libro][capitulo]) return;
         const versiculos = Object.entries(datos[libro][capitulo])
             .map(([versiculo, texto]) => {
-                if (versiculo === versiculoResaltado) {
-                    return `<li style="background-color: #666; color: white; font-weight: bold; font-family: Arial, sans-serif; transition: background-color 0.3s ease;" 
-            onmouseover="this.style.backgroundColor='#000'" 
-            onmouseout="this.style.backgroundColor='#666'" 
-            data-temporary="true" 
-            onmouseenter="if (this.dataset.temporary === 'true') {
-              setTimeout(() => { 
-                this.style.backgroundColor = '#fff'; 
-                this.style.color = '#333'; 
-                this.style.fontWeight = 'normal'; 
-                this.style.padding = '15px'; 
-                this.style.border = '1px solid #ccc'; 
-                this.style.marginBottom = '-13px'; 
-                this.style.borderRadius = '4px'; 
-                this.style.width = 'calc(100% + 80px)'; 
-                this.style.marginLeft = '-90px'; 
-                this.style.marginTop = '20px'; 
+                const claveMapa = `${libro} ${capitulo}:${versiculo}`;
 
-                // Elimina los eventos de hover
-                this.removeAttribute('onmouseover');
-                this.removeAttribute('onmouseout');
-                this.dataset.temporary = 'false'; // Desactiva el estilo temporal
-              }, 5000);
-            }">
-            ${libro} ${capitulo}:${versiculo} - ${texto}
-        </li>`;
+                const botonBookmark = na28Map[claveMapa]
+                    ? `<button class="bookmark-btn" onclick="cargarNA28('${libro}', '${capitulo}', '${versiculo}')">
+                           <i class="bi bi-bookmark"></i>
+                       </button>`
+                    : "";
 
-
-                }
-                return `<li>${libro} ${capitulo}:${versiculo} - ${texto}</li>`;
+                return `<li><span>${versiculo}. ${texto}</span>${botonBookmark}</li>`;
             })
             .join("");
-        resultsContainer.innerHTML = versiculos || "<li>Capítulo no encontrado.</li>";
+
+        resultsContainer.innerHTML = `
+            <div class="chapter-navigation">
+                <button id="prevChapterBtn" onclick="showPreviousChapter()">
+        <img src="https://imgur.com/zIZQHwE.png" alt="Anterior" class="nav-icon">
+    </button>
+    <button id="nextChapterBtn" onclick="showNextChapter()">
+        <img src="https://imgur.com/rFB7Uqu.png" alt="Siguiente" class="nav-icon">
+    </button>
+            </div>
+            <h2 id="tituloCapitulo">${libro} ${capitulo}</h2>
+            <ul>${versiculos}</ul>
+            <div class="chapter-navigation">
+                 <button id="prevChapterBtn" onclick="showPreviousChapter()">
+        <img src="https://imgur.com/zIZQHwE.png" alt="Anterior" class="nav-icon">
+    </button>
+    <button id="nextChapterBtn" onclick="showNextChapter()">
+        <img src="https://imgur.com/rFB7Uqu.png" alt="Siguiente" class="nav-icon">
+    </button>
+            </div>
+        `;
+
+        document.getElementById("tituloCapitulo").style.display = "block";
+        toggleNavigationButtons();
+        cargarComentariosCapitulo(libro, capitulo);
     });
 }
 
 
 
-      searchButton.addEventListener("click", () => {
-    const query = searchInput.value.trim();
-    if (query) searchVerses(query);
-  });
-
-  searchInput.addEventListener("keypress", event => {
-    if (event.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query) searchVerses(query);
-    }
-  });
 
 
-      // Ocultar el mensaje de bienvenida al realizar una búsqueda
-const welcomeMessage = document.getElementById("welcomeMessage");
-function hideWelcomeMessage() {
-  welcomeMessage.style.display = "none";
+
+
+
+function showPreviousChapter() {
+    fetchAllJsonData().then(datos => {
+        if (!currentBook || !currentChapter) return;
+        let prevChapter = (currentChapter - 1).toString();
+
+        if (datos[currentBook][prevChapter]) {
+            showFullChapter(currentBook, prevChapter);
+        }
+    });
 }
+
+function showNextChapter() {
+    fetchAllJsonData().then(datos => {
+        if (!currentBook || !currentChapter) return;
+        let nextChapter = (currentChapter + 1).toString();
+
+        if (datos[currentBook][nextChapter]) {
+            showFullChapter(currentBook, nextChapter);
+        }
+    });
+}
+
+
+
+function updateNavigationButtons(datos) {
+    let prevButton = document.getElementById("prevChapterBtn");
+    let nextButton = document.getElementById("nextChapterBtn");
+    let prevButtonBottom = document.getElementById("prevChapterBtnBottom");
+    let nextButtonBottom = document.getElementById("nextChapterBtnBottom");
+
+    let prevChapter = (currentChapter - 1).toString();
+    let nextChapter = (currentChapter + 1).toString();
+
+    console.log(`Libro actual: ${currentBook}, Capítulo actual: ${currentChapter}`);
+    console.log(`Capítulo anterior: ${prevChapter}, Capítulo siguiente: ${nextChapter}`);
+
+    // Si hay un capítulo anterior, mostrar botones prev
+    if (datos[currentBook][prevChapter]) {
+        prevButton.style.display = "inline-block";
+        prevButtonBottom.style.display = "inline-block";
+    } else {
+        prevButton.style.display = "none";
+        prevButtonBottom.style.display = "none";
+    }
+
+    // Si hay un capítulo siguiente, mostrar botones next
+    if (datos[currentBook][nextChapter]) {
+        nextButton.style.display = "inline-block";
+        nextButtonBottom.style.display = "inline-block";
+    } else {
+        nextButton.style.display = "none";
+        nextButtonBottom.style.display = "none";
+    }
+}
+
+
+// Eventos para la búsqueda
 searchButton.addEventListener("click", () => {
   const query = searchInput.value.trim();
   if (query) {
-    hideWelcomeMessage();
     searchVerses(query);
+    contarResultadosPorLibro(query); // Llamar a la función de conteo
   }
 });
+
 searchInput.addEventListener("keypress", event => {
   if (event.key === "Enter") {
     const query = searchInput.value.trim();
     if (query) {
-      hideWelcomeMessage();
       searchVerses(query);
+      contarResultadosPorLibro(query); // Llamar a la función de conteo
     }
   }
 });
 
-   function displayChapter(libro, capitulo) {
-    fetchAllJsonData().then(datos => {
-      if (!datos[libro] || !datos[libro][capitulo]) return;
-      resultsContainer.innerHTML = "";
-      Object.entries(datos[libro][capitulo]).forEach(([numVerso, textoVerso]) => {
-        resultsContainer.innerHTML += `<li>${libro} ${capitulo}:${numVerso} - ${textoVerso}</li>`;
-      });
+
+</script>
+<script>
+document.getElementById("imgMaterial").addEventListener("click", function() {
+    let sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active"); // Alternar la clase para mostrar/ocultar
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    let boton = document.getElementById("flotante");
+    let offsetX, offsetY, dragging = false;
+
+    // Cargar la última posición guardada y ajustarla si está fuera de la pantalla
+    let savedPosition = localStorage.getItem("botonFlotantePos");
+    if (savedPosition) {
+        let { top, left } = JSON.parse(savedPosition);
+        ajustarPosicionBoton(boton, top, left);
+    }
+
+    boton.addEventListener("touchstart", startDrag, false);
+    boton.addEventListener("touchmove", drag, false);
+    boton.addEventListener("touchend", stopDrag, false);
+
+    boton.addEventListener("mousedown", startDrag, false);
+    document.addEventListener("mousemove", drag, false);
+    document.addEventListener("mouseup", stopDrag, false);
+
+    function startDrag(e) {
+        dragging = true;
+        let event = e.type.includes("touch") ? e.touches[0] : e;
+        offsetX = event.clientX - boton.getBoundingClientRect().left;
+        offsetY = event.clientY - boton.getBoundingClientRect().top;
+        boton.style.transition = "none"; // Quita la animación al arrastrar
+    }
+
+    function drag(e) {
+        if (!dragging) return;
+        let event = e.type.includes("touch") ? e.touches[0] : e;
+        let x = event.clientX - offsetX;
+        let y = event.clientY - offsetY;
+
+        ajustarPosicionBoton(boton, y, x);
+    }
+
+    function stopDrag() {
+        if (!dragging) return;
+        dragging = false;
+        boton.style.transition = "all 0.2s ease-out"; // Animación suave al soltar
+
+        // Guardar la nueva posición en localStorage
+        let position = {
+            top: boton.offsetTop,
+            left: boton.offsetLeft
+        };
+        localStorage.setItem("botonFlotantePos", JSON.stringify(position));
+    }
+
+    // **Función para evitar que el botón quede fuera de la pantalla**
+    function ajustarPosicionBoton(boton, top, left) {
+        let maxX = window.innerWidth - boton.clientWidth - 10; // Margen de 10px
+        let maxY = window.innerHeight - boton.clientHeight - 10;
+
+        let newX = Math.max(10, Math.min(left, maxX)); // Evita salir por izquierda/derecha
+        let newY = Math.max(10, Math.min(top, maxY));  // Evita salir por arriba/abajo
+
+        boton.style.left = newX + "px";
+        boton.style.top = newY + "px";
+    }
+
+    // **Reajustar la posición si la pantalla cambia de tamaño**
+    window.addEventListener("resize", function () {
+        let savedPosition = localStorage.getItem("botonFlotantePos");
+        if (savedPosition) {
+            let { top, left } = JSON.parse(savedPosition);
+            ajustarPosicionBoton(boton, top, left);
+        }
     });
-  }
+});
 
+async function contarResultadosPorLibro(query) {
+  const datos = await fetchAllJsonData();
+  if (!datos) return;
 
-function copiarContenido() {
-  const resultados = document.getElementById("results");
-  const texto = resultados.innerText; // Obtiene el texto de los resultados
+  countResultsContainer.innerHTML = ""; // Limpiar sidebar
 
-  if (texto) {
-    navigator.clipboard.writeText(texto).then(() => {
-      mostrarNotificacion("El contenido ha sido copiado.");
-    }).catch(err => {
-      console.error("Error al copiar.", err);
-    });
-  } else {
-    mostrarNotificacion("No hay contenido para copiar.");
-  }
-}
+  const normalizedQuery = query
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-function mostrarNotificacion(mensaje) {
-  const notificacion = document.createElement("div");
-  notificacion.innerText = mensaje;
-  notificacion.style.position = "fixed";
-  notificacion.style.top = "115px";  // Ajusta esto para subir o bajar la notificación
-  notificacion.style.left = "50%";
-  notificacion.style.transform = "translateX(-50%)";
-  notificacion.style.background = "rgba(0, 0, 0, 0.8)";
-  notificacion.style.color = "white";
-  notificacion.style.padding = "5px 10px";
-  notificacion.style.borderRadius = "5px";
-  notificacion.style.fontSize = "16px";
-  notificacion.style.zIndex = "1000";
-  notificacion.style.opacity = "0";
-  notificacion.style.transition = "opacity 0.3s ease-in-out";
+  let conteoPorLibro = {}; // Guardar cuántas veces aparece en cada libro
+  let resultadosPorLibro = {}; // Guardar los versículos encontrados
+  let totalResultados = 0; // Variable para contar el total de ocurrencias
 
-  document.body.appendChild(notificacion);
+  Object.keys(datos).forEach(libro => {
+    let count = 0;
+    let resultados = [];
 
-  // Mostrar la notificación
-  setTimeout(() => {
-    notificacion.style.opacity = "1";
-  }, 10);
-
-  // Ocultar y eliminar la notificación después de 1.5 segundos
-  setTimeout(() => {
-    notificacion.style.opacity = "0";
-    setTimeout(() => {
-      notificacion.remove();
-    }, 300);
-  }, 730);
-}
-
-
-      // Funcionalidad del menú desplegable
-      dropdownButton.addEventListener("click", () => {
-        const isMenuVisible = dropdownMenu.style.display === "block";
-        dropdownMenu.style.display = isMenuVisible ? "none" : "block";
-      });
-      document.addEventListener("click", event => {
-        if (!dropdownButton.contains(event.target)) {
-          dropdownMenu.style.display = "none";
+    Object.keys(datos[libro]).forEach(capitulo => {
+      Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+        const textoNormalizado = texto
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const coincidencias = textoNormalizado.match(new RegExp(normalizedQuery, "g"));
+        
+        if (coincidencias) {
+          count += coincidencias.length;
+          totalResultados += coincidencias.length; // Sumar al total
+          resultados.push({
+            capitulo,
+            versiculo
+          });
         }
       });
-
-
-const state = {
-  currentBook: null,
-  currentChapter: null,
-};
-
-// Al acceder o actualizar
-
-
-// Función para alternar el nuevo sidebar
-    </script>
-
- <!-- Script para cambiar imágenes por botones en pantalla chica -->
-<script>
-
-
-  document.addEventListener("DOMContentLoaded", function () {
-  const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-
-  tooltips.forEach((tooltipTriggerEl) => {
-    const tooltip = new bootstrap.Tooltip(tooltipTriggerEl, { trigger: "hover" });
-
-    tooltipTriggerEl.addEventListener("click", function () {
-      tooltip.hide();
     });
+
+    if (count > 0) {
+      conteoPorLibro[libro] = count;
+      resultadosPorLibro[libro] = resultados;
+    }
   });
+
+  // **Mostrar el total de coincidencias en un nuevo cuadro**
+  let totalContainer = `
+    <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px; background: #f8f9fa;">
+      <strong>Busqueda:</strong> "${query}"<br>
+      <strong>Total de coincidencias:</strong> ${totalResultados}
+    </div>
+  `;
+
+  // **Mostrar los resultados por libro**
+  countResultsContainer.innerHTML = totalContainer + Object.entries(conteoPorLibro)
+    .map(([libro, count]) => 
+      `<div class="libro-item">
+        <a href="#" class="libro-link" onclick="toggleResultados('${libro}')">
+          ${libro} (${count})
+        </a>
+        <div id="resultados-${libro}" class="resultados-libro" style="display:none;"></div>
+      </div>`
+    ).join("");
+  
+  window.resultadosPorLibro = resultadosPorLibro;
+}
+
+
+// Mostrar los enlaces de los versículos sin el texto
+// Función para manejar los clics en los versículos dentro de countResults
+function toggleResultados(libro) {
+    const resultadosDiv = document.getElementById(`resultados-${libro}`);
+
+    if (resultadosDiv.style.display === "none") {
+        resultadosDiv.style.display = "block";
+
+        resultadosDiv.innerHTML = window.resultadosPorLibro[libro].map(({ capitulo, versiculo }) => 
+            `<a href="#" class="versiculo-link" onclick="irAVersiculo('${libro}', '${capitulo}', '${versiculo}')">
+                ${libro} ${capitulo}:${versiculo}
+            </a>`
+        ).join("<br>");
+    } else {
+        resultadosDiv.style.display = "none"; // Ocultar si ya está abierto
+    }
+}
+
+
+// Función para navegar al versículo seleccionado y mostrarlo en `results`
+function irAVersiculo(libro, capitulo, versiculo) {
+    fetchAllJsonData().then(datos => {
+        if (!datos[libro] || !datos[libro][capitulo] || !datos[libro][capitulo][versiculo]) {
+            resultsContainer.innerHTML = `<p>No se encontró el versículo.</p>`;
+            return;
+        }
+
+        const textoVersiculo = datos[libro][capitulo][versiculo];
+
+        resultsContainer.innerHTML = `
+            <h2 id="tituloCapitulo">${libro} ${capitulo}</h2>
+            <ul>
+                <li>
+                    <strong>${capitulo}:${versiculo}</strong> - ${textoVersiculo}
+                    <button class="bookmark-btn" onclick="toggleSidebarBookmark()">
+                        <i class="bi bi-bookmark"></i> <!-- 🔥 Icono de abrir/cerrar sidebar -->
+                    </button>
+                    <br>
+                    <a href="#" class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">
+                        Leer capítulo completo
+                    </a>
+                </li>
+            </ul>
+        `;
+
+        searchInput.value = `${libro} ${capitulo}:${versiculo}`;
+    });
+}
+
+// Función para abrir/cerrar el sidebar
+function toggleSidebarBookmark() {
+    let sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("active"); // Alternar la clase para mostrar/ocultar
+}
+
+
+
+// Ocultar el botón al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
+  let toggleBtn = document.querySelector(".toggle-btn");
+  toggleBtn.style.display = "none"; // Inicia oculto
+});
+
+function controlarToggleBtn(query) {
+  let toggleBtn = document.querySelector(".toggle-btn");
+
+  // Verificar si el query contiene números (indica capítulo o versículo)
+  let contieneNumeros = /\d/.test(query);
+
+  // Si la búsqueda es solo una palabra sin números, mostramos el botón
+  if (!contieneNumeros && query.trim().length > 0) {
+    toggleBtn.style.display = "block"; // Mostrar botón
+  } else {
+    toggleBtn.style.display = "none"; // Ocultar botón
+  }
+}
+
+// Modificar la función de búsqueda para llamar a `controlarToggleBtn`
+async function contarResultadosPorLibro(query) {
+  const datos = await fetchAllJsonData();
+  if (!datos) return;
+
+  // Llamar a la función para mostrar u ocultar el botón
+  controlarToggleBtn(query);
+
+  countResultsContainer.innerHTML = ""; // Limpiar sidebar
+
+  const normalizedQuery = query
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  let conteoPorLibro = {}; // Guarda cuántas veces aparece en cada libro
+  let resultadosPorLibro = {}; // Guarda los versículos encontrados
+  let totalResultados = 0; // Contador total de coincidencias
+
+  Object.keys(datos).forEach(libro => {
+    let count = 0;
+    let resultados = [];
+
+    Object.keys(datos[libro]).forEach(capitulo => {
+      Object.entries(datos[libro][capitulo]).forEach(([versiculo, texto]) => {
+        const textoNormalizado = texto
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        const coincidencias = textoNormalizado.match(new RegExp(normalizedQuery, "g"));
+        
+        if (coincidencias) {
+          count += coincidencias.length;
+          totalResultados += coincidencias.length; // Sumar al total
+          resultados.push({
+            capitulo,
+            versiculo
+          });
+        }
+      });
+    });
+
+    if (count > 0) {
+      conteoPorLibro[libro] = count;
+      resultadosPorLibro[libro] = resultados;
+    }
+  });
+
+  // **Mostrar el total de coincidencias en un cuadro adicional**
+  let totalContainer = `
+    <div style="border: 2px solid black; padding: 10px; margin-bottom: 10px; background: #f8f9fa;">
+      <strong>Palabra buscada:</strong> "${query}"<br>
+      <strong>Total de coincidencias:</strong> ${totalResultados}
+    </div>
+  `;
+
+  // **Generar la lista de resultados por libro**
+  let resultadosHTML = Object.entries(conteoPorLibro)
+    .map(([libro, count]) => 
+      `<div class="libro-item">
+        <a href="#" class="libro-link" onclick="toggleResultados('${libro}')">
+          ${libro} (${count})
+        </a>
+        <div id="resultados-${libro}" class="resultados-libro" style="display:none;"></div>
+      </div>`
+    ).join("");
+
+  // **Actualizar el contenedor con el total y los resultados por libro**
+  countResultsContainer.innerHTML = totalContainer + resultadosHTML;
+
+  window.resultadosPorLibro = resultadosPorLibro;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const fontSelector = document.getElementById("fontSelector");
+    const fontSizeSelector = document.getElementById("fontSizeSelector");
+    const resultsContainer = document.getElementById("results");
+
+    // Cargar valores guardados en localStorage o establecer valores por defecto
+    const savedFont = localStorage.getItem("selectedFont") || "Arial";
+    const savedFontSize = localStorage.getItem("selectedFontSize") || "14px";
+
+    // Aplicar los valores guardados
+    resultsContainer.style.fontFamily = savedFont;
+    fontSizeSelector.value = savedFontSize.replace("px", ""); // Eliminar "px" para coincidir con las opciones
+
+    // Función para aplicar los cambios a cada <li>
+    function aplicarEstilos() {
+        document.querySelectorAll("#results li").forEach(li => {
+            li.style.fontFamily = fontSelector.value;
+            li.style.fontSize = fontSizeSelector.value + "px";
+        });
+    }
+
+    // Aplicar los estilos guardados al cargar
+    setTimeout(aplicarEstilos, 50);
+
+    // Evento para cambiar la fuente
+    fontSelector.addEventListener("change", function () {
+        localStorage.setItem("selectedFont", fontSelector.value);
+        aplicarEstilos();
+    });
+
+    // Evento para cambiar el tamaño de la fuente
+    fontSizeSelector.addEventListener("change", function () {
+        localStorage.setItem("selectedFontSize", fontSizeSelector.value + "px");
+        aplicarEstilos();
+    });
 });
 
 
-
-function aplicarFuenteGuardada() {
-    let fuenteGuardada = localStorage.getItem("fuenteSeleccionada") || "Arial";
-    let tamanoGuardado = localStorage.getItem("tamanoSeleccionado") || "16px";
-
-    document.querySelectorAll("#results li").forEach(li => {
-        li.style.fontFamily = fuenteGuardada;
-        li.style.fontSize = tamanoGuardado;
-    });
-}
-
 </script>
-
-
-
-
-   <script src="js/scriptparalelo.js"></script>
+<script src="na28/js/na28movil.js"></script>
+<script src="js/scriptparalelomovil.js"></script>
 <!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
