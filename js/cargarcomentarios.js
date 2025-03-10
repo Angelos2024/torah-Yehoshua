@@ -129,3 +129,5 @@ function cargarComentariosCapitulo(libro, capitulo) {
       contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
     });
 }
+
+
