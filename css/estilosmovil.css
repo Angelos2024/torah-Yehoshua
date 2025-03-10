@@ -211,28 +211,66 @@ input:checked + .slider:before {
   text-decoration: none;
   color: black;
 }
-#prevChapterBtn, #nextChapterBtn, #nextChapterBtnBottom, #prevChapterBtnBottom  {
-    background-color: #075e54; /* Verde WhatsApp */
-    color: white;
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        margin-bottom: -40px;
+    margin-top: 12px;
+    position: relative; /* Mantiene la posición */
+    padding: 5px 0;
+}
+
+/* 🔥 Estilos para los botones en modo oscuro */
+.dark-mode #prevChapterBtn, 
+.dark-mode #nextChapterBtn {
+    background-color: black !important; /* Fondo negro */
+    border: 2px solid white !important; /* Borde blanco */
+    color: white !important; /* Texto blanco */
+}
+
+/* 🔥 Cambiar color del icono dentro del botón */
+.dark-mode #prevChapterBtn img, 
+.dark-mode #nextChapterBtn img {
+    filter: invert(1); /* Invierte el color del icono para que sea blanco */
+}
+
+#prevChapterBtn, #nextChapterBtn {
+    background-color: #075e54; /* 🔥 Color verde WhatsApp */
     border: none;
-    padding: 4px 8px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 20px;
+    padding: 10px;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%);
+    border-radius: 50%; /* 🔥 Hace que sea un círculo */
+    width: 38px;  /* Ajuste del tamaño del botón */
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
 }
 
-/* Efecto hover */
+#prevChapterBtn {
+    left: 10px; 
+}
+
+#nextChapterBtn {
+    right: 10px;
+}
+
+/* 🔥 Efecto hover para los botones */
 #prevChapterBtn:hover, #nextChapterBtn:hover {
-    background-color: #1ebe5d; /* Verde más oscuro */
-    transform: scale(1.05);
+    background-color: #1ebe5d; /* 🔥 Verde más brillante al pasar el mouse */
+    transform: scale(1.1);
 }
 
-/* Efecto al presionar */
-#prevChapterBtn:active, #nextChapterBtn:active {
-    background-color: #128C7E; /* Verde más intenso */
-    transform: scale(0.95);
+/* 🔥 Estilos para los iconos */
+.nav-icon {
+    width: 28px;  /* Ajuste del tamaño del icono */
+    height: auto;
+    filter: invert(1); /* 🔥 Invierte los colores para hacer el icono blanco */
 }
 
 .resultados-libro {
