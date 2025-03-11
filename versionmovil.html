@@ -19,28 +19,25 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/estilosmovil.css">
       <script>
-document.addEventListener("DOMContentLoaded", function () {
-    function checkScreenWidth() {
-        let width = window.innerWidth;
+window.onload = function() {
+    checkScreenSize();
+};
 
-        if (width <= 991) {
-            // Si es menor o igual a 991px, redirigir a la versión móvil
-            if (!window.location.href.includes("versionmovil.html")) {
-                window.location.href = "versionmovil.html";
-            }
-        } else {
-            // Si es mayor a 991px, redirigir a la versión PC
-            if (!window.location.href.includes("index.html")) {
-                window.location.href = "index.html";
-            }
-        }
+window.onresize = function() {
+    checkScreenSize();
+};
+
+function checkScreenSize() {
+    let width = window.innerWidth;
+    let currentPage = window.location.pathname.split("/").pop(); // Obtiene el nombre del archivo actual
+
+    if (width <= 991 && currentPage !== "versionmovil.html") {
+        window.location.href = "versionmovil.html";
+    } else if (width > 991 && currentPage !== "index.html") {
+        window.location.href = "index.html";
     }
+}
 
-    checkScreenWidth(); // Verificar al cargar la página
-
-    // Detectar cambios en el tamaño de la pantalla
-    window.addEventListener("resize", checkScreenWidth);
-});
 </script>
 
 </head>
