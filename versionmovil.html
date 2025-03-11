@@ -22,6 +22,52 @@
 sessionStorage.clear();
 caches.keys().then(names => names.forEach(name => caches.delete(name)));
 
+    function checkScreenSize() {
+        let width = window.innerWidth;
+        let currentPage = window.location.pathname.split("/").pop(); // Obtiene el archivo actual
+        let lastRedirect = sessionStorage.getItem("lastRedirect");
+
+        // Manejar el caso donde "index.html" no aparece en GitHub Pages
+        if (currentPage === "" || currentPage === "index.html") {
+            currentPage = "index.html";
+        }
+
+        // Redirección a versión móvil si la pantalla es menor a 991px
+        if (width <= 991 && currentPage !== "versionmovil.html") {
+            if (lastRedirect !== "versionmovil.html") {
+                sessionStorage.setItem("lastRedirect", "versionmovil.html");
+                window.location.href = "versionmovil.html";
+            }
+        }
+        // Redirección a versión de PC si la pantalla es mayor a 991px
+        else if (width > 991 && currentPage !== "index.html") {
+            if (lastRedirect !== "index.html") {
+                sessionStorage.setItem("lastRedirect", "index.html");
+                window.location.href = "index.html";
+            }
+        }
+    }
+
+    // Ejecutar al cargar la página
+    window.onload = function() {
+        checkScreenSize();
+    };
+
+    // Ejecutar si cambia el tamaño de la pantalla
+    window.onresize = function() {
+        checkScreenSize();
+    };
+</script>
+
+<!-- 🔥 Carga el CSS correcto según el tamaño de pantalla -->
+<script>
+    if (window.innerWidth <= 991) {
+        document.write('<link rel="stylesheet" href="css/estilos-movil.css?v=1.0">');
+    } else {
+        document.write('<link rel="stylesheet" href="css/estilos-pc.css?v=1.0">');
+    }
+
+
 
 </script>
 
