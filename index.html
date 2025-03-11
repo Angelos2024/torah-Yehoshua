@@ -27,19 +27,19 @@
         let currentPage = window.location.pathname.split("/").pop(); // Obtiene el archivo actual
         let lastRedirect = sessionStorage.getItem("lastRedirect");
 
-        // Manejar el caso donde "index.html" no aparece en GitHub Pages
+        // 🔥 Detectar si estamos en GitHub Pages (puede omitir "index.html")
         if (currentPage === "" || currentPage === "index.html") {
             currentPage = "index.html";
         }
 
-        // Redirección a versión móvil si la pantalla es menor a 991px
+        // 🔹 Si la pantalla es menor o igual a 991px, redirigir a versión móvil
         if (width <= 991 && currentPage !== "versionmovil.html") {
             if (lastRedirect !== "versionmovil.html") {
                 sessionStorage.setItem("lastRedirect", "versionmovil.html");
                 window.location.href = "versionmovil.html";
             }
         }
-        // Redirección a versión de PC si la pantalla es mayor a 991px
+        // 🔹 Si la pantalla es mayor a 991px, redirigir a la versión de PC
         else if (width > 991 && currentPage !== "index.html") {
             if (lastRedirect !== "index.html") {
                 sessionStorage.setItem("lastRedirect", "index.html");
@@ -48,33 +48,11 @@
         }
     }
 
-    // Ejecutar al cargar la página
-    window.onload = function() {
-        checkScreenSize();
-        loadCSS(); // Cargar el CSS correcto
-    };
-
-    // Ejecutar si cambia el tamaño de la pantalla
-    window.onresize = function() {
-        checkScreenSize();
-    };
-
-    function loadCSS() {
-        let head = document.head;
-        let link = document.createElement("link");
-        link.rel = "stylesheet";
-        link.type = "text/css";
-
-        // 📌 **Cargar los archivos correctos**
-        if (window.innerWidth <= 991) {
-            link.href = "css/estilosmovil.css?v=1.0"; // Para versión móvil
-        } else {
-            link.href = "css/estilo.css?v=1.0"; // Para versión PC
-        }
-
-        head.appendChild(link);
-    }
+    // 🔥 Ejecutar al cargar y cuando cambie el tamaño de la pantalla
+    window.addEventListener("DOMContentLoaded", checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
 </script>
+
 
 
 </head>
