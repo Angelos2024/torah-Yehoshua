@@ -236,23 +236,69 @@ input:checked + .slider:before {
 }
 
 #prevChapterBtn, #nextChapterBtn {
-    background-color: #075e54; /* Verde WhatsApp */
+    background-color: #075e54; /* Color verde WhatsApp */
     border: none;
     padding: 10px;
-    position: fixed; /* Para que siempre estén visibles */
-    top: 50%; 
+    position: fixed;
+    top: 50%;
     transform: translateY(-50%);
     border-radius: 50%;
-    width: 38px;
-    height: 38px;
+    width: 45px;
+    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     transition: transform 0.2s ease-in-out, background-color 0.3s;
-    z-index: 9999; /* Para que siempre estén por encima */
+    z-index: 1000;
+    font-size: 22px; /* Asegura que el icono sea visible */
+    color: white; /* Color del icono */
 }
 
+#prevChapterBtn {
+    left: 10px;
+}
+
+#nextChapterBtn {
+    right: 10px;
+}
+
+/* 🔥 Asegurar que el icono sea blanco y visible */
+#prevChapterBtn i, #nextChapterBtn i {
+    font-size: 24px;
+    color: white !important;
+}
+
+/* 🔥 Modo oscuro */
+.dark-mode #prevChapterBtn, .dark-mode #nextChapterBtn {
+    background-color: black !important;
+    border: 2px solid white !important;
+}
+
+.dark-mode #prevChapterBtn i, .dark-mode #nextChapterBtn i {
+    color: white !important;
+}
+
+/* 🔹 Ajustes especiales para móviles */
+@media (max-width: 600px) {
+    #prevChapterBtn, #nextChapterBtn {
+        width: 40px; /* Reducir tamaño */
+        height: 40px;
+        font-size: 18px; /* Ajustar tamaño del icono */
+    }
+
+    #prevChapterBtn {
+        left: 5px;
+    }
+
+    #nextChapterBtn {
+        right: 5px;
+    }
+}
+
+a {
+    color: #075e54;
+}
 #prevChapterBtn {
     left: 10px;
 }
