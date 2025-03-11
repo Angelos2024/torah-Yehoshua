@@ -30,21 +30,23 @@ window.onresize = function() {
 function checkScreenSize() {
     let width = window.innerWidth;
     let currentPage = window.location.pathname.split("/").pop(); // Obtiene el nombre del archivo actual
-    let lastRedirect = localStorage.getItem("lastRedirect");
+    let lastRedirect = sessionStorage.getItem("lastRedirect");
 
+    // Si el ancho de pantalla es menor o igual a 991px y no estamos en la versión móvil
     if (width <= 991 && currentPage !== "versionmovil.html") {
         if (lastRedirect !== "versionmovil.html") {
-            localStorage.setItem("lastRedirect", "versionmovil.html");
+            sessionStorage.setItem("lastRedirect", "versionmovil.html");
             window.location.href = "versionmovil.html";
         }
-    } else if (width > 991 && currentPage !== "index.html") {
+    }
+    // Si el ancho de pantalla es mayor a 991px y no estamos en la versión de escritorio
+    else if (width > 991 && currentPage !== "index.html") {
         if (lastRedirect !== "index.html") {
-            localStorage.setItem("lastRedirect", "index.html");
+            sessionStorage.setItem("lastRedirect", "index.html");
             window.location.href = "index.html";
         }
     }
 }
-
 
 </script>
 
