@@ -30,13 +30,21 @@ window.onresize = function() {
 function checkScreenSize() {
     let width = window.innerWidth;
     let currentPage = window.location.pathname.split("/").pop(); // Obtiene el nombre del archivo actual
+    let lastRedirect = localStorage.getItem("lastRedirect");
 
     if (width <= 991 && currentPage !== "versionmovil.html") {
-        window.location.href = "versionmovil.html";
+        if (lastRedirect !== "versionmovil.html") {
+            localStorage.setItem("lastRedirect", "versionmovil.html");
+            window.location.href = "versionmovil.html";
+        }
     } else if (width > 991 && currentPage !== "index.html") {
-        window.location.href = "index.html";
+        if (lastRedirect !== "index.html") {
+            localStorage.setItem("lastRedirect", "index.html");
+            window.location.href = "index.html";
+        }
     }
 }
+
 
 </script>
 
