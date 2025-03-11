@@ -215,7 +215,7 @@ input:checked + .slider:before {
     display: flex;
     justify-content: space-between;
     align-items: center;
-        margin-bottom: -40px;
+        margin-bottom: -10px;
     margin-top: 12px;
     position: relative; /* Mantiene la posición */
     padding: 5px 0;
@@ -252,9 +252,32 @@ input:checked + .slider:before {
     transition: transform 0.2s ease-in-out, background-color 0.3s;
     z-index: 1;
     font-size: 22px; /* Asegura que el icono sea visible */
-    color: white; /* Color del icono */
+    color: white !important; /* Color del icono */
 }
 
+#prevChapterBtnBottom, #nextChapterBtnBottom {
+    background-color: #075e54; /* Verde WhatsApp */
+    border: none;
+    padding: 10px;
+    border-radius: 50%; /* 🔥 Hace que sea un círculo */
+    width: 45px;  /* Tamaño del botón */
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
+     color: white !important; /* Color del icono */
+}
+
+/* 🔹 Color blanco para los íconos */
+#prevChapterBtn i, #nextChapterBtn i {
+    color: white !important; /* Asegura que los íconos sean blancos */
+    font-size: 18px; /* Ajusta el tamaño del ícono */
+}
+
+
+}
 #prevChapterBtn {
     left: 10px;
 }
@@ -316,11 +339,7 @@ a {
     }
 }
 
-/* 🔥 Efecto hover */
-#prevChapterBtn:hover, #nextChapterBtn:hover {
-    background-color: #1ebe5d; /* Verde más brillante */
-    transform: scale(1.1);
-}
+
 
 /* Icono blanco */
 .nav-icon {
