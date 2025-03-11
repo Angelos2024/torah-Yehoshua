@@ -657,22 +657,22 @@ function showFullChapter(libro, capitulo) {
 
         resultsContainer.innerHTML = `
             <div class="chapter-navigation">
-                <button id="prevChapterBtn">
-    <i class="fas fa-chevron-left"></i>
-</button>
-    <button id="nextChapterBtn">
-    <i class="fas fa-chevron-right"></i>
-</button>
+                <button id="prevChapterBtn" onclick="showPreviousChapter()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextChapterBtn" onclick="showNextChapter()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
             <h2 id="tituloCapitulo">${libro} ${capitulo}</h2>
             <ul>${versiculos}</ul>
-            <div class="chapter-navigation">
-                 <button id="prevChapterBtn">
-    <i class="fas fa-chevron-left"></i>
-</button>
-    <button id="nextChapterBtn">
-    <i class="fas fa-chevron-right"></i>
-</button>
+<div class="chapter-navigation">
+                <button id="prevChapterBtnBottom" onclick="showPreviousChapter()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="nextChapterBtnBottom" onclick="showNextChapter()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         `;
 
