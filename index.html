@@ -29,18 +29,21 @@ window.onresize = function() {
 
 function checkScreenSize() {
     let width = window.innerWidth;
-    let currentPage = window.location.pathname.split("/").pop(); // Obtiene el nombre del archivo actual
+    let currentPage = window.location.pathname.split("/").pop(); // Obtiene el archivo actual
+
+    // Manejar el caso de GitHub Pages donde no siempre se muestra "index.html"
+    if (currentPage === "" || currentPage === "index.html") {
+        currentPage = "index.html";
+    }
+
     let lastRedirect = sessionStorage.getItem("lastRedirect");
 
-    // Si el ancho de pantalla es menor o igual a 991px y no estamos en la versión móvil
     if (width <= 991 && currentPage !== "versionmovil.html") {
         if (lastRedirect !== "versionmovil.html") {
             sessionStorage.setItem("lastRedirect", "versionmovil.html");
             window.location.href = "versionmovil.html";
         }
-    }
-    // Si el ancho de pantalla es mayor a 991px y no estamos en la versión de escritorio
-    else if (width > 991 && currentPage !== "index.html") {
+    } else if (width > 991 && currentPage !== "index.html") {
         if (lastRedirect !== "index.html") {
             sessionStorage.setItem("lastRedirect", "index.html");
             window.location.href = "index.html";
