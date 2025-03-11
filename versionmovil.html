@@ -343,7 +343,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     <div class="bottom-nav">
-        <i class="fas fa-home" id="home"></i>  <!-- home volver a pagina principal -->
+        <a href="https://www.torah-con-yehoshua-hamashiaj.com">
+    <i class="fas fa-home"></i>
+</a>
+
         <i class="fas fa-book" id="imgMaterial"></i>  <!-- aparato critico na28 -->
 <i class="fas fa-message" id="toggleComentarios"></i>         <!-- Ícono de comentarios -->
         <i class="fas fa-book-open" id="sidebar2"></i>  <!-- biblia paralela -->
@@ -654,20 +657,29 @@ function showFullChapter(libro, capitulo) {
 
         resultsContainer.innerHTML = `
             <div class="chapter-navigation">
-                <button id="prevChapterBtn" onclick="showPreviousChapter()">⭠ Anterior</button>
-                <button id="nextChapterBtn" onclick="showNextChapter()">Siguiente ⭢</button>
+                <button id="prevChapterBtn">
+    <i class="fas fa-chevron-left"></i>
+</button>
+    <button id="nextChapterBtn">
+    <i class="fas fa-chevron-right"></i>
+</button>
             </div>
             <h2 id="tituloCapitulo">${libro} ${capitulo}</h2>
             <ul>${versiculos}</ul>
             <div class="chapter-navigation">
-                <button id="prevChapterBtnBottom" onclick="showPreviousChapter()">⭠ Anterior</button>
-                <button id="nextChapterBtnBottom" onclick="showNextChapter()">Siguiente ⭢</button>
+                 <button id="prevChapterBtn">
+    <i class="fas fa-chevron-left"></i>
+</button>
+    <button id="nextChapterBtn">
+    <i class="fas fa-chevron-right"></i>
+</button>
             </div>
         `;
 
         document.getElementById("tituloCapitulo").style.display = "block";
         toggleNavigationButtons();
         cargarComentariosCapitulo(libro, capitulo);
+        aplicarEstilos(); // 🔥 Aplicar estilos después de cambiar el contenido
     });
 }
 
@@ -677,6 +689,17 @@ function showFullChapter(libro, capitulo) {
 
 
 
+
+function showPreviousChapter() {
+    fetchAllJsonData().then(datos => {
+        if (!currentBook || !currentChapter) return;
+        let prevChapter = (currentChapter - 1).toString();
+
+        if (datos[currentBook][prevChapter]) {
+            showFullChapter(currentBook, prevChapter);
+        }
+    });
+}
 
 function showNextChapter() {
     fetchAllJsonData().then(datos => {
@@ -689,16 +712,6 @@ function showNextChapter() {
     });
 }
 
-function showPreviousChapter() {
-    fetchAllJsonData().then(datos => {
-        if (!currentBook || !currentChapter) return;
-        let prevChapter = (currentChapter - 1).toString();
-
-        if (datos[currentBook][prevChapter]) {
-            showFullChapter(currentBook, prevChapter);
-        }
-    });
-}
 
 
 function updateNavigationButtons(datos) {
@@ -1044,39 +1057,44 @@ async function contarResultadosPorLibro(query) {
 document.addEventListener("DOMContentLoaded", function () {
     const fontSelector = document.getElementById("fontSelector");
     const fontSizeSelector = document.getElementById("fontSizeSelector");
-    const resultsContainer = document.getElementById("results");
 
-    // Cargar valores guardados en localStorage o establecer valores por defecto
+    // 🔥 Cargar valores guardados o establecer valores por defecto
     const savedFont = localStorage.getItem("selectedFont") || "Arial";
     const savedFontSize = localStorage.getItem("selectedFontSize") || "14px";
 
-    // Aplicar los valores guardados
-    resultsContainer.style.fontFamily = savedFont;
-    fontSizeSelector.value = savedFontSize.replace("px", ""); // Eliminar "px" para coincidir con las opciones
+    fontSelector.value = savedFont;
+    fontSizeSelector.value = savedFontSize.replace("px", "");
 
-    // Función para aplicar los cambios a cada <li>
-    function aplicarEstilos() {
-        document.querySelectorAll("#results li").forEach(li => {
-            li.style.fontFamily = fontSelector.value;
-            li.style.fontSize = fontSizeSelector.value + "px";
-        });
-    }
+    aplicarEstilos(); // Aplicar al cargar
 
-    // Aplicar los estilos guardados al cargar
-    setTimeout(aplicarEstilos, 50);
-
-    // Evento para cambiar la fuente
+    // 🎯 Evento para cambiar la fuente
     fontSelector.addEventListener("change", function () {
         localStorage.setItem("selectedFont", fontSelector.value);
         aplicarEstilos();
     });
 
-    // Evento para cambiar el tamaño de la fuente
+    // 🎯 Evento para cambiar el tamaño de la fuente
     fontSizeSelector.addEventListener("change", function () {
         localStorage.setItem("selectedFontSize", fontSizeSelector.value + "px");
         aplicarEstilos();
     });
+
+    // 🔥 Asegurar que los cambios persistan entre capítulos
+    document.addEventListener("chapterChanged", aplicarEstilos);
 });
+
+// ✅ Función para aplicar los cambios a toda la interfaz
+function aplicarEstilos() {
+    const font = localStorage.getItem("selectedFont") || "Arial";
+    const fontSize = localStorage.getItem("selectedFontSize") || "14px";
+
+    // 🔥 Aplicar estilos a los versículos y otras secciones
+    document.querySelectorAll("#results li, #contenidoBiblia, .settings-menu").forEach(el => {
+        el.style.fontFamily = font;
+        el.style.fontSize = fontSize;
+    });
+}
+
 
 
 </script>
