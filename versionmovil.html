@@ -19,34 +19,9 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/estilosmovil.css">
       <script>
-window.onload = function() {
-    checkScreenSize();
-};
+sessionStorage.clear();
+caches.keys().then(names => names.forEach(name => caches.delete(name)));
 
-window.onresize = function() {
-    checkScreenSize();
-};
-
-function checkScreenSize() {
-    let width = window.innerWidth;
-    let currentPage = window.location.pathname.split("/").pop(); // Obtiene el nombre del archivo actual
-    let lastRedirect = sessionStorage.getItem("lastRedirect");
-
-    // Si el ancho de pantalla es menor o igual a 991px y no estamos en la versión móvil
-    if (width <= 991 && currentPage !== "versionmovil.html") {
-        if (lastRedirect !== "versionmovil.html") {
-            sessionStorage.setItem("lastRedirect", "versionmovil.html");
-            window.location.href = "versionmovil.html";
-        }
-    }
-    // Si el ancho de pantalla es mayor a 991px y no estamos en la versión de escritorio
-    else if (width > 991 && currentPage !== "index.html") {
-        if (lastRedirect !== "index.html") {
-            sessionStorage.setItem("lastRedirect", "index.html");
-            window.location.href = "index.html";
-        }
-    }
-}
 
 </script>
 
