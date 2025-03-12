@@ -154,18 +154,16 @@ function cerrarSidebar() {
 
 // Aquí mapeamos los libros 
 const na28Map = {
-    "2Tesalonicenses 1:2": "verso2",
-    "2Tesalonicenses 1:4": "verso4",
-    "2Tesalonicenses 1:8": "verso8",
-    "2Tesalonicenses 1:9": "verso9",
-    "2Tesalonicenses 1:10": "verso10",// Aquí mapeamos correctamente el verso4 con verso4
-    "2Tesalonicenses 1:11": "verso11",
-    "2Tesalonicenses 1:12": "verso12",
     "Hebreos 1:1": "hebreos1_1",
     "Hebreos 1:2": "hebreos1_2",
     "Hebreos 1:3": "hebreos1_3",
     "Hebreos 1:4": "hebreos1_4",
     "Hebreos 1:7": "hebreos1_7",
+    "Hebreos 1:8": "hebreos1_8",
+    "Hebreos 1:9": "hebreos1_9",
+    "Hebreos 1:11": "hebreos1_11",
+    "Hebreos 1:12": "hebreos1_12",
+    "Hebreos 1:14": "hebreos1_14",
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
