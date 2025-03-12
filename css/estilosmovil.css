@@ -11,6 +11,28 @@
     z-index: 100;
 
 }
+
+.bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 16px; /* 🔥 Tamaño del texto debajo de los íconos */
+}
+
+.bottom-nav .nav-item i {
+    font-size: 20px; /* 🔥 Tamaño del ícono */
+    margin-bottom: 2px; /* 🔥 Espacio entre icono y texto */
+}
+
+/* 🔹 Ajustes especiales para pantallas pequeñas */
+@media (max-width: 600px) {
+    .bottom-nav .nav-item {
+        font-size: 14px; /* 🔥 Reducir el tamaño del texto en móviles */
+    }
+
+}
 html, body {
     overflow-x: hidden !important; /* Evita desbordamientos laterales */
 }
