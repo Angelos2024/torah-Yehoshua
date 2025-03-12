@@ -1,18 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const comentarios = {
-        "verso2": "na28/2ts1/verso2.html",
-        "verso4": "na28/2ts1/verso4.html",
-        "verso8": "na28/2ts1/verso8.html",
-        "verso9": "na28/2ts1/verso9.html",
-        "verso10": "na28/2ts1/verso10.html",
-        "verso11": "na28/2ts1/verso11.html",
-        "verso12": "na28/2ts1/verso12.html",
         "hebreos1_1": "na28/2ts1/hebreos1_1.html",
         "hebreos1_2": "na28/2ts1/hebreos1_2.html",
         "hebreos1_3": "na28/2ts1/hebreos1_3.html",
         "hebreos1_4": "na28/2ts1/hebreos1_4.html",
         "hebreos1_7": "na28/2ts1/hebreos1_7.html",
-       
+        "hebreos1_8": "na28/2ts1/hebreos1_8.html",
+        "hebreos1_9": "na28/2ts1/hebreos1_9.html",
+        "hebreos1_11": "na28/2ts1/hebreos1_11.html",
+        "hebreos1_12": "na28/2ts1/hebreos1_12.html",
+        "hebreos1_14": "na28/2ts1/hebreos1_14.html",
+
+
         // Agrega más comentarios aquí
     };
 
