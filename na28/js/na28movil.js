@@ -10,6 +10,16 @@ const na28Map = {
     "Hebreos 1:11": "hebreos1_11",
     "Hebreos 1:12": "hebreos1_12",
     "Hebreos 1:14": "hebreos1_14",
+    "Hebreos 2:1": "hebreos2_1",
+    "Hebreos 2:2": "hebreos2_2",
+    "Hebreos 2:4": "hebreos2_4",
+    "Hebreos 2:6": "hebreos2_6",
+    "Hebreos 2:7": "hebreos2_7",
+    "Hebreos 2:8": "hebreos2_8",
+    "Hebreos 2:9": "hebreos2_9",
+    "Hebreos 2:11": "hebreos2_11",
+    "Hebreos 2:14": "hebreos2_14",
+    "Hebreos 2:17": "hebreos2_17",
 };
 
 
