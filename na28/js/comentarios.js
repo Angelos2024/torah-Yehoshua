@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "hebreos1_12": "na28/2ts1/hebreos1_12.html",
         "hebreos1_14": "na28/2ts1/hebreos1_14.html",
         "hebreos2_1": "na28/2ts1/hebreos2_1.html",
+        "hebreos2_2": "na28/2ts1/hebreos2_2.html",
         "hebreos2_4": "na28/2ts1/hebreos2_4.html",
         "hebreos2_6": "na28/2ts1/hebreos2_6.html",
         "hebreos2_7": "na28/2ts1/hebreos2_7.html",
