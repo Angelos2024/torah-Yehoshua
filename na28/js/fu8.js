@@ -154,16 +154,25 @@ function cerrarSidebar() {
 
 // Aquí mapeamos los libros 
 const na28Map = {
-    "Hebreos 1:1": "hebreos1_1",
-    "Hebreos 1:2": "hebreos1_2",
-    "Hebreos 1:3": "hebreos1_3",
-    "Hebreos 1:4": "hebreos1_4",
-    "Hebreos 1:7": "hebreos1_7",
-    "Hebreos 1:8": "hebreos1_8",
-    "Hebreos 1:9": "hebreos1_9",
-    "Hebreos 1:11": "hebreos1_11",
-    "Hebreos 1:12": "hebreos1_12",
-    "Hebreos 1:14": "hebreos1_14",
+        "hebreos1_1": "na28/2ts1/hebreos1_1.html",
+        "hebreos1_2": "na28/2ts1/hebreos1_2.html",
+        "hebreos1_3": "na28/2ts1/hebreos1_3.html",
+        "hebreos1_4": "na28/2ts1/hebreos1_4.html",
+        "hebreos1_7": "na28/2ts1/hebreos1_7.html",
+        "hebreos1_8": "na28/2ts1/hebreos1_8.html",
+        "hebreos1_9": "na28/2ts1/hebreos1_9.html",
+        "hebreos1_11": "na28/2ts1/hebreos1_11.html",
+        "hebreos1_12": "na28/2ts1/hebreos1_12.html",
+        "hebreos1_14": "na28/2ts1/hebreos1_14.html",
+        "hebreos2_1": "na28/2ts1/hebreos2_1.html",
+        "hebreos2_4": "na28/2ts1/hebreos2_4.html",
+        "hebreos2_6": "na28/2ts1/hebreos2_6.html",
+        "hebreos2_7": "na28/2ts1/hebreos2_7.html",
+        "hebreos2_8": "na28/2ts1/hebreos2_8.html",
+        "hebreos2_9": "na28/2ts1/hebreos2_9.html",
+        "hebreos2_11": "na28/2ts1/hebreos2_11.html",
+        "hebreos2_14": "na28/2ts1/hebreos2_14.html",
+        "hebreos2_17": "na28/2ts1/hebreos2_17.html",
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
