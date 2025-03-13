@@ -10,6 +10,15 @@ document.addEventListener("DOMContentLoaded", function () {
         "hebreos1_11": "na28/2ts1/hebreos1_11.html",
         "hebreos1_12": "na28/2ts1/hebreos1_12.html",
         "hebreos1_14": "na28/2ts1/hebreos1_14.html",
+        "hebreos2_1": "na28/2ts1/hebreos2_1.html",
+        "hebreos2_4": "na28/2ts1/hebreos2_4.html",
+        "hebreos2_6": "na28/2ts1/hebreos2_6.html",
+        "hebreos2_7": "na28/2ts1/hebreos2_7.html",
+        "hebreos2_8": "na28/2ts1/hebreos2_8.html",
+        "hebreos2_9": "na28/2ts1/hebreos2_9.html",
+        "hebreos2_11": "na28/2ts1/hebreos2_11.html",
+        "hebreos2_14": "na28/2ts1/hebreos2_14.html",
+        "hebreos2_17": "na28/2ts1/hebreos2_17.html",
 
 
         // Agrega más comentarios aquí
