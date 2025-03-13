@@ -19,35 +19,48 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
       <link rel="stylesheet" href="css/estilosmovil.css">
   <script>
-    function checkScreenSize() {
-        let width = window.innerWidth;
-        let currentPage = window.location.pathname.split("/").pop(); // Obtiene el archivo actual
-        let lastRedirect = sessionStorage.getItem("lastRedirect");
+function checkScreenSize() {
+    let width = Math.min(screen.width, window.innerWidth); // 📌 Toma el menor valor entre screen.width y window.innerWidth
+    let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    let currentPage = window.location.pathname.split("/").pop();
+    let lastRedirect = sessionStorage.getItem("lastRedirect");
 
-        // 🔥 Detectar si estamos en GitHub Pages (puede omitir "index.html")
-        if (currentPage === "" || currentPage === "index.html") {
-            currentPage = "index.html";
-        }
+    // 📌 Detectar si es Chrome en iOS (importante porque a veces reporta mal el ancho)
+    let isChromeiOS = /CriOS/.test(userAgent);
 
-        // 🔹 Si la pantalla es menor o igual a 991px, redirigir a versión móvil
-        if (width <= 991 && currentPage !== "versionmovil.html") {
-            if (lastRedirect !== "versionmovil.html") {
-                sessionStorage.setItem("lastRedirect", "versionmovil.html");
-                window.location.href = "versionmovil.html";
-            }
-        }
-        // 🔹 Si la pantalla es mayor a 991px, redirigir a la versión de PC
-        else if (width > 991 && currentPage !== "index.html") {
-            if (lastRedirect !== "index.html") {
-                sessionStorage.setItem("lastRedirect", "index.html");
-                window.location.href = "index.html";
-            }
-        }
+    if (isChromeiOS) {
+        width = window.innerWidth; // En Chrome iOS, confiar en window.innerWidth
     }
 
-    // 🔥 Ejecutar al cargar y cuando cambie el tamaño de la pantalla
-    window.addEventListener("DOMContentLoaded", checkScreenSize);
-    window.addEventListener("resize", checkScreenSize);
+    // 📌 Si la página es vacía (en GitHub Pages o servidores sin índice)
+    if (currentPage === "" || currentPage === "index.html") {
+        currentPage = "index.html";
+    }
+
+    // ✅ REDIRECCIÓN SEGURA
+    if (width <= 991 && currentPage !== "versionmovil.html") {
+        if (lastRedirect !== "versionmovil.html") {
+            sessionStorage.setItem("lastRedirect", "versionmovil.html");
+            window.location.href = "versionmovil.html";
+        }
+    } else if (width > 991 && currentPage !== "index.html") {
+        if (lastRedirect !== "index.html") {
+            sessionStorage.setItem("lastRedirect", "index.html");
+            window.location.href = "index.html";
+        }
+    }
+}
+
+// 🔥 Ejecutar al cargar la página
+window.addEventListener("DOMContentLoaded", checkScreenSize);
+
+// 📌 Optimizar detección en cambios de tamaño de pantalla
+let resizeTimer;
+window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkScreenSize, 200); // Evita redirecciones múltiples
+});
+
 </script>
 
 
