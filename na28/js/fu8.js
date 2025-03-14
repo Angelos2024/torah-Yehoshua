@@ -174,6 +174,16 @@ const na28Map = {
         "hebreos2_11": "na28/2ts1/hebreos2_11.html",
         "hebreos2_14": "na28/2ts1/hebreos2_14.html",
         "hebreos2_17": "na28/2ts1/hebreos2_17.html",
+            "galatas1_1": "na28/2ts1/galatas1_1.html",
+        "galatas1_3": "na28/2ts1/galatas1_3.html",
+        "galatas1_4": "na28/2ts1/galatas1_4.html",
+        "galatas1_6": "na28/2ts1/galatas1_6.html",
+        "galatas1_8": "na28/2ts1/galatas1_8.html",
+        "galatas1_9": "na28/2ts1/galatas1_9.html",
+        "galatas1_10": "na28/2ts1/galatas1_10.html",
+        "galatas1_11": "na28/2ts1/galatas1_11.html",
+        "galatas1_12": "na28/2ts1/galatas1_12.html",
+        "galatas1_13": "na28/2ts1/galatas1_13.html",
     "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
     // Agrega más relaciones aquí según sea necesario
 };
