@@ -20,16 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
         "hebreos2_11": "na28/2ts1/hebreos2_11.html",
         "hebreos2_14": "na28/2ts1/hebreos2_14.html",
         "hebreos2_17": "na28/2ts1/hebreos2_17.html",
-        "galatas1_1": "na28/2ts1/galatas1_1.html",
-        "galatas1_3": "na28/2ts1/galatas1_3.html",
-        "galatas1_4": "na28/2ts1/galatas1_4.html",
-        "galatas1_6": "na28/2ts1/galatas1_6.html",
-        "galatas1_8": "na28/2ts1/galatas1_8.html",
-        "galatas1_9": "na28/2ts1/galatas1_9.html",
-        "galatas1_10": "na28/2ts1/galatas1_10.html",
-        "galatas1_11": "na28/2ts1/galatas1_11.html",
-        "galatas1_12": "na28/2ts1/galatas1_12.html",
-        "galatas1_13": "na28/2ts1/galatas1_13.html"
+        "Galatas1_1": "na28/2ts1/galatas1_1.html",
+        "Galatas1_3": "na28/2ts1/galatas1_3.html",
+        "Galatas1_4": "na28/2ts1/galatas1_4.html",
+        "Galatas1_6": "na28/2ts1/galatas1_6.html",
+        "Galatas1_8": "na28/2ts1/galatas1_8.html",
+        "Galatas1_9": "na28/2ts1/galatas1_9.html",
+        "Galatas1_10": "na28/2ts1/galatas1_10.html",
+        "Galatas1_11": "na28/2ts1/galatas1_11.html",
+        "Galatas1_12": "na28/2ts1/galatas1_12.html",
+        "Galatas1_13": "na28/2ts1/galatas1_13.html"
         // Agrega más comentarios aquí
     };
 
