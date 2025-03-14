@@ -29,10 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "galatas1_10": "na28/2ts1/galatas1_10.html",
         "galatas1_11": "na28/2ts1/galatas1_11.html",
         "galatas1_12": "na28/2ts1/galatas1_12.html",
-        "galatas1_13": "na28/2ts1/galatas1_13.html",
-       
-
-
+        "galatas1_13": "na28/2ts1/galatas1_13.html"
         // Agrega más comentarios aquí
     };
 
