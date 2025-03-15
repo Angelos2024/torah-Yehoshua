@@ -275,3 +275,24 @@ document.getElementById("toggleSearchOptions").addEventListener("click", functio
         ? `<i class="fas fa-chevron-down"></i>`  // Si está oculto, mostrar "bajar"
         : `<i class="fas fa-chevron-up"></i>`;   // Si está visible, mostrar "subir"
 });
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const versionPorDefecto = "RVR1960"; // 📌 Define la versión por defecto
+    versionSelect.value = versionPorDefecto; // 📌 Selecciona automáticamente RVR1960
+    fillBooksForVersion(versionPorDefecto); // 📌 Llena la lista de libros
+
+    setTimeout(async () => {
+        // 📌 Si hay un libro predeterminado (por ejemplo, Mateo), carga sus capítulos
+        let primerLibro = Object.keys(urlsLibros[versionPorDefecto])[0];
+        if (primerLibro) {
+            libroSelect.value = primerLibro;
+            await fillChaptersForBook(versionPorDefecto, primerLibro);
+
+            // 📌 Seleccionar automáticamente el primer capítulo si existe
+            if (capituloSelect.options.length > 1) {
+                capituloSelect.selectedIndex = 1; // Selecciona el primer capítulo
+            }
+        }
+    }, 500); // 🔥 Pequeño retraso para asegurar que la lista de libros cargue primero
+});
+
