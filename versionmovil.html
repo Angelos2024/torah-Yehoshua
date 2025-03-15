@@ -1142,6 +1142,86 @@ function aplicarEstilos() {
 
 
 </script>
+
+
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // 🔥 Resizers para cada panel
+    agregarResizer("sidebar");          // Aparato Crítico
+    agregarResizer("sidebarcomentarios"); // Comentarios
+    agregarResizer("sidebarparalelo");  // Biblia Paralela
+});
+
+function agregarResizer(idPanel) {
+    const panel = document.getElementById(idPanel);
+    if (!panel) return;
+
+    // 🔥 Crear el botón deslizante
+    let resizer = document.createElement("div");
+    resizer.classList.add("resizer");
+    panel.appendChild(resizer);
+
+    // 📌 Variables de control
+    let isResizing = false;
+    let startY, startHeight;
+
+    // 📌 Eventos para comenzar a redimensionar
+    resizer.addEventListener("mousedown", iniciarResizer);
+    resizer.addEventListener("touchstart", iniciarResizer, { passive: false });
+
+    function iniciarResizer(e) {
+        e.preventDefault();
+        isResizing = true;
+        startY = e.touches ? e.touches[0].clientY : e.clientY;
+        startHeight = panel.offsetHeight;
+
+        // 📌 Detectar eventos globales de movimiento y soltar
+        document.addEventListener("mousemove", ajustarAltura);
+        document.addEventListener("mouseup", detenerResizer);
+        document.addEventListener("touchmove", ajustarAltura, { passive: false });
+        document.addEventListener("touchend", detenerResizer);
+    }
+
+    function ajustarAltura(e) {
+        if (!isResizing) return;
+        let currentY = e.touches ? e.touches[0].clientY : e.clientY;
+        let newHeight = startHeight + (startY - currentY);
+
+        // 📌 Limitar el tamaño mínimo y máximo
+        if (newHeight > 100 && newHeight < window.innerHeight * 0.8) {
+            panel.style.height = `${newHeight}px`;
+            localStorage.setItem(`${idPanel}-height`, newHeight);
+        }
+    }
+
+    function detenerResizer() {
+        isResizing = false;
+        document.removeEventListener("mousemove", ajustarAltura);
+        document.removeEventListener("mouseup", detenerResizer);
+        document.removeEventListener("touchmove", ajustarAltura);
+        document.removeEventListener("touchend", detenerResizer);
+    }
+
+    // 📌 Cargar tamaño guardado si existe
+    let savedHeight = localStorage.getItem(`${idPanel}-height`);
+    if (savedHeight) {
+        panel.style.height = `${savedHeight}px`;
+    }
+}
+</script>
+
+<style>
+/* 🔥 Estilo para el botón deslizante */
+.resizer {
+    width: 100%;
+    height: 7px;
+    background: #075e54;
+    cursor: ns-resize;
+    position: absolute;
+    top: -5px;
+    left: 0;
+}
+</style>
 <script src="na28/js/na28movil.js"></script>
 <script src="js/scriptparalelomovil.js"></script>
 <!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
