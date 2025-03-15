@@ -446,6 +446,7 @@ a {
     transition: bottom 0.7s ease-in-out;
     padding: 8px;
     z-index: 4;
+    overflow-y: auto;
 }
 }
 * Labels arriba de cada dropdown */
@@ -583,17 +584,34 @@ a {
     bottom: 0;
 }
 #sidebarcomentarios {
-    position: fixed;
-    bottom: -100%; /* Oculto fuera de la pantalla */
+    position: fixed !important; /* 🔥 Se mantiene fijo pero oculto */
+    bottom: -100%; /* 🔥 Inicia oculto */
     left: 0;
     width: 100%;
-    height: 40%; /* Ajusta según el contenido */
+    height: 40vh; /* 🔥 Ajustable con el resizer */
     background: white;
     box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-    transition: bottom 0.7s ease-in-out;
+    transition: bottom 0.5s ease-in-out, height 0.3s ease-in-out;
     padding: 20px;
     z-index: 3;
-    overflow-y: auto; /* Permite desplazamiento si el contenido excede */
+    overflow-y: auto;
+    border-top: 5px solid #075e54; /* 🔥 Línea superior */
+}
+
+/* 🔥 Cuando se activa, aparece */
+#sidebarcomentarios.active {
+    bottom: 0;
+}
+
+/* 🔥 Estilo para el botón deslizante (resizer) */
+#sidebarcomentarios .resizer {
+    width: 100%;
+    height: 10px;
+    background: #075e54;
+    cursor: ns-resize;
+    position: absolute;
+    top: -5px;
+    left: 0;
 }
 
 #sidebarcomentarios {
