@@ -599,20 +599,6 @@ a {
 }
 
 /* 🔥 Cuando se activa, aparece */
-#sidebarcomentarios.active {
-    bottom: 0;
-}
-
-/* 🔥 Estilo para el botón deslizante (resizer) */
-#sidebarcomentarios .resizer {
-    width: 100%;
-    height: 10px;
-    background: #075e54;
-    cursor: ns-resize;
-    position: absolute;
-    top: -5px;
-    left: 0;
-}
 
 #sidebarcomentarios {
     background-color: #fff !important; /* Fondo oscuro */
