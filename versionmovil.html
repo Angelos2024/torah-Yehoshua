@@ -613,7 +613,7 @@ async function searchVerses(query) {
     const datos = await fetchAllJsonData();
     if (!datos) return;
 
-    // Resetear contenedores
+    // 🔥 Resetear contenedores
     resultsContainer.innerHTML = "";
     countResultsContainer.innerHTML = "";
 
@@ -625,27 +625,71 @@ async function searchVerses(query) {
     const normalizedQuery = query
         .normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-    const match = normalizedQuery.match(/^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/);
+    // 🔹 Expresión regular para detectar citas de versículos (Ej: "Gálatas 1:4" o "Gal 2:3-8")
+    const regexCita = /^([\w\s]+)\s(\d+)(?::(\d+)(?:-(\d+))?)?$/;
+    const match = normalizedQuery.match(regexCita);
+
     if (match) {
         let libro = match[1].trim();
         const capitulo = match[2];
+        const versiculoInicio = match[3];
+        const versiculoFin = match[4];
 
-        libro = libroMap[libro] || libro;
+        libro = libroMap[libro] || libro; // Convertir abreviaturas ("Gal" -> "Gálatas")
+
         const libroEncontrado = Object.keys(datos).find(key =>
             key.toLowerCase() === libro.toLowerCase()
         );
 
         if (libroEncontrado && datos[libroEncontrado][capitulo]) {
+            let versos = datos[libroEncontrado][capitulo];
+
+            // Si hay un versículo específico
+            if (versiculoInicio) {
+                let versiculos = [];
+
+                // Si es un rango (Ej: Gálatas 1:3-8)
+                if (versiculoFin) {
+                    for (let i = parseInt(versiculoInicio); i <= parseInt(versiculoFin); i++) {
+                        if (versos[i]) {
+                            versiculos.push(`<li><strong>${libro} ${capitulo}:${i}</strong> - ${versos[i]}</li>`);
+                        }
+                    }
+                } else {
+                    // Solo un versículo específico (Ej: Gálatas 1:4)
+                    if (versos[versiculoInicio]) {
+                        versiculos.push(`<li><strong>${libro} ${capitulo}:${versiculoInicio}</strong> - ${versos[versiculoInicio]}</li>`);
+                    }
+                }
+
+                // 🔥 Agregar el enlace para leer el capítulo completo con el **evento correctamente asignado**
+                versiculos.push(`
+                    <li>
+                        <a href="#" class="full-chapter-link" data-libro="${libroEncontrado}" data-capitulo="${capitulo}">
+                            📖 Leer capítulo completo
+                        </a>
+                    </li>
+                `);
+
+                resultsContainer.innerHTML = versiculos.length > 0
+                    ? versiculos.join("")
+                    : `<li>No se encontraron resultados.</li>`;
+
+                // 🔥 Agregar el evento dinámicamente
+                setTimeout(() => asignarEventosCapituloCompleto(), 100);
+
+                return; // 🔥 Evita que siga buscando por palabras
+            }
+
+            // 🔥 Si no hay versículo, mostrar el capítulo completo
             currentBook = libroEncontrado;
             currentChapter = parseInt(capitulo, 10);
-
             showFullChapter(libroEncontrado, capitulo);
             return;
         }
     }
 
-    if (!query) return;
-
+    // 🔹 Búsqueda por palabras (Ej: "israel", "gracia")
     try {
         const palabraRegex = new RegExp(`(${query})`, "gi");
         let resultados = [];
@@ -662,7 +706,9 @@ async function searchVerses(query) {
                         );
                         resultados.push(
                             `<li>${libro} ${capitulo}:${versiculo} - ${textoResaltado}
-                              <span class="full-chapter-link" onclick="showFullChapter('${libro}', '${capitulo}')">Leer capítulo completo</span>
+                              <a href="#" class="full-chapter-link" data-libro="${libro}" data-capitulo="${capitulo}">
+                                  📖 Leer capítulo completo
+                              </a>
                             </li>`
                         );
                     }
@@ -671,9 +717,24 @@ async function searchVerses(query) {
         });
 
         resultsContainer.innerHTML = resultados.length > 0 ? resultados.join("") : "<li>No se encontraron coincidencias.</li>";
+
+        // 🔥 Asignar eventos a los enlaces de "Leer capítulo completo"
+        setTimeout(() => asignarEventosCapituloCompleto(), 100);
     } catch (error) {
         console.error("Error en palabraRegex:", error);
     }
+}
+
+// 📌 Función para asignar eventos a los enlaces "📖 Leer capítulo completo"
+function asignarEventosCapituloCompleto() {
+    document.querySelectorAll(".full-chapter-link").forEach(link => {
+        link.addEventListener("click", function (e) {
+            e.preventDefault();
+            let libro = this.getAttribute("data-libro");
+            let capitulo = this.getAttribute("data-capitulo");
+            showFullChapter(libro, capitulo);
+        });
+    });
 }
 
 
