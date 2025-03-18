@@ -37,7 +37,7 @@
 
     },
     Btx4: {
-      "Génesis": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/apocalipsis.json",
+      "Génesis": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/genesis.json",
       "Exodo": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/exodo.json",
       "Levitico": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/levitico.json",
       "Numeros": "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/BTX4/numeros.json",
