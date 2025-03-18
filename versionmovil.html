@@ -1189,16 +1189,23 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // ✅ Función para aplicar los cambios a toda la interfaz
+// ✅ Función para aplicar los cambios a toda la interfaz
 function aplicarEstilos() {
     const font = localStorage.getItem("selectedFont") || "Arial";
     const fontSize = localStorage.getItem("selectedFontSize") || "14px";
 
-    // 🔥 Aplicar estilos a los versículos y otras secciones
-    document.querySelectorAll("#results li, #contenidoBiblia, .settings-menu").forEach(el => {
+    // 🔹 Aplicar estilos SOLO a los versículos y otras secciones (excluyendo settingsMenu)
+    document.querySelectorAll("#results li, #contenidoBiblia, .list-group").forEach(el => {
         el.style.fontFamily = font;
         el.style.fontSize = fontSize;
     });
+
+    // 🔥 EXCLUSIÓN: NO aplicar cambios en settingsMenu
+    document.querySelector("#settingsMenu").style.fontFamily = "Arial";
+    document.querySelector("#settingsMenu").style.fontSize = "14px";
 }
+
+
 
 
 
