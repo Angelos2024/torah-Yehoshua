@@ -184,6 +184,11 @@ const na28Map = {
         "Gálatas 1:11": "Galatas1_11",
         "Gálatas 1:12": "Galatas1_12",
         "Gálatas 1:13": "Galatas1_13",
-    "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
-    // Agrega más relaciones aquí según sea necesario
+    "Gálatas 1:15": "Galatas1_15",
+    "Gálatas 1:16": "Galatas1_16",
+    "Gálatas 1:17": "Galatas1_17",
+    "Gálatas 1:18": "Galatas1_18",
+    "Gálatas 1:19": "Galatas1_19",
+    "Gálatas 1:21": "Galatas1_21",
+    "Gálatas 1:23": "Galatas1_23",
 };
