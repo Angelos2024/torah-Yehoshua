@@ -30,6 +30,15 @@ const na28Map = {
         "Gálatas 1:11": "galatas1_11",
         "Gálatas 1:12": "galatas1_12",
         "Gálatas 1:13": "galatas1_13",
+    "Gálatas 1:15": "galatas1_15",
+    "Gálatas 1:16": "galatas1_16",
+    "Gálatas 1:17": "galatas1_17",
+    "Gálatas 1:18": "galatas1_18",
+    "Gálatas 1:19": "galatas1_19",
+    "Gálatas 1:21": "galatas1_21",
+    "Gálatas 1:23": "galatas1_23",
+    
+    
 };
 
 
