@@ -1276,6 +1276,109 @@ function agregarResizer(idPanel) {
         panel.style.height = `${savedHeight}px`;
     }
 }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+    let selectedItems = new Set();
+
+    // 📌 Detectar toque prolongado para seleccionar
+    document.querySelectorAll("#results").forEach(resultsContainer => {
+        resultsContainer.addEventListener("touchstart", (event) => {
+            let target = event.target.closest("li"); // Detecta el <li> más cercano
+            if (!target) return;
+
+            let timeout = setTimeout(() => {
+                toggleSelection(target);
+            }, 500); // ⏳ Toque prolongado de 500ms para activar selección
+
+            target.addEventListener("touchend", () => clearTimeout(timeout), { once: true });
+            target.addEventListener("touchmove", () => clearTimeout(timeout), { once: true });
+        });
+    });
+
+    // 📌 Función para alternar la selección de un versículo
+    function toggleSelection(item) {
+        if (selectedItems.has(item)) {
+            selectedItems.delete(item);
+            item.classList.remove("selected");
+        } else {
+            selectedItems.add(item);
+            item.classList.add("selected");
+        }
+
+        if (selectedItems.size > 0) {
+            showCopyOptions();
+        } else {
+            hideCopyOptions();
+        }
+    }
+
+    // 📌 Mostrar opciones de copiar
+    function showCopyOptions() {
+        let toolbar = document.getElementById("copyToolbar");
+        if (!toolbar) {
+            toolbar = document.createElement("div");
+            toolbar.id = "copyToolbar";
+            toolbar.innerHTML = `
+                <button id="copySelected">📋 Copiar</button>
+                <button id="deselectAll">❌ Cancelar</button>
+            `;
+            document.body.appendChild(toolbar);
+
+            document.getElementById("copySelected").addEventListener("click", copySelected);
+            document.getElementById("deselectAll").addEventListener("click", clearSelection);
+        }
+        toolbar.style.display = "flex";
+    }
+
+    // 📌 Ocultar opciones de copiar
+    function hideCopyOptions() {
+        let toolbar = document.getElementById("copyToolbar");
+        if (toolbar) toolbar.style.display = "none";
+    }
+
+    // 📌 Copiar texto seleccionado
+    function copySelected() {
+        const text = Array.from(selectedItems).map(item => item.innerText).join("\n");
+        copyToClipboard(text);
+    }
+
+    // 📌 Función para copiar texto al portapapeles y mostrar mensaje temporal
+    function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showCopiedMessage(selectedItems.size === 1 ? "📋 Verso copiado" : "📋 Versos copiados");
+            clearSelection();
+        }).catch(err => console.error("Error al copiar:", err));
+    }
+
+    // 📌 Mostrar mensaje temporal de copiado
+    function showCopiedMessage(message) {
+        let msgBox = document.createElement("div");
+        msgBox.className = "copy-message";
+        msgBox.textContent = message;
+        document.body.appendChild(msgBox);
+
+        setTimeout(() => {
+            msgBox.style.opacity = "0";
+            setTimeout(() => msgBox.remove(), 300);
+        }, 1000); // ⏳ Se oculta automáticamente en 1 segundo
+    }
+
+    // 📌 Limpiar selección
+    function clearSelection() {
+        selectedItems.forEach(item => item.classList.remove("selected"));
+        selectedItems.clear();
+        hideCopyOptions();
+    }
+
+    // 📌 Detectar clic fuera para cancelar selección
+    document.addEventListener("click", (e) => {
+        if (!e.target.closest("#results li") && !e.target.closest("#copyToolbar")) {
+            clearSelection();
+        }
+    });
+});
+
 </script>
 
 <style>
