@@ -29,7 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
         "Galatas1_10": "na28/2ts1/galatas1_10.html",
         "Galatas1_11": "na28/2ts1/galatas1_11.html",
         "Galatas1_12": "na28/2ts1/galatas1_12.html",
-        "Galatas1_13": "na28/2ts1/galatas1_13.html"
+        "Galatas1_13": "na28/2ts1/galatas1_13.html",
+        "Galatas1_15": "na28/2ts1/galatas1_15.html",
+        "Galatas1_16": "na28/2ts1/galatas1_16.html",
+        "Galatas1_17": "na28/2ts1/galatas1_17.html",
+        "Galatas1_18": "na28/2ts1/galatas1_18.html",
+        "Galatas1_19": "na28/2ts1/galatas1_19.html",
+        "Galatas1_21": "na28/2ts1/galatas1_21.html",
+        "Galatas1_23": "na28/2ts1/galatas1_23.html"
         // Agrega más comentarios aquí
     };
 
