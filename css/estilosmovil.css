@@ -11,6 +11,57 @@
     z-index: 100;
 
 }
+/* 🔹 Versículos seleccionados */
+#results li.selected {
+    background-color: #d1e7dd; /* Verde claro */
+    border-left: 5px solid #075e54; /* Borde resaltado */
+}
+
+/* 🔹 Barra de opciones flotante */
+#copyToolbar {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* 🔹 Botones de la barra */
+#copyToolbar button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #075e54;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#copyToolbar button:hover {
+    background-color: #064c48;
+}
+
+/* 🔹 Mensaje de "Verso copiado" */
+.copy-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(7, 94, 84, 0.9); /* Verde oscuro traslúcido */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
 
 .bottom-nav .nav-item {
     display: flex;
