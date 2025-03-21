@@ -124,14 +124,19 @@ function cargarComentariosCapitulo(libro, capitulo) {
 }
 
 
-document.getElementById("toggleComentarios").addEventListener("click", function () {
+document.getElementById("toggleComentarios").addEventListener("click", function (e) {
+    e.preventDefault(); // ⛔ evita el salto hacia arriba
+
     let sidebar = document.getElementById("sidebarcomentarios");
     sidebar.classList.toggle("active");
 
-    if (currentBook && currentChapter) {
-        cargarComentariosCapitulo(currentBook, currentChapter);
-    } else {
-        document.getElementById("sidebarcomentarios").innerHTML = "<h5>Comentarios</h5><p>No hay comentarios disponibles.</p>";
+    // 🔥 Cargar comentarios solo si está visible
+    if (sidebar.classList.contains("active")) {
+        if (currentBook && currentChapter) {
+            cargarComentariosCapitulo(currentBook, currentChapter);
+        } else {
+            sidebar.innerHTML = "<h5>Comentarios</h5><p>No hay comentarios disponibles.</p>";
+        }
     }
 });
 
