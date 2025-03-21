@@ -405,9 +405,10 @@ document.addEventListener("DOMContentLoaded", function () {
         <script>
 
 
-document.getElementById("sidebar2").addEventListener("click", function() {
+document.getElementById("sidebar2").addEventListener("click", function(e) {
+    e.preventDefault(); // Evita que el enlace provoque scroll
     let sidebar = document.getElementById("sidebarparalelo");
-    sidebar.classList.toggle("active"); // Alternar la clase para mostrar/ocultar
+    sidebar.classList.toggle("active");
 });
 
 
@@ -619,7 +620,9 @@ async function searchVerses(query) {
         console.error("searchVerses: query es inválido", query);
         return;
     }
-
+// 🔥 OCULTAR el mensaje de bienvenida
+    document.getElementById("welcomeMessage").style.display = "none";
+  
     const datos = await fetchAllJsonData();
     if (!datos) return;
 
@@ -883,10 +886,12 @@ searchInput.addEventListener("keypress", event => {
 
 </script>
 <script>
-document.getElementById("imgMaterial").addEventListener("click", function() {
+document.getElementById("imgMaterial").addEventListener("click", function(e) {
+    e.preventDefault();
     let sidebar = document.getElementById("sidebar");
-    sidebar.classList.toggle("active"); // Alternar la clase para mostrar/ocultar
+    sidebar.classList.toggle("active");
 });
+
 </script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
