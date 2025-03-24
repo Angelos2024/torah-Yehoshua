@@ -1484,18 +1484,15 @@ let claveVerso = `${libro} ${capitulo}:${numVerso}`;
 let idNA28 = na28Map[claveVerso];
 
 
-        if (idNA28) {
+if (idNA28) {
+    li.classList.add("con-variantes"); // Resaltar versículos con variantes
+    let boton = document.createElement("button");
+    boton.innerText = "📖"; // Icono pequeño
+    boton.classList.add("btn-na28");
+    boton.onclick = () => cargarNA28(libro, capitulo, numVerso); // ✅ Usar la nueva función
+    li.appendChild(boton);
+}
 
-            li.classList.add("con-variantes"); // Resaltar versículos con variantes
-            let boton = document.createElement("button");
-            boton.innerText = "📖"; // Icono pequeño
-            boton.classList.add("btn-na28");
-            boton.onclick = () => mostrarComentarioNA28(idNA28);
-            li.appendChild(boton);
-        }
-
-        resultsContainer.appendChild(li);
-    });
 
 
 
