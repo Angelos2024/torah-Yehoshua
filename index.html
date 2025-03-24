@@ -762,7 +762,8 @@ function checkScreenSize() {
     } else if (width > 991 && currentPage !== "index.html") {
         if (lastRedirect !== "index.html") {
             sessionStorage.setItem("lastRedirect", "index.html");
-            window.location.href = "index.html";
+           window.location.href = "./";
+
         }
     }
 }
