@@ -1,98 +1,22 @@
 <!doctype html>
-                            <head>
-                                <meta charset='utf-8'>
-                              
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torah con Yehoshúa'</title>
 
-                                <title>Torah con Yehoshúa'</title>
-                                <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
-                       
-                            
-                          
-  <link rel="stylesheet" href="css/responsives.css">
-       <link rel="stylesheet" href="css/estiloparalelo.css">
-       <link rel="stylesheet" href="css/estilo.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="css/responsives.css">
+    <link rel="stylesheet" href="css/estiloparalelo.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
-
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
-                                <style>::-webkit-scrollbar {
-                                  width: 15px;
-                                }
-                                /* Track */
-                                ::-webkit-scrollbar-track {
-                                  background: #eaeaea; 
-                                }
-                                 
-                                /* Handle */
-                                ::-webkit-scrollbar-thumb {
-                                  background: black; 
-                                }
-                                
-                                /* Handle on hover */
-                                ::-webkit-scrollbar-thumb:hover {
-                                  background: black; 
-                                } body{
-
-    background-color:white;
-  padding: 10px;
-  margin: 0;
-  overflow-x: hidden; /* Evita desplazamiento lateral */
+    <style>
 
 
-
-li {
-    list-style: none;
-}
-.titulo-capitulo {
-    font-size: 23px;
-    font-weight: bold;
-    color: #black; /* Azul */
-    text-align: left;
-    margin-left: -80px;
-    margin-bottom: -10px;
-}
-
-
-.form-inputs{
-    position:relative;
-}
-.form-inputs .form-control{
-    height:45px; 
-}
-
-.form-inputs .form-control:focus{
-    box-shadow:none;
-    border:1px solid #000;
-}
-.nav-link {
-  padding: 0 !important;
-  }
-
-.form-inputs i{
-    position:absolute;
-    right:10px;
-    top:15px;
-}
-
-.shop-bag{
-    background-color:#000;
-    color:#fff;
-    height:50px;
-    width:50px;
-    font-size:25px;
-    display:flex;
-    border-radius:50%;
-    align-items:center;
-    justify-content:center;
-}
-
-.qty{
-    font-size:12px;
-}
-
-    #mySidebar {
+      #mySidebar {
       width: 0; /* Ancho inicial */
   position: fixed; /* Sidebar fijo, pero sin necesidad de especificar top, right */
   z-index: 10;
@@ -111,9 +35,9 @@ transition: width 0.4s ease, transform 0.4s ease;
 
     #mySidebar.open {
       transform: translateX(0);
-        width: 31%;
+        width: 23%;
   margin-top: 25px;
-  top: 90px;
+  top: 1px;
     }
 
 
@@ -125,115 +49,194 @@ transition: width 0.4s ease, transform 0.4s ease;
 }
 #main.shifted {
   margin-right: 10%; /* Igual al ancho del sidebar izquierdo */
+  transition: margin-right 0.4s ease-in-out !important; /* Más lento y más suave */
   
 }
-  
 
-  #searchTermContainer {
-    font-size: 18px;
+      .titulo-capitulo {
+    font-size: 23px;
+    font-weight: bold;
+    color: #black; /* Azul */
+    text-align: left;
+    margin-left: 280px;
+    margin-bottom: -10px;
+}
+li {
+    list-style: none !important;
+}
+      ::-webkit-scrollbar {
+                                  width: 15px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #eaeaea; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: black; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: black; 
+                                }
+        /* Estilos para el menú lateral estilo WhatsApp */
+        #sidemenu {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 70px; /* Menú compacto como WhatsApp */
+            height: 100vh;
+            background: #f8f9fa;
+            padding: 10px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 1000 !important;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #sidemenu .navbar-brand img {
+            width: 45px;
+            margin-bottom: 20px;
+        }
+
+        #sidemenu .nav-item {
+            width: 100%;
+            text-align: center;
+        }
+
+      #sidemenu .nav-link {
+    padding: 12px;
+    font-size: 22px;
+    color: black;
+    display: block;
+    transition: all 0.3s ease;
+    border-radius: 10px;
+    text-align: center;
+}
+
+        #sidemenu .nav-link:hover {
+            background: #007bff;
+            color: white;
+        }
+
+#sidemenu .home-icon i {
+    font-size: 22px; /* Mismo tamaño que los demás iconos */
+    color: black; /* Mismo color */
+    transition: color 0.3s ease;
+}
+
+/* Efecto al pasar el mouse */
+#sidemenu .nav-link:hover,
+#sidemenu .home-icon:hover i {
+    color: white;
+    background: #000;
+}
+
+        /* Buscador flotante */
+        #searchContainer {
+            display: none; /* Oculto por defecto */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1100;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        #searchInput {
+            width: 100%;
+            border-radius: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+#prevPage, #nextPage {
+    z-index: 9; /* Valor alto para estar por encima de otros elementos */
+}
+
+.search-box {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    width: 80%;
+    max-width: 400px;
+}
+
+.search-box input {
+    width: 100%;
     padding: 10px;
-    background-color: #f8f9fa;
+    font-size: 16px;
     border: 1px solid #ddd;
     border-radius: 5px;
-  }
+    outline: none;
+}
 
+        /* Ajustar el contenido principal */
+        #main {
+            margin-left: 80px; /* Espacio para el menú lateral */
+            transition: margin-left 0.3s ease;
+        }
 
+        /* Estilos para el botón flotante en móviles */
+        .toggle-menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 1100;
+            display: none;
+            border-radius: 5px;
+        }
 
-    #contenidoSidebar {
-      padding: 1rem;
-    }
+        /* Mostrar el botón en pantallas pequeñas */
+        @media (max-width: 768px) {
+            .toggle-menu-btn {
+                display: block;
+            }
+            #sidemenu {
+                left: -70px;
+            }
+            #main {
+                margin-left: 0;
+            }
+        }
+
+#contenidoSidebar {
+  height: 80vh; /* Ajusta el valor a tu gusto */
+  overflow-y: auto;
+  padding: 1rem;
+}
+
 
 .dropdown-menu{
 margin-top: 10px;
 
 }
-    #imgMaterial:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
- }
-   #imgCopiar:hover {
-  transform: scale(1.2); /* Amplía la imagen ligeramente al pasar el mouse */
- }
 
 
-  </style>
-<script>
-function checkScreenSize() {
-    let width = Math.min(screen.width, window.innerWidth); // 📌 Toma el menor valor entre screen.width y window.innerWidth
-    let userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    let currentPage = window.location.pathname.split("/").pop();
-    let lastRedirect = sessionStorage.getItem("lastRedirect");
-
-    // 📌 Detectar si es Chrome en iOS (importante porque a veces reporta mal el ancho)
-    let isChromeiOS = /CriOS/.test(userAgent);
-
-    if (isChromeiOS) {
-        width = window.innerWidth; // En Chrome iOS, confiar en window.innerWidth
-    }
-
-    // 📌 Si la página es vacía (en GitHub Pages o servidores sin índice)
-    if (currentPage === "" || currentPage === "index.html") {
-        currentPage = "index.html";
-    }
-
-    // ✅ REDIRECCIÓN SEGURA
-    if (width <= 991 && currentPage !== "versionmovil.html") {
-        if (lastRedirect !== "versionmovil.html") {
-            sessionStorage.setItem("lastRedirect", "versionmovil.html");
-            window.location.href = "versionmovil.html";
-        }
-    } else if (width > 991 && currentPage !== "index.html") {
-        if (lastRedirect !== "index.html") {
-            sessionStorage.setItem("lastRedirect", "index.html");
-            window.location.href = "index.html";
-        }
-    }
-}
-
-// 🔥 Ejecutar al cargar la página
-window.addEventListener("DOMContentLoaded", checkScreenSize);
-
-// 📌 Optimizar detección en cambios de tamaño de pantalla
-let resizeTimer;
-window.addEventListener("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(checkScreenSize, 200); // Evita redirecciones múltiples
-});
-
-</script>
-
-
-
-</head>
-<body class="container-fluid">
-  <section class="header border-bottom bg-white">
-    <div class="container-fluid">
-      <div class="row py-3 align-items-center justify-content-center text-center">
-
-        
-
-        <!-- Buscador y Botón -->
-        <div class="d-flex flex-nowrap align-items-center justify-content-between">
-
-<!-- Logo como botón con enlace sin abrir nueva ventana -->
-<a href="https://www.torah-con-yehoshua-hamashiaj.com" class="flex-shrink-0 me-3 img-tooltip-container" style="margin-left: 5px;" data-bs-toggle="tooltip" title="Volver a inicio">
-    <img id="logo" class="d-none d-md-flex" src="https://imgur.com/92Fz1V9.png" width="45" alt="Logo">
-</a>
-
-
-
-
-            <!-- Campo de Búsqueda -->
-              <div class="flex-grow-1 me-2">
-              <div class="input-group">
-                <!-- Input de Búsqueda -->
-                <input type="text" class="form-control search-input"
-                  id="searchInput" 
-                  placeholder="Escribe Libro Capítulo:Versículo (ej. Gálatas 1:1)" />
-                   <i class="fas fa-search search-icon"></i>
-                <style>
-                .search-container {
-    position: relative;
-}
 
 #sidebar2 {
 
@@ -266,42 +269,6 @@ window.addEventListener("resize", function () {
 #chapterContentSidebar::-webkit-scrollbar-thumb:hover {
   background: #555; /* Más oscuro al pasar el mouse */
 }
-
-
-
-.search-input {
-    height: 43px;
-    border-radius: 30px;
-    padding-left: 35px;
-    border: none;
-    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.2);
-    border-top-right-radius: 2rem !important; /* Ajusta según el nivel de redondez deseado */
-    border-bottom-right-radius: 2rem !important;
-  }
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-    color: #888;
-}
-</style>
-                <!-- Botón de Búsqueda -->
-                <button 
-                  id="searchButton" 
-                  style=" display:none;">
-                  Buscar
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-  </section>
-
- <style>
 #comentarios {
     position: fixed;
     right: -6px;
@@ -323,90 +290,7 @@ window.addEventListener("resize", function () {
     direction: ltr; /* Restaura la dirección normal del contenido interno */
 }
 
-
-
-
-
-</style>
-
-
-        </div>
-        
-        <!-- Contenedor de Comentarios -->
-        <div id="comentarios" style="display: none; z-index: 2; margin-top: 68px;">
-          <h6 style="background-color:white; color: black; font-family: 'Playfair Display', serif;">Comentarios Eric de Jesús Rodriguez</h6>
-          <div id="contenidoComentarios">
-            <!-- Aquí se cargarán los comentarios -->
-          </div>
-        </div>
-
-
-        <!-- Contenedor Adicional -->
-        
-      </div>
-    </div>
-  </div>
- 
-
-</section>
-
- 
-
-
-<header class="section-header">
-  <nav class="navbar navbar-light bg-light d-flex justify-content-between align-items-center px-3" style="padding: 2px 10px; height: 36px;">
-  
-      <!-- Contenedor de los botones -->
-<div class="d-flex align-items-center gap-4">
-  <!-- Botón de Contenido Paralelo -->
-  <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Biblias paralelas">
-    <img 
-      id="imgParalelo" 
-      src="css/plus_icon_184093.png" 
-      alt="Contenido paralelo"
-      onclick="togglesidebar2()" >
-  </a>
-
-
-
-
-
- <!-- Botón de Copiar -->
-      <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Copiar">
-        <img id="imgCopiar" src="css/copy-two-paper-sheets-interface-symbol_icon-icons.com_73283.png" alt="Copiar contenido" onclick="copiarContenido()"/>
-      </a>
-   
-
-      <!-- Dropdown -->
-<div class="container" style="margin-right: 91px;">
-  <div class="dropdown" style="left: -60px; width: 0px; height: 0px;">
-    <button class="btn btn-dark dropdown-toggle custom-dropdown-btn" 
-      type="button" 
-      data-bs-toggle="dropdown" 
-      id="dropdownButton">
-      Libros de la Biblia
-    </button>
-    <div class="dropdown-menu custom-dropdown-content" id="dropdownMenu">
-      <a class="dropdown-item" href="#" data-libro="Marcos">Según Marcos</a>
-      <a class="dropdown-item" href="#" data-libro="Romanos">Carta a los Romanos</a>
-      <a class="dropdown-item" href="#" data-libro="Gálatas">Carta a los Gálatas</a>
-      <a class="dropdown-item" href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
-      <a class="dropdown-item" href="" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
-      <a class="dropdown-item" href="#" data-libro="Hebreos">Carta a los Hebreos</a>
-      <a class="dropdown-item" href="#" data-libro="Apocalipsis">Revelación Apocalipsis</a>
-    </div>
-  </div>
-</div>
- </div>
- 
-
-
-
-<!-- Estilos para los botones -->
-<!-- Estilos para los botones -->
-<!-- Estilos para los botones -->
-<style>
- #btnParalelo {
+#btnParalelo {
     height: 33px; /* Aumentar altura para acomodar el texto */
     padding: 2px 8px;
     margin: 10px;
@@ -430,54 +314,9 @@ window.addEventListener("resize", function () {
 #btnParalelo:hover {
       transform: scale(1.2);
 }
-  #btnCopiar {
-    height: 30px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left:10 px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
 
-@media screen and (max-width: 568px) {
-    #btnCopiar,{
-          height: 30px; /* Aumentar altura para acomodar el texto */
-    padding: 2px 8px;
-    margin: 10px;
-    background-color: black;
   
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: -2px;
-    margin-left: -20px; /* Reducir margen para móviles */
-    display: none; /* Ocultos por defecto */
-    transition: all 0.3s ease-in-out;
-  
-    /* Asegurar el texto centrado */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    }
-}
-
-
-  #btnCopiar:hover {
-transform: scale(1.2);
-}
   #btnMaterial {
     height: 32px; /* Aumentar altura para acomodar el texto */
     padding: 2px 8px;
@@ -501,33 +340,10 @@ transform: scale(1.2);
   #btnMaterial:hover {
 transform: scale(1.2);
 }
-  
-</style>
-
-
-<style>
-
 
   
- #imgMaterial {
-  width: 31px;
-  height: 32px;
-  margin-top: -1px;
-  display: block;
-  
-  transition: all 0.3s ease-in-out;
-}
 
 
-  /* Ajustes generales para los botones */
-#imgParalelo, #imgCopiar {
-  width: 33px;
-  height: 33px;
-  right: 15px;
-  margin-top: -4px;
-  margin-left: -1px; /* Reducir margen para móviles */
-  transition: all 0.3s ease-in-out;
-}
 
 
 
@@ -538,66 +354,33 @@ transform: scale(1.2);
 }
 
 /* Estilo base del botón */
-.custom-dropdown-btn {
-  font-size: 14px;
-  margin-top: -26px;
-  width: 168px;
-  margin-right: -200px;
-  margin-left: 60px;
-  font-weight: bold;
-  border: 2px solid #000 !important; /* Borde negro */
-  border-radius: 5px;
-  padding: 1px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  background-color: #fff !important; /* Fondo blanco */
-  color: #000 !important; /* Texto negro */
-
+ #dropdownMenu {
+    position: fixed;
+    left: -280px; /* Oculto inicialmente */
+    top: 0;
+    width: 250px;
+    height: 100vh;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ccc;
+    z-index: 10;
+    transition: left 0.3s ease;
+    padding: 10px;
 }
-.custom-dropdown-btn:hover {
-  background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px black;
-  color: #000 !important; /* Texto negro al pasar el mouse */
+
+#dropdownMenu.open {
+    left: 57px !important; /* Se despliega al hacer clic */
 }
 
 
-.custom-dropdown-btn:hover {
-  background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px white;
-  color: #000 !important; /* Texto negro al pasar el mouse */
-}}
-
-/* Contenedor del menú */
-.custom-dropdown-content {
-  position: absolute;
-  background-color: #ffffff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  z-index: 1;
+#dropdownMenu ul li a {
+    color: #000;
+    text-decoration: none;
+}
+#dropdownMenu ul li a:hover {
+    font-weight: bold;
+    color: #007bff;
 }
 
-/* Estilo de los enlaces dentro del menú */
-.custom-dropdown-content a {
-  color: #black;
-  padding: 8px 15px;
-  text-decoration: none;
-  display: block;
-  font-size: 14px;
-}
-
-.custom-dropdown-content a:hover {
-  background-color: #000;
-  color: #fff;
-}
-
-
-
-</style>
-<style>
 /* Fondo negro solo en pantallas pequeñas */
 @media (max-width: 1068px) {
   header.section-header {
@@ -653,137 +436,6 @@ display: inline-block; /* Asegura que solo ocupe el espacio del ícono */
     font-weight: bold;
 }
 
-</style>
-<script>
-function ajustarMargen() {
-    let btn = document.getElementById("fuentess");
-    let ancho = window.innerWidth;
-
-    if (ancho <= 870) {
-        btn.style.marginLeft = "170px";
-    } else if (ancho <= 980) {
-        btn.style.marginLeft = "330px";
-    } else if (ancho <= 1070) {
-        btn.style.marginLeft = "430px";
-    } else if (ancho <= 1150) {
-        btn.style.marginLeft = "530px";
-    }else {
-        btn.style.marginLeft = "600px";
-    }
-}
-
-// Llamar la función al cargar la página y cuando la ventana se redimensione
-window.onload = ajustarMargen;
-window.onresize = ajustarMargen;
-</script>
-     <!-- Botón para mostrar/ocultar opciones -->
-    <!-- Botón con tooltip -->
-<button id="fuentess" class="toggle-btn" style="background-color: white; margin-left: 600px; border: 2px solid black;
-    border-radius: 5px; padding: 3px; cursor: pointer; border-color:black;" 
-    onclick="toggleOpciones()" data-bs-toggle="tooltip" title="Fuente">
-    <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
-</button>
-
-
- <!-- Botón de Menú (Aparato Crítico) -->
-    <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="top" title="Aparato crítico" style="margin-left:-10px;">
-  <img id="imgMaterial" src="css/add-comment_icon-icons.com_71793.png" alt="Menú" onclick="toggleSidebar()" />
-    </a>
-
-
-          <!-- Botón de Comentarios -->
-<div class="flex-shrink-0">
-  <button id="toggleComentarios" class="btn btn-primary custom-btn">
-    Mostrar Comentarios
-  </button>
-</div>
-
-
-<style>
-  .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: #fff; /* Color de fondo */
-    z-index: 800; /* Asegura que esté por encima del contenido */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
-}
-
-body {
-    padding-top: 80px; /* Ajusta este valor según la altura del header */
-}
-
-  .section-header {
-    position: sticky;
-    top: 63px;
-    width: 100%;
-    background: #fff; /* Color de fondo */
-    z-index: 1000; /* Asegura que esté por encima del contenido */
-}
-
-/* Estilo base del botón de comentarios */
-.custom-btn {
-font-size: 14px;
-  margin-top: -5px;
-  font-weight: bold;
-  margin-left: 1px;
-  border: 2px solid #000 !important; /* Borde negro */
-  border-radius: 5px;
-  padding: 1px 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  background-color: #fff !important; /* Fondo blanco */
-  color: #000 !important; /* Texto negro */
-}
-
-.custom-btn:hover {
- background-color: #fff !important; /* Fondo gris claro al pasar el mouse */
-  border-color: #6D3961 !important; /* Borde al pasar el mouse */
-  box-shadow: 0 0 10px black;
-  color: #000 !important; /* Texto negro al pasar el mouse */
-}
-
-
-
-
-</style>
-
-
-
-  </nav>
-
-</header>
-
-
-
-<div class="container" class="tema-uno" style="  font-family: Arial, sans-serif;
-    padding: 20px;
-   max-width: 600px !important;
-    margin: auto;
-    color: #333;
-    margin-top: 75px;
-    line-height: 1.6;">
-
-
-
-
-
-
-
-<div id="myDIV"  style="flex-shrink: 0; width: 250px;">
-  <div id="searchTermContainer" style="font-weight: bold; margin-bottom: 10px;"></div>
-  <h5>Resultados</h5>
-  
-    <ul id="countResults" style="
-    margin-top: -23px;
-    list-style-type: none;
-    padding: 0;
-    margin-bottom: 10px;
-    width: 100%;
-    "></ul>
-</div>
-<style>
 h5 {
   background-color: white;
     font-size: 18px;
@@ -811,8 +463,8 @@ h5 {
     margin-bottom: -13px;
     border-radius: 4px;
     background-color: #fff;
-    width: calc(100% + 80px);
-    margin-left: -90px;
+    width: calc(100% - 600px);
+    margin-left: 260px;
     margin-top: 20px;
 
 }
@@ -851,43 +503,12 @@ h5 {
 #countResults .expandable:hover {
     color: #007bff; /* Azul al pasar el mouse */
 }
-
-
-</style>
-
-
- <div id="main">  
-
-<!-- Botones de Página -->
-<div class="navbar-nav d-flex align-items-center">
-  <!-- Botón de Página Anterior -->
-  <button 
-    id="prevPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain; ">
-    </div>
-  </button>
-
-  <!-- Botón de Página Siguiente -->
-  <button 
-    id="nextPage" 
-    class="btn border-0 bg-transparent p-0" 
-    style=  "position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
-    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1); ">
-    </div>
-  </button>
-</div>
-<style>
-/* Ajustar main cuando se abre sidebar2 */
 .sidebar2-open #main {
   margin-left: 10px; /* Empujar el contenido */
   transition: margin-left 0.4s ease-in-out;
 }
 #prevPage, #nextPage {
-    z-index: 9999; /* Valor alto para estar por encima de otros elementos */
+    z-index: 9; /* Valor alto para estar por encima de otros elementos */
 }
 
 
@@ -926,9 +547,347 @@ h5 {
     border: 2px solid #0056b3;
     box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
 }
+modal-img {
+    max-width: 100%;
+    max-height: 80vh;
+    display: block;
+    margin: auto;
+}
+
+.dropdown-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    gap: 10px; /* Espaciado uniforme */
+    align-items: center; /* Alinea verticalmente */
+}
+
+/* Mantener el dropdown de capítulo en la segunda fila, primera columna */
+#chapterDropdown {
+    grid-column: 1; /* Primera columna */
+    grid-row: 2; /* Segunda fila */
+}
+
+/* Mover el botón al espacio vacío (segunda fila, segunda columna) */
+#syncButtonContainer {
+    grid-column: 2; /* Segunda columna */
+    grid-row: 2; /* Segunda fila */
+    text-align: center; /* Centrar el botón en su celda */
+}
+
+/* Ajustar tamaño del botón para que coincida con los dropdowns */
+#syncVersionButton {
+    width: 100%; /* Ocupar toda la celda */
+    height: 32px; /* Puedes hacer el botón más pequeño */
+    font-size: 14px; /* Ajustar tamaño del texto */
+    display: flex; /* Habilitar flexbox */
+    align-items: center; /* Centrar verticalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    text-align: center; /* Asegurar alineación del texto */
+    padding: 5px 10px; /* Espaciado interno */
+}
+
+#contenedor-botones {
+    position: fixed;  /* Mantiene los botones fijos en la pantalla */
+    bottom: 20px; /* Ajusta la posición desde abajo */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Centra realmente en el eje X */
+    display: flex; /* Usa flexbox para alinear los botones */
+    gap: 15px; /* Espaciado entre los botones */
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+   
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Ajustes para los botones dentro del contenedor */
+.boton-accion {
+    width: 40px; /* Ajusta el tamaño de los iconos */
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+.boton-accion:hover {
+    transform: scale(1.2);
+}
+
+        /* Estilos generales */
+        .custom-select {
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            cursor: pointer;
+            left: 100px;
+        }
+
+        .select-selected {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 150px;
+        }
+
+        .select-selected:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 0 10px black;
+        }
 
 
-</style>
+.con-variantes {
+    position: relative;
+    padding-right: 25px; /* Espacio para el botón */
+}
+
+.versiculo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 10px; /* Espacio para evitar que el botón 📖 cubra el texto */
+    position: relative;
+}
+
+.texto-verso {
+    flex: 1; /* Hace que el texto ocupe todo el espacio disponible */
+    margin-right: 10px; /* Deja espacio al botón 📖 */
+}
+
+.btn-na28 {
+    font-size: 12px;
+    color: white;
+    border: none;
+    padding: 2px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-na28:hover {
+    background: black;
+}
+        #select-selected2 {
+            background-color: white;
+            color: black;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            width: 50px;
+        }
+
+        #select-selected2:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 0 10px black;
+        }
+
+        /* Contenedor de opciones */
+        .select-items {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+            z-index: 10;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .select-items div {
+            padding: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        /* Efecto al pasar el mouse */
+        .select-items div:hover {
+            background-color: black;
+            color: white;
+        }
+
+        /* Mostrar opciones cuando está activo */
+        .select-selected.active + .select-items {
+            display: block;
+        }
+
+
+
+        /* Botón para mostrar/ocultar */
+        .toggle-btn {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-btn:hover {
+            background-color: #0056b3;
+        }
+
+    </style>
+
+
+    <script>
+function checkScreenSize() {
+    let width = Math.min(screen.width, window.innerWidth); // 📌 Toma el menor valor entre screen.width y window.innerWidth
+    let userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    let currentPage = window.location.pathname.split("/").pop();
+    let lastRedirect = sessionStorage.getItem("lastRedirect");
+
+    // 📌 Detectar si es Chrome en iOS (importante porque a veces reporta mal el ancho)
+    let isChromeiOS = /CriOS/.test(userAgent);
+
+    if (isChromeiOS) {
+        width = window.innerWidth; // En Chrome iOS, confiar en window.innerWidth
+    }
+
+    // 📌 Si la página es vacía (en GitHub Pages o servidores sin índice)
+    if (currentPage === "" || currentPage === "actualizacion.html") {
+        currentPage = "actualizacion.html";
+    }
+
+    // ✅ REDIRECCIÓN SEGURA
+    if (width <= 991 && currentPage !== "versionmovil.html") {
+        if (lastRedirect !== "versionmovil.html") {
+            sessionStorage.setItem("lastRedirect", "versionmovil.html");
+            window.location.href = "versionmovil.html";
+        }
+    } else if (width > 991 && currentPage !== "actualizacion.html") {
+        if (lastRedirect !== "actualizacion.html") {
+            sessionStorage.setItem("lastRedirect", "actualizacion.html");
+            window.location.href = "actualizacion.html";
+        }
+    }
+}
+
+// 🔥 Ejecutar al cargar la página
+window.addEventListener("DOMContentLoaded", checkScreenSize);
+
+// 📌 Optimizar detección en cambios de tamaño de pantalla
+let resizeTimer;
+window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(checkScreenSize, 200); // Evita redirecciones múltiples
+});
+
+</script>
+</head>
+
+<!-- Contenedor de opciones (inicialmente oculto) -->
+    <div id="opcionesContainer">
+        <!-- Selector de fuente -->
+        <div class="custom-select" id="fuenteSelect">
+            <div class="select-selected" data-value="Arial">Arial</div>
+            <div class="select-items">
+                <div data-value="Arial">Arial</div>
+                <div data-value="Verdana">Verdana</div>
+                <div data-value="Times New Roman">Times New Roman</div>
+            </div>
+        </div>
+
+        <!-- Selector de tamaño -->
+        <div class="custom-select" id="tamanoSelect">
+            <div id="select-selected2" class="select-selected" data-value="14px">14</div>
+            <div class="select-items">
+                <div data-value="12px">12</div>
+                <div data-value="14px">14</div>
+                <div data-value="16px">16</div>
+                <div data-value="18px">18</div>
+                <div data-value="20px">20</div>
+                 <div data-value="22px">22</div>
+                <div data-value="25px">25</div>
+                <div data-value="28px">28</div>
+
+
+            </div>
+        </div>
+    </div>
+<!-- Botón con tooltip -->
+<button id="fuentess" class="toggle-btn" style= " position: relative; margin-top:10px; left:-230px; background-color: white; border: 2px solid black;
+    border-radius: 5px; padding: 3px; cursor: pointer; border-color:black;" 
+    onclick="toggleOpciones()" data-bs-toggle="tooltip" title="Fuente">
+    <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
+</button>
+
+
+
+
+<body class="container-fluid">
+    <!-- Menú Lateral (WhatsApp PC Style) -->
+    <nav id="sidemenu">
+        <!-- Icono de regreso a la página principal -->
+<a href="https://www.torah-con-yehoshua-hamashiaj.com" id="logo" class="nav-link home-icon" data-bs-toggle="tooltip" title="Volver a Inicio">
+    <i class="bi bi-house-door-fill"></i>
+</a>
+
+<li class="nav-item">
+    <a href="#" class="nav-link" id="dropdownButton" onclick="toggleLibrosSidebar()" data-bs-toggle="tooltip" title="Libros de la Biblia">
+        <i class="bi bi-collection"></i>
+    </a>
+</li>
+
+        <ul class="navbar-nav w-100">
+            <li class="nav-item">
+               <a href="#" class="nav-link" onclick="toggleSearchBox()" data-bs-toggle="tooltip" title="Buscar">
+    <i class="bi bi-search"></i>
+</a>
+
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" id="imgParalelo" onclick="togglesidebar2()" data-bs-toggle="tooltip" title="Biblias Paralelas">
+                    <i class="bi bi-book"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" id="imgMaterial" onclick="toggleSidebar()" data-bs-toggle="tooltip" title="Aparato Crítico">
+                    <i class="bi bi-journal"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link" id="toggleComentarios" onclick="toggleComentarios()" data-bs-toggle="tooltip" title="Comentarios">
+                    <i class="bi bi-chat-dots"></i>
+                </a>
+            </li>
+
+                        <li class="nav-item">
+                <a href="#" class="nav-link" id="imgCopiar" onclick="copiarContenido()" data-bs-toggle="tooltip" title="Copiar">
+                    <i class="bi bi-files"></i>
+                </a>
+            </li>
+            <!-- Contenedor de Comentarios -->
+        <div id="comentarios" style="display: none; z-index: 2; margin-top: 68px;">
+          <h6 style="background-color:white; color: black; font-family: 'Playfair Display', serif;">Comentarios Eric de Jesús Rodriguez</h6>
+          <div id="contenidoComentarios">
+            <!-- Aquí se cargarán los comentarios -->
+          </div>
+        </div>
+
+
+
+    </nav>
+
+
+    <!-- Menú desplegable de libros -->
+<div id="dropdownMenu" class="menu-lateral">
+    <h6 style="padding: 10px; font-weight: bold;">Libros Disponibles</h6>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('Marcos')">Según Marcos</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('Romanos')">Carta a los Romanos</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('Gálatas')">Carta a los Gálatas</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('1Tesalonicenses')">1 Tesalonicenses</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('2Tesalonicenses')">2 Tesalonicenses</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('Hebreos')">Carta a los Hebreos</a></li>
+        <li class="list-group-item"><a href="#" onclick="showFirstChapter('Apocalipsis')">Revelación Apocalipsis</a></li>
+    </ul>
+</div>
 
  <!-- Sidebar -->
 <div id="mySidebar" class="col-md-3">
@@ -940,9 +899,8 @@ h5 {
 
 </div>
 
+<div id="contenidoSidebar" class="p-3" >
 
-
-  <div id="contenidoSidebar" class="p-3">
     
 
 
@@ -965,8 +923,7 @@ h5 {
 
 
   <script src="na28/js/fu8.js"></script>
-  
-<!-- Sidebar paralelo -->
+  <!-- Sidebar paralelo -->
 <div id="sidebar2" class="col-md-3">
 
 
@@ -1018,7 +975,7 @@ h5 {
 
 
        <!-- Contenedor para contenido de capítulos -->
-      <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto; max-height: 450px;"></div>
+      <div id="chapterContentSidebar" class="mt-3 p-3" style= "margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto; "></div>
     </div>
 
     
@@ -1115,40 +1072,9 @@ h5 {
 </style>
 
 
-<!-- Contenedor de opciones (inicialmente oculto) -->
-    <div id="opcionesContainer">
-        <!-- Selector de fuente -->
-        <div class="custom-select" id="fuenteSelect">
-            <div class="select-selected" data-value="Arial">Arial</div>
-            <div class="select-items">
-                <div data-value="Arial">Arial</div>
-                <div data-value="Verdana">Verdana</div>
-                <div data-value="Times New Roman">Times New Roman</div>
-            </div>
-        </div>
-
-        <!-- Selector de tamaño -->
-        <div class="custom-select" id="tamanoSelect">
-            <div id="select-selected2" class="select-selected" data-value="14px">14</div>
-            <div class="select-items">
-                <div data-value="12px">12</div>
-                <div data-value="14px">14</div>
-                <div data-value="16px">16</div>
-                <div data-value="18px">18</div>
-                <div data-value="20px">20</div>
-            </div>
-        </div>
-    </div>
 
 
-<!-- Mensaje de bienvenida -->
-<div id="welcomeMessage" class="col-12 text-center mb-4">
-  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
-  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
-   <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
-   <br>
-   <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
-</div>
+
 
 
  <style>
@@ -1159,6 +1085,7 @@ h5 {
             position: relative;
             display: inline-block;
             width: 150px;
+            margin-top: 100px;
             cursor: pointer;
         }
 
@@ -1256,6 +1183,7 @@ h5 {
 
         /* Estilo para ocultar el contenedor */
         #opcionesContainer {
+ position: absolute; /* 👈 Lo hace flotante */
             display: none; /* Inicialmente oculto */
         }
 
@@ -1278,11 +1206,131 @@ h5 {
 
 
 
-    <!-- Resultados -->
-    <ul id="results" style="margin-top:-23px;" class="list-group col-12 mt-3"></ul>
 
-     <script>
-        function customSelect(id) {
+<script>
+function ajustarMargen() {
+    let btn = document.getElementById("fuentess");
+    let ancho = window.innerWidth;
+
+    if (ancho <= 870) {
+        btn.style.marginLeft = "170px";
+    } else if (ancho <= 980) {
+        btn.style.marginLeft = "330px";
+    } else if (ancho <= 1070) {
+        btn.style.marginLeft = "430px";
+    } else if (ancho <= 1150) {
+        btn.style.marginLeft = "530px";
+    }else {
+        btn.style.marginLeft = "600px";
+    }
+}
+
+// Llamar la función al cargar la página y cuando la ventana se redimensione
+window.onload = ajustarMargen;
+window.onresize = ajustarMargen;
+</script>
+ 
+
+
+    <!-- Botón flotante para abrir/cerrar menú en móviles -->
+    <button id="toggleSidemenu" class="toggle-menu-btn" onclick="toggleSidemenu()">☰</button>
+
+    <!-- Buscador flotante -->
+  <div id="searchContainer" class="search-box">
+    <input type="text" id="searchInput" placeholder="Escribe para buscar..." autofocus />
+    <button 
+                  id="searchButton" 
+                  style=" display:none;">
+                  Buscar
+                </button>
+</div>
+
+
+<div id="myDIV"  style="flex-shrink: 0; width: 250px;">
+  <div id="searchTermContainer" style="font-weight: bold; margin-bottom: 10px;"></div>
+  <h5>Resultados</h5>
+  
+    <ul id="countResults" style="
+    margin-top: -23px;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    width: 100%;
+    "></ul>
+</div>
+
+    <section id="main">
+
+
+        <ul id="results" class="list-group col-12 mt-3"></ul>
+    </section>
+
+
+
+
+<!-- Botones de Página -->
+<div class="navbar-nav d-flex align-items-center">
+  <!-- Botón de Página Anterior -->
+  <button 
+    id="prevPage" 
+    class="btn border-0 bg-transparent p-0" 
+    style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
+    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain; ">
+    </div>
+  </button>
+
+  <!-- Botón de Página Siguiente -->
+  <button 
+    id="nextPage" 
+    class="btn border-0 bg-transparent p-0" 
+    style=  "position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
+    <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+      <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1); ">
+    </div>
+  </button>
+</div>
+
+
+<!-- Mensaje de bienvenida -->
+<div id="welcomeMessage" class="col-12 text-center mb-4">
+  <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
+  <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+   <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
+   <br>
+   <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
+</div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleSidemenu() {
+            let sidemenu = document.getElementById("sidemenu");
+            let main = document.getElementById("main");
+
+            if (sidemenu.style.left === "0px") {
+                sidemenu.style.left = "-70px";
+                main.style.marginLeft = "0";
+            } else {
+                sidemenu.style.left = "0px";
+                main.style.marginLeft = "80px";
+            }
+        }
+
+function toggleSearchBox() {
+    let searchBox = document.getElementById("searchContainer");
+    
+    if (searchBox.style.display === "none" || searchBox.style.display === "") {
+        searchBox.style.display = "block";
+        document.getElementById("searchInput").focus(); // Auto-focus en el campo de búsqueda
+    } else {
+        searchBox.style.display = "none";
+    }
+}
+
+
+
+
+ function customSelect(id) {
             const selectBox = document.getElementById(id);
             const selectedDiv = selectBox.querySelector(".select-selected");
             const optionsDiv = selectBox.querySelector(".select-items");
@@ -1490,22 +1538,19 @@ function seleccionarVersiculo(elemento) {
     cargarComentariosCapitulo(libro, capitulo);
 }
 
- const toggleButton = document.getElementById("toggleComentarios");
+const toggleButton = document.getElementById("toggleComentarios");
 const comentariosDiv = document.getElementById("comentarios");
 const contenidoComentarios = document.getElementById("contenidoComentarios");
 
 toggleButton.addEventListener("click", () => {
     // Alternar visibilidad
-    if (comentariosDiv.style.display === "none") {
+    if (comentariosDiv.style.display === "none" || comentariosDiv.style.display === "") {
         comentariosDiv.style.display = "block";
-        toggleButton.textContent = "Ocultar Comentarios";
-        cargarComentariosCapitulo(currentBook, currentChapter); // Carga comentarios del capítulo actual
+        cargarComentariosCapitulo(currentBook, currentChapter); // Cargar comentarios
     } else {
         comentariosDiv.style.display = "none";
-        toggleButton.textContent = "Mostrar Comentarios";
     }
 });
-
 
   
 </script>
@@ -1783,14 +1828,6 @@ setTimeout(aplicarFuenteGuardada, 50); // Aplicar la fuente después de un breve
   });
 }
 
-
-
-  </script>
-  <script src="js/cargarcomentarios.js"></script>
-  <script>
-// Función para cargar comentarios según el capítulo
-
-
 // Funciones auxiliares: showVerse, showFullChapter, etc. permanecen iguales
 
 
@@ -1888,6 +1925,9 @@ searchInput.addEventListener("keypress", event => {
     if (query) {
       hideWelcomeMessage();
       searchVerses(query);
+       // 🔻 Ocultar buscador al presionar Enter
+      document.getElementById("searchContainer").style.display = "none";
+
     }
   }
 });
@@ -1952,15 +1992,16 @@ function mostrarNotificacion(mensaje) {
 
 
       // Funcionalidad del menú desplegable
-      dropdownButton.addEventListener("click", () => {
-        const isMenuVisible = dropdownMenu.style.display === "block";
-        dropdownMenu.style.display = isMenuVisible ? "none" : "block";
-      });
-      document.addEventListener("click", event => {
-        if (!dropdownButton.contains(event.target)) {
-          dropdownMenu.style.display = "none";
-        }
-      });
+function toggleLibrosSidebar() {
+    const sidebar = document.getElementById("dropdownMenu");
+    if (sidebar.classList.contains("open")) {
+        sidebar.classList.remove("open");
+    } else {
+        sidebar.classList.add("open");
+    }
+}
+
+
 
 
 const state = {
@@ -2001,15 +2042,14 @@ function aplicarFuenteGuardada() {
         li.style.fontSize = tamanoGuardado;
     });
 }
-
-</script>
-
+    </script>
 
 
 
-   <script src="js/scriptparalelo.js"></script>
-<!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/cargarcomentarios.js"></script>
+      <script src="js/scriptparalelo.js"></script>
 
-  </body>
-</html> 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
