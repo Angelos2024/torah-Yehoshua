@@ -100,7 +100,7 @@ function actualizarContenidoSeccion(idNA28) {
         url = `na28/2ts1/${idNA28}_simple.html`;
     }
 
-    seccion.innerHTML = `<object type="text/html" data="${url}" width="100%" height="405px"></object>`;
+    seccion.innerHTML = `<object type="text/html" data="${url}" width="100%" height="805px"></object>`;
     seccion.style.display = "block";
 }
 
@@ -184,11 +184,6 @@ const na28Map = {
         "Gálatas 1:11": "Galatas1_11",
         "Gálatas 1:12": "Galatas1_12",
         "Gálatas 1:13": "Galatas1_13",
-    "Gálatas 1:15": "Galatas1_15",
-    "Gálatas 1:16": "Galatas1_16",
-    "Gálatas 1:17": "Galatas1_17",
-    "Gálatas 1:18": "Galatas1_18",
-    "Gálatas 1:19": "Galatas1_19",
-    "Gálatas 1:21": "Galatas1_21",
-    "Gálatas 1:23": "Galatas1_23",
+    "Mateo 5:3": "verso200", // Otro ejemplo de un verso que usa un ID diferente
+    // Agrega más relaciones aquí según sea necesario
 };
