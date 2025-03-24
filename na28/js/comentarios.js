@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 .then(data => {
-  console.log("Contenido recibido:", data); // 👈 Agrega esto
+  console.log("Contenido recibido:", data);
   contenedor.innerHTML = data;
 })
+
 
