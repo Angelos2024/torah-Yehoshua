@@ -855,8 +855,8 @@ window.addEventListener("resize", function () {
                 <a href="#" class="nav-link" id="toggleComentarios" onclick="toggleComentarios()" data-bs-toggle="tooltip" title="Comentarios">
                     <i class="bi bi-chat-dots"></i>
                 </a>
-            </li>
-
+            </li>  
+ 
                         <li class="nav-item">
                 <a href="#" class="nav-link" id="imgCopiar" onclick="copiarContenido()" data-bs-toggle="tooltip" title="Copiar">
                     <i class="bi bi-files"></i>
@@ -2047,18 +2047,6 @@ function aplicarFuenteGuardada() {
 
 
     </script>
-
-<script>
-function toggleComentarios() {
-    const comentariosDiv = document.getElementById("comentarios");
-    if (comentariosDiv.style.display === "none" || comentariosDiv.style.display === "") {
-        comentariosDiv.style.display = "block";
-        cargarComentariosCapitulo(currentBook, currentChapter); // 👈 Aquí usas bien tu función
-    } else {
-        comentariosDiv.style.display = "none";
-    }
-}
-</script>
 
 
 <script src="js/cargarcomentarios.js"></script>
