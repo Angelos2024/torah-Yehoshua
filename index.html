@@ -1494,21 +1494,18 @@ let claveNormalizada = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "
 // ⛳ Busca el ID del aparato crítico en el mapa
 let idNA28 = na28Map[claveNormalizada];
 
-// 🐞 Consola para depuración
-console.log("claveVerso:", claveVerso);
-console.log("claveNormalizada:", claveNormalizada);
-console.log("idNA28 encontrado:", idNA28);
+        if (idNA28) {
 
-// 👇 Si tiene aparato crítico, agregar el botón 📖
-if (idNA28) {
-    li.classList.add("con-variantes"); // Resaltar versículos con variantes
-    let boton = document.createElement("button");
-    boton.innerText = "📖"; // Icono pequeño
-    boton.classList.add("btn-na28");
-    boton.onclick = () => mostrarComentarioNA28(idNA28);
-    li.appendChild(boton);
-}
+            li.classList.add("con-variantes"); // Resaltar versículos con variantes
+            let boton = document.createElement("button");
+            boton.innerText = "📖"; // Icono pequeño
+            boton.classList.add("btn-na28");
+            boton.onclick = () => mostrarComentarioNA28(idNA28);
+            li.appendChild(boton);
+        }
 
+        resultsContainer.appendChild(li);
+    });
 
 
 
