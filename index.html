@@ -1477,11 +1477,13 @@ async function showFullChapter(libro, capitulo) {
 
         li.appendChild(divTexto);
 
-        // Construir clave para buscar en el mapa
-        let claveVerso = `${libro} ${capitulo}:${numVerso}`;
+let claveVerso = `${libro} ${capitulo}:${numVerso}`;
 
-        // Buscar el ID correcto en el mapa de NA28
-        let idNA28 = na28Map[claveVerso];
+// 🔄 Normalizar tilde para que "Gálatas" == "Galatas"
+claveVerso = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+let idNA28 = na28Map[claveVerso];
+
 
         // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
  if (idNA28) {
