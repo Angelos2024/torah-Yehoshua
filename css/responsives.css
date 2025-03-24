@@ -1,350 +1,65 @@
-@media (max-width: 1700px) {
 
-#results li {
 
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
-    #myDIV {
-        max-width: 200px !important; /* Reducir tamaño */
-    }
-   #prevPage  {
-  left: 400px !important;
-    }
-       #nextPage  {
-   right: 350px !important;
-    }
-body.sidebar2-open #prevPage {
-  left: 410px !important;
-  transition: left 0.4s ease-in-out;
-}
-/* Mover nextPage cuando mySidebar está abierto */
-.sidebar-open #nextPage {
-    right: 410px !important;
-    transition: right 0.3s ease-in-out;
-}
+@media (max-width: 2200px) {
 
-    #searchTermContainer {
-        font-size: 16px;
-        padding: 8px;
+#comentarios {
+width: 15% !important;
+top: -50px !important;
     }
-    #countResults {
-        max-width: 250px; /* Ajustar el ancho */
-        font-size: 14px;
-    }
-    #mySidebar.open {
-        width: 28% !important;
-
-}
-
-  .sidebar2-open #sidebar2 {
+    .sidebar2-open #sidebar2 {
   width: 400px !important;
-  left: 0;
+  left: 71px !important;
+  top: 25px !important;
 }
- #versionDropdown {
-    width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-
-}
-
-#bookDropdown, #chapterDropdown {
-     width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-    }
-    }
-
-    @media (max-width: 2000px) {
-
-#results li {
-
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
-    #myDIV {
-        max-width: 200px !important; /* Reducir tamaño */
-    }
-   #prevPage  {
-  left: 400px !important;
-    }
-       #nextPage  {
-   right: 350px !important;
-    }
-body.sidebar2-open #prevPage {
-  left: 410px !important;
-  transition: left 0.4s ease-in-out;
-}
-/* Mover nextPage cuando mySidebar está abierto */
-.sidebar-open #nextPage {
-    right: 410px !important;
-    transition: right 0.3s ease-in-out;
-}
-
-    #searchTermContainer {
-        font-size: 16px;
-        padding: 8px;
-    }
-    #countResults {
-        max-width: 250px; /* Ajustar el ancho */
-        font-size: 14px;
-    }
-    #mySidebar.open {
-        width: 28% !important;
-
-}
-
-  .sidebar2-open #sidebar2 {
-  width: 400px !important;
-  left: 0;
-}
- #versionDropdown {
-    width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-
-}
-
-#bookDropdown, #chapterDropdown {
-     width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-    }
-    }
-
-
-
-@media (max-width: 1600px) {
-
-    #results li {
-
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
-    #myDIV {
-        max-width: 200px !important; /* Reducir tamaño */
-    }
-   #prevPage  {
-  left: 400px !important;
-    }
-       #nextPage  {
-   right: 340px !important;
-    }
-body.sidebar2-open #prevPage {
-  left: 400px !important;
-  transition: left 0.4s ease-in-out;
-}
-/* Mover nextPage cuando mySidebar está abierto */
-.sidebar-open #nextPage {
-    right: 410px !important;
-    transition: right 0.3s ease-in-out;
-}
-
-    #searchTermContainer {
-        font-size: 16px;
-        padding: 8px;
-    }
-    #countResults {
-        max-width: 250px; /* Ajustar el ancho */
-        font-size: 14px;
-    }
-    #mySidebar.open {
-        width: 28% !important;
-
-}
-
-  .sidebar2-open #sidebar2 {
-  width: 350px !important;
-  left: 0;
-}
- #versionDropdown {
-    width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-
-}
-
-#bookDropdown, #chapterDropdown {
-     width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-    }
-    }
-
-@media (max-width: 1540px) {
-
-    #results li {
-
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
-    #myDIV {
-        max-width: 200px !important; /* Reducir tamaño */
-    }
-   #prevPage  {
-  left: 370px !important;
-    }
-       #nextPage  {
-   right: 310px !important;
-    }
-body.sidebar2-open #prevPage {
-  left: 370px !important;
-  transition: left 0.4s ease-in-out;
-}
-/* Mover nextPage cuando mySidebar está abierto */
-.sidebar-open #nextPage {
-    right: 380px !important;
-    transition: right 0.3s ease-in-out;
-}
-
-    #searchTermContainer {
-        font-size: 16px;
-        padding: 8px;
-    }
-    #countResults {
-        max-width: 250px; /* Ajustar el ancho */
-        font-size: 14px;
-    }
-    #mySidebar.open {
-        width: 28% !important;
-
-}
-
-  .sidebar2-open #sidebar2 {
-  width: 350px !important;
-  left: 0;
-}
- #versionDropdown {
-    width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-
-}
-
-#bookDropdown, #chapterDropdown {
-     width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-    }
-    }
-
-
-    @media (max-width: 1500px) {
-
-        #results li {
-
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
-    #myDIV {
-        max-width: 200px !important; /* Reducir tamaño */
-    }
-
-    #mySidebar.open {
-        width: 22% !important;
-        }
    #prevPage  {
   left: 300px !important;
     }
        #nextPage  {
-   right: 260px !important;
+   right: 270px !important;
     }
-    #comentarios {
-        width: 20% !important;
- }
-
 body.sidebar2-open #prevPage {
-  left: 320px !important;
+  left: 480px !important;
   transition: left 0.4s ease-in-out;
 }
 /* Mover nextPage cuando mySidebar está abierto */
 .sidebar-open #nextPage {
-    right: 320px !important;
+    right: 475px !important;
     transition: right 0.3s ease-in-out;
 }
 
-    #searchTermContainer {
-        font-size: 16px;
-        padding: 8px;
-    }
-    #countResults {
-        max-width: 250px; /* Ajustar el ancho */
-        font-size: 14px;
-    }
-
-
-  .sidebar2-open #sidebar2 {
-  width: 300px !important;
-  left: 0;
-}
- #versionDropdown {
-    width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
-
+.sidebar2-open #main {
+  margin-left: 270px !important; /* Empujar el contenido */
+  transition: margin-left 0.4s ease-in-out;
 }
 
-#bookDropdown, #chapterDropdown {
-     width: calc(100% - 30px) !important; 
-        display: flex;
-  flex-direction: column; /* Coloca el label encima del select */
-  margin-bottom: 15px; /* Espacio entre dropdowns */
+    #mySidebar.open {
+      transform: translateX(0);
+        width: 23% !important;
+  margin-top: 25px !important;
+  top: 1px;
     }
+
     }
 
+    @media (max-width: 2000px) {
 
- @media (max-width: 1330px) {
 
-    #results li {
-
-        width: calc(100% + 200px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-    }
     #myDIV {
         max-width: 200px !important; /* Reducir tamaño */
     }
-
-    #mySidebar.open {
-        width: 22% !important;
-        }
    #prevPage  {
-  left: 230px !important;
+  left: 300px !important;
     }
        #nextPage  {
-   right: 190px !important;
+   right: 270px !important;
     }
-    #comentarios {
-        width: 20% !important;
- }
-
 body.sidebar2-open #prevPage {
-  left: 250px !important;
+  left: 480px !important;
   transition: left 0.4s ease-in-out;
 }
 /* Mover nextPage cuando mySidebar está abierto */
 .sidebar-open #nextPage {
-    right: 250px !important;
+    right: 460px !important;
     transition: right 0.3s ease-in-out;
 }
 
@@ -356,10 +71,13 @@ body.sidebar2-open #prevPage {
         max-width: 250px; /* Ajustar el ancho */
         font-size: 14px;
     }
+    #mySidebar.open {
+        width: 24% !important;
 
+}
 
   .sidebar2-open #sidebar2 {
-  width: 250px !important;
+  width: 400px !important;
   left: 0;
 }
  #versionDropdown {
@@ -377,16 +95,153 @@ body.sidebar2-open #prevPage {
   margin-bottom: 15px; /* Espacio entre dropdowns */
     }
     }
+
+@media (max-width: 1700px) {
+
+
+    #myDIV {
+        max-width: 200px !important; /* Reducir tamaño */
+    }
+   #prevPage  {
+  left: 280px !important;
+    }
+       #nextPage  {
+   right: 250px !important;
+    }
+body.sidebar2-open #prevPage {
+  left: 480px !important;
+  transition: left 0.4s ease-in-out;
+}
+/* Mover nextPage cuando mySidebar está abierto */
+.sidebar-open #nextPage {
+    right: 440px !important;
+    transition: right 0.3s ease-in-out;
+}
+
+    #searchTermContainer {
+        font-size: 16px;
+        padding: 8px;
+    }
+    #countResults {
+        max-width: 250px; /* Ajustar el ancho */
+        font-size: 14px;
+    }
+    #mySidebar.open {
+        width: 28% !important;
+
+}
+
+  .sidebar2-open #sidebar2 {
+  width: 400px !important;
+  left: 0;
+}
+ #versionDropdown {
+    width: calc(100% - 30px) !important; 
+        display: flex;
+  flex-direction: column; /* Coloca el label encima del select */
+  margin-bottom: 15px; /* Espacio entre dropdowns */
+
+}
+
+#bookDropdown, #chapterDropdown {
+     width: calc(100% - 30px) !important; 
+        display: flex;
+  flex-direction: column; /* Coloca el label encima del select */
+  margin-bottom: 15px; /* Espacio entre dropdowns */
+    }
+    }
+
+
+@media (max-width: 1600px) {
+    #comentarios {
+width: 18% !important;
+top: -50px !important;
+    }
+ #results li   {
+width: calc(100% - 400px) !important;
+margin-left: 140px !important;
+}
+#main.shifted {
+  margin-right: 11% !important; /* Igual al ancho del sidebar izquierdo */
+    transition: margin-right 0.4s ease-in-out !important; /* Más lento y más suave */
+}
+.custom-select {
+    margin-top: 50px !important;
+}
+    #myDIV {
+        max-width: 200px !important; /* Reducir tamaño */
+    }
+   #prevPage  {
+  left: 180px !important;
+    }
+       #nextPage  {
+   right: 180px !important;
+    }
+body.sidebar2-open #prevPage {
+  left: 370px !important;
+  transition: left 0.4s ease-in-out;
+}
+/* Mover nextPage cuando mySidebar está abierto */
+.sidebar-open #nextPage {
+    right: 340px !important;
+    transition: right 0.3s ease-in-out;
+}
+
+    #searchTermContainer {
+        font-size: 16px;
+        padding: 8px;
+    }
+    #countResults {
+        max-width: 250px; /* Ajustar el ancho */
+        font-size: 14px;
+    }
+    #mySidebar.open {
+        width: 23% !important;
+
+}
+
+  .sidebar2-open #sidebar2 {
+  width: 280px !important;
+  left: 0;
+}
+ #versionDropdown {
+    width: calc(100% - 30px) !important; 
+        display: flex;
+  flex-direction: column; /* Coloca el label encima del select */
+  margin-bottom: 15px; /* Espacio entre dropdowns */
+
+}
+
+#bookDropdown, #chapterDropdown {
+     width: calc(100% - 30px) !important; 
+        display: flex;
+  flex-direction: column; /* Coloca el label encima del select */
+  margin-bottom: 15px; /* Espacio entre dropdowns */
+    }
+    }
+
+
+
+    
 
  @media (max-width: 1200px) {
-    #results li {
 
-        width: calc(100% + 100px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-        margin-left: -40px !important;
+#comentarios {
+width: 18% !important;
+top: -50px !important;
     }
+ #results li   {
+width: calc(100% - 400px) !important;
+margin-left: 140px !important;
+}
+#main.shifted {
+  margin-right: 2% !important; /* Igual al ancho del sidebar izquierdo */
+    transition: margin-right 0.4s ease-in-out !important; /* Más lento y más suave */
+}
+    .sidebar2-open #sidebar2 {
+
+width: 203px !important;
+ }
     #myDIV {
         max-width: 200px !important; /* Reducir tamaño */
     }
@@ -395,7 +250,7 @@ body.sidebar2-open #prevPage {
         width: 22% !important;
         }
    #prevPage  {
-  left: 240px !important;
+  left: 180px !important;
     }
        #nextPage  {
    right: 190px !important;
@@ -405,7 +260,7 @@ body.sidebar2-open #prevPage {
  }
 
 body.sidebar2-open #prevPage {
-  left: 240px !important;
+  left: 300px !important;
   transition: left 0.4s ease-in-out;
 }
 /* Mover nextPage cuando mySidebar está abierto */
@@ -442,20 +297,19 @@ body.sidebar2-open #prevPage {
   flex-direction: column; /* Coloca el label encima del select */
   margin-bottom: 15px; /* Espacio entre dropdowns */
     }
+
+
+    .sidebar2-open #main {
+  margin-left: 180px !important; /* Empujar el contenido */
+  transition: margin-left 0.4s ease-in-out;
+}
     }
 
 
 
 /* Responsividad para pantallas menores a 1110px */
 @media (max-width: 1110px) {
-    #results li {
-
-        width: calc(100% + 70px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-        margin-left: -40px !important;
-    }
+    
     #searchTermContainer {
         font-size: 16px;
         padding: 8px;
@@ -520,14 +374,7 @@ left: 200px !important;
 
     margin-left: -20px !important;
     }
-    #results li {
-
-        width: calc(100% + 50px) !important; /* Restar 20px del ancho total */
-        margin: 5px auto; /* Centrar los elementos y ajustar espacio */
-        font-size: 16px; /* Reducir tamaño de fuente */
-        padding: 8px; /* Ajustar padding para ahorrar espacio */
-        margin-left: -25px !important;
-    }
+    
     #searchTermContainer {
         font-size: 16px;
         padding: 8px;
@@ -556,8 +403,8 @@ text-align: right !important;
         font-size: 14px;
     }
   .sidebar2-open #sidebar2 {
-  width: 200px !important;
-  left: 0;
+  width: 300px !important;
+  left: 70px;
 }
     #mySidebar.open {
         width: 23% !important;
@@ -780,7 +627,7 @@ left: 170px !important;
 }
 
 
- 
+
 /* Responsividad para pantallas menores a 768px */
 @media (max-width: 940px) {
     #myDIV {
