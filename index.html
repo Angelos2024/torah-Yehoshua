@@ -1485,16 +1485,6 @@ let claveNormalizada = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "
 
 let idNA28 = na28Map[claveNormalizada];
 
-
-
-        // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
-// 🔍 Clave original y normalizada
-let claveVerso = `${libro} ${capitulo}:${numVerso}`;
-let claveNormalizada = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-
-// ⛳ Busca el ID del aparato crítico en el mapa
-let idNA28 = na28Map[claveNormalizada];
-
         if (idNA28) {
 
             li.classList.add("con-variantes"); // Resaltar versículos con variantes
