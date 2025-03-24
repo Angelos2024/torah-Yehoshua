@@ -47,10 +47,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-
-.then(data => {
-  console.log("Contenido recibido:", data);
-  contenedor.innerHTML = data;
-})
-
-
