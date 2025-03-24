@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "hebreos2_11": "na28/2ts1/hebreos2_11.html",
         "hebreos2_14": "na28/2ts1/hebreos2_14.html",
         "hebreos2_17": "na28/2ts1/hebreos2_17.html",
-        "Galatas1_1": "na28/2ts1/galatas1_1.html",
+        "Gálatas1_1": "na28/2ts1/galatas1_1.html",
         "Galatas1_3": "na28/2ts1/galatas1_3.html",
         "Galatas1_4": "na28/2ts1/galatas1_4.html",
         "Galatas1_6": "na28/2ts1/galatas1_6.html",
