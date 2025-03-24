@@ -1484,7 +1484,7 @@ async function showFullChapter(libro, capitulo) {
         let idNA28 = na28Map[claveVerso];
 
         // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
-        if (idNA28 && document.getElementById(idNA28)) {
+ if (idNA28) {
             li.classList.add("con-variantes"); // Resaltar versículos con variantes
             let boton = document.createElement("button");
             boton.innerText = "📖"; // Icono pequeño
