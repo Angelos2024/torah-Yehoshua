@@ -123,6 +123,12 @@ function cargarComentariosCapitulo(libro, capitulo) {
     })
     .then(data => {
       contenedor.innerHTML = data;
+      // Forzar estilos legibles
+const contenido = document.getElementById("contenidoComentarios");
+contenido.style.color = "white";
+contenido.style.backgroundColor = "black";
+contenido.style.display = "block";
+
     })
     .catch(error => {
       console.error("Error en fetch:", error);
