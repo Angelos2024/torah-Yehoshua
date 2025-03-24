@@ -1479,10 +1479,11 @@ async function showFullChapter(libro, capitulo) {
 
 let claveVerso = `${libro} ${capitulo}:${numVerso}`;
 
-// 🔄 Normalizar tilde para que "Gálatas" == "Galatas"
-claveVerso = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+// Normalizar la clave solo para buscar en el mapa (no afecta visualmente)
+let claveNormalizada = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
-let idNA28 = na28Map[claveVerso];
+let idNA28 = na28Map[claveNormalizada];
+
 
 
         // Si el versículo tiene un comentario en NA28, mostrar el botón 📖
