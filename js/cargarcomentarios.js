@@ -121,20 +121,13 @@ function cargarComentariosCapitulo(libro, capitulo) {
       }
       return response.text();
     })
-.then(data => {
+    .then(data => {
       contenedor.innerHTML = data;
-
-      // 🔧 Asegurar visibilidad del contenido cargado
-      contenedor.style.color = "white";
-      contenedor.style.backgroundColor = "black";
-      contenedor.style.display = "block";
-      contenedor.style.padding = "1rem";
-      contenedor.style.overflowY = "auto";  // útil si el contenido es largo
-      contenedor.style.maxHeight = "calc(100vh - 100px)"; // ajustar según tu diseño
     })
     .catch(error => {
       console.error("Error en fetch:", error);
-      contenedor.innerHTML = `<p style='color:white;'>Error al cargar los comentarios: ${error.message}</p>`;
+      contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
     });
 }
+
 
