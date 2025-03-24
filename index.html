@@ -1481,9 +1481,8 @@ async function showFullChapter(libro, capitulo) {
 let claveVerso = `${libro} ${capitulo}:${numVerso}`;
 
 // Normalizar la clave solo para buscar en el mapa (no afecta visualmente)
-let claveNormalizada = claveVerso.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+let idNA28 = na28Map[claveVerso];
 
-let idNA28 = na28Map[claveNormalizada];
 
         if (idNA28) {
 
