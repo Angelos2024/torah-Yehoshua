@@ -76,15 +76,20 @@ function cargarNA28(libro, capitulo, versiculo) {
             return response.text();
         })
         .then(data => {
-            sidebar.innerHTML = `${data}`;
+            const contenidoSidebar = document.getElementById("contenidoSidebar");
+contenidoSidebar.innerHTML = data;
+
             sidebar.classList.add("open");
             sidebar.style.display = "block";
         })
-        .catch(error => {
-            console.error("❌ Error al cargar el aparato crítico:", error);
-            sidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
-            sidebar.classList.add("open");
-        });
+.catch(error => {
+    console.error("❌ Error al cargar el aparato crítico:", error);
+    const contenidoSidebar = document.getElementById("contenidoSidebar");
+    contenidoSidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
+    sidebar.classList.add("open");
+    sidebar.style.display = "block";
+});
+
 }
 
 function generarBotonNA28(libro, capitulo, versiculo) {
