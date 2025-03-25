@@ -46,16 +46,22 @@ function cargarNA28(libro, capitulo, versiculo) {
     let claveVerso = `${libro} ${capitulo}:${versiculo}`;
     let archivoNA28 = na28Map[claveVerso];
 
-    if (
-        sidebar.classList.contains("open") &&
-        sidebar.getAttribute("data-libro") === libro &&
-        sidebar.getAttribute("data-capitulo") === capitulo &&
-        sidebar.getAttribute("data-versiculo") === versiculo
-    ) {
-        sidebar.classList.remove("open");
-        sidebar.style.display = "none";
-        return;
-    }
+   if (
+    sidebar.classList.contains("open") &&
+    sidebar.getAttribute("data-libro") === libro &&
+    sidebar.getAttribute("data-capitulo") === capitulo &&
+    sidebar.getAttribute("data-versiculo") === versiculo
+) {
+    sidebar.classList.remove("open");
+    sidebar.style.display = "none";
+
+    // ✅ Restaurar diseño original
+    main.classList.remove("shifted");
+    document.body.classList.remove("sidebar-open");
+
+    return;
+}
+
 
     sidebar.setAttribute("data-libro", libro);
     sidebar.setAttribute("data-capitulo", capitulo);
