@@ -1493,6 +1493,11 @@ if (idNA28) {
     li.appendChild(boton);
 }
 
+        resultsContainer.appendChild(li); // ← ESTA LÍNEA ES IMPORTANTE
+
+    }); // 🔴 AQUÍ TERMINA EL forEach, PERO TE FALTA CERRAR LA FUNCIÓN
+
+    aplicarFuenteGuardada(); // ✅ Esta línea está después del forEach, pero aún dentro de showFullChapter
 
 
 
