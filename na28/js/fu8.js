@@ -81,6 +81,8 @@ contenidoSidebar.innerHTML = data;
 
             sidebar.classList.add("open");
             sidebar.style.display = "block";
+            main.classList.add("shifted");
+            document.body.classList.add("sidebar-open");
         })
 .catch(error => {
     console.error("❌ Error al cargar el aparato crítico:", error);
@@ -88,6 +90,8 @@ contenidoSidebar.innerHTML = data;
     contenidoSidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
     sidebar.classList.add("open");
     sidebar.style.display = "block";
+                main.classList.add("shifted");
+            document.body.classList.add("sidebar-open");
 });
 
 }
