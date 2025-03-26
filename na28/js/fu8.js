@@ -22,6 +22,13 @@ const na28Map = {
     "Hebreos 2:11": "hebreos2_11",
     "Hebreos 2:14": "hebreos2_14",
     "Hebreos 2:17": "hebreos2_17",
+    "Hebreos 3:2": "hebreos3_2",
+    "Hebreos 3:3": "hebreos3_3",
+    "Hebreos 3:4": "hebreos3_4",
+    "Hebreos 3:6": "hebreos3_6",
+    "Hebreos 3:9": "hebreos3_9",
+    "Hebreos 3:10": "hebreos3_10",
+    "Hebreos 3:13": "hebreos3_13",
     "Gálatas 1:1": "galatas1_1",
     "Gálatas 1:3": "galatas1_3",
     "Gálatas 1:4": "galatas1_4",
@@ -38,7 +45,19 @@ const na28Map = {
     "Gálatas 1:18": "galatas1_18",
     "Gálatas 1:19": "galatas1_19",
     "Gálatas 1:21": "galatas1_21",
-    "Gálatas 1:23": "galatas1_23"
+    "Gálatas 1:23": "galatas1_23",
+    "Gálatas 2:1": "galatas2_1",
+    "Gálatas 2:4": "galatas2_4",
+    "Gálatas 2:5": "galatas2_5",
+    "Gálatas 2:6": "galatas2_6",
+    "Gálatas 2:9": "galatas2_9",
+    "Gálatas 2:11": "galatas2_11",
+    "Gálatas 2:12": "galatas2_12",
+    "Gálatas 2:13": "galatas2_13",
+    "Gálatas 2:14": "galatas2_14",
+    "Gálatas 2:16": "galatas2_16",
+    "Gálatas 2:17": "galatas2_17",
+    "Gálatas 2:20": "galatas2_20"
 };
 
 function cargarNA28(libro, capitulo, versiculo) {
