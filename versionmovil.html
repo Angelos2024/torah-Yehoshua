@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <!-- Resultados -->
+
 <div id="tituloFijoCapitulo"></div>
 
 <style>
@@ -324,6 +325,9 @@ document.addEventListener("DOMContentLoaded", function () {
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
+
+
+</style>
     <ul id="results" style="margin-top:130px !important; padding-bottom:80px; background-color:#e5ddd5;" class="list-group col-12 mt-3">
     </ul>
 
@@ -787,10 +791,9 @@ function showFullChapter(libro, capitulo) {
                 return `<li><span>${versiculo}. ${texto}</span>${botonBookmark}</li>`;
             })
             .join("");
-// 1. Asignar el título al contenedor fijo (fuera de innerHTML)
-document.getElementById("tituloFijoCapitulo").innerText = `${libro} ${capitulo}`;
+
+            document.getElementById("tituloFijoCapitulo").innerText = `${libro} ${capitulo}`;
 document.getElementById("tituloFijoCapitulo").style.display = "block";
-              
         resultsContainer.innerHTML = `
             <div class="chapter-navigation">
                 <button id="prevChapterBtn" onclick="showPreviousChapter()">
@@ -800,7 +803,7 @@ document.getElementById("tituloFijoCapitulo").style.display = "block";
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
-           
+
             <ul>${versiculos}</ul>
 <div class="chapter-navigation">
                 <button id="prevChapterBtnBottom" onclick="showPreviousChapter()">
@@ -812,7 +815,6 @@ document.getElementById("tituloFijoCapitulo").style.display = "block";
             </div>
         `;
 
-        document.getElementById("tituloCapitulo").style.display = "block";
         toggleNavigationButtons();
         cargarComentariosCapitulo(libro, capitulo);
         aplicarEstilos(); // 🔥 Aplicar estilos después de cambiar el contenido
