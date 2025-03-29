@@ -278,21 +278,36 @@ document.getElementById("toggleSearchOptions").addEventListener("click", functio
 
 document.addEventListener("DOMContentLoaded", async () => {
     const versionPorDefecto = "RVR1960"; // 📌 Define la versión por defecto
-    versionSelect.value = versionPorDefecto; // 📌 Selecciona automáticamente RVR1960
-    fillBooksForVersion(versionPorDefecto); // 📌 Llena la lista de libros
+    versionSelect.value = versionPorDefecto;
+    fillBooksForVersion(versionPorDefecto);
 
     setTimeout(async () => {
-        // 📌 Si hay un libro predeterminado (por ejemplo, Mateo), carga sus capítulos
         let primerLibro = Object.keys(urlsLibros[versionPorDefecto])[0];
         if (primerLibro) {
             libroSelect.value = primerLibro;
             await fillChaptersForBook(versionPorDefecto, primerLibro);
 
-            // 📌 Seleccionar automáticamente el primer capítulo si existe
             if (capituloSelect.options.length > 1) {
-                capituloSelect.selectedIndex = 1; // Selecciona el primer capítulo
+                capituloSelect.selectedIndex = 1;
             }
         }
-    }, 500); // 🔥 Pequeño retraso para asegurar que la lista de libros cargue primero
+    }, 500);
+
+    // 🔥 Aquí va el bloque que estaba fuera
+    const toggleSearchBtn = document.getElementById("toggleSearchOptions");
+    if (toggleSearchBtn) {
+        toggleSearchBtn.addEventListener("click", function () {
+            const searchContainer = document.getElementById("searchOptionsContainer");
+            if (searchContainer) {
+                searchContainer.classList.toggle("hidden");
+
+                this.innerHTML = searchContainer.classList.contains("hidden")
+                    ? `<i class="fas fa-chevron-down"></i>`
+                    : `<i class="fas fa-chevron-up"></i>`;
+            }
+        });
+    } else {
+        console.warn('⚠️ No se encontró el botón "toggleSearchOptions" en el DOM');
+    }
 });
 
