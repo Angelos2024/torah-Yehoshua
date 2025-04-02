@@ -70,7 +70,7 @@ const na28Map = {
     "Gálatas 3:24": "galatas3_24",
     "Gálatas 3:26": "galatas3_26",
     "Gálatas 4:3": "galatas4_3",
-    "Gálatas 4:6": "galatas4_6"
+    "Gálatas 4:6": "galatas4_6",
 };
 
 
