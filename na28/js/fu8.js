@@ -57,7 +57,23 @@ const na28Map = {
     "Gálatas 2:14": "galatas2_14",
     "Gálatas 2:16": "galatas2_16",
     "Gálatas 2:17": "galatas2_17",
-    "Gálatas 2:20": "galatas2_20"
+    "Gálatas 2:20": "galatas2_20",
+    "Gálatas 3:1": "galatas3_1",
+    "Gálatas 3:7": "galatas3_7",
+    "Gálatas 3:10": "galatas3_10",
+    "Gálatas 3:12": "galatas3_12",
+    "Gálatas 3:14": "galatas3_14",
+    "Gálatas 3:16": "galatas3_16",
+    "Gálatas 3:17": "galatas3_17",
+    "Gálatas 3:18": "galatas3_18",
+    "Gálatas 3:19": "galatas3_19",
+    "Gálatas 3:21": "galatas3_21",
+    "Gálatas 3:23": "galatas3_23",
+    "Gálatas 3:24": "galatas3_24",
+    "Gálatas 3:26": "galatas3_26",
+    "Gálatas 4:3": "galatas4_3",
+    "Gálatas 4:6": "galatas4_6"
+    
 };
 
 function cargarNA28(libro, capitulo, versiculo) {
