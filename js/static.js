@@ -1,11 +1,11 @@
 const urls = [
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Romanos.json',
-  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Apocalipsis.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/Marcos.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/Galatas.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/Hebreos.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/1_Tesalonicenses.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/2_Tesalonicenses.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/Romanos.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/escritos/Apocalipsis.json',
 ];
 
 // Definimos los libros disponibles para la versión RVR1960
