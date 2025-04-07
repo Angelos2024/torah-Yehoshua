@@ -1,0 +1,1027 @@
+.settings-menu {
+    position: absolute;
+    top: 50px; /* Ajusta según tu header */
+    right: 10px;
+    background: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    width: 200px;
+    height: 100px;
+    display: none;
+    z-index: 100;
+
+}
+#welcomeMessage {
+  text-align: center;
+  margin: 1px -10px;
+  color: #4CAF50;
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-top: 40px;
+  border-radius: 8px;
+  margin-left: 1px;
+}
+
+/* 🔹 Versículos seleccionados */
+#results li.selected {
+    background-color: #d1e7dd; /* Verde claro */
+    border-left: 5px solid #075e54; /* Borde resaltado */
+}
+
+/* 🔹 Barra de opciones flotante */
+#copyToolbar {
+    position: fixed;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+/* 🔹 Botones de la barra */
+#copyToolbar button {
+    padding: 8px 12px;
+    border: none;
+    background-color: #075e54;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#copyToolbar button:hover {
+    background-color: #064c48;
+}
+
+/* 🔹 Mensaje de "Verso copiado" */
+.copy-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(7, 94, 84, 0.9); /* Verde oscuro traslúcido */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-align: center;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    font-size: 16px; /* 🔥 Tamaño del texto debajo de los íconos */
+}
+
+.bottom-nav .nav-item i {
+    font-size: 20px; /* 🔥 Tamaño del ícono */
+    margin-bottom: 2px; /* 🔥 Espacio entre icono y texto */
+}
+
+/* 🔹 Ajustes especiales para pantallas pequeñas */
+@media (max-width: 600px) {
+    .bottom-nav .nav-item {
+        font-size: 14px; /* 🔥 Reducir el tamaño del texto en móviles */
+    }
+
+}
+html, body {
+    overflow-x: hidden !important; /* Evita desbordamientos laterales */
+}
+/* Estilo del switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #222;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+/* Estilo del menú */
+.settings-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.2);
+    z-index: 100;
+}
+
+.settings-menu h6 {
+    margin: 0 0 10px 0;
+    font-size: 14px;
+}
+
+.dark-mode {
+    background: #111;
+    color: white;
+}
+
+/* Cambia el color de .toggle-btn en modo oscuro */
+.dark-mode .toggle-btn {
+    background-color: #000 !important;
+    color: white !important;
+    border: 1px solid white !important;
+}
+
+
+.config-dropdown {
+    width: 35%; /* Para que no se vea muy grande */
+    padding: 1px;
+    font-size: 13px;
+    margin: 5px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    cursor: pointer;
+    margin-left: 30px;
+}
+.config-dropdown option {
+    font-size: 8px; /* Mantiene las opciones con el mismo tamaño */
+    padding: 1px;
+}
+.fa-cog {
+    transition: transform .7s ease-in-out;
+}
+
+#tituloCapitulo {
+
+        color: #2c3e50;
+        margin-left: -260px;
+        margin-bottom: -25px;
+
+}
+.fa-cog.clicked {
+    transform: rotate(180deg);
+}
+#tituloCapitulo {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 15px;  /* 🔥 Espacio entre buscador y título */
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #ddd;
+    display: none;
+    background-color: #e5ddd5;
+}
+
+
+.settings-menu {
+
+    padding: 3px 10px; /* Espacio interno */
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #f8f8f8; /* Color de fondo suave */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4CAF50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+
+.settings-menu ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.settings-menu ul li {
+    padding: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.settings-menu ul li:hover {
+    background: #f1f1f1;
+}
+
+
+    .libro-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+.libro-link {
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+.chapter-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+        margin-bottom: -10px;
+    margin-top: 12px;
+    position: relative; /* Mantiene la posición */
+    padding: 5px 0;
+}
+
+/* 🔥 Estilos para los botones en modo oscuro */
+.dark-mode #prevChapterBtn, 
+.dark-mode #nextChapterBtn {
+    background-color: black !important; /* Fondo negro */
+    border: 2px solid white !important; /* Borde blanco */
+    color: white !important; /* Texto blanco */
+}
+
+/* 🔥 Cambiar color del icono dentro del botón */
+.dark-mode #prevChapterBtn img, 
+.dark-mode #nextChapterBtn img {
+    filter: invert(1); /* Invierte el color del icono para que sea blanco */
+}
+
+#prevChapterBtn, #nextChapterBtn {
+    background-color: #075e54; /* Color verde WhatsApp */
+    border: none;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
+    z-index: 1;
+    font-size: 22px; /* Asegura que el icono sea visible */
+    color: white !important; /* Color del icono */
+}
+
+#prevChapterBtnBottom, #nextChapterBtnBottom {
+    background-color: #075e54; /* Verde WhatsApp */
+    border: none;
+    padding: 10px;
+    border-radius: 50%; /* 🔥 Hace que sea un círculo */
+    width: 45px;  /* Tamaño del botón */
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s;
+     color: white !important; /* Color del icono */
+}
+
+/* 🔹 Color blanco para los íconos */
+#prevChapterBtn i, #nextChapterBtn i {
+    color: white !important; /* Asegura que los íconos sean blancos */
+    font-size: 18px; /* Ajusta el tamaño del ícono */
+}
+
+
+}
+#prevChapterBtn {
+    left: 10px;
+}
+
+#nextChapterBtn {
+    right: 10px;
+}
+
+/* 🔥 Asegurar que el icono sea blanco y visible */
+#prevChapterBtn i, #nextChapterBtn i {
+    font-size: 24px;
+    color: white !important;
+}
+
+/* 🔥 Modo oscuro */
+.dark-mode #prevChapterBtn, .dark-mode #nextChapterBtn {
+    background-color: black !important;
+    border: 2px solid white !important;
+}
+
+.dark-mode #prevChapterBtn i, .dark-mode #nextChapterBtn i {
+    color: white !important;
+}
+
+/* 🔹 Ajustes especiales para móviles */
+@media (max-width: 600px) {
+    #prevChapterBtn, #nextChapterBtn {
+        width: 40px; /* Reducir tamaño */
+        height: 40px;
+        font-size: 18px; /* Ajustar tamaño del icono */
+    }
+
+    #prevChapterBtn {
+        left: 5px;
+    }
+
+    #nextChapterBtn {
+        right: 5px;
+    }
+}
+
+a {
+    color: #075e54;
+}
+#prevChapterBtn {
+    left: 10px;
+}
+
+#nextChapterBtn {
+    right: 10px;
+}
+
+/* Asegurar visibilidad en pantallas pequeñas */
+@media (max-width: 991px) {
+    #prevChapterBtn, #nextChapterBtn {
+        width: 45px;
+        height: 45px;
+        padding: 12px;
+    }
+}
+
+
+
+/* Icono blanco */
+.nav-icon {
+    width: 28px;
+    height: auto;
+    filter: invert(1); /* Para que el icono sea blanco */
+}
+
+
+/* 🔥 Estilos para los iconos */
+.nav-icon {
+    width: 28px;  /* Ajuste del tamaño del icono */
+    height: auto;
+    filter: invert(1); /* 🔥 Invierte los colores para hacer el icono blanco */
+}
+
+.resultados-libro {
+  margin-left: 15px;
+  display: none;
+}
+
+.versiculo-link {
+  text-decoration: none;
+  color: blue;
+  display: block;
+  margin: 3px 0;
+}
+.resultados-libro {
+  margin-left: 15px;
+  display: none;
+  max-height: 200px; /* Altura máxima antes de que aparezca el scroll */
+  overflow-y: auto; /* Permite el desplazamiento vertical si hay muchos elementos */
+  border: 1px solid #ddd; /* Un borde para separar la lista */
+  padding: 5px;
+  background: #f9f9f9;
+  border-radius: 5px;
+}
+
+
+
+    /* Estilos para la barra lateral */
+    #sidebarconteo {
+        position: fixed;
+        top: 0;
+        right: -250px; /* Oculto por defecto */
+        width: 250px;
+        height: 100%;
+        background-color: #f8f9fa;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease-in-out;
+        padding: 10px;
+        z-index: 1;
+    }
+    #sidebarconteo.active {
+        right: 0; /* Se muestra al activarlo */
+    }
+    /* Estilos para el botón de alternar */
+    .toggle-btn {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        background-color: #075e54;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px 0 0 5px;
+        transform: translateY(-50%);
+        z-index: 11;
+    }
+
+#sidebarparalelo {
+    position: fixed;
+    bottom: -100%; /* Oculto fuera de la pantalla */
+    left: 0;
+    width: 100%;
+    height: 40%; /* Ajusta según el contenido */
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.7s ease-in-out;
+    padding: 8px;
+    z-index: 4;
+    overflow-y: auto;
+}
+}
+* Labels arriba de cada dropdown */
+#sidebarparalelo label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  font-weight: bold;
+  color: #3B3B3B;
+}
+
+/* Estilo de los selects (dropdowns) */
+#sidebarparalelo select {
+
+  padding: 1px;
+  margin-bottom: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  width: 110px;
+}
+
+#searchOptionsContainer {
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Cuando está oculto, se colapsa sin afectar el diseño */
+.hidden {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+    display: none; /* Oculta completamente */
+}
+
+.toggle-btn-sidebar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    right: 10px; /* Lo posiciona a la derecha */
+    top: 10px;  /* Lo posiciona en la parte superior */
+    color: #555;
+}
+
+.toggle-btn-sidebar:hover {
+    color: #000;
+}
+
+
+#btnSync{
+
+  padding: 1px;
+  margin-bottom: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  font-size: 14px;
+  font-family: sans-serif;
+  cursor: pointer;
+  width: 90px;
+}
+
+#capituloSelect{
+    width: 60px !important;
+
+    }
+
+/* Botón "Cargar" */
+#sidebarparalelo button#btnCargar {
+  
+  background-color: #075E54; /* Verde WhatsApp */
+  border: none;
+  padding: 2px 7px;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#sidebarparalelo button#btnCargar:hover {
+  background-color: #0B7C63; /* Verde un poco más claro */
+}
+
+/* Contenedor donde se muestra el contenido del capítulo */
+#contenidoBiblia {
+  margin-top: 4px !important;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 12px;
+  /* Si deseas que el texto se deslice en un contenedor:
+     ponle max-height y overflow */
+  max-height: 60vh;
+  overflow-y: auto;
+}
+#fixedHeaderContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #e5ddd5; /* Fondo similar al resto */
+    z-index: 1000;
+
+}
+
+/* Título del libro y capítulo */
+#contenidoBiblia h5 {
+  margin: 0 0 8px;
+  font-weight: bold;
+  color: #075E54; /* Verde WhatsApp */
+}
+
+/* Lista de versos */
+#contenidoBiblia ul {
+  margin: 0;
+  margin-bottom: 380px;
+  padding: 0;
+  list-style-type: none;
+}
+
+#contenidoBiblia li {
+  margin-bottom: 10px;
+  line-height: 1.4em;
+  font-family: sans-serif;
+}
+/* Cuando esté activo (visible) */
+#sidebarparalelo.active {
+    bottom: 0;
+}
+#sidebarcomentarios {
+    position: fixed !important; /* 🔥 Se mantiene fijo pero oculto */
+    bottom: -100%; /* 🔥 Inicia oculto */
+    left: 0;
+    width: 100%;
+    height: 40vh; /* 🔥 Ajustable con el resizer */
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.5s ease-in-out, height 0.3s ease-in-out;
+    padding: 20px;
+    z-index: 3;
+    overflow-y: auto;
+    border-top: 5px solid #075e54; /* 🔥 Línea superior */
+}
+
+/* 🔥 Cuando se activa, aparece */
+
+#sidebarcomentarios {
+    background-color: #fff !important; /* Fondo oscuro */
+    color: black !important; /* Texto blanco */
+    padding: 10px;
+    border-radius: 5px;
+
+}
+
+/* 🔹 Asegura que los comentarios dentro conserven el color */
+#sidebarcomentarios * {
+    color: inherit !important;
+    background: none !important;
+}
+
+
+/* 🔹 Evita que sobrescriban márgenes o padding */
+#sidebarcomentarios p,
+#sidebarcomentarios div,
+#sidebarcomentarios span {
+    margin: 5px 0 !important;
+    padding: 0 !important;
+}
+
+
+
+/* Cuando esté activo (visible) */
+#sidebarcomentarios.active {
+    bottom: 0;
+}
+      body {
+    background-color: #e5ddd5 !important;
+    margin: 0 !important;
+    font-family: var(--bs-font-sans-serif) !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    color: #212529 !important;
+}
+::marker {
+    content: none;
+    display: none;
+}
+#flotante {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: grab;
+    touch-action: none;
+}
+
+
+.na28-btn {
+    position: absolute;
+    bottom: 5px;
+    right: 40px; /* Ajuste para que no se sobreponga con el bookmark */
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #007bff; /* Azul para diferenciarlo */
+}
+
+.na28-btn:hover {
+    color: #0056b3;
+}
+
+
+
+.bookmark-btn {
+ position: absolute;
+    bottom: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #4CAF50; /* Verde */
+}
+
+.bookmark-btn:hover {
+    color: #388E3C; /* Oscuro al pasar el mouse */
+}
+li {
+   position: relative; /* Permite que el botón se posicione dentro del li */
+    padding-bottom: 25px; /* Espacio para el icono */
+}
+
+#sidebar {
+    position: fixed;
+    bottom: -100%; /* Oculto fuera de la pantalla */
+    left: 0;
+    width: 100%;
+    height: 40%; /* Ajusta según el contenido */
+    background: white;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    transition: bottom 0.7s ease-in-out;
+    padding: 20px;
+    z-index: 1;
+     overflow-y: auto; /* 🔥 Permite desplazamiento vertical */
+    max-height: 60vh; /* 🔥 Ajusta la altura máxima */
+}
+
+/* Cuando esté activo (visible) */
+#sidebar.active {
+    bottom: 0;
+}
+
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    z-index: 1050;
+}
+
+.modal-content-custom {
+    background: #222;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.modal-content-custom a {
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+}
+
+.modal-content-custom a:last-child {
+    border-bottom: none;
+}
+
+.close-btn {
+    background: red;
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.header {
+    background-color: #075e54;
+    color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 15px; /* Crea el espacio con fondo blanco */
+}
+.full-chapter-link {
+  display: block !important;
+  margin-top: 10px;
+  font-size: 14px;
+  text-decoration: underline;
+  color: #4CAF50;
+  cursor: pointer;
+}
+
+.header-icons {
+    display: flex;
+    gap: 15px;
+}
+
+OpenMod {
+    flex-shrink: 0; /* Evita que el botón se reduz   demasiado */
+    padding: 8px 12px; /* Espaciado interno del botón */
+    font-size: 2vw; /* Tamaño de fuente basado en el ancho de la pantalla */
+    max-width: 25%; /* Limita el tamaño del botón */
+    height: 35px; /* Altura fija */
+}
+
+/* 📱 Ajustes para pantallas pequeñas */
+@media (max-width: 600px) {
+    #OpenMod {
+        font-size: 14px; /* Reduce el tamaño del texto en tablets */
+        padding: 5px 10px;
+        max-width: 100%; /* Limita el tamaño del botón */
+        height: 35px; /* Altura fija */
+    }
+}
+
+@media (max-width: 440px) {
+    #OpenMod {
+        font-size: 12px; /* Reduce el texto en celulares */
+        padding: 5px 10px;
+        max-width: 100%; /* Limita el tamaño del botón */
+        height: 35px; /* Altura fija */
+    }
+}
+@media (max-width: 262px) {
+    #OpenMod {
+        font-size: 12px; /* Reduce el texto en celulares */
+        padding: 2px 7px;
+        max-width: 60%; /* Limita el tamaño del botón */
+        height: 28px; /* Altura fija */
+    }
+}
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    flex-wrap: wrap;
+    padding-top: 10px; /* Da más espacio dentro del fondo blanco */
+   border-bottom: 10px solid #fff;
+   
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 650px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    margin-right: 10px;
+    padding: 5px;
+    gap: 5px;
+    flex: 1; /* Permite que la barra de búsqueda ocupe el espacio disponible */
+    min-width: 200px; /* Evita que la barra de búsqueda se vuelva demasiado pequeña */
+    overflow: hidden; /* Evita desbordamientos */
+}
+
+.search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: none;
+    padding: 5px;
+    min-width: 0; /* Asegura que el input no desborde */
+}
+
+.search-bar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.search-bar #OpenMod {
+    background-color: #28a745;
+    color: white;
+    }
+    #OpenMod {
+    margin-right: 10px; /* Ajusta la separación entre el botón y el buscador */
+    margin-left: 5px;
+
+}
+
+
+
+.search-bar #searchButton {
+    background-color: #007bff;
+    color: white;
+    display: none;
+}
+
+.result-item {
+    background-color: white;
+    padding: 15px;
+    margin: 5px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.result-item span {
+    font-size: 14px;
+}
+
+.bottom-nav {
+    background-color: white;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100; /* Más alto que el sidebar */
+}
+
+.bottom-nav i {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.floating-button {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background-color: #25d366;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+#results li {
+    padding: 15px;
+    border: 1px solid #ccc;
+    margin-bottom: -13px;
+    border-radius: 4px;
+    background-color: #fff;
+    width: calc(100% + 80px);
+    margin-left: -90px;
+    margin-top: 20px;
+
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Clase para ocultar el menú moviéndolo a la derecha */
+.bottom-nav.hidden {
+    transform: translateX(100%);
+}
+
+  
