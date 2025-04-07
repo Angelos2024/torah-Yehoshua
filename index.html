@@ -1,22 +1,191 @@
 <!doctype html>
 <html lang="es">
-    <head>
-        <meta charset='utf-8'>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Torah con Yehoshúa'</title>
 
-        <!-- Bootstrap CSS -->
-        <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="css/responsives.css">
-        <link rel="stylesheet" href="css/estiloparalelo.css">
-        <link rel="stylesheet" href="css/estilo.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/styles.css">
-        
-    </head>
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Torah con Yehoshúa'</title>
 
-    <div id="opcionesContainer">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/selectorFuente.css">
+    <link rel="stylesheet" href="css/contenidoPrincipal.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/sidebarBibliasParalelas.css">
+    <link rel="stylesheet" href="css/sidebars.css">
+    <link rel="stylesheet" href="css/resultadosBusqueda.css">
+    <link rel="stylesheet" href="css/utils.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+        <div class="search-bar-container">
+            <div class="search-bar-container-inner">
+                <button class="btn btn-success" id="OpenMod">
+                    <i class="fas fa-book" id="dropdownMenu"></i>
+                </button>
+                <div class="search-bar">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Escribe tu búsqueda...">
+                    <button id="clearSearchButton" class="clear-button" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <button class="btn btn-success" id="searchButton">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menú lateral para versión desktop (visible solo en pantallas grandes) -->
+    <nav id="leftNav" style="display: none;">
+                
+        <ul class="navbar-nav w-100">
+            <!-- Home -->
+            <li class="nav-item desktop-nav-item">
+                <a href="https://www.torah-con-yehoshua-hamashiaj.com" id="logo" class="nav-link home-icon"
+                    data-bs-toggle="tooltip" title="Volver a Inicio">
+                    <i class="bi bi-house-door-fill"></i>
+                </a>
+            </li>
+
+            <!-- Libros -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" id="buttonLibrosBiblia"
+                    data-bs-toggle="tooltip" title="Libros de la Biblia">
+                    <i class="bi bi-collection"></i>
+                </a>
+            </li>
+
+            <!-- Paralelo -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" id="buttonBibliasParalelas"
+                    data-bs-toggle="tooltip" title="Biblias Paralelas">
+                    <i class="bi bi-book"></i>
+                </a>
+            </li>
+
+            <!-- Comentarios -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" id="buttonComentarios"
+                    data-bs-toggle="tooltip" title="Comentarios">
+                    <i class="bi bi-chat-dots"></i>
+                </a>
+            </li>
+
+            <!-- Aparato Crítico -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" id="buttonAparatoCritico"
+                    data-bs-toggle="tooltip" title="Aparato Crítico">
+                    <i class="bi bi-journal"></i>
+                </a>
+            </li>
+
+            <!-- Copiar -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" id="imgCopiar" onclick="event.preventDefault(); copiarContenido();"
+                    data-bs-toggle="tooltip" data-bs-placement="right" title="Copiar">
+                    <i class="bi bi-files"></i>
+                </a>
+            </li>
+
+            <!-- Buscar -->
+            <li class="nav-item desktop-nav-item">
+                <a href="#" class="nav-link" data-bs-toggle="tooltip" data-bs-placement="right"
+                    title="Buscar" id="buscarLink">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <!-- Sidebar Libros (SOLO DESKTOP) -->
+    <div id="sidebarLibros" class="menu-lateral" style="display: none;">
+        <h6 class="sidebar-title">Libros Disponibles</h6>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('Marcos')">Según Marcos</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('Romanos')">Carta a los Romanos</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('Gálatas')">Carta a los Gálatas</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('1Tesalonicenses')">1 Tesalonicenses</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('2Tesalonicenses')">2 Tesalonicenses</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('Hebreos')">Carta a los Hebreos</a></li>
+            <li class="list-group-item"><a href="#" onclick="showFirstChapter('Apocalipsis')">Revelación Apocalipsis</a></li>
+        </ul>
+    </div>
+
+    <!-- Sidebar Biblia Paralela -->
+    <div id="sidebarBibliaParalela">
+        <div>
+            <h5>Biblia Paralela</h5>
+            
+            <div id="searchOptionsContainer">
+                <div class="searchOptionsContainerSelectors">
+                    <div><label for="versionSelect">Versión:</label>
+                        <select id="versionSelect">
+                            <option value="RVR1960">RVR1960</option>
+                            <option value="BTX4">BTX4</option>
+                        </select>
+                    </div>
+            
+                    <div><label for="libroSelect">Libro:</label>
+                        <select id="libroSelect">
+                            <option value="">-- Elige versión primero --</option>
+                        </select>
+                    </div>
+            
+                    <div><label for="capituloSelect">Cap:</label>
+                        <select id="capituloSelect">
+                            <option value="">-- Elige libro primero --</option>
+                        </select>
+                    </div>
+                </div>
+            
+                <!-- Botones de búsqueda y sincronización -->
+                <div class="buttons-container">
+                    <button id="btnCargar">Buscar</button>
+                    <button id="btnSync">Sincronizar</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Resultados de la busqueda de la Biblia Paralela -->
+        <div id="resultadoBibliaParalela"></div>
+    
+    </div>
+    
+    <!-- Sidebar de comentarios -->
+    <div id="sidebarComentarios">
+        <h5>Comentarios</h5>
+        <div id="contenedorComentarios">
+            <p id="mensajeNoComentarios">No hay comentarios</p>
+        </div>
+    </div>
+    
+    <!-- Sidebar Aparato Crítico -->
+    <div id="sidebarAparatoCritico">
+        <h5>Aparato Crítico</h5>            
+        <div id="contenedorAparatoCritico">
+            <p>📖 La NA28 (Nestle-Aland 28) es una edición del Nuevo Testamento en griego, usada por académicos y
+                traductores para estudiar el texto original de la Biblia. Es considerada una de las versiones más precisas,
+                ya que se basa en los manuscritos más antiguos y confiables. </p>
+        </div>
+    </div>
+
+    <!-- Sidebar Resultados Búsqueda -->
+    <div id="sidebarResultadosBusqueda">
+        <h5>Resultados</h5>
+        <div id="sidebarResultadosBusquedaTitle"></div>
+        <ul id="countResults">
+        </ul>
+    </div>
+
+    <!-- Selector de fuente (DESKTOP) No visible, no usado. -->
+    <div id="opcionesContainer" style="display: none;">
         <!-- Selector de fuente -->
         <div class="custom-select" id="fuenteSelect">
             <div class="select-selected" data-value="Arial">Arial</div>
@@ -26,7 +195,7 @@
                 <div data-value="Times New Roman">Times New Roman</div>
             </div>
         </div>
-
+    
         <!-- Selector de tamaño -->
         <div class="custom-select" id="tamanoSelect">
             <div id="select-selected2" class="select-selected" data-value="14px">14</div>
@@ -43,193 +212,127 @@
         </div>
     </div>
 
-    <button id="fuentess" class="toggle-btn" style="position: relative; margin-top:10px; left:-230px; background-color: white; border: 2px solid black; border-radius: 5px; padding: 3px; cursor: pointer; border-color:black;" onclick="toggleOpciones()" data-bs-toggle="tooltip" title="Fuente">
-        <img src="https://i.imgur.com/GWO9r90.png" alt="Mostrar/Ocultar" style="width:20px; height: 20px;">
-    </button>
+    <!-- Navbar Movil -->
+    <div class="bottom-nav">
+        <a href="https://www.torah-con-yehoshua-hamashiaj.com" class="nav-item">
+            <i class="fas fa-home"></i>
+        </a>
+    
+        <a href="#" id="bttBibliaParalelaMov" class="nav-item">
+            <i class="fas fa-book-open"></i>
+        </a>
 
-    <body class="container-fluid">
-        <nav id="sidemenu">
-            <a href="https://www.torah-con-yehoshua-hamashiaj.com" id="logo" class="nav-link home-icon" data-bs-toggle="tooltip" title="Volver a Inicio">
-                <i class="bi bi-house-door-fill"></i>
-            </a>
-
-            <li class="nav-item">
-                <a href="#" class="nav-link" id="dropdownButton" onclick="event.preventDefault(); toggleLibrosSidebar();" data-bs-toggle="tooltip" title="Libros de la Biblia">
-                    <i class="bi bi-collection"></i>
-                </a>
-            </li>
-
-            <ul class="navbar-nav w-100">
-                <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="event.preventDefault(); toggleSearchBox();" data-bs-toggle="tooltip" title="Buscar">
-                        <i class="bi bi-search"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link" id="imgParalelo" onclick="event.preventDefault(); togglesidebar2();" data-bs-toggle="tooltip" title="Biblias Paralelas">
-                        <i class="bi bi-book"></i>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link" id="imgMaterial" onclick="event.preventDefault(); toggleSidebar();" data-bs-toggle="tooltip" title="Aparato Crítico">
-                        <i class="bi bi-journal"></i>
-                    </a>
-                </li>
-
-                <a href="#" class="nav-link" id="toggleComentarios" onclick="event.preventDefault();" data-bs-toggle="tooltip" title="Comentarios">
-                    <i class="bi bi-chat-dots"></i>
-                </a>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link" id="imgCopiar" onclick="event.preventDefault(); copiarContenido();" data-bs-toggle="tooltip" title="Copiar">
-                        <i class="bi bi-files"></i>
-                    </a>
-                </li>
-
-                <div id="comentarios" style="display: none; z-index: 2; margin-top: 68px;">
-                    <h6 style="background-color:white; color: black; font-family: 'Playfair Display', serif;">Comentarios Eric de Jesús Rodriguez</h6>
-                    <div id="contenidoComentarios">
-                    </div>
-                </div>
-            </ul>
-        </nav>
-
-        <div id="dropdownMenu" class="menu-lateral">
-            <h6 style="padding: 10px; font-weight: bold;">Libros Disponibles</h6>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('Marcos')">Según Marcos</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('Romanos')">Carta a los Romanos</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('Gálatas')">Carta a los Gálatas</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('1Tesalonicenses')">1 Tesalonicenses</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('2Tesalonicenses')">2 Tesalonicenses</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('Hebreos')">Carta a los Hebreos</a></li>
-                <li class="list-group-item"><a href="#" onclick="showFirstChapter('Apocalipsis')">Revelación Apocalipsis</a></li>
-            </ul>
-        </div>
-
-        <div id="mySidebar" class="col-md-3">
-            <div id="menuSidebar" class="p-3">
-                <button onclick="toggleSubButtons('critico')">Aparato Crítico NA28</button>
-                <button onclick="toggleSeccion('mapas')">Mapas</button>
-            </div>
-
-            <div id="subButtonsCritico" style="display: none; margin-top: 10px; display: flex; justify-content: space-between; gap: 30px; width: 100%;">
-            </div>
-
-            <div id="contenidoSidebar" class="p-3">
-                <div id="mapas" class="seccionSidebar" style="display: none;">
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/kYBZVlB.jpeg')">Mapa de los pueblos</a></p>
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/zLScQV2.png')">Mapa del éxodo</a></p>
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tribus de Israel (tiempo de los reyes)</a></p>
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/5w9LMZx.png')">Tierra de Israel en el Primer siglo</a></p>
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/95ex03o.png')">Viajes de Saúl (Pablo)</a></p>
-                    <p><a href="#" onclick="abrirModal('https://i.imgur.com/BiTNN4L.png')">Lugares donde Yehoshúa' vivió y enseñó</a></p>
-                </div>
-            </div>
-        </div>
-
-        <script src="na28/js/fu8.js"></script>
-
-        <div id="sidebar2" class="col-md-3">
-            <div class="dropdown-container">
-                <div id="versionDropdown" class="dropdown">
-                    <label for="versionSelector" class="dropdown-label">Versión:</label>
-                    <select id="versionSelector" class="version-dropdown" onchange="cambiarVersion()">
-                        <option value="RVR1960">Reina-Valera 1960</option>
-                        <option value="Btx4">Biblia Textual 4</option>
-                        <option value="Jubileos">Biblia Jubileos</option>
-                    </select>
-                </div>
-
-                <div id="bookDropdown" class="dropdown">
-                    <label for="bookSelector" class="dropdown-label">Libro:</label>
-                    <select id="bookSelector" class="book-dropdown" onchange="cargarCapitulos()">
-                        <option value="">Selecciona un libro</option>
-                    </select>
-                </div>
-
-                <div id="chapterDropdown" class="dropdown">
-                    <label for="chapterSelector" class="dropdown-label">Capítulo:</label>
-                    <select id="chapterSelector" class="chapter-dropdown" onchange="mostrarCapitulo()">
-                        <option value="">Selecciona un capítulo</option>
-                    </select>
-                </div>
-
-                <div></div>
-
-                <!-- Botón en la 4ta celda -->
-                <div id="syncButtonContainer">
-                    <button id="syncVersionButton" class="btn" style="background-color: #fff !important; border-color: #6D3961 !important; box-shadow: 0 0 10px black; height: 22px; color: #000 !important;" onclick="sincronizarVersion()">Sincronizar</button>
-                </div>
-            </div>
-            
-            <!-- Contenedor para contenido de capítulos -->
-            <div id="chapterContentSidebar" class="mt-3 p-3" style="margin-top: -10px !important; color: white; padding: 10px; overflow-y: auto;"></div>
-        </div>
+        <a href="#" id="bttComentariosMov" class="nav-item">
+            <i class="fas fa-message"></i>
+        </a>
         
-        <div id="modal" class="modal" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8);">
-            <span class="close" onclick="cerrarModal()" style="color: white; position: absolute; top: 10px; right: 20px; cursor: pointer; font-size: 2rem;">&times;</span>
-            <img id="modalImg" class="modal-content" alt="Imagen" style="padding-top: 20px;">
-            <div id="caption" style="color: white; text-align: center; padding: 10px;"></div>
+        <a href="#" id="bttAparatoCriticoMov" class="nav-item">
+            <i class="fas fa-book"></i>
+        </a>
+    
+    </div>
+    
+    <!-- Modal de libros en version movil -->
+    <div id="fullscreenModal" class="fullscreen-modal">
+        <div class="modal-content-custom">
+            <button class="close-icon-button" id="closeModal"><i class="fas fa-times"></i></button>
+            <div id="librosContainer">
+                <a href="#" data-libro="Marcos">Según Marcos</a>
+                <a href="#" data-libro="Romanos">Carta a los Romanos</a>
+                <a href="#" data-libro="Gálatas">Carta a los Gálatas</a>
+                <a href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
+                <a href="#" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
+                <a href="#" data-libro="Hebreos">Carta a los Hebreos</a>
+                <a href="#" data-libro="Apocalipsis">Revelación Apocalipsis</a>
+            </div>
+    
+            <!-- Contenedor para mostrar los capítulos -->
+            <div id="capitulosContainer" style="display: none;"></div>
         </div>
+    </div>             
+              
+    <!-- Opciones para ambas versiones (creo)-->
+    <div class="settings-menu" id="settingsMenu">
+        <label class="switch">
+            <input type="checkbox" id="toggleNavButtons" onchange="toggleNavigationButtons()">
+            <span class="slider"></span>
+        </label>
+        <span style="font-size: 14px;">Ver botones / Touch</span>
+    
+        <label for="fontSelector">Fuente:</label>
+        <select id="fontSelector" class="config-dropdown">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman">Times New Roman</option>
+        </select>
+    
+        <label for="fontSizeSelector">Tamaño:</label>
+        <select id="fontSizeSelector" class="config-dropdown">
+            <option value="12">12</option>
+            <option value="14">14</option>
+            <option value="16">16</option>
+            <option value="20">20</option>
+        </select>
+    
+    </div>
 
-        <div id="contenedor-botones">
-            <img id="btnParalelo" class="boton-accion" src="css/image.png" style="display: none;">
-            <img id="btnCopiar" class="boton-accion" src="css/image(2).png" style="display: none;">
-            <img id="btnMaterial" class="boton-accion" src="css/image(3).png" style="display: none;">
+    <div class="settings-menu" id="menuOpciones">
+        <h6>Opciones</h6>
+        <label class="switch">
+            <input type="checkbox" id="toggleDarkModeSwitch">
+            <span class="slider round"></span>
+        </label>
+        <span style="font-size: 14px;">Modo Oscuro</span>
+    </div>
+                
+
+    <!-- Resultados -->
+    <main>
+        <div class="main-container">
+            <div class="prev-page">
+                <!-- Página anterior -->
+                <button id="prevPage">
+                    <div>
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                </button>
+            </div>
+            <ul id="results">
+            </ul>
+            <div class="next-page">
+                <!-- Botón de página siguiente -->
+                <button id="nextPage">
+                    <div>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </button>
+            </div>
         </div>
- 
-    <!-- Botón flotante para abrir/cerrar menú en móviles -->
-    <button id="toggleSidemenu" class="toggle-menu-btn" onclick="toggleSidemenu()">☰</button>
-
-        <div id="searchContainer" class="search-box">
-            <input type="text" id="searchInput" placeholder="Escribe para buscar..." autofocus />
-            <button id="searchButton" style="display:none;">Buscar</button>
-        </div>
-
-        <div id="myDIV" style="flex-shrink: 0; width: 250px;">
-            <div id="searchTermContainer" style="font-weight: bold; margin-bottom: 10px;"></div>
-            <h5>Resultados</h5>
-            <ul id="countResults" style="margin-top: -23px; list-style-type: none; padding: 0; margin-bottom: 10px; width: 100%;"></ul>
-        </div>
-
-        <section id="main">
-            <ul id="results" class="list-group col-12 mt-3"></ul>
-        </section>
-
-        <!-- Botones de página -->
-        <div class="navbar-nav d-flex align-items-center">
-            <button id="prevPage" class="btn border-0 bg-transparent p-0" style="position: fixed; left: 215px; top: 60%; width: 60px; height: 60px; display: none;">
-                <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <img src="https://imgur.com/t81IpES.png" alt="Página Anterior" style="width: 50%; height: 50%; object-fit: contain;">
-                </div>
-            </button>
-            <!-- Botón de página siguiente -->
-            <button id="nextPage" class="btn border-0 bg-transparent p-0" style="position: fixed; right: 282px; top: 60%; width: 60px; height: 60px; display: none;">
-                <div style="background-color: #ffffff; border-radius: 10px; width: 45%; height: 100%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                    <img src="https://imgur.com/t81IpES.png" alt="Página Siguiente" style="width: 50%; height: 50%; object-fit: contain; transform: scaleX(-1);">
-                </div>
-            </button>
-        </div>
-
-        <!-- Mensaje de bienvenida -->
-        <div id="welcomeMessage" class="col-12 text-center mb-4">
-            <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
-            <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
-            <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
-            <br>
-            <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
-        </div>
+    </main>
 
 
-
-      <script src="js/index.js"></script>
-      <script src="js/cargarcomentarios.js"></script>
-      <script src="js/scriptparalelo.js"></script>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Mensaje de bienvenida (común a ambos)-->
+    <div id="welcomeMessage" class="col-12 text-center mb-4">
+        <h2>¡Bienvenido al Buscador de Versículos Bíblicos!</h2>
+        <p>Escribe el libro, capítulo y versículo que deseas buscar.</p>
+        <H7>(acepta abreviaciones y varios versos "gal 2:4-6"<br> "heb 1" o palabras de busqueda "israel")</H7>
+        <br>
+        <h6>Basado en los escritos de Eric de Jesús Rodríguez Mendoza</h6>
+    </div>
+    
+    <script src="js/static.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/selectorFuentes.js"></script>
+    <script src="js/content-loader.js"></script>
+    <script src="js/sidebars.js"></script>
+    <script src="js/sidebars-movil.js"></script>
+    <script src="js/biblias-paralelas.js"></script>
+    <script src="js/comentarios.js"></script>
+    <script src="js/buscador.js"></script>
+    <script src="na28/js/na28movil.js"></script>
+    <script src="js/navigation-buttons.js"></script>
+    
 </body>
+
+
 </html>
