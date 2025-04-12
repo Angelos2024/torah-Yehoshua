@@ -200,20 +200,19 @@ input:checked + .slider:before {
     transform: rotate(180deg);
 }
 #tituloCapitulo {
-    background-color: #1e7e34; /* Verde intenso */
+    position: sticky;
+    top: 52px;
+    background-color: #1e7e34;  /* Verde como en la imagen */
     color: white;
     font-weight: bold;
-    font-size: 14px;         /* 🔹 Tamaño más pequeño como en la imagen */
-    padding: 4px 10px;       /* 🔹 Menos relleno */
+    font-size: 13px;            /* Tamaño pequeño como en la imagen */
+    padding: 4px 10px;          /* Acolchado ajustado */
     display: inline-block;
-    margin: 5px auto;        /* 🔹 Centrado */
-    border-radius: 0 0 6px 6px;
+    margin: 10px 0 0 20px;      /* Un poco de margen arriba y a la izquierda */
+    border-radius: 8px 8px 0 0; /* Borde redondeado superior */
+    z-index: 999;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 52px;               /* 🔹 Pegado debajo del header */
-    z-index: 11;
 }
-
 
 .settings-menu {
 
