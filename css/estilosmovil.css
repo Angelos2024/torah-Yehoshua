@@ -201,10 +201,10 @@ input:checked + .slider:before {
     transform: rotate(180deg);
 }
  #tituloCapitulo {
-    background-color: #1e7e34;
+    background-color: ##075e54;
     color: white;
     margin-top: 70px;
-    width: 160px;
+    width: 155px;
     height: 30px;
     font-weight: bold;
     font-size: 20px;
