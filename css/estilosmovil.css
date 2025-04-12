@@ -206,14 +206,16 @@ input:checked + .slider:before {
     transform: rotate(180deg);
 }
 #tituloCapitulo {
-    text-align: center;
-    font-size: 18px;
+    background-color: #1e7e34; /* Verde intenso */
+    color: white;
     font-weight: bold;
-    margin-top: 15px;  /* 🔥 Espacio entre buscador y título */
-    background-color: #f8f9fa;
-    border-bottom: 2px solid #ddd;
-    display: none;
-    background-color: #e5ddd5;
+    padding: 6px 12px;
+    display: inline-block;
+    margin-left: 15px;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 56px;
 }
 
 
