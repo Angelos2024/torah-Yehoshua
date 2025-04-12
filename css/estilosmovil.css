@@ -200,20 +200,20 @@ input:checked + .slider:before {
     transform: rotate(180deg);
 }
 #tituloCapitulo {
-    position: sticky;
-    top: 52px;
-    background-color: #1e7e34;  /* Verde como en la imagen */
+    background-color: #1e7e34;
     color: white;
+    margin-top: -50px;
+    width: 120px;
     font-weight: bold;
-    font-size: 13px;            /* Tamaño pequeño como en la imagen */
-    padding: 4px 10px;          /* Acolchado ajustado */
+    font-size: 20px;
+    padding: 6px 12px;
     display: inline-block;
-    margin: 10px 0 0 20px;      /* Un poco de margen arriba y a la izquierda */
-    border-radius: 8px 8px 0 0; /* Borde redondeado superior */
-    z-index: 999;
+    margin-left: 55px;
+    border-radius: 0 0 5px 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-}
-
+    position: fixed;
+    top: 56px;
+    }
 .settings-menu {
 
     padding: 3px 10px; /* Espacio interno */
