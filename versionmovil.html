@@ -69,7 +69,7 @@ window.addEventListener("resize", function () {
 
   <body>
 <script>
-window.allowSwipe = true; // ✅ declaración global segura
+
 </script>
 
     <div id="fixedHeaderContainer">
@@ -162,7 +162,7 @@ function toggleNavigationButtons() {
 
     // 👉 CONTROLAR el gesto de swipe
    // Declaración segura y única
-window.allowSwipe = true;
+
 
 
     let buttons = document.querySelectorAll("#prevChapterBtn, #nextChapterBtn, #prevChapterBtnBottom, #nextChapterBtnBottom");
@@ -518,32 +518,32 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchEndX = 0;
 
 
-    function checkSwipe() {
-     if (!currentBook || !currentChapter || window.allowSwipe === false) return;
+ function checkSwipe() {
+    if (!currentBook || !currentChapter) return;
 
-        let prevButton = document.getElementById("prevChapterBtn");
-        let nextButton = document.getElementById("nextChapterBtn");
+    const prevIcon = document.querySelector("#prevChapterBtn i");
+    const nextIcon = document.querySelector("#nextChapterBtn i");
 
-        let prevVisible = prevButton && prevButton.style.display !== "none";
-        let nextVisible = nextButton && nextButton.style.display !== "none";
+    const prevVisible = prevIcon && getComputedStyle(prevIcon).display !== "none" && prevIcon.offsetParent !== null;
+    const nextVisible = nextIcon && getComputedStyle(nextIcon).display !== "none" && nextIcon.offsetParent !== null;
 
-        if (touchStartX - touchEndX > 50 && nextVisible) {
-            showNextChapter();
-        } else if (touchEndX - touchStartX > 50 && prevVisible) {
-            showPreviousChapter();
-        }
+    if (touchStartX - touchEndX > 50 && nextVisible) {
+        showNextChapter();
+    } else if (touchEndX - touchStartX > 50 && prevVisible) {
+        showPreviousChapter();
     }
+}
+
 
 document.getElementById("results").addEventListener("touchstart", (e) => {
-    if (window.allowSwipe === false) return;
-    window.startX = e.changedTouches[0].screenX;
+    touchStartX = e.changedTouches[0].screenX;
 });
 
 document.getElementById("results").addEventListener("touchend", (e) => {
-    if (window.allowSwipe === false) return;
-    window.endX = e.changedTouches[0].screenX;
+    touchEndX = e.changedTouches[0].screenX;
     checkSwipe();
 });
+
 
 
     // Evitar que el swipe funcione en sidebar abiertos
@@ -1339,7 +1339,7 @@ function agregarResizer(idPanel) {
 
     // 📌 Mostrar opciones de copiar
 
-window.allowSwipe = true;
+
 
 
 
@@ -1399,7 +1399,7 @@ window.allowSwipe = true;
         selectedItems.forEach(item => item.classList.remove("selected"));
         selectedItems.clear();
         hideCopyOptions();
-       window.allowSwipe = true; // ✅ restaurar swipe al cancelar selección
+    
     }
 
     // 📌 Detectar clic fuera para cancelar selección
@@ -1409,27 +1409,6 @@ window.allowSwipe = true;
         }
     });
 });
-</script>
-
-<script>
-
-
-document.addEventListener('touchstart', function(e) {
-    window.startX = e.touches[0].clientX;
-    window.startY = e.touches[0].clientY;
-}, { passive: true });
-
-document.addEventListener('touchmove', function(e) {
-    if (!allowSwipe) return; // ⛔ bloquea swipe si está desactivado
-
-    let diffX = e.touches[0].clientX - window.startX;
-    let diffY = e.touches[0].clientY - window.startY;
-
-    // Prevenir navegación por gesto lateral si es horizontal
-    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 20) {
-        e.preventDefault();
-    }
-}, { passive: false });
 </script>
 
 <style>
