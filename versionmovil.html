@@ -1395,22 +1395,20 @@ function agregarResizer(idPanel) {
 });
 
 </script>
-<script>
-let startY = 0;
-let moveY = 0;
-let threshold = 30; // mínimo movimiento vertical para considerar scroll
 
+<script>
 document.addEventListener('touchstart', function(e) {
-    startY = e.touches[0].clientY;
-}, { passive: false });
+    window.startX = e.touches[0].clientX;
+    window.startY = e.touches[0].clientY;
+}, { passive: true });
 
 document.addEventListener('touchmove', function(e) {
-    moveY = e.touches[0].clientY;
-    let diffY = Math.abs(moveY - startY);
+    let diffX = e.touches[0].clientX - window.startX;
+    let diffY = e.touches[0].clientY - window.startY;
 
-    // Solo permitimos scroll si el movimiento vertical supera el umbral
-    if (diffY < threshold) {
-        e.preventDefault(); // ⚠️ Evita scroll accidental
+    // Si se detecta un movimiento horizontal grande, lo prevenimos
+    if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 20) {
+        e.preventDefault(); // 👈 Evita que el navegador piense que quieres ir "atrás"
     }
 }, { passive: false });
 </script>
