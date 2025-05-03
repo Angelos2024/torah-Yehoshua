@@ -1342,42 +1342,6 @@ function agregarResizer(idPanel) {
 window.allowSwipe = true;
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    let selectedItems = new Set();
-
-    // 📌 Detectar toque prolongado para seleccionar
-    document.querySelectorAll("#results").forEach(resultsContainer => {
-        resultsContainer.addEventListener("touchstart", (event) => {
-            let target = event.target.closest("li");
-            if (!target) return;
-
-            let timeout = setTimeout(() => {
-                toggleSelection(target);
-            }, 500);
-
-            target.addEventListener("touchend", () => clearTimeout(timeout), { once: true });
-            target.addEventListener("touchmove", () => clearTimeout(timeout), { once: true });
-        });
-    });
-
-    // 📌 Alternar selección
-    function toggleSelection(item) {
-        if (selectedItems.has(item)) {
-            selectedItems.delete(item);
-            item.classList.remove("selected");
-        } else {
-            selectedItems.add(item);
-            item.classList.add("selected");
-        }
-
-        if (selectedItems.size > 0) {
-            window.allowSwipe = false; // ⛔ bloquear swipe mientras hay selección
-            showCopyOptions();
-        } else {
-            allowSwipe = true; // ✅ reactivar swipe
-            hideCopyOptions();
-        }
-    }
 
     // 📌 Mostrar opciones de copiar
     function showCopyOptions() {
