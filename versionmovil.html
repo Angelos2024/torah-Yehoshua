@@ -155,29 +155,28 @@ function toggleNavigationButtons() {
     // Guardar preferencia en localStorage
     localStorage.setItem("navButtonsVisible", isEnabled);
 
-    // ✅ NUEVO: controlar swipe
-    allowSwipe = !isEnabled; // 👉 Si están visibles los botones, desactiva swipe
+    // 👉 CONTROLAR el gesto de swipe
+    allowSwipe = !isEnabled; // ✅ Si los botones están visibles, se desactiva swipe
 
     let buttons = document.querySelectorAll("#prevChapterBtn, #nextChapterBtn, #prevChapterBtnBottom, #nextChapterBtnBottom");
 
     buttons.forEach(button => {
         if (isEnabled) {
-            button.style.position = "relative";  // Mostrar en su posición normal
+            button.style.position = "relative";  
             button.style.left = "0";  
             button.style.visibility = "visible"; 
             button.style.opacity = "1"; 
-            button.style.pointerEvents = "auto"; // Permitir interacción
+            button.style.pointerEvents = "auto";
             button.style.transition = "opacity 0.3s ease-out";
         } else {
-            button.style.position = "absolute"; // Ocultar fuera de pantalla
+            button.style.position = "absolute";
             button.style.left = "-9999px"; 
             button.style.visibility = "hidden"; 
             button.style.opacity = "0"; 
-            button.style.pointerEvents = "none"; // Evitar clics
+            button.style.pointerEvents = "none";
         }
     });
 }
-
 
 
 // Restaurar configuración al cargar la página
