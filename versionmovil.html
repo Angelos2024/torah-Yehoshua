@@ -155,7 +155,9 @@ function toggleNavigationButtons() {
     // Guardar preferencia en localStorage
     localStorage.setItem("navButtonsVisible", isEnabled);
 
-    // Obtener los botones de navegación
+    // ✅ NUEVO: controlar swipe
+    allowSwipe = !isEnabled; // 👉 Si están visibles los botones, desactiva swipe
+
     let buttons = document.querySelectorAll("#prevChapterBtn, #nextChapterBtn, #prevChapterBtnBottom, #nextChapterBtnBottom");
 
     buttons.forEach(button => {
@@ -175,6 +177,7 @@ function toggleNavigationButtons() {
         }
     });
 }
+
 
 
 // Restaurar configuración al cargar la página
