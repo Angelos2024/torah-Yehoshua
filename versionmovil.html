@@ -161,7 +161,9 @@ function toggleNavigationButtons() {
     localStorage.setItem("navButtonsVisible", isEnabled);
 
     // 👉 CONTROLAR el gesto de swipe
-    allowSwipe = !isEnabled; // ✅ Si los botones están visibles, se desactiva swipe
+   // Declaración segura y única
+window.allowSwipe = true;
+
 
     let buttons = document.querySelectorAll("#prevChapterBtn, #nextChapterBtn, #prevChapterBtnBottom, #nextChapterBtnBottom");
 
@@ -1337,7 +1339,8 @@ function agregarResizer(idPanel) {
 
     // 📌 Mostrar opciones de copiar
   <script>
-let allowSwipe = true; 
+window.allowSwipe = true;
+
 
 document.addEventListener("DOMContentLoaded", function () {
     let selectedItems = new Set();
@@ -1368,7 +1371,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (selectedItems.size > 0) {
-            allowSwipe = false; // ⛔ bloquear swipe mientras hay selección
+            window.allowSwipe = false; // ⛔ bloquear swipe mientras hay selección
             showCopyOptions();
         } else {
             allowSwipe = true; // ✅ reactivar swipe
@@ -1432,7 +1435,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectedItems.forEach(item => item.classList.remove("selected"));
         selectedItems.clear();
         hideCopyOptions();
-        allowSwipe = true; // ✅ restaurar swipe al cancelar selección
+       window.allowSwipe = true; // ✅ restaurar swipe al cancelar selección
     }
 
     // 📌 Detectar clic fuera para cancelar selección
