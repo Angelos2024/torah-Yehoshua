@@ -12,6 +12,13 @@
     z-index: 100;
 
 }
+html, body {
+  overscroll-behavior-x: none;     /* 🚫 Previene navegación horizontal */
+  overscroll-behavior-y: contain;  /* ✔️ Permite scroll pero previene gestos invasivos */
+  touch-action: pan-y;             /* 🚫 Bloquea gestos horizontales */
+  overflow-x: hidden;              /* ✔️ Previene scroll lateral */
+}
+
 #welcomeMessage {
   text-align: center;
   margin: 1px -10px;
