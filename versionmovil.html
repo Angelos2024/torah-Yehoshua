@@ -518,7 +518,19 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchEndX = 0;
 
 
- function checkSwipe() {
+function checkSwipe() {
+    // Verificar si hay versículos seleccionados (clase .selected en <li>)
+    let haySeleccion = document.querySelectorAll("#results li.selected").length > 0;
+
+    // Verificar si algún sidebar está activo
+    let sidebarAbierto =
+        document.getElementById("sidebar")?.classList.contains("active") ||
+        document.getElementById("sidebarparalelo")?.classList.contains("active") ||
+        document.getElementById("sidebarcomentarios")?.classList.contains("active");
+
+    // Si hay selección o sidebar abierto, no permitir swipe
+    if (haySeleccion || sidebarAbierto) return;
+
     if (!currentBook || !currentChapter) return;
 
     const prevIcon = document.querySelector("#prevChapterBtn i");
@@ -533,6 +545,7 @@ document.addEventListener("DOMContentLoaded", () => {
         showPreviousChapter();
     }
 }
+
 
 
 document.getElementById("results").addEventListener("touchstart", (e) => {
