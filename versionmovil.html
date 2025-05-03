@@ -533,11 +533,12 @@ function checkSwipe() {
 
     if (!currentBook || !currentChapter) return;
 
-    const prevIcon = document.querySelector("#prevChapterBtn i");
-    const nextIcon = document.querySelector("#nextChapterBtn i");
+const prevBtn = document.getElementById("prevChapterBtn");
+const nextBtn = document.getElementById("nextChapterBtn");
 
-    const prevVisible = prevIcon && getComputedStyle(prevIcon).display !== "none" && prevIcon.offsetParent !== null;
-    const nextVisible = nextIcon && getComputedStyle(nextIcon).display !== "none" && nextIcon.offsetParent !== null;
+const prevVisible = prevBtn && prevBtn.offsetParent !== null && getComputedStyle(prevBtn).visibility !== "hidden";
+const nextVisible = nextBtn && nextBtn.offsetParent !== null && getComputedStyle(nextBtn).visibility !== "hidden";
+
 
     if (touchStartX - touchEndX > 50 && nextVisible) {
         showNextChapter();
