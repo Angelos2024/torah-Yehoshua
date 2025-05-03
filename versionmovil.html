@@ -516,10 +516,10 @@ document.querySelectorAll(".modal-content-custom a").forEach(item => {
 document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
-    let isSwipeAllowed = false;
+
 
     function checkSwipe() {
-        if (!currentBook || !currentChapter || !isSwipeAllowed) return;
+     if (!currentBook || !currentChapter || window.allowSwipe === false) return;
 
         let prevButton = document.getElementById("prevChapterBtn");
         let nextButton = document.getElementById("nextChapterBtn");
@@ -534,17 +534,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    document.getElementById("results").addEventListener("touchstart", (e) => {
-        // Si el toque inicial es dentro de #results, permitir swipe
-        touchStartX = e.changedTouches[0].screenX;
-        isSwipeAllowed = true;
-    });
+document.getElementById("results").addEventListener("touchstart", (e) => {
+    if (window.allowSwipe === false) return;
+    window.startX = e.changedTouches[0].screenX;
+});
 
-    document.getElementById("results").addEventListener("touchend", (e) => {
-        if (!isSwipeAllowed) return;
-        touchEndX = e.changedTouches[0].screenX;
-        checkSwipe();
-    });
+document.getElementById("results").addEventListener("touchend", (e) => {
+    if (window.allowSwipe === false) return;
+    window.endX = e.changedTouches[0].screenX;
+    checkSwipe();
+});
+
 
     // Evitar que el swipe funcione en sidebar abiertos
     document.getElementById("sidebarcomentarios").addEventListener("touchstart", () => isSwipeAllowed = false);
