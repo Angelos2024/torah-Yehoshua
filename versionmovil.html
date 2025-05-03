@@ -528,21 +528,29 @@ function checkSwipe() {
         document.getElementById("sidebarparalelo")?.classList.contains("active") ||
         document.getElementById("sidebarcomentarios")?.classList.contains("active");
 
-    // Si hay selección o sidebar abierto, no permitir swipe
-    if (haySeleccion || sidebarAbierto) return;
+    // Obtener botones de navegación
+    const botonesActivos = [
+        document.getElementById("prevChapterBtn"),
+        document.getElementById("nextChapterBtn"),
+        document.getElementById("prevChapterBtnBottom"),
+        document.getElementById("nextChapterBtnBottom")
+    ];
 
+    // Comprobar si algún botón está visible
+    const algunBotonVisible = botonesActivos.some(btn => 
+        btn && btn.offsetParent !== null && getComputedStyle(btn).visibility !== "hidden"
+    );
+
+    // 🔒 Bloquear swipe si hay selección, sidebars abiertos o botones visibles
+    if (haySeleccion || sidebarAbierto || algunBotonVisible) return;
+
+    // 🔄 Swipe permitido
     if (!currentBook || !currentChapter) return;
 
-const prevBtn = document.getElementById("prevChapterBtn");
-const nextBtn = document.getElementById("nextChapterBtn");
-
-const prevVisible = prevBtn && prevBtn.offsetParent !== null && getComputedStyle(prevBtn).visibility !== "hidden";
-const nextVisible = nextBtn && nextBtn.offsetParent !== null && getComputedStyle(nextBtn).visibility !== "hidden";
-
-
-    if (touchStartX - touchEndX > 50 && nextVisible) {
+    const deltaX = touchStartX - touchEndX;
+    if (deltaX > 50) {
         showNextChapter();
-    } else if (touchEndX - touchStartX > 50 && prevVisible) {
+    } else if (deltaX < -50) {
         showPreviousChapter();
     }
 }
