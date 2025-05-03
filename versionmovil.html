@@ -1397,21 +1397,26 @@ function agregarResizer(idPanel) {
 </script>
 
 <script>
+let allowSwipe = true; // 🔁 Esta bandera cambiará según el slider
+
 document.addEventListener('touchstart', function(e) {
     window.startX = e.touches[0].clientX;
     window.startY = e.touches[0].clientY;
 }, { passive: true });
 
 document.addEventListener('touchmove', function(e) {
+    if (!allowSwipe) return; // ⛔ bloquea swipe si está desactivado
+
     let diffX = e.touches[0].clientX - window.startX;
     let diffY = e.touches[0].clientY - window.startY;
 
-    // Si se detecta un movimiento horizontal grande, lo prevenimos
+    // Prevenir navegación por gesto lateral si es horizontal
     if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 20) {
-        e.preventDefault(); // 👈 Evita que el navegador piense que quieres ir "atrás"
+        e.preventDefault();
     }
 }, { passive: false });
 </script>
+
 
 <style>
 /* 🔥 Estilo para el botón deslizante */
