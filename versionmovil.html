@@ -66,7 +66,12 @@ window.addEventListener("resize", function () {
 
 
 </head>
-<body>
+
+  <body>
+<script>
+window.allowSwipe = true; // ✅ declaración global segura
+</script>
+
     <div id="fixedHeaderContainer">
     <div class="header">
         <h4>Buscador Bíblico</h4>
@@ -1332,7 +1337,7 @@ function agregarResizer(idPanel) {
 
     // 📌 Mostrar opciones de copiar
   <script>
-let allowSwipe = true; // 🔁 Esta bandera cambiará según el slider o selección activa
+let allowSwipe = true; 
 
 document.addEventListener("DOMContentLoaded", function () {
     let selectedItems = new Set();
@@ -1440,7 +1445,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 
 <script>
-let allowSwipe = true; // 🔁 Esta bandera cambiará según el slider
+
 
 document.addEventListener('touchstart', function(e) {
     window.startX = e.touches[0].clientX;
