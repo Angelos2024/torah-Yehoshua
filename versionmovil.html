@@ -517,36 +517,6 @@ document.querySelectorAll(".modal-content-custom a").forEach(item => {
 
 
 
-
-
-
-document.getElementById("results").addEventListener("touchstart", (e) => {
-    const touch = e.changedTouches[0];
-    const areaLimit = window.innerWidth * 0.6; // solo el 60% central de la pantalla
-    if (touch.clientX < window.innerWidth * 0.2 || touch.clientX > window.innerWidth * 0.8) {
-        touchStartX = null; // fuera del área activa
-    } else {
-        touchStartX = touch.clientX;
-    }
-});
-
-document.getElementById("results").addEventListener("touchend", (e) => {
-    const touch = e.changedTouches[0];
-    if (touchStartX !== null) {
-        touchEndX = touch.clientX;
-        checkSwipe();
-    }
-});
-
-
-
-    // Evitar que el swipe funcione en sidebar abiertos
-    document.getElementById("sidebarcomentarios").addEventListener("touchstart", () => isSwipeAllowed = false);
-    document.getElementById("sidebarparalelo").addEventListener("touchstart", () => isSwipeAllowed = false);
-    document.getElementById("sidebar").addEventListener("touchstart", () => isSwipeAllowed = false);
-});
-
-
         async function mostrarCapitulos(libro) {
   const datos = await fetchAllJsonData();
   if (!datos[libro]) return;
