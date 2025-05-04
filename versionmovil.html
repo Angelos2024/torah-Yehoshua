@@ -513,57 +513,8 @@ document.querySelectorAll(".modal-content-custom a").forEach(item => {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    const touchArea = document.getElementById("results");
-
-    touchArea.addEventListener("touchstart", (e) => {
-        const touch = e.changedTouches[0];
-        const x = touch.clientX;
-        const y = touch.clientY;
-
-        // Solo aceptamos toques en el 70% central de la pantalla
-        if (x >= window.innerWidth * 0.15 && x <= window.innerWidth * 0.85) {
-            touchStartX = x;
-            touchStartY = y;
-        } else {
-            touchStartX = null;
-        }
-    });
-
-    touchArea.addEventListener("touchend", (e) => {
-        if (touchStartX === null) return;
-        const touch = e.changedTouches[0];
-        touchEndX = touch.clientX;
-        touchEndY = touch.clientY;
-        checkSwipe();
-    });
-});
 
 
-
-function checkSwipe() {
-    if (!currentBook || !currentChapter || touchStartX === null || touchEndX === null) return;
-
-    const deltaX = touchEndX - touchStartX;
-    const deltaY = touchEndY - touchStartY;
-
-    const absDeltaX = Math.abs(deltaX);
-    const absDeltaY = Math.abs(deltaY);
-
-    // 📏 Activar solo si el movimiento horizontal es significativo y más dominante que el vertical
-    if (absDeltaX > 60 && absDeltaX > absDeltaY * 1.2) {
-        if (deltaX < 0) {
-            showNextChapter();
-        } else {
-            showPreviousChapter();
-        }
-    }
-}
 
 
 
@@ -1470,5 +1421,64 @@ function agregarResizer(idPanel) {
 <script src="js/scriptparalelomovil.js"></script>
 <!-- Bootstrap JS (asegúrate de incluir Popper.js para tooltips) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+let touchStartX = null;
+let touchStartY = null;
+let touchEndX = null;
+let touchEndY = null;
+
+function isSwipeAllowed() {
+    const haySeleccion = document.querySelectorAll("#results li.selected").length > 0;
+    const sidebarAbierto = document.getElementById("sidebar")?.classList.contains("active") ||
+        document.getElementById("sidebarparalelo")?.classList.contains("active") ||
+        document.getElementById("sidebarcomentarios")?.classList.contains("active");
+
+    const botones = [
+        "#prevChapterBtn", "#nextChapterBtn",
+        "#prevChapterBtnBottom", "#nextChapterBtnBottom"
+    ];
+
+    const algunBotonVisible = botones.some(id => {
+        const btn = document.querySelector(id);
+        return btn && btn.offsetParent !== null && getComputedStyle(btn).visibility !== "hidden";
+    });
+
+    return !(haySeleccion || sidebarAbierto || algunBotonVisible);
+}
+
+function checkSwipeGesture() {
+    if (!isSwipeAllowed() || touchStartX === null || touchEndX === null) return;
+
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
+
+    if (absDeltaX > 60 && absDeltaX > absDeltaY * 1.2) {
+        if (deltaX > 0) {
+            showPreviousChapter();
+        } else {
+            showNextChapter();
+        }
+    }
+
+    touchStartX = touchEndX = touchStartY = touchEndY = null;
+}
+
+document.addEventListener("touchstart", function (e) {
+    const touch = e.changedTouches[0];
+    touchStartX = touch.screenX;
+    touchStartY = touch.screenY;
+});
+
+document.addEventListener("touchend", function (e) {
+    const touch = e.changedTouches[0];
+    touchEndX = touch.screenX;
+    touchEndY = touch.screenY;
+    checkSwipeGesture();
+});
+</script>
+
 </body>
 </html>
