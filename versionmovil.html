@@ -519,16 +519,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 function checkSwipe() {
-    // Verificar si hay versículos seleccionados (clase .selected en <li>)
     let haySeleccion = document.querySelectorAll("#results li.selected").length > 0;
-
-    // Verificar si algún sidebar está activo
     let sidebarAbierto =
         document.getElementById("sidebar")?.classList.contains("active") ||
         document.getElementById("sidebarparalelo")?.classList.contains("active") ||
         document.getElementById("sidebarcomentarios")?.classList.contains("active");
 
-    // Obtener botones de navegación
     const botonesActivos = [
         document.getElementById("prevChapterBtn"),
         document.getElementById("nextChapterBtn"),
@@ -536,34 +532,43 @@ function checkSwipe() {
         document.getElementById("nextChapterBtnBottom")
     ];
 
-    // Comprobar si algún botón está visible
     const algunBotonVisible = botonesActivos.some(btn => 
         btn && btn.offsetParent !== null && getComputedStyle(btn).visibility !== "hidden"
     );
 
-    // 🔒 Bloquear swipe si hay selección, sidebars abiertos o botones visibles
     if (haySeleccion || sidebarAbierto || algunBotonVisible) return;
 
-    // 🔄 Swipe permitido
     if (!currentBook || !currentChapter) return;
 
     const deltaX = touchStartX - touchEndX;
-    if (deltaX > 50) {
+
+    // 🔽 Ahora se requiere al menos 100px de desplazamiento (antes 50)
+    if (deltaX > 100) {
         showNextChapter();
-    } else if (deltaX < -50) {
+    } else if (deltaX < -100) {
         showPreviousChapter();
     }
 }
 
 
 
+
 document.getElementById("results").addEventListener("touchstart", (e) => {
-    touchStartX = e.changedTouches[0].screenX;
+    const touch = e.changedTouches[0];
+    const areaLimit = window.innerWidth * 0.6; // solo el 60% central de la pantalla
+    if (touch.clientX < window.innerWidth * 0.2 || touch.clientX > window.innerWidth * 0.8) {
+        touchStartX = null; // fuera del área activa
+    } else {
+        touchStartX = touch.clientX;
+    }
 });
 
 document.getElementById("results").addEventListener("touchend", (e) => {
-    touchEndX = e.changedTouches[0].screenX;
-    checkSwipe();
+    const touch = e.changedTouches[0];
+    if (touchStartX !== null) {
+        touchEndX = touch.clientX;
+        checkSwipe();
+    }
 });
 
 
