@@ -516,6 +516,32 @@ document.querySelectorAll(".modal-content-custom a").forEach(item => {
 document.addEventListener("DOMContentLoaded", () => {
     let touchStartX = 0;
     let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    document.getElementById("results").addEventListener("touchstart", (e) => {
+        const touch = e.changedTouches[0];
+        const x = touch.clientX;
+        const y = touch.clientY;
+        // Solo si está en la zona central horizontal
+        if (x >= window.innerWidth * 0.2 && x <= window.innerWidth * 0.8) {
+            touchStartX = x;
+            touchStartY = y;
+        } else {
+            touchStartX = null;
+        }
+    });
+
+    document.getElementById("results").addEventListener("touchend", (e) => {
+        const touch = e.changedTouches[0];
+        if (touchStartX !== null) {
+            touchEndX = touch.clientX;
+            touchEndY = touch.clientY;
+            checkSwipe();
+        }
+    });
+});
+
 
 
 function checkSwipe() {
@@ -537,18 +563,24 @@ function checkSwipe() {
     );
 
     if (haySeleccion || sidebarAbierto || algunBotonVisible) return;
-
     if (!currentBook || !currentChapter) return;
 
-    const deltaX = touchStartX - touchEndX;
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
 
-    // 🔽 Ahora se requiere al menos 100px de desplazamiento (antes 50)
-    if (deltaX > 100) {
-        showNextChapter();
-    } else if (deltaX < -100) {
-        showPreviousChapter();
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
+
+    // Solo activar swipe si el desplazamiento horizontal es mucho mayor que el vertical
+    if (absDeltaX > 80 && absDeltaX > absDeltaY * 1.5) {
+        if (deltaX < 0) {
+            showNextChapter();
+        } else {
+            showPreviousChapter();
+        }
     }
 }
+
 
 
 
