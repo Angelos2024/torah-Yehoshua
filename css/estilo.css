@@ -2,7 +2,9 @@
       /* Estilo general */
       /* Estilo general */
 
-
+body {
+background-color:#faf8f7 !important;
+}
 h1 {
   text-align: center;
   color: #4CAF50;
