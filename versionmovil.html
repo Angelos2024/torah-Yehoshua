@@ -519,12 +519,15 @@ document.addEventListener("DOMContentLoaded", () => {
     let touchStartY = 0;
     let touchEndY = 0;
 
-    document.getElementById("results").addEventListener("touchstart", (e) => {
+    const touchArea = document.getElementById("results");
+
+    touchArea.addEventListener("touchstart", (e) => {
         const touch = e.changedTouches[0];
         const x = touch.clientX;
         const y = touch.clientY;
-        // Solo si está en la zona central horizontal
-        if (x >= window.innerWidth * 0.2 && x <= window.innerWidth * 0.8) {
+
+        // Solo aceptamos toques en el 70% central de la pantalla
+        if (x >= window.innerWidth * 0.15 && x <= window.innerWidth * 0.85) {
             touchStartX = x;
             touchStartY = y;
         } else {
@@ -532,38 +535,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    document.getElementById("results").addEventListener("touchend", (e) => {
+    touchArea.addEventListener("touchend", (e) => {
+        if (touchStartX === null) return;
         const touch = e.changedTouches[0];
-        if (touchStartX !== null) {
-            touchEndX = touch.clientX;
-            touchEndY = touch.clientY;
-            checkSwipe();
-        }
+        touchEndX = touch.clientX;
+        touchEndY = touch.clientY;
+        checkSwipe();
     });
 });
 
 
 
 function checkSwipe() {
-    let haySeleccion = document.querySelectorAll("#results li.selected").length > 0;
-    let sidebarAbierto =
-        document.getElementById("sidebar")?.classList.contains("active") ||
-        document.getElementById("sidebarparalelo")?.classList.contains("active") ||
-        document.getElementById("sidebarcomentarios")?.classList.contains("active");
-
-    const botonesActivos = [
-        document.getElementById("prevChapterBtn"),
-        document.getElementById("nextChapterBtn"),
-        document.getElementById("prevChapterBtnBottom"),
-        document.getElementById("nextChapterBtnBottom")
-    ];
-
-    const algunBotonVisible = botonesActivos.some(btn => 
-        btn && btn.offsetParent !== null && getComputedStyle(btn).visibility !== "hidden"
-    );
-
-    if (haySeleccion || sidebarAbierto || algunBotonVisible) return;
-    if (!currentBook || !currentChapter) return;
+    if (!currentBook || !currentChapter || touchStartX === null || touchEndX === null) return;
 
     const deltaX = touchEndX - touchStartX;
     const deltaY = touchEndY - touchStartY;
@@ -571,8 +555,8 @@ function checkSwipe() {
     const absDeltaX = Math.abs(deltaX);
     const absDeltaY = Math.abs(deltaY);
 
-    // Solo activar swipe si el desplazamiento horizontal es mucho mayor que el vertical
-    if (absDeltaX > 80 && absDeltaX > absDeltaY * 1.5) {
+    // 📏 Activar solo si el movimiento horizontal es significativo y más dominante que el vertical
+    if (absDeltaX > 60 && absDeltaX > absDeltaY * 1.2) {
         if (deltaX < 0) {
             showNextChapter();
         } else {
