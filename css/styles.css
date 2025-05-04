@@ -146,7 +146,7 @@ li {
 
 #prevPage,
 #nextPage {
-  z-index: 9;
+  z-index: 1009;
 }
 
 .search-box {
