@@ -158,11 +158,11 @@ width: 18% !important;
 top: -50px !important;
     }
  #results li   {
-width: calc(100% - 400px) !important;
+width: calc(100% - 480px) !important;
 margin-left: 140px !important;
 }
 #main.shifted {
-  margin-right: 11% !important; /* Igual al ancho del sidebar izquierdo */
+  margin-right: 5% !important; /* Igual al ancho del sidebar izquierdo */
     transition: margin-right 0.4s ease-in-out !important; /* Más lento y más suave */
 }
 .custom-select {
@@ -175,7 +175,7 @@ margin-left: 140px !important;
   left: 180px !important;
     }
        #nextPage  {
-   right: 180px !important;
+   right: 260px !important;
     }
 body.sidebar2-open #prevPage {
   left: 370px !important;
@@ -346,11 +346,11 @@ text-align: right !important;
 
 }
 body.sidebar2-open #prevPage {
-left: 200px !important;
+left: 285px !important;
     }
 
     .sidebar-open #nextPage {
-        right: 210px !important;
+        right: 225px !important;
         }
 
  #versionDropdown {
@@ -372,7 +372,7 @@ left: 200px !important;
 @media (max-width: 1040px) {
     .titulo-capitulo{
 
-    margin-left: -20px !important;
+    margin-left: 140px !important;
     }
     
     #searchTermContainer {
@@ -383,7 +383,7 @@ left: 200px !important;
   left: 150px !important;
     }
        #nextPage  {
-   right: 130px !important;
+   right: 190px !important;
     }
     .dropdown-container{
 gap: 8px !important;
@@ -403,7 +403,7 @@ text-align: right !important;
         font-size: 14px;
     }
   .sidebar2-open #sidebar2 {
-  width: 300px !important;
+  width: 220px !important;
   left: 70px;
 }
     #mySidebar.open {
@@ -411,11 +411,11 @@ text-align: right !important;
 
 }
 body.sidebar2-open #prevPage {
-left: 185px !important;
+left: 292px !important;
     }
 
     .sidebar-open #nextPage {
-        right: 190px !important;
+        right: 210px !important;
         }
 
  #versionDropdown {
