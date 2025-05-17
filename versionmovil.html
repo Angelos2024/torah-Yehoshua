@@ -229,13 +229,17 @@ document.addEventListener("chapterChanged", toggleNavigationButtons);
 </select>
 
 
-    <label for="fontSizeSelector">Tamaño:</label>
+<label for="fontSizeSelector">Tamaño:</label>
 <select id="fontSizeSelector" class="config-dropdown">
     <option value="12">12</option>
     <option value="14">14</option>
     <option value="16">16</option>
     <option value="20">20</option>
+    <option value="22">22</option>
+    <option value="24">24</option>
+    <option value="26">26</option>
 </select>
+
 
 </div>
 <div class="settings-menu" id="menuOpciones">
@@ -1187,17 +1191,18 @@ function aplicarEstilos() {
     const font = localStorage.getItem("selectedFont") || "Arial";
     const fontSize = localStorage.getItem("selectedFontSize") || "14px";
 
-    // 🔹 Aplicar estilos SOLO a los versículos y otras secciones (excluyendo settingsMenu)
     document.querySelectorAll("#results li, #contenidoBiblia, .list-group").forEach(el => {
         el.style.fontFamily = font;
         el.style.fontSize = fontSize;
     });
 
-    // 🔥 EXCLUSIÓN: NO aplicar cambios en settingsMenu
-    document.querySelector("#settingsMenu").style.fontFamily = "Arial";
-    document.querySelector("#settingsMenu").style.fontSize = "14px";
+    // Evita error si #settingsMenu no está presente
+    const settingsMenu = document.querySelector("#settingsMenu");
+    if (settingsMenu) {
+        settingsMenu.style.fontFamily = "Arial";
+        settingsMenu.style.fontSize = "14px";
+    }
 }
-
 
 
 
