@@ -96,28 +96,57 @@ input:checked + .slider:before {
   transform: translateX(24px);
 }
 
-/* Estilos solo si body tiene la clase .modo-oscuro */
+/* ------------------- */
+/* MODO OSCURO GLOBAL */
+/* ------------------- */
 body.modo-oscuro {
   background-color: #1b2027 !important;
   color: white !important;
 }
 
-/* Solo los li dentro de #results */
+/* Solo los <li> dentro de #results */
 body.modo-oscuro #results li {
   background-color: #323a45 !important;
   color: white !important;
 }
 
-/* Títulos con clase .titulo-capitulo */
+/* Títulos generados con .titulo-capitulo */
 body.modo-oscuro .titulo-capitulo {
   color: white !important;
 }
 
-/* Asegura que el botón #fuentess conserve su estilo */
-#fuentess {
+/* ------------------- */
+/* EXCLUSIONES         */
+/* ------------------- */
+
+/* No afectar el botón #fuentess y todo su contenido */
+body.modo-oscuro #fuentess,
+body.modo-oscuro #fuentess * {
   color: black !important;
+  background-color: white !important;
 }
 
+/* No afectar el texto actual del selector de tamaño */
+body.modo-oscuro #select-selected2 {
+  color: black !important;
+  background-color: white !important;
+}
+
+/* No afectar el menú desplegable de tamaño/fuente */
+body.modo-oscuro .select-items,
+body.modo-oscuro .select-items * {
+  color: black !important;
+  background-color: white !important;
+}
+
+/* No afectar el selector de fuente ni tamaño */
+body.modo-oscuro #fuenteSelect,
+body.modo-oscuro #tamanoSelect,
+body.modo-oscuro #fuenteSelect * ,
+body.modo-oscuro #tamanoSelect * {
+  color: black !important;
+  
+}
 </style>
 
     <body class="container-fluid">
@@ -305,7 +334,7 @@ body.modo-oscuro .titulo-capitulo {
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script>
+<script>
 const toggle = document.getElementById("modoOscuroToggle");
 
 function aplicarModoOscuro() {
@@ -318,7 +347,7 @@ function quitarModoOscuro() {
   localStorage.setItem("modoOscuro", "false");
 }
 
-toggle.addEventListener("change", function() {
+toggle.addEventListener("change", function () {
   if (this.checked) {
     aplicarModoOscuro();
   } else {
