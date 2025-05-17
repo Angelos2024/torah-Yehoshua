@@ -127,7 +127,7 @@ html, body {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #198754;
     transition: .4s;
     border-radius: 34px;
 }
@@ -252,7 +252,7 @@ z-index: 99;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: #198754;
   transition: .4s;
   border-radius: 34px;
 }
@@ -1000,6 +1000,7 @@ OpenMod {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+/* Versículo en modo claro */
 #results li {
     padding: 15px;
     border: 1px solid #ccc;
@@ -1009,8 +1010,128 @@ OpenMod {
     width: calc(100% + 80px);
     margin-left: -90px;
     margin-top: 20px;
-
 }
+/* 🔥 Fondo general al estilo web */
+.dark-mode {
+  background-color: #1b2027 !important;
+  color: white !important;
+}
+
+/* 🔹 Fondo de resultados (ul completo) */
+/* 🔥 Estilo forzado solo para <li> dentro de #results en modo oscuro */
+body.dark-mode ul#results > li {
+  background-color: #323a45 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* También fuerza el fondo del contenedor #results */
+body.dark-mode #results {
+  background-color: #1b2027 !important;
+  color: white !important;
+}
+
+
+/* 🔹 Título de capítulo flotante */
+.dark-mode #tituloCapitulo {
+  background-color: #222 !important;
+  color: white !important;
+}
+
+/* 🔹 Cabecera superior */
+.dark-mode .header {
+  background-color: #111 !important;
+  color: white !important;
+}
+
+/* 🔹 Barra de búsqueda */
+.dark-mode .search-bar-container {
+  background-color: #1b2027 !important;
+  border-bottom: 10px solid #1b2027 !important;
+}
+
+/* 🔹 Botones (opcional) */
+.dark-mode button.btn-success,
+.dark-mode .toggle-btn {
+  background-color: #333 !important;
+  color: white !important;
+  border: 1px solid white !important;
+}
+/* 🔥 Aplica modo oscuro a todos los <li> hijos de body en cualquier parte */
+body.dark-mode li {
+  background-color: #323a45 !important;
+  color: white !important;
+  border: none !important;
+}
+
+/* Opcional: aplica también a los textos internos */
+body.dark-mode li * {
+  color: white !important;
+}
+/* 🔥 Fuerza cambio de fondo en modo oscuro */
+/* 🔥 Modo oscuro para los versículos dinámicos */
+body.dark-mode #results ul > li {
+  background-color: #323a45 !important;
+  color: white !important;
+  border-color: #555 !important;
+}
+
+
+/* Versículo en modo oscuro */
+.dark-mode #results li {
+  background-color: #323a45 !important;
+  color: white !important;
+  border: 1px solid #555 !important;
+}
+
+/* ⛔ EXCLUSIONES COMPLETAS DEL MODO OSCURO */
+/* ========== MODO OSCURO: Exclusiones y ajustes visuales ========== */
+
+/* 1. Sidebars informativos (Aparato Crítico, Comentarios, Biblia Paralela) */
+body.dark-mode #sidebar,
+body.dark-mode #sidebar *,
+body.dark-mode #sidebarcomentarios,
+body.dark-mode #sidebarcomentarios *,
+body.dark-mode #sidebarparalelo,
+body.dark-mode #sidebarparalelo *,
+body.dark-mode #sidebarconteo,
+body.dark-mode #sidebarconteo * {
+  background-color: white !important;
+  color: black !important;
+  border-color: black !important;
+}
+
+/* 2. Menús de configuración (engranaje y opciones) */
+body.dark-mode #settingsMenu,
+body.dark-mode #settingsMenu *,
+body.dark-mode #menuOpciones,
+body.dark-mode #menuOpciones * {
+  color: black !important;
+  border-color: black !important;
+}
+
+/* 3. Íconos de engrane y menú (visibles en oscuro) */
+body.dark-mode .fa-cog,
+body.dark-mode .fa-ellipsis-v,
+body.dark-mode .header-icons i {
+  color: #f1f1f1 !important;
+  background-color: transparent !important;
+  border: none !important;
+}
+
+/* 4. Estilos del interruptor toggle (slider visible en modo oscuro) */
+body.dark-mode .slider {
+  background-color: #666 !important;
+}
+
+body.dark-mode .slider.round {
+  background-color: #666 !important;
+}
+
+body.dark-mode .slider:before {
+  background-color: #ddd !important;
+}
+
 
 .bottom-nav {
     position: fixed;
