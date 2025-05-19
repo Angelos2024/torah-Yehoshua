@@ -1410,9 +1410,6 @@ let touchEndY = null;
 
 function isSwipeAllowed() {
     const haySeleccion = document.querySelectorAll("#results li.selected").length > 0;
-    const sidebarAbierto = document.getElementById("sidebar")?.classList.contains("active") ||
-        document.getElementById("sidebarparalelo")?.classList.contains("active") ||
-        document.getElementById("sidebarcomentarios")?.classList.contains("active");
 
     const botones = [
         "#prevChapterBtn", "#nextChapterBtn",
@@ -1424,8 +1421,9 @@ function isSwipeAllowed() {
         return btn && btn.offsetParent !== null && getComputedStyle(btn).visibility !== "hidden";
     });
 
-    return !(haySeleccion || sidebarAbierto || algunBotonVisible);
+    return !(haySeleccion || algunBotonVisible);
 }
+
 
 function checkSwipeGesture() {
     if (!isSwipeAllowed() || touchStartX === null || touchEndX === null) return;
