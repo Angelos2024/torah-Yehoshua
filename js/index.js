@@ -75,13 +75,16 @@ function toggleSidemenu() {
 }
 
 function toggleSearchBox() {
-  let searchBox = document.getElementById('searchContainer');
+  const searchBox = document.getElementById('searchContainer');
+  const btnSearch = document.querySelector('a.nav-link[title="Buscar"]');
 
-  if (searchBox.style.display === 'none' || searchBox.style.display === '') {
-    searchBox.style.display = 'block';
-    document.getElementById('searchInput').focus(); // Auto-focus en el campo de búsqueda
-  } else {
-    searchBox.style.display = 'none';
+  const isOpen = searchBox.style.display === 'block';
+
+  searchBox.style.display = isOpen ? 'none' : 'block';
+  btnSearch.classList.toggle('active-btn', !isOpen);
+
+  if (!isOpen) {
+    document.getElementById('searchInput').focus();
   }
 }
 
@@ -294,17 +297,18 @@ const comentariosDiv = document.getElementById('comentarios');
 const contenidoComentarios = document.getElementById('contenidoComentarios');
 
 toggleButton.addEventListener('click', () => {
-  // Alternar visibilidad
-  if (
-    comentariosDiv.style.display === 'none' ||
-    comentariosDiv.style.display === ''
-  ) {
-    comentariosDiv.style.display = 'block';
-    cargarComentariosCapitulo(currentBook, currentChapter); // Cargar comentarios
-  } else {
-    comentariosDiv.style.display = 'none';
+  const isVisible = comentariosDiv.style.display === 'block';
+
+  comentariosDiv.style.display = isVisible ? 'none' : 'block';
+
+  // Cambiar visual del botón
+  toggleButton.classList.toggle('active-btn', !isVisible);
+
+  if (!isVisible) {
+    cargarComentariosCapitulo(currentBook, currentChapter);
   }
 });
+
 
 // Funciones del sidebar
 // Función para alternar el sidebar principal (mySidebar)
@@ -313,6 +317,7 @@ function toggleSidebar() {
   const main = document.getElementById('main');
   const toggleNav = document.getElementById('toggleNav'); // Aseguramos que toggleNav está declarado
   const nextPageButton = document.getElementById('nextPage');
+  const btnMaterial = document.getElementById("imgMaterial"); // ⬅ Botón Aparato Crítico
 
   const isOpen = sidebar.classList.contains('open');
 
@@ -325,13 +330,15 @@ function toggleSidebar() {
     // Restaurar posición de nextPage cuando se cierra mySidebar
     nextPageButton.style.right = '282px';
 
-    // Si toggleNav es un botón que debe cambiar su estado visual al cerrar el sidebar
+    // Cambiar estado visual del botón
+    btnMaterial.classList.remove('active-btn');
+
     if (toggleNav) {
-      toggleNav.classList.remove('active'); // Eliminar la clase activa si la tiene
+      toggleNav.classList.remove('active');
     }
   } else {
     // Asegurarse de que el sidebar es visible
-    sidebar.style.display = 'block'; // Asegura que el sidebar sea visible
+    sidebar.style.display = 'block';
 
     // Abrir el sidebar con animación
     setTimeout(() => {
@@ -339,14 +346,16 @@ function toggleSidebar() {
       main.classList.add('shifted');
       document.body.classList.add('sidebar-open');
 
-      // Ajustar la posición de nextPage cuando se abre mySidebar
+      // Ajustar la posición de nextPage cuando se abre
       nextPageButton.style.right = '350px';
 
-      // Si toggleNav es un botón que debe cambiar su estado visual al abrir el sidebar
+      // Cambiar estado visual del botón
+      btnMaterial.classList.add('active-btn');
+
       if (toggleNav) {
-        toggleNav.classList.add('active'); // Añadir la clase activa cuando se abre el sidebar
+        toggleNav.classList.add('active');
       }
-    }, 10); // Se usa setTimeout para animación
+    }, 10);
   }
 }
 
@@ -354,17 +363,21 @@ function toggleSidebar() {
 function togglesidebar2() {
   const sidebar2 = document.getElementById('sidebar2');
   const prevPageButton = document.getElementById('prevPage');
+  const btn = document.getElementById('imgParalelo'); // 📌 Botón paralelas
 
   const isOpen = document.body.classList.contains('sidebar2-open');
 
   if (isOpen) {
     document.body.classList.remove('sidebar2-open');
-    prevPageButton.style.left = '215px'; // Restaurar posición original
+    prevPageButton.style.left = '215px';
+    btn.classList.remove('active-btn'); // 🔴 Remover clase activa
   } else {
     document.body.classList.add('sidebar2-open');
-    prevPageButton.style.left = '215px'; // Nueva posición cuando está abierto
+    prevPageButton.style.left = '215px';
+    btn.classList.add('active-btn'); // 🟢 Agregar clase activa
   }
 }
+
 
 // JSON y búsqueda
 const urls = [
@@ -720,7 +733,16 @@ function copiarContenido() {
   } else {
     mostrarNotificacion('No hay contenido para copiar.');
   }
+
+  // Activar visualmente el botón con efecto breve
+  const btn = document.getElementById("imgCopiar");
+  btn.classList.add("active-btn");
+
+  setTimeout(() => {
+    btn.classList.remove("active-btn");
+  }, 1000); // Efecto visible por 1 segundo
 }
+
 
 function mostrarNotificacion(mensaje) {
   const notificacion = document.createElement('div');
@@ -757,17 +779,19 @@ function mostrarNotificacion(mensaje) {
 // Funcionalidad del menú desplegable
 function toggleLibrosSidebar() {
   const sidebar = document.getElementById('dropdownMenu');
-  if (sidebar.classList.contains('open')) {
+  const boton = document.getElementById('dropdownButton');
+
+  const isOpen = sidebar.classList.contains('open');
+
+  if (isOpen) {
     sidebar.classList.remove('open');
+    boton.classList.remove('active-btn');
   } else {
     sidebar.classList.add('open');
+    boton.classList.add('active-btn');
   }
 }
 
-const state = {
-  currentBook: null,
-  currentChapter: null,
-};
 
 // Función para alternar el nuevo sidebar
 
