@@ -95,7 +95,32 @@ const na28Map = {
  "Gálatas 5:7": "galatas5_7",
  "Gálatas 5:8": "galatas5_8",
  "Gálatas 5:9": "galatas5_9",
- "Gálatas 5:10": "galatas5_10"    
+ "Gálatas 5:10": "galatas5_10",
+ "Gálatas 5:11": "galatas5_11",
+  "Gálatas 5:12": "galatas5_12",
+  "Gálatas 5:13": "galatas5_13",
+  "Gálatas 5:14": "galatas5_14",
+  "Gálatas 5:17": "galatas5_17",
+  "Gálatas 5:19": "galatas5_19",
+  "Gálatas 5:20": "galatas5_20",
+  "Gálatas 5:21": "galatas5_21",
+  "Gálatas 5:23": "galatas5_23",
+  "Gálatas 5:24": "galatas5_24",
+  "Gálatas 5:25": "galatas5_25",
+  "Gálatas 5:26": "galatas5_26",
+  "Gálatas 6:1":  "galatas6_1",
+  "Gálatas 6:2":  "galatas6_2",
+  "Gálatas 6:4":  "galatas6_4",
+  "Gálatas 6:7":  "galatas6_7",
+  "Gálatas 6:9":  "galatas6_9",
+  "Gálatas 6:10": "galatas6_10",
+  "Gálatas 6:11": "galatas6_11",
+  "Gálatas 6:12": "galatas6_12",
+  "Gálatas 6:13": "galatas6_13",
+  "Gálatas 6:15": "galatas6_15",
+  "Gálatas 6:16": "galatas6_16",
+  "Gálatas 6:17": "galatas6_17",
+  "Gálatas 6:18": "galatas6_18"
 };
 
 function cargarNA28(libro, capitulo, versiculo) {
