@@ -81,16 +81,20 @@ function toggleSearchBox() {
   const isOpen = searchBox.style.display === 'block';
 
   searchBox.style.display = isOpen ? 'none' : 'block';
-  btnSearch.classList.toggle("active-btn", !isOpen);
 
+  // ✅ Solo si el botón fue encontrado
+  if (btnSearch) {
+    btnSearch.classList.toggle("active-btn", !isOpen);
+  }
+
+  // ✅ Esperar a que el input esté visible antes de hacer focus
   if (!isOpen) {
-    // Esperar un momento para que el input esté visible antes de hacer focus
     setTimeout(() => {
-      document.getElementById('searchInput').focus();
+      const input = document.getElementById('searchInput');
+      if (input) input.focus();
     }, 50);
   }
 }
-
 
 function customSelect(id) {
   const selectBox = document.getElementById(id);
