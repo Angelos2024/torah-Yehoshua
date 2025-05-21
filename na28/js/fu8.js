@@ -125,66 +125,69 @@ const na28Map = {
   "Gálatas 6:18": "galatas6_18"    
 };
 
-function cargarNA28(libro, capitulo, versiculo) {
-    let sidebar = document.getElementById("mySidebar");
-    let claveVerso = `${libro} ${capitulo}:${versiculo}`;
-    let archivoNA28 = na28Map[claveVerso];
+function normalizarNombreLibro(libro) {
+  return libro
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/ /g, "")
+    .toLowerCase();
+}
 
-   if (
+function cargarNA28(libro, capitulo, versiculo) {
+  const sidebar = document.getElementById("sidebar") || document.getElementById("mySidebar");
+  const claveVerso = `${libro} ${capitulo}:${versiculo}`;
+  const archivoNA28 = na28Map[claveVerso];
+
+  if (
     sidebar.classList.contains("open") &&
     sidebar.getAttribute("data-libro") === libro &&
     sidebar.getAttribute("data-capitulo") === capitulo &&
     sidebar.getAttribute("data-versiculo") === versiculo
-) {
-    sidebar.classList.remove("open");
+  ) {
+    sidebar.classList.remove("open", "active");
     sidebar.style.display = "none";
-
-    // ✅ Restaurar diseño original
-    main.classList.remove("shifted");
     document.body.classList.remove("sidebar-open");
-
+    if (typeof main !== "undefined") main.classList.remove("shifted");
     return;
-}
+  }
 
+  sidebar.setAttribute("data-libro", libro);
+  sidebar.setAttribute("data-capitulo", capitulo);
+  sidebar.setAttribute("data-versiculo", versiculo);
 
-    sidebar.setAttribute("data-libro", libro);
-    sidebar.setAttribute("data-capitulo", capitulo);
-    sidebar.setAttribute("data-versiculo", versiculo);
-
-    if (!archivoNA28) {
-        sidebar.innerHTML = `<h5>NA28</h5><p>No hay aparato crítico para ${libro} ${capitulo}:${versiculo}.</p>`;
-        sidebar.classList.add("open");
-        return;
-    }
-
-    let url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/na28/2ts1/${archivoNA28}.html`;
-    console.log("📂 Cargando NA28 desde:", url);
-
-    fetch(url)
-        .then(response => {
-            if (!response.ok) throw new Error("Archivo no encontrado");
-            return response.text();
-        })
-        .then(data => {
-            const contenidoSidebar = document.getElementById("contenidoSidebar");
-contenidoSidebar.innerHTML = data;
-
-            sidebar.classList.add("open");
-            sidebar.style.display = "block";
-            main.classList.add("shifted");
-            document.body.classList.add("sidebar-open");
-        })
-.catch(error => {
-    console.error("❌ Error al cargar el aparato crítico:", error);
-    const contenidoSidebar = document.getElementById("contenidoSidebar");
-    contenidoSidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
-    sidebar.classList.add("open");
+  if (!archivoNA28) {
+    sidebar.innerHTML = `<h5>NA28</h5><p>No hay aparato crítico para ${libro} ${capitulo}:${versiculo}.</p>`;
+    sidebar.classList.add("open", "active");
     sidebar.style.display = "block";
-                main.classList.add("shifted");
-            document.body.classList.add("sidebar-open");
-});
+    return;
+  }
 
+  const carpetaLibro = normalizarNombreLibro(libro);
+  const url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/na28/${carpetaLibro}/${archivoNA28}.html`;
+  console.log("📂 Cargando NA28 desde:", url);
+
+  fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error("Archivo no encontrado");
+      return response.text();
+    })
+    .then((data) => {
+      const contenidoSidebar = document.getElementById("contenidoSidebar") || sidebar;
+      contenidoSidebar.innerHTML = data;
+      sidebar.classList.add("open", "active");
+      sidebar.style.display = "block";
+      document.body.classList.add("sidebar-open");
+      if (typeof main !== "undefined") main.classList.add("shifted");
+    })
+    .catch((error) => {
+      console.error("❌ Error al cargar el aparato crítico:", error);
+      const contenidoSidebar = document.getElementById("contenidoSidebar") || sidebar;
+      contenidoSidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
+      sidebar.classList.add("open", "active");
+      sidebar.style.display = "block";
+    });
 }
+
 
 function generarBotonNA28(libro, capitulo, versiculo) {
     return `<button class='na28-btn' onclick="cargarNA28('${libro}', '${capitulo}', '${versiculo}')">📖</button>`;
