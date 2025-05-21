@@ -123,54 +123,7 @@ const na28Map = {
   "Gálatas 6:18": "galatas6_18"
 };
 
-function cargarNA28(libro, capitulo, versiculo) {
-  let sidebar = document.getElementById('sidebar');
-  let claveVerso = `${libro} ${capitulo}:${versiculo}`;
-  let archivoNA28 = na28Map[claveVerso];
-
-  // Si el sidebar está abierto CON el mismo libro/capítulo/versículo...
-  if (
-    sidebar.classList.contains('active') &&
-    sidebar.getAttribute('data-libro') === libro &&
-    sidebar.getAttribute('data-capitulo') === capitulo &&
-    sidebar.getAttribute('data-versiculo') === versiculo
-  ) {
-    // ...lo cerramos PERO conservamos el contenido
-    sidebar.classList.remove('active');
-    return; // Importante salir aquí
-  }
-
-  // Actualizar atributos para el nuevo verso
-  sidebar.setAttribute('data-libro', libro);
-  sidebar.setAttribute('data-capitulo', capitulo);
-  sidebar.setAttribute('data-versiculo', versiculo);
-
-  // Si no existe el archivo, mostrar mensaje
-  if (!archivoNA28) {
-    sidebar.innerHTML = `<h5>NA28</h5><p>No hay aparato crítico para ${libro} ${capitulo}:${versiculo}.</p>`;
-    sidebar.classList.add('active');
-    return;
-  }
-
-  // Construir la URL y fetch
-  let url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/na28/2ts1/${archivoNA28}.html`;
-  console.log('📂 Cargando NA28 desde:', url);
-
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) throw new Error('Archivo no encontrado');
-      return response.text();
-    })
-    .then((data) => {
-      sidebar.innerHTML = `${data}`;
-      sidebar.classList.add('active'); // Mostrar el sidebar
-    })
-    .catch((error) => {
-      console.error('❌ Error al cargar el aparato crítico:', error);
-      sidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
-      sidebar.classList.add('active');
-    });
-}
+ 
 
 function generarBotonNA28(libro, capitulo, versiculo) {
   return `<button class='na28-btn' onclick="cargarNA28('${libro}', '${capitulo}', '${versiculo}')">📖</button>`;
