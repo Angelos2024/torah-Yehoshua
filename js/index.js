@@ -81,12 +81,16 @@ function toggleSearchBox() {
   const isOpen = searchBox.style.display === 'block';
 
   searchBox.style.display = isOpen ? 'none' : 'block';
-  btnSearch.classList.toggle('active-btn', !isOpen);
+  btnSearch.classList.toggle("active-btn", !isOpen);
 
   if (!isOpen) {
-    document.getElementById('searchInput').focus();
+    // Esperar un momento para que el input esté visible antes de hacer focus
+    setTimeout(() => {
+      document.getElementById('searchInput').focus();
+    }, 50);
   }
 }
+
 
 function customSelect(id) {
   const selectBox = document.getElementById(id);
