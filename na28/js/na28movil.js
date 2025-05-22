@@ -76,7 +76,8 @@ function normalizarNombreLibro(libro) {
     .toLowerCase();
 }
 
-function cargarNA28(libro, capitulo, versiculo) {
+// ✅ Declaración en el ámbito global
+window.cargarNA28 = function(libro, capitulo, versiculo) {
   const sidebar = document.getElementById('sidebar');
   const claveVerso = `${libro} ${capitulo}:${versiculo}`;
   const archivoNA28 = na28Map[claveVerso];
@@ -118,7 +119,9 @@ function cargarNA28(libro, capitulo, versiculo) {
       sidebar.innerHTML = `<h5>NA28</h5><p>No hay comentarios disponibles.</p>`;
       sidebar.classList.add('active');
     });
-}
+};
+
+
 
 
 function generarBotonNA28(libro, capitulo, versiculo) {
