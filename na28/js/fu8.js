@@ -29,7 +29,6 @@ const na28Map = {
     "Hebreos 3:9": "hebreos3_9",
     "Hebreos 3:10": "hebreos3_10",
     "Hebreos 3:13": "hebreos3_13",
-   const hebreosReferencias = {
   "Hebreos 3:14": "hebreos3_14",
   "Hebreos 3:16": "hebreos3_16",
   "Hebreos 3:17": "hebreos3_17",
