@@ -269,19 +269,50 @@ function cargarNA28(libro, capitulo, versiculo) {
   const url = `https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/na28/${carpetaLibro}/${archivoNA28}.html`;
   console.log("📂 Cargando NA28 desde:", url);
 
-  fetch(url)
-    .then((response) => {
-      if (!response.ok) throw new Error("Archivo no encontrado");
-      return response.text();
-    })
-    .then((data) => {
-      const contenidoSidebar = document.getElementById("contenidoSidebar") || sidebar;
-      contenidoSidebar.innerHTML = data;
-      sidebar.classList.add("open", "active");
-      sidebar.style.display = "block";
-      document.body.classList.add("sidebar-open");
-      if (typeof main !== "undefined") main.classList.add("shifted");
-    })
+fetch(url)
+  .then((response) => {
+    if (!response.ok) throw new Error("Archivo no encontrado");
+    return response.text();
+  })
+.then((data) => {
+  const contenidoSidebar = document.getElementById("contenidoSidebar") || sidebar;
+  contenidoSidebar.innerHTML = data;
+
+  // 🔒 Protección contra modo oscuro para texto y tablas (sin afectar botones ni inputs)
+  const estiloProteccion = document.createElement("style");
+  estiloProteccion.textContent = `
+    body.modo-oscuro #sidebar p,
+    body.modo-oscuro #sidebar li,
+    body.modo-oscuro #sidebar td,
+    body.modo-oscuro #sidebar table,
+    body.modo-oscuro #sidebar h1,
+    body.modo-oscuro #sidebar h2,
+    body.modo-oscuro #sidebar h3,
+    body.modo-oscuro #sidebar h4,
+    body.modo-oscuro #sidebar h5,
+    body.modo-oscuro #sidebar h6,
+    body.modo-oscuro #mySidebar p,
+    body.modo-oscuro #mySidebar li,
+    body.modo-oscuro #mySidebar td,
+    body.modo-oscuro #mySidebar table,
+    body.modo-oscuro #mySidebar h1,
+    body.modo-oscuro #mySidebar h2,
+    body.modo-oscuro #mySidebar h3,
+    body.modo-oscuro #mySidebar h4,
+    body.modo-oscuro #mySidebar h5,
+    body.modo-oscuro #mySidebar h6 {
+      color: black !important;
+      background-color: white !important;
+    }
+  `;
+  contenidoSidebar.prepend(estiloProteccion);
+
+  sidebar.classList.add("open", "active");
+  sidebar.style.display = "block";
+  document.body.classList.add("sidebar-open");
+  if (typeof main !== "undefined") main.classList.add("shifted");
+})
+
     .catch((error) => {
       console.error("❌ Error al cargar el aparato crítico:", error);
       const contenidoSidebar = document.getElementById("contenidoSidebar") || sidebar;
