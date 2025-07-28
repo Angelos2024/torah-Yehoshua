@@ -391,6 +391,7 @@ function togglesidebar2() {
 const urls = [
   'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json',
   'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json',
+  'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/efesios.json',
   'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json',
   'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json',
   'https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json',
