@@ -99,6 +99,7 @@ window.addEventListener("resize", function () {
             <a href="#" data-libro="Marcos">Según Marcos</a>
             <a href="#" data-libro="Romanos">Carta a los Romanos</a>
             <a href="#" data-libro="Gálatas">Carta a los Gálatas</a>
+          <a href="#" data-libro="Efesios">Carta a los Efesios</a>
             <a href="#" data-libro="1Tesalonicenses">1 Tesalonicenses</a>
             <a href="#" data-libro="2Tesalonicenses">2 Tesalonicenses</a>
             <a href="#" data-libro="Hebreos">Carta a los Hebreos</a>
@@ -543,6 +544,7 @@ document.querySelectorAll(".modal-content-custom a").forEach(item => {
 const urls = [
   "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Marcos.json",
   "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/galatas.json",
+  "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/efesios.json",
   "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/Hebreos.json",
   "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/1_Tesalonicenses.json",
   "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/main/2_Tesalonicenses.json",
@@ -589,6 +591,9 @@ const libroMap = {
     "2 tes": "2Tesalonicenses", "2tes": "2Tesalonicenses",
     "2 tesa": "2Tesalonicenses", "2Tesa": "2Tesalonicenses",
     "2 tesalonicenses": "2Tesalonicenses",
+  ef: "efesios", ef: "EFESIOS", "Efesios",
+  "efesios": "efesios", "Efesios", "EFESIOS", "efesio",
+  "Efesios": "efesios", "Efesios", "efe", "EFESIOS",
     "Romanos": "Romanos", "romanos": "Romanos", "Rom": "Romanos", "rom": "Romanos", "ROMANOS":"Romanos", "ROM": "Romanos", "Marcos": "Marcos", "marcos":"Marcos", "MARCOS":"Marcos", "marc": "Marcos", "Mc": "Marcos", "Mar":"Marcos", "MAR": "Marcos", "mar":"Marcos", "Ap": "Apocalipsis", "ap":"Apocalipsis", "apocalipsis":"Apocalipsis", "APOCALIPSIS":"Apocalipsis", "Apoc":"Apocalipsis", "apoc":"Apocalipsis", "APOC":"Apocalipsis","AP":"Apocalipsis"
   };
 
