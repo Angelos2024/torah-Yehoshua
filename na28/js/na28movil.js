@@ -287,7 +287,37 @@ const na28Map = {
   "Gálatas 6:15": "galatas6_15",
   "Gálatas 6:16": "galatas6_16",
   "Gálatas 6:17": "galatas6_17",
-  "Gálatas 6:18": "galatas6_18" 
+  "Gálatas 6:18": "galatas6_18",
+     "1Tesalonicenses 1:1": "1_Tesalonicenses1_1",
+     "1Tesalonicenses 1:2": "1_Tesalonicenses1_2",
+  "1Tesalonicenses 1:4": "1_Tesalonicenses1_4",
+  "1Tesalonicenses 1:5": "1_Tesalonicenses1_5",
+  "1Tesalonicenses 1:6": "1_Tesalonicenses1_6",
+  "1Tesalonicenses 1:7": "1_Tesalonicenses1_7",
+  "1Tesalonicenses 1:8": "1_Tesalonicenses1_8",
+  "1Tesalonicenses 1:9": "1_Tesalonicenses1_9",
+  "1Tesalonicenses 1:10": "1_Tesalonicenses1_10",
+  "1Tesalonicenses 2:3": "1_Tesalonicenses2_3",
+  "1Tesalonicenses 2:4": "1_Tesalonicenses2_4",
+  "1Tesalonicenses 2:5": "1_Tesalonicenses2_5",
+  "1Tesalonicenses 2:6": "1_Tesalonicenses2_6",
+  "1Tesalonicenses 2:7": "1_Tesalonicenses2_7",
+  "1Tesalonicenses 2:8": "1_Tesalonicenses2_8",
+  "1Tesalonicenses 2:9": "1_Tesalonicenses2_9",
+  "1Tesalonicenses 2:10": "1_Tesalonicenses2_10",
+  "1Tesalonicenses 2:12": "1_Tesalonicenses2_12",
+  "1Tesalonicenses 2:13": "1_Tesalonicenses2_13",
+  "1Tesalonicenses 2:15": "1_Tesalonicenses2_15",
+  "1Tesalonicenses 2:16": "1_Tesalonicenses2_16",
+  "1Tesalonicenses 2:19": "1_Tesalonicenses2_19",
+  "1Tesalonicenses 3:1": "1_Tesalonicenses3_1",
+  "1Tesalonicenses 3:2": "1_Tesalonicenses3_2",
+  "1Tesalonicenses 3:3": "1_Tesalonicenses3_3",
+  "1Tesalonicenses 3:5": "1_Tesalonicenses3_5",
+  "1Tesalonicenses 3:7": "1_Tesalonicenses3_7",
+  "1Tesalonicenses 3:8": "1_Tesalonicenses3_8",
+  "1Tesalonicenses 3:9": "1_Tesalonicenses3_9",
+  "1Tesalonicenses 3:13": "1_Tesalonicenses3_13"
 };
 
 function normalizarNombreLibro(libro) {
@@ -367,3 +397,4 @@ function insertarBotonesNA28() {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(insertarBotonesNA28, 500); // Esperar medio segundo antes de ejecutarlo
 });
+
