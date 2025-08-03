@@ -289,7 +289,8 @@ const na28Map = {
   "Gálatas 6:15": "galatas6_15",
   "Gálatas 6:16": "galatas6_16",
   "Gálatas 6:17": "galatas6_17",
-  "Gálatas 6:18": "galatas6_18"    
+  "Gálatas 6:18": "galatas6_18",
+   "1Tesalonicenses 1:1": "1_Tesalonicenses1_1"
 };
 
 function normalizarNombreLibro(libro) {
