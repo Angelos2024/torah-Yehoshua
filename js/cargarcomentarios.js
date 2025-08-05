@@ -12,7 +12,8 @@ function cargarComentariosCapitulo(libro, capitulo) {
     },
     "Efesios": {
       1: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/efesios/efesios1.html",
-      2: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/efesios/efesios2.html"
+      2: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/efesios/efesios2.html",
+      3: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/efesios/efesios3.html"
     },
     "Hebreos": {
       1: "https://raw.githubusercontent.com/Angelos2024/torah-Yehoshua/refs/heads/main/comentarios_codigos/hebreos/hebreos1.html",
@@ -133,6 +134,7 @@ function cargarComentariosCapitulo(libro, capitulo) {
       contenedor.innerHTML = `<p>Error al cargar los comentarios: ${error.message}</p>`;
     });
 }
+
 
 
 
