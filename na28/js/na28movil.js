@@ -1,5 +1,24 @@
 // 🔹 Mapeo de versículos a archivos en NA28
 const na28Map = {
+   "Efesios 1:1": "efesios1_1",
+   "Efesios 1:3": "efesios1_3",
+   "Efesios 1:4": "efesios1_4",
+   "Efesios 1:6": "efesios1_6",
+   "Efesios 1:7": "efesios1_7",
+   "Efesios 1:9": "efesios1_9",
+   "Efesios 1:10": "efesios1_10",
+   "Efesios 1:11": "efesios1_11",
+   "Efesios 1:13": "efesios1_13",
+   "Efesios 1:14": "efesios1_14",
+   "Efesios 1:15": "efesios1_15",
+   "Efesios 1:16": "efesios1_16",
+   "Efesios 1:17": "efesios1_17",
+   "Efesios 1:18": "efesios1_18",
+   "Efesios 1:19": "efesios1_19",
+   "Efesios 1:20": "efesios1_20",
+   "Efesios 2:1": "efesios2_1",
+   "Efesios 2:3": "efesios2_3",
+   "Efesios 2:4": "efesios2_4",
      "Hebreos 1:1": "hebreos1_1",
     "Hebreos 1:2": "hebreos1_2",
     "Hebreos 1:3": "hebreos1_3",
@@ -424,5 +443,6 @@ function insertarBotonesNA28() {
 document.addEventListener('DOMContentLoaded', () => {
   setTimeout(insertarBotonesNA28, 500); // Esperar medio segundo antes de ejecutarlo
 });
+
 
 
