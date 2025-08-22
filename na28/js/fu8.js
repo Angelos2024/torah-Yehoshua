@@ -2,6 +2,7 @@
 
 // 🔹 Mapeo de versículos a archivos en NA28
 const na28Map = {
+   "Efesios 1:1": "efesios1_1",
    "Hebreos 1:1": "hebreos1_1",
     "Hebreos 1:2": "hebreos1_2",
     "Hebreos 1:3": "hebreos1_3",
