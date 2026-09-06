@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-04T23:48:03.943Z",
+  "savedAt": "2026-09-06T18:11:16.716Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -193,13 +193,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Coyote 1040 botin mil rayas",
-        "size": "27 x2, 29, 30",
+        "size": "27, 29, 30",
         "sizeDetails": {
-          "27": 2,
+          "27": 1,
           "29": 1,
           "30": 1
         },
-        "quantity": 4,
+        "quantity": 3,
         "minimum": 0,
         "cost": 360,
         "salePrice": 700
@@ -928,13 +928,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "Puma valvula azul",
-        "size": "27 x2, 28 x2, 29 x2",
+        "size": "27, 28 x2, 29 x2",
         "sizeDetails": {
-          "27": 2,
+          "27": 1,
           "28": 2,
           "29": 2
         },
-        "quantity": 6,
+        "quantity": 5,
         "minimum": 0,
         "cost": 307,
         "salePrice": 655
