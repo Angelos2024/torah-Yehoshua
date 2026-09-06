@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-06T18:11:16.716Z",
+  "savedAt": "2026-09-06T18:35:07.288Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -928,13 +928,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "Puma valvula azul",
-        "size": "27, 28 x2, 29 x2",
+        "size": "28 x2, 29 x2",
         "sizeDetails": {
-          "27": 1,
           "28": 2,
           "29": 2
         },
-        "quantity": 5,
+        "quantity": 4,
         "minimum": 0,
         "cost": 307,
         "salePrice": 655
