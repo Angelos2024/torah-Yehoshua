@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-06T21:07:33.085Z",
+  "savedAt": "2026-09-06T21:32:40.987Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -553,11 +553,9 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "Caribu Amarilla 952",
-        "size": "26",
-        "sizeDetails": {
-          "26": 1
-        },
-        "quantity": 1,
+        "size": "",
+        "sizeDetails": {},
+        "quantity": 0,
         "minimum": 2,
         "cost": 630,
         "salePrice": 970
