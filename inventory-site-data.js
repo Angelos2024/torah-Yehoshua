@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-06T21:32:40.987Z",
+  "savedAt": "2026-09-07T15:50:40.273Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -341,15 +341,15 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "TRS soldador Dakota",
-        "size": "26, 27, 28, 29 x2, 30 x2",
+        "size": "26, 27, 28, 29, 30 x2",
         "sizeDetails": {
           "26": 1,
           "27": 1,
           "28": 1,
-          "29": 2,
+          "29": 1,
           "30": 2
         },
-        "quantity": 7,
+        "quantity": 6,
         "minimum": 2,
         "cost": 400,
         "salePrice": 740
@@ -1545,12 +1545,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "tenis",
         "model": "Puma Mega amarillo",
-        "size": "25 x2, 26 x2",
+        "size": "25, 26 x2",
         "sizeDetails": {
-          "25": 2,
+          "25": 1,
           "26": 2
         },
-        "quantity": 4,
+        "quantity": 3,
         "minimum": 0,
         "cost": 280,
         "salePrice": 630
