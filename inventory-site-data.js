@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-07T20:09:13.808Z",
+  "savedAt": "2026-09-08T00:04:47.415Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -175,14 +175,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Coyote 2070 café",
-        "size": "27 x2, 28 x2, 29, 30",
+        "size": "27 x2, 28 x2, 30",
         "sizeDetails": {
           "27": 2,
           "28": 2,
-          "29": 1,
           "30": 1
         },
-        "quantity": 6,
+        "quantity": 5,
         "minimum": 0,
         "cost": 400,
         "salePrice": 740
@@ -208,13 +207,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Coyote cuadrado",
-        "size": "27 x2, 28 x2, 29 x2",
+        "size": "27 x2, 28, 29",
         "sizeDetails": {
           "27": 2,
-          "28": 2,
-          "29": 2
+          "28": 1,
+          "29": 1
         },
-        "quantity": 6,
+        "quantity": 4,
         "minimum": 0,
         "cost": 500,
         "salePrice": 840
@@ -313,13 +312,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "TRS soldador",
-        "size": "27 x2, 28, 29",
+        "size": "27, 28, 29",
         "sizeDetails": {
-          "27": 2,
+          "27": 1,
           "28": 1,
           "29": 1
         },
-        "quantity": 4,
+        "quantity": 3,
         "minimum": 2,
         "cost": 400,
         "salePrice": 740
@@ -341,15 +340,14 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "TRS soldador Dakota",
-        "size": "26, 27, 28, 29, 30 x2",
+        "size": "26, 27, 28, 30 x2",
         "sizeDetails": {
           "26": 1,
           "27": 1,
           "28": 1,
-          "29": 1,
           "30": 2
         },
-        "quantity": 6,
+        "quantity": 5,
         "minimum": 2,
         "cost": 400,
         "salePrice": 740
@@ -497,11 +495,11 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "Shein Atx Negro",
-        "size": "27 x2",
+        "size": "27",
         "sizeDetails": {
-          "27": 2
+          "27": 1
         },
-        "quantity": 2,
+        "quantity": 1,
         "minimum": 3,
         "cost": 320,
         "salePrice": 660
@@ -1090,14 +1088,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "botas",
         "model": "Caribu negra 340",
-        "size": "23, 24, 25, 26",
+        "size": "23, 24, 25",
         "sizeDetails": {
           "23": 1,
           "24": 1,
-          "25": 1,
-          "26": 1
+          "25": 1
         },
-        "quantity": 4,
+        "quantity": 3,
         "minimum": 2,
         "cost": 610,
         "salePrice": 950
