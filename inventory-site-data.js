@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-08T00:04:47.415Z",
+  "savedAt": "2026-09-08T21:02:24.864Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -1088,13 +1088,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "botas",
         "model": "Caribu negra 340",
-        "size": "23, 24, 25",
+        "size": "24, 25",
         "sizeDetails": {
-          "23": 1,
           "24": 1,
           "25": 1
         },
-        "quantity": 3,
+        "quantity": 2,
         "minimum": 2,
         "cost": 610,
         "salePrice": 950
