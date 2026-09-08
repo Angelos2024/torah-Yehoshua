@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-08T21:02:24.864Z",
+  "savedAt": "2026-09-08T23:36:08.063Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -704,11 +704,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "Ultra Negro",
-        "size": "27",
+        "size": "27 x3, 29",
         "sizeDetails": {
-          "27": 1
+          "27": 3,
+          "29": 1
         },
-        "quantity": 1,
+        "quantity": 4,
         "minimum": 3,
         "cost": 450,
         "salePrice": 790
@@ -744,11 +745,11 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "Sport negro",
-        "size": "27",
+        "size": "27 x2",
         "sizeDetails": {
-          "27": 1
+          "27": 2
         },
-        "quantity": 1,
+        "quantity": 2,
         "minimum": 1,
         "cost": 405,
         "salePrice": 745
@@ -938,13 +939,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "plantillas",
-        "size": "27, 28 x3, 29",
+        "size": "27 x3, 28 x5, 29 x4",
         "sizeDetails": {
-          "27": 1,
-          "28": 3,
-          "29": 1
+          "27": 3,
+          "28": 5,
+          "29": 4
         },
-        "quantity": 5,
+        "quantity": 12,
         "minimum": 3,
         "cost": 50,
         "salePrice": 100
@@ -1290,11 +1291,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "tenis",
         "model": "Ultra negro",
-        "size": "25",
+        "size": "24, 25 x2",
         "sizeDetails": {
-          "25": 1
+          "24": 1,
+          "25": 2
         },
-        "quantity": 1,
+        "quantity": 3,
         "minimum": 2,
         "cost": 450,
         "salePrice": 790
@@ -1348,14 +1350,15 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "tenis",
         "model": "Sport rosa",
-        "size": "22, 23, 24, 26",
+        "size": "22, 23, 24, 25, 26",
         "sizeDetails": {
           "22": 1,
           "23": 1,
           "24": 1,
+          "25": 1,
           "26": 1
         },
-        "quantity": 4,
+        "quantity": 5,
         "minimum": 3,
         "cost": 405,
         "salePrice": 745
@@ -1618,13 +1621,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "damas",
         "productGroup": "tenis",
         "model": "Plantillas",
-        "size": "23 x2, 24, 25 x2",
+        "size": "23 x3, 24 x3, 25 x4",
         "sizeDetails": {
-          "23": 2,
-          "24": 1,
-          "25": 2
+          "23": 3,
+          "24": 3,
+          "25": 4
         },
-        "quantity": 5,
+        "quantity": 10,
         "minimum": 2,
         "cost": 50,
         "salePrice": 100
