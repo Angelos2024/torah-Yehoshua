@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-09T17:30:34.025Z",
+  "savedAt": "2026-09-09T18:56:15.637Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -28,14 +28,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Nicadabra total black",
-        "size": "26 x2, 28, 29 x2, 30",
+        "size": "26 x2, 29 x2, 30",
         "sizeDetails": {
           "26": 2,
-          "28": 1,
           "29": 2,
           "30": 1
         },
-        "quantity": 6,
+        "quantity": 5,
         "minimum": 3,
         "cost": 500,
         "salePrice": 840
