@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-08T23:36:08.063Z",
+  "savedAt": "2026-09-09T17:30:34.025Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -13,12 +13,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Nicadabra Ocre suela de Goma",
-        "size": "28 x2, 30",
+        "size": "28, 30",
         "sizeDetails": {
-          "28": 2,
+          "28": 1,
           "30": 1
         },
-        "quantity": 3,
+        "quantity": 2,
         "minimum": 4,
         "cost": 400,
         "salePrice": 740
@@ -159,13 +159,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "calzado-vaquero",
         "model": "Coyote 2070 Miel",
-        "size": "27, 28 x2, 30",
+        "size": "28 x2, 30",
         "sizeDetails": {
-          "27": 1,
           "28": 2,
           "30": 1
         },
-        "quantity": 4,
+        "quantity": 3,
         "minimum": 0,
         "cost": 400,
         "salePrice": 740
@@ -939,13 +938,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "tenis",
         "model": "plantillas",
-        "size": "27 x3, 28 x5, 29 x4",
+        "size": "27 x3, 28 x3, 29 x4",
         "sizeDetails": {
           "27": 3,
-          "28": 5,
+          "28": 3,
           "29": 4
         },
-        "quantity": 12,
+        "quantity": 10,
         "minimum": 3,
         "cost": 50,
         "salePrice": 100
