@@ -1,5 +1,5 @@
 window.INVENTORY_SITE_DATA = {
-  "savedAt": "2026-09-10T17:23:58.007Z",
+  "savedAt": "2026-09-11T00:48:55.900Z",
   "source": "zapatos",
   "data": {
     "nextId": 130,
@@ -267,13 +267,13 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "TRS avena",
-        "size": "26 x2, 27 x3, 30",
+        "size": "26, 27 x3, 30",
         "sizeDetails": {
-          "26": 2,
+          "26": 1,
           "27": 3,
           "30": 1
         },
-        "quantity": 6,
+        "quantity": 5,
         "minimum": 3,
         "cost": 400,
         "salePrice": 740
@@ -310,13 +310,12 @@ window.INVENTORY_SITE_DATA = {
         "audienceGroup": "caballero",
         "productGroup": "botas",
         "model": "TRS soldador",
-        "size": "27, 28, 29",
+        "size": "27, 28",
         "sizeDetails": {
           "27": 1,
-          "28": 1,
-          "29": 1
+          "28": 1
         },
-        "quantity": 3,
+        "quantity": 2,
         "minimum": 2,
         "cost": 400,
         "salePrice": 740
